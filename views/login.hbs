@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+     {{>commonCss}}
+    <link rel="stylesheet" href="./public/Stylsheets/login.css" />
+</head>
+<body>
+    <div id="container">
+        <h1 style="padding-top: 25px;">Log In</h1>
+          <form action="/signup/home" method="post">
+             <input class="inp" type="email" name="username" placeholder="Email" />
+             <input class="inp" type="password" name="username" placeholder="Password" />
+             <input class="inp subbtn" type="submit" value="Register"/>
+             <a href="/signup">Not Registered ? Signup Now</a>
+          </form>
+    </div>
+</body>
+</html>

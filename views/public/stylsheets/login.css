@@ -1,0 +1,65 @@
+body{
+    overflow: hidden;
+    background-image: url("./Assets/registerCover.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: white;
+    height: 80%;
+    width: 50%;
+    top: 10%;
+    left: 25%;
+    position: relative;
+    border-radius: 10px;
+}
+
+h1{
+    color: rgba(0, 0, 0, 0.433);
+}
+
+form{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    gap:10px
+}
+
+.inp{
+    height:35px;
+    width: 40%;
+    align-items: center;
+    margin: 0px 30%;
+    font-size: 25px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid transparent;
+    border-radius: 6px;
+    padding-left: 10px;
+    font-weight: 100;
+}
+
+.subbtn{
+    background-color: rgba(0, 0, 0, 0.825);
+    color: white;
+    font-size: 20px;
+    height: 35px;
+    border-radius: 10px;
+}
+
+.subbtn:active{
+    background-color: white;
+    color: black;
+}
+
+
+

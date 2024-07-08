@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+     {{>commonCss}}
+    <link rel="stylesheet"   href="./public/Stylsheets/signup.css" />
+</head>
+<body>
+    <div id="container">
+        <h1 style="padding-top: 25px;">Register</h1>
+          <form action="/signup/home" method="post">
+            
+             <input class="inp" type="text" name="username" placeholder="Username" />
+             <input class="inp" type="email" name="username" placeholder="Email" />
+             <input class="inp" type="password" name="username" placeholder="Password" autocomplete="on"/>
+             <input class="inp subbtn" type="submit" value="Register"/>
+             <a href="/signup/loginUser">Already a user ? Login Now</a>
+
+          </form>
+    </div>
+</body>
+</html>
