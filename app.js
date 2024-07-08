@@ -5,18 +5,19 @@ const hbs = require('hbs');
 const colors = require('colors');
 
 //initializing port ,routers,staticpath and partailspath
-const port = process.env.PORT || 3000;
+const port = process.env.port || 5000;
 const {router} = require("./Routers/SignupRoutes");
 const staticPath = path.join(__dirname,"./views");
 const partialsPath = path.join(__dirname,"./views/Partials");
 
 const app = express();
 
-app.use(express.static(staticPath))
+
 app.use(express.json());
 app.use(express.urlencoded());
 app.use("/signup",router);
 app.set('view engine','hbs');
+app.use(express.static(staticPath))
 
 hbs.registerPartials(partialsPath)
 

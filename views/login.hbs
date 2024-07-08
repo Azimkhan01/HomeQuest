@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
      {{>commonCss}}
-    <link rel="stylesheet" type="text/css" href="./public/Stylsheets/login.css" />
+    <link rel="stylesheet" type="text/css" href="/public/CascadingStyle/login.css" />
 </head>
 <body>
     <div id="container">
         <h1 style="padding-top: 25px;">Log In</h1>
           <form action="/signup/home" method="post">
-             <input class="inp" type="email" name="username" placeholder="Email" />
-             <input class="inp" type="password" name="username" placeholder="Password" />
-             <input class="inp subbtn" type="submit" value="Register"/>
+             <input class="inp" type="email" name="email" placeholder="Email" />
+             <input class="inp" type="password" name="password" placeholder="Password" autocomplete="on"/>
+             <input class="inp subbtn" type="submit" value="Log In"/>
              <a href="/signup">Not Registered ? Signup Now</a>
+             <p style="text-align: center;color:red">{{error}}</p>
           </form>
     </div>
 </body>
