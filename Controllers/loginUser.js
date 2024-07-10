@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
-const colors = require("colors")
+const colors = require("colors");
 var jwt = require('jsonwebtoken');
+const {mail} = require("./mailToLogin");
 const {user} = require("../Database/registerUsers");
 const loginUser = async (req,res)=>
 {
@@ -22,12 +23,15 @@ const loginUser = async (req,res)=>
      bcrypt.compare(myPlaintextPassword, hash).then(async function(r) {
         if(r){
             // let privateKey = process.env.privateKey;
-            let token = jwt.sign({
-                data:await result
-              }, 'secret', { expiresIn: '1h' });
-            //   console.log(token);
-            res.cookie("token",token);
-        res.render("home")}
+                 let token = jwt.sign({
+                   data:await result
+                  }, '249658', { expiresIn: '1d' });
+              //   console.log(token);
+              res.cookie("token",token);
+             res.render("home");
+             await  mail(result.email,result.username);
+    
+            }
         else{
             res.render("login",{
                 error:"Password entered is wrong "

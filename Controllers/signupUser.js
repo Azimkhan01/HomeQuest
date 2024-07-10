@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const colors = require("colors");
 const bcrypt = require('bcrypt');
+const {mail} = require("./mailTo");
 const {user} = require("../Database/registerUsers");
 
 const signupUser = async (req,res)=>
@@ -56,10 +57,11 @@ const signupUser = async (req,res)=>
                     "email": await req.body.email,
                     "password": await password,
                    }).
-                        then((data)=>
-                              {
+                        then( (data)=>
+                              {      
                                      console.log(colors.green("The data is added: "+colors.cyan(data)));
                                       res.render("login");
+                                      mail( req.body.email, req.body.username);
                                });
        
         });
