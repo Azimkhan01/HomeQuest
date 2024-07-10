@@ -14,7 +14,7 @@ body{
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    background-color: white;
+    background-color: rgb(255, 230, 0);
     height: 80%;
     width: 50%;
     top: 10%;
@@ -44,7 +44,7 @@ form{
     align-items: center;
     margin: 0px 30%;
     font-size: 25px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.342);
     border: 2px solid transparent;
     border-radius: 6px;
     padding-left: 10px;
@@ -60,7 +60,7 @@ form{
 }
 
 .subbtn:active{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     color: black;
     transition: all 0.5 ease-in-out;
 
