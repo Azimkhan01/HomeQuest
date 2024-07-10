@@ -10,11 +10,11 @@
 <body>
     <div id="container">
         <h1 style="padding-top: 25px;">Log In</h1>
-          <form action="/signup/home" method="post">
-             <input class="inp" type="email" name="email" placeholder="Email" />
+          <form action="/login" method="post">
+             <input class="inp" type="text" name="email" placeholder="Email" />
              <input class="inp" type="password" name="password" placeholder="Password" autocomplete="on"/>
              <input class="inp subbtn" type="submit" value="Log In"/>
-             <a href="/signup">Not Registered ? Signup Now</a>
+             <a href="/">Not Registered ? Signup Now</a>
              <p style="text-align: center;color:red">{{error}}</p>
           </form>
     </div>

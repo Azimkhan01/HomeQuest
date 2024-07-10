@@ -10,13 +10,13 @@
 <body>
     <div id="container">
         <h1 style="padding-top: 25px;">Register</h1>
-          <form action="/signup/login" method="post">
+          <form action="/signup" method="post">
             
              <input class="inp" type="text" name="username" placeholder="Username" />
-             <input class="inp" type="email" name="email" placeholder="Email" />
+             <input class="inp" type="text" name="email" placeholder="Email" />
              <input class="inp" type="password" name="password" placeholder="Password" autocomplete="on"/>
              <input class="inp subbtn" type="submit" value="Register"/>
-             <a href="/signup/loginUser">Already a user ? Login Now</a>
+             <a href="/login">Already a user ? Login Now</a>
              <p style="text-align: center;color:red">{{error}}</p>
           </form>
     </div>

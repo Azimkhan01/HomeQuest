@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 const {signup} = require("../Controllers/signup");
-const {home} = require("../Controllers/home.js");
-const {login} = require("../Controllers/login.js");
-const {loginUser} = require("../Controllers/loginUser.js");
+const {signupUser} = require("../Controllers/signupUser");
+const {login} = require("../Controllers/login");
+const {loginUser} =require("../Controllers/loginUser");
 
-router.route('/').get(signup);
-router.route('/login').post(login);
-router.route('/loginUser').get(loginUser);
-router.route('/home').post(home)
+router.route(['/signup','/']).get(signup);
+router.route('/signup').post(signupUser);
+router.route('/login').get(login);
+router.route('/login').post(loginUser);
+
 module.exports = {router};

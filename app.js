@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
 const colors = require('colors');
-
+const helmet = require('helmet');
 //initializing port ,routers,staticpath and partailspath
 const port = process.env.port || 5000;
 const {router} = require("./Routers/SignupRoutes");
@@ -12,10 +12,10 @@ const partialsPath = path.join(__dirname,"./views/Partials");
 
 const app = express();
 
-
+app.use(helmet());
 app.use(express.json());
-app.use(express.urlencoded());
-app.use("/signup",router);
+app.use(express.urlencoded({extended:false}));
+app.use("/",router);
 app.set('view engine','hbs');
 app.use(express.static(staticPath))
 
