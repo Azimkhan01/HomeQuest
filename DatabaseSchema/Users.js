@@ -20,5 +20,7 @@ const userSchema = new mongoose.Schema({
     timestamps: true, // This will add createdAt and updatedAt timestamps
 });
 
+const dataScehma = new mongoose.Schema({},{strict:false});
 
-module.exports = {userSchema}
+
+module.exports = {userSchema,dataScehma}

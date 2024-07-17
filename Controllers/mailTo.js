@@ -1,19 +1,21 @@
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv")
+dotenv.config();
 
 const transporter = nodemailer.createTransport({
   host: "smtp-mail.outlook.com",
   port: 587,
   secure: false, // Use `true` for port 465, `false` for all other ports
   auth: {
-    user: "azimuddeen3920496@mccmulund.ac.in",
-    pass: "vuWciv-tuhqat-hepbe9",
+    user: process.env.email,
+    pass: process.env.emailpass,
   },
 });
 
 async function mail(clientEmail,clientName) {
     // send mail with defined transport object
     const info = await transporter.sendMail({
-      from: '"azimuddeen3920496@mccmulund.ac.in"', // sender address
+      from: process.env.email, // sender address
       to: clientEmail, // list of receivers
       subject: "Welcome to Home Quest!", // Subject line
     //   text: "Hello world?", // plain text body

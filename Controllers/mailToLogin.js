@@ -1,15 +1,16 @@
 const nodemailer = require("nodemailer");
 const os = require('os');
 const dns = require('node:dns');
-
+const dotenv = require("dotenv")
+dotenv.config();
 
 const transporter = nodemailer.createTransport({
   host: "smtp-mail.outlook.com",
   port: 587,
   secure: false, // Use `true` for port 465, `false` for all other ports
   auth: {
-    user: "azimuddeen3920496@mccmulund.ac.in",
-    pass: "vuWciv-tuhqat-hepbe9",
+    user: process.env.email,
+    pass: process.env.emailpass,
   },
 });
 
@@ -23,7 +24,7 @@ const address = dns.lookup(os.hostname(), options, (err, addr) => {
   if (err) {
     console.error(err);
   } else {
-    console.log(`IPv4 address: ${addr}`);
+    // console.log(`IPv4 address: ${addr}`);
   }
 });
 
@@ -33,7 +34,7 @@ async function mail(clientEmail,clientName) {
       
     // send mail with defined transport object
     const info = await transporter.sendMail({
-      from: '"azimuddeen3920496@mccmulund.ac.in"', // sender address
+      from: process.env.email, // sender address
       to: clientEmail, // list of receivers
       subject: "Welcome to Home Quest!", // Subject line
     //   text: "Hello world?", // plain text body
@@ -95,7 +96,7 @@ async function mail(clientEmail,clientName) {
                 <li><strong>Date and Time:</strong> ${d} </li>
                 <li><strong>Device:</strong> ${address.hostname}</li>
             </ul>
-            <p>If you did not log in from this device, please <a href="mailto:azimuddeen3920496@mccmulund.ac.in" target="_blank" class="btn">Contact Support</a> immediately to secure your account.</p>
+            <p>If you did not log in from this device, please <a href="mailtoprocess.env.email target="_blank" class="btn">Contact Support</a> immediately to secure your account.</p>
             <p>Thank you for using Home Quest.</p>
             <p>Best regards,<br>The Home Quest Team</p>
         </div>
