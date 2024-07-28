@@ -26,7 +26,7 @@ h4{
     background-image: url();
     flex-direction: row;
     flex-wrap: nowrap;
-    height: 90%;
+    height: 85%;
     width: 100%;
     background-color: rgba(255, 255, 255, 0);
     margin-top:2%;
@@ -84,7 +84,7 @@ input:hover{
    text-align: center;
 }
 
-.subbtn:hover{
+.subbtn:hover,#eyebtn:hover{
     font-weight: 700;
     color: rgb(46,175,231);
     background-color: white;
@@ -107,7 +107,16 @@ a:hover{
    border: 2PX solid transparent;
    transition: all ease-in-out 0.3s;
 }
-
+#eyebtn{
+    text-align:center;
+    width:20%;
+    margin-top: -35px;
+    margin-bottom:-30px;
+    color:white;
+    background-color:#71C0DD;
+    padding:5px;
+    border-radius:5px
+}
 @media only screen and (max-width: 600px){
     #container{
         background-color: white;
@@ -144,7 +153,7 @@ a:hover{
         padding-bottom: 20px;
         height: 5%;
         width: 50%;
-        color: rgb(197, 197, 197);
+        color: rgb(255, 255, 255);
         background-color: #71c0dd;
        text-align: center;
     }
@@ -153,6 +162,16 @@ a:hover{
         font-size: 12px;
         text-align: center;
         
+    }
+    #eyebtn{
+        text-align:center;
+        width:50%;
+        margin-top: -35px;
+        margin-bottom:-30px;
+        color:white;
+        background-color:#71C0DD;
+        padding:5px;
+        border-radius:5px
     }
 
 }
@@ -194,7 +213,7 @@ a:hover{
         padding-bottom: 20px;
         height: 5%;
         width: 50%;
-        color: rgb(197, 197, 197);
+        color: rgb(255, 255, 255);
         background-color: #71c0dd;
        text-align: center;
     }
@@ -203,5 +222,14 @@ a:hover{
         font-size: 16px;
         text-align: center;
     }
-
+    #eyebtn{
+        text-align:center;
+        width:50%;
+        margin-top: -35px;
+        margin-bottom:-30px;
+        color:white;
+        background-color:#71C0DD;
+        padding:5px;
+        border-radius:5px
+    }
 }

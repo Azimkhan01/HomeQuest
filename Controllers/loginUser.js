@@ -28,8 +28,13 @@ const loginUser = async (req,res)=>
                   }, '249658', { expiresIn: '1d' });
               //   console.log(token);
               res.cookie("token",token);
-             res.render("home");
+             res.redirect("home");
+             if(! await req.cookies.token){
              await  mail(result.email,result.username);
+             }
+             else{
+                return
+             }
     
             }
         else{
