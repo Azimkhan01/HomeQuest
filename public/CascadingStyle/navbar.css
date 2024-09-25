@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* Hides the scrollbar in WebKit browsers */
+body {
+    overflow: scroll;
+    /* Allows scrolling */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Hides the scrollbar */
+}
+
+
+
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #00B98E;
+    font-size: 40px;
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+html,
+body {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    background-color: #EFFDF5;
+}
+
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #F8F8F8;
+    height: 200vh;
+    width: 87%;
+}
+
+/* navbar */
+nav {
+    z-index: 9;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 75px;
+    background-color: #f8f8f861;
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 50px;
+    padding: 0% 5%;
+    transition: all 0.3s ease-in-out;
+}
+
+.listBox ul {
+    font-family: heebo, sans-serif;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    gap: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 10px;
+    align-items: center;
+
+    /* background-color: green; */
+}
+
+.list:hover {
+    color: #00B98E;
+}
+
+li {
+    list-style-type: none;
+}
+
+.list {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.Addproperty {
+    padding: 10px;
+    border-radius: 5px;
+
+    color: #0E2E50;
+    background-color: #00B98E;
+}
+
+.Addproperty:hover {
+    background-color: #00b98ee1;
+}
+
+.smallDeviceLogo {
+    display: none;
+    text-decoration: none;
+}
+
+.listBox ul a:last-child {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+
+
+/* MEdia query  */
+
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+
+    #main {
+        overflow-y: hidden;
+        width: 100%;
+    }
+
+
+
+    nav {
+        position: fixed;
+        height: 8%;
+        overflow-y: hidden;
+        margin-left: 0;
+        top: 0;
+        width: 100%;
+        flex-direction: column;
+        /* height: auto; */
+
+    }
+
+    .logo {
+        height: 100px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 5px;
+        justify-content: space-between;
+    }
+
+    .logo i {
+        padding: 10px;
+        margin-right: 2%;
+        /* background-color: red; */
+    }
+
+    .listBox ul {
+        flex-direction: column;
+    }
+
+    .smallDeviceLogo {
+        display: block;
+    }
+
+    .autoHeight {
+        background: rgba(255, 255, 255, 0.921);
+        backdrop-filter: blur(10px);
+        height: auto;
+    }
+
+    #page1 {
+
+        min-height: 100vh;
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+    }
+
+    .intro-image,
+    .intro {
+        height: 50%;
+        width: 100%;
+    }
+
+    .intro-image::after {
+        top: 22%;
+        font-size: 20px;
+    }
+
+    .intro-image::before {
+        top: 22%;
+        font-size: 20px;
+        left: 85%;
+    }
+
+    .intro {
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 5%;
+    }
+
+    .intro div h2 {
+        font-family: verdana, Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        color: #0E2E50;
+    }
+
+    .intro div h2 span {
+        color: #00B98E;
+    }
+
+    .intro div p {
+        text-align: justify;
+        font-size: 14px;
+        color: #666565;
+        font-family: Heebo, sans-serif;
+    }
+
+    .intro div {
+        align-self: flex-start;
+    }
+
+    .intro div a {
+
+        text-decoration: none;
+        color: white;
+        background-color: #00B98E;
+        font-size: 14px;
+        padding: 15px 30px;
+        border-radius: 5px;
+
+    }
+
+}
+
+/* iPad portrait styles */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    #main {
+        overflow-y: hidden;
+        width: 100%;
+    }
+
+
+
+    nav {
+        position: fixed;
+        height: 8%;
+        overflow-y: hidden;
+        margin-left: 0;
+        top: 0;
+        width: 100%;
+        flex-direction: column;
+        /* height: auto; */
+
+    }
+
+    .logo {
+        height: 100px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 5px;
+        justify-content: space-between;
+    }
+
+    .logo i {
+        padding: 10px;
+        margin-right: 2%;
+        /* background-color: red; */
+    }
+
+    .listBox ul {
+        flex-direction: column;
+    }
+
+    .smallDeviceLogo {
+        display: block;
+    }
+
+    .autoHeight {
+        background: white;
+        backdrop-filter: blur(10px);
+        height: auto;
+    }
+
+    #page1 {
+
+        flex-direction: column-reverse;
+    }
+
+    .intro-image::after {
+        top: 25%;
+        font-size: 20px;
+    }
+
+    .intro-image::before {
+        top: 25%;
+        font-size: 20px;
+        left: 85%;
+    }
+
+}
+
+/* iPad landscape styles */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+
+    #main {
+        overflow-y: hidden;
+        width: 100%;
+    }
+
+
+
+    nav {
+        position: fixed;
+        height: 4%;
+        overflow-y: hidden;
+        margin-left: 0;
+        top: 0;
+        width: 100%;
+        flex-direction: column;
+        /* height: auto; */
+
+    }
+
+    .logo {
+        height: 100px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 5px;
+        justify-content: space-between;
+
+    }
+
+    .logo h1 {
+        font-size: 40px;
+    }
+
+    .logo i {
+        padding: 10px;
+        margin-right: 2%;
+        /* background-color: red; */
+    }
+
+    .listBox ul {
+        flex-direction: column;
+    }
+
+    .smallDeviceLogo {
+        display: block;
+    }
+
+    .autoHeight {
+        background: white;
+        backdrop-filter: blur(10px);
+        height: auto;
+    }
+
+    #page1 {
+
+        flex-direction: column-reverse;
+    }
+
+    .intro-image::after {
+        top: 25%;
+        font-size: 20px;
+    }
+
+    .intro-image::before {
+        top: 25%;
+        font-size: 20px;
+        left: 85%;
+    }
+
+}

@@ -1,0 +1,661 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* Hides the scrollbar in WebKit browsers */
+body {
+    overflow: scroll;
+    /* Allows scrolling */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Hides the scrollbar */
+}
+
+
+
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #00B98E;
+    font-size: 40px;
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+html,
+body {
+    display: flex;
+    justify-content: center;
+    min-height: 100;
+    width: 100%;
+    background-color: #EFFDF5;
+}
+
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0px;
+    background-color: #F8F8F8;
+    height: auto;
+    width: 87%;
+}
+
+
+
+/* page 1 */
+
+#page1 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    height: 80vh;
+    /* background-color: red; */
+}
+
+.intro,
+.intro-image {
+    width: 50%;
+    /* background-color: red; */
+}
+
+.intro-image {
+    opacity: 1;
+    background-size: cover;
+    background-image: url(https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-1.jpg);
+    /* background-color: green; */
+    /* transition: all 0.8s ease-in; */
+}
+
+.intro-image::after {
+    box-sizing: border-box;
+    margin-left: 2%;
+    color: white;
+    position: absolute;
+    top: 50%;
+    padding: 12px;
+    content: "\f104";
+    /* Unicode for the fa-angle-left icon */
+    font-family: "Font Awesome 5 Free";
+    /* Ensure the correct font family */
+    font-weight: 900;
+    /* Font weight for solid icons */
+    background-color: #00B98E;
+    border-radius: 50%;
+    height: 55px;
+    width: 50px;
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-image::before {
+    box-sizing: border-box;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 89%;
+    padding: 12px;
+    content: "\f105";
+    /* Unicode for the fa-angle-left icon */
+    font-family: "Font Awesome 5 Free";
+    /* Ensure the correct font family */
+    font-weight: 900;
+    /* Font weight for solid icons */
+    background-color: #00B98E;
+    border-radius: 50%;
+    height: 55px;
+    width: 50px;
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5%;
+}
+
+.intro div {
+    align-self: flex-start;
+}
+
+.intro div h2 {
+    font-family: verdana, Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    color: #0E2E50;
+}
+
+.intro div h2 span {
+    color: #00B98E;
+}
+
+.intro div p {
+
+    font-size: 16px;
+    color: #666565;
+    font-family: Heebo, sans-serif;
+}
+
+
+
+.intro div a {
+    text-align: justify;
+    text-decoration: none;
+    color: white;
+    background-color: #00B98E;
+    font-size: 16px;
+    padding: 18px 45px;
+    border-radius: 5px;
+
+}
+
+.intro div a:hover {
+    background-color: #00b98ec8;
+}
+
+/* seachBox */
+
+#searchBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    height: 16vh;
+    width: 100%;
+    background-color: #00B98E;
+    border-radius: 1px;
+}
+
+#searchBox form {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+#searchBox form input[type="search"] {
+    height: 45%;
+    width: 25%;
+    padding: 10px;
+    font-family: heebo, sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+
+}
+
+#searchBox form input[type="submit"] {
+    background-color: #0E2E50;
+    height: 42%;
+    width: 18%;
+    font-family: heebo, sans-serif;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    box-shadow: none;
+    border: none;
+}
+
+#location,
+#property {
+    height: 42%;
+    width: 25%;
+    padding: 10px;
+    font-family: heebo, sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* property type */
+
+#propType {
+    height: 125vh;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.combo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+}
+
+#headingProptype {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 50px;
+    height: 30%;
+    width: 100%;
+    padding: 8%;
+}
+
+.headingType {
+    color: #0E2E50;
+    font-size: 30px;
+    font-family: inter, sans-serif;
+}
+
+.infotype p {
+    font-family: heebo, sans-serif;
+    text-align: center;
+    color: #666565;
+    font-size: 18px;
+}
+
+#types {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.individual {
+    width: 25%;
+    height: 54%;
+    background-color: #EFFDF5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.individual-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: #0E2E50;
+    height: 80%;
+    width: 85%;
+    margin: 10px;
+    background-color: white;
+}
+
+.type h4 {
+    font-family: inter, sans-serif;
+}
+
+.numberOfProperty p {
+    font-family: heebo, sans-serif;
+    color: #00B98E;
+}
+
+.individual-box:hover,
+.individual-box:hover h4,
+.individual-box:hover .numberOfProperty p {
+    color: white;
+
+    transition: all 0.3s ease-in-out;
+}
+
+.individual-box:hover {
+    background-color: #00B98E;
+}
+
+.circle {
+    background-color: white;
+    border-radius: 50%;
+    border: 2px dotted #00B98E;
+    height: 38%;
+    width: 32%;
+
+}
+
+/* MEdia query  */
+
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+
+    #main {
+        overflow-y: hidden;
+        width: 100%;
+    }
+
+   
+    #page1 {
+
+        min-height: 100vh;
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+    }
+
+    .intro-image,
+    .intro {
+        height: 50%;
+        width: 100%;
+    }
+
+    .intro-image::after {
+        top: 22%;
+        font-size: 20px;
+    }
+
+    .intro-image::before {
+        top: 22%;
+        font-size: 20px;
+        left: 85%;
+    }
+
+    .intro {
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 5%;
+    }
+
+    .intro div h2 {
+        font-family: verdana, Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        color: #0E2E50;
+    }
+
+    .intro div h2 span {
+        color: #00B98E;
+    }
+
+    .intro div p {
+        text-align: justify;
+        font-size: 14px;
+        color: #666565;
+        font-family: Heebo, sans-serif;
+    }
+
+    .intro div {
+        align-self: flex-start;
+    }
+
+    .intro div a {
+
+        text-decoration: none;
+        color: white;
+        background-color: #00B98E;
+        font-size: 14px;
+        padding: 15px 30px;
+        border-radius: 5px;
+
+    }
+
+    /* search box */
+
+    #searchBox {
+        flex-direction: column;
+
+        /* justify-content: space-evenly; */
+        height: 40vh;
+        width: 100%;
+        background-color: #00B98E;
+        border-radius: 1px;
+    }
+
+    #searchBox form {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #searchBox form input[type="search"] {
+        height: 15%;
+        width: 80%;
+        font-size: 15px;
+    }
+
+    #searchBox form input[type="submit"] {
+        height: 15%;
+        width: 80%;
+        font-size: 15px;
+    }
+
+    #location,
+    #property {
+        height: 15%;
+        width: 80%;
+        font-size: 14px;
+    }
+
+    /* property type */
+    #types {
+        overflow-y: scroll;
+        background-color: rgb(255, 0, 0);
+        height: 80%;
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        flex-direction: column;
+
+    }
+
+    #propType {
+        height: 400vh;
+        width: 100%;
+        /* background-color: red; */
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+
+    #headingProptype {
+        gap: 25px;
+        height: 20%;
+
+    }
+
+    .headingType {
+        font-size: 30px;
+        font-family: inter, sans-serif;
+    }
+
+    .infotype p {
+        font-family: heebo, sans-serif;
+        text-align: center;
+        color: #666565;
+        font-size: 18px;
+    }
+
+
+
+    .individual {
+        width: 100%;
+        height: 35%;
+        background-color: #EFFDF5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .individual-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        color: #0E2E50;
+        height: 80%;
+        width: 85%;
+        margin: 10px;
+        background-color: white;
+    }
+
+    .type h4 {
+        font-family: inter, sans-serif;
+    }
+
+    .numberOfProperty p {
+        font-family: heebo, sans-serif;
+        color: #00B98E;
+    }
+
+    .individual-box:hover,
+    .individual-box:hover h4,
+    .individual-box:hover .numberOfProperty p {
+        color: white;
+
+        transition: all 0.3s ease-in-out;
+    }
+
+    .individual-box:hover {
+        background-color: #00B98E;
+    }
+
+    .circle {
+        background-color: white;
+        border-radius: 50%;
+        border: 2px dotted #00B98E;
+        height: 38%;
+        width: 30%;
+
+    }
+
+
+}
+
+/* iPad portrait styles */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    #main {
+        overflow-y: hidden;
+        width: 100%;
+    }
+
+    #page1 {
+
+        flex-direction: column-reverse;
+    }
+
+    .intro-image::after {
+        top: 25%;
+        font-size: 20px;
+    }
+
+    .intro-image::before {
+        top: 25%;
+        font-size: 20px;
+        left: 85%;
+    }
+
+    /* search box */
+
+    #searchBox {
+        flex-direction: column;
+        height: 40vh;
+        width: 100%;
+        background-color: #00B98E;
+        border-radius: 1px;
+    }
+
+    #searchBox form {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #searchBox form input[type="search"] {
+        height: 15%;
+        width: 80%;
+        font-size: 15px;
+    }
+
+    #searchBox form input[type="submit"] {
+        height: 15%;
+        width: 80%;
+        font-size: 15px;
+    }
+
+    #location,
+    #property {
+        height: 15%;
+        width: 80%;
+        font-size: 14px;
+    }
+
+}
+
+/* iPad landscape styles */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+
+    #main {
+        overflow-y: hidden;
+        width: 100%;
+    }
+
+    #page1 {
+
+        flex-direction: column-reverse;
+    }
+
+    .intro-image::after {
+        top: 25%;
+        font-size: 20px;
+    }
+
+    .intro-image::before {
+        top: 25%;
+        font-size: 20px;
+        left: 85%;
+    }
+
+    /* search box */
+
+    #searchBox {
+        flex-direction: column;
+
+        /* justify-content: space-evenly; */
+        height: 40vh;
+        width: 100%;
+        background-color: #00B98E;
+        border-radius: 1px;
+    }
+
+    #searchBox form {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #searchBox form input[type="search"] {
+        height: 15%;
+        width: 80%;
+        font-size: 15px;
+    }
+
+    #searchBox form input[type="submit"] {
+        height: 15%;
+        width: 80%;
+        font-size: 15px;
+    }
+
+    #location,
+    #property {
+        height: 15%;
+        width: 80%;
+        font-size: 14px;
+    }
+
+}

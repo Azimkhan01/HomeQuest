@@ -1,0 +1,247 @@
+body {
+    background-image: url("");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    transition: all 0.3 ease-in-out;
+    background-image: url("../../Assets/logincover3.webp");
+    overflow-x: hidden;
+    font-family: "gilroy";
+}
+
+h4 {
+    font-size: 30px;
+}
+
+::selection {
+    background-color: rgb(255, 225, 0);
+    color: black;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    background-image: url();
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 85%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    margin-top: 2%;
+    margin-left: 2%;
+
+}
+
+#container1 {
+    margin-top: 0%;
+    height: 100%;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.234);
+
+}
+
+#container2 {
+    display: none;
+    /* background-image: url("../../Assets/logincover3.webp"); */
+
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    height: 100%;
+    width: 100%;
+    margin-top: 0%;
+    align-items: center;
+    padding-top: 10%;
+}
+
+input {
+    border: 0px solid transparent;
+    height: 8%;
+    width: 70%;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    border-bottom: 3px solid rgb(46, 175, 231);
+}
+
+input:hover {
+    border-bottom: 3px solid rgb(0, 0, 0);
+    transition: all steps(10) 0.3s;
+}
+
+.subbtn {
+    font-weight: 700;
+    width: 20%;
+    color: rgb(255, 255, 255);
+    background-color: #71c0dd;
+    text-align: center;
+}
+
+.subbtn:hover,
+#eyebtn:hover {
+    font-weight: 700;
+    color: rgb(46, 175, 231);
+    background-color: white;
+    transition: all ease-in-out 0.3s;
+    border-bottom: 3px solid rgb(255, 255, 255);
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+    border: 2px solid #3EB8E5;
+    background-color: #3EB8E5;
+    padding: 10px;
+}
+
+a:hover {
+    font-weight: 700;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 2PX solid transparent;
+    transition: all ease-in-out 0.3s;
+}
+
+#eyebtn {
+    text-align: center;
+    width: 20%;
+    margin-top: -35px;
+    margin-bottom: -30px;
+    color: white;
+    background-color: #71C0DD;
+    padding: 5px;
+    border-radius: 5px
+}
+
+@media only screen and (max-width: 600px) {
+    #container {
+        background-color: white;
+        width: 100%;
+    }
+
+    #container2 {
+        display: none;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 50px;
+        height: 100%;
+        width: 100%;
+        margin-top: 0%;
+        align-items: center;
+        padding-top: 10%;
+    }
+
+    input {
+        border: 0px solid transparent;
+        height: 3%;
+        width: 110%;
+        align-items: center;
+        padding: 10px;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        border-bottom: 3px solid rgb(46, 175, 231);
+    }
+
+    .subbtn {
+        font-weight: 700;
+        padding-bottom: 20px;
+        height: 5%;
+        width: 50%;
+        color: rgb(255, 255, 255);
+        background-color: #71c0dd;
+        text-align: center;
+    }
+
+    a {
+        width: 100%;
+        font-size: 12px;
+        text-align: center;
+
+    }
+
+    #eyebtn {
+        text-align: center;
+        width: 50%;
+        margin-top: -35px;
+        margin-bottom: -30px;
+        color: white;
+        background-color: #71C0DD;
+        padding: 5px;
+        border-radius: 5px
+    }
+
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+
+    /* Styles for viewport widths between 600px and 900px */
+    #container {
+        background-color: white;
+        width: 100%;
+    }
+
+    #container2 {
+        display: none;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 50px;
+        height: 100%;
+        width: 100%;
+        margin-top: 0%;
+        align-items: center;
+        padding-top: 10%;
+    }
+
+    input {
+        border: 0px solid transparent;
+        height: 3%;
+        width: 110%;
+        align-items: center;
+        padding: 10px;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        border-bottom: 3px solid rgb(46, 175, 231);
+    }
+
+    .subbtn {
+        font-weight: 700;
+        padding-bottom: 20px;
+        height: 5%;
+        width: 50%;
+        color: rgb(255, 255, 255);
+        background-color: #71c0dd;
+        text-align: center;
+    }
+
+    a {
+        width: 100%;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    #eyebtn {
+        text-align: center;
+        width: 50%;
+        margin-top: -35px;
+        margin-bottom: -30px;
+        color: white;
+        background-color: #71C0DD;
+        padding: 5px;
+        border-radius: 5px
+    }
+}

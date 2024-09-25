@@ -1,0 +1,37 @@
+{
+  "name": "homequest",
+  "version": "1.0.0",
+  "description": "This is a dynamic realestae aplication",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon -e hbs,js,css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azimkhan01/HomeQuest.git"
+  },
+  "author": "Azimuddeen Mojebur Rahman Khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Azimkhan01/HomeQuest/issues"
+  },
+  "homepage": "https://github.com/Azimkhan01/HomeQuest#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "hbs": "^4.2.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.14",
+    "nodemon": "^3.1.4",
+    "path": "^0.12.7",
+    "uuid": "^10.0.0"
+  }
+}

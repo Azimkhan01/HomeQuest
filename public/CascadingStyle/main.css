@@ -1,0 +1,135 @@
+body {
+    background-color: #1F2123;
+    color: #E6EDF3;
+}
+
+::selection {
+    color: #6BD0FF;
+}
+
+nav {
+    z-index: 1;
+    margin-top: 2%;
+    position: sticky;
+    top: 0;
+    height: 10%;
+    width: 100%;
+    background-color: transparent;
+
+}
+
+#nc1 {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 0px 10%;
+    /* background-color: blue; */
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+#nc1 li a {
+    text-decoration: none;
+    color: #E6EDF3;
+}
+
+li {
+    border: 2px solid #E6EDF3;
+    border-radius: 10px;
+    list-style: none;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+li:hover {
+    opacity: 0.5;
+
+    transition: all ease-in-out 0.3s;
+}
+
+.img {
+    margin-left: -110px;
+    border: 0px solid #E6EDF3;
+    border-radius: 0px;
+}
+
+img {
+    padding-top: -10%;
+    height: 100%;
+    width: 70%;
+    object-fit: cover;
+
+}
+
+#container {
+    overflow: hidden;
+    height: 500vh;
+    width: 100%;
+}
+
+#cont1 {
+    /* background-color: red; */
+    height: 80vh;
+    width: 100%;
+}
+
+#heading {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    /* background-color: blue; */
+}
+
+
+
+#heading1 {
+    z-index: 2;
+    margin-top: 5%;
+    font-size: 70px;
+    margin-left: 0%;
+    font-weight: 900;
+
+}
+
+
+
+#heading2 {
+    z-index: 2;
+    margin-top: 2%;
+    font-size: 40px;
+    margin-left: -40%;
+    font-weight: 700;
+    opacity: 0;
+}
+
+
+
+.obj {
+    left: -100px;
+    height: 150px;
+    width: 150px;
+    background-color: #6BD0FF;
+    position: relative;
+    z-index: 1;
+    border-radius: 50%;
+    filter: blur(40px);
+}
+
+.obj1 {
+    left: -200px;
+    height: 150px;
+    width: 150px;
+    background-color: #6BD0FF;
+    position: relative;
+    z-index: 1;
+    border-radius: 50%;
+    filter: blur(40px);
+}
