@@ -24,7 +24,7 @@ const loginUser = async (req, res) => {
       if (isPasswordValid) {
         const token = jwt.sign(
           { data: result },
-          process.env.JWT_SECRET || "defaultSecret", // Replace with environment variable
+          process.env.JWT_SECRET , // Replace with environment variable
           { expiresIn: "1d" }
         );
 

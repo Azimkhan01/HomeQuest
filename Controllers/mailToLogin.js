@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
-const os = require('os');
-const dns = require('node:dns');
-const dotenv = require("dotenv")
+const os = require("os");
+const dns = require("node:dns");
+const dotenv = require("dotenv");
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
@@ -9,17 +9,12 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // Use `true` for port 465, `false` for all other ports
   auth: {
-
     user: process.env.email,
     pass: process.env.emailpass,
-
   },
 });
 
-const  d = new Date();
-
-
-
+const d = new Date();
 
 let options = { family: 4 };
 const address = dns.lookup(os.hostname(), options, (err, addr) => {
@@ -30,18 +25,14 @@ const address = dns.lookup(os.hostname(), options, (err, addr) => {
   }
 });
 
-
-async function mail(clientEmail,clientName) {
-   
-      
-    // send mail with defined transport object
-    const info = await transporter.sendMail({
-      from: process.env.email, // sender address
-      to: clientEmail, // list of receivers
-      subject: "Welcome to Home Quest!", // Subject line
+async function mail(clientEmail, clientName) {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: process.env.email, // sender address
+    to: clientEmail, // list of receivers
+    subject: "Welcome to Home Quest!", // Subject line
     //   text: "Hello world?", // plain text body
-      html: 
-      `
+    html: `
        <style>
         body {
             font-family: Arial, sans-serif;
@@ -107,12 +98,12 @@ async function mail(clientEmail,clientName) {
         </div>
     </div>
       `, // html body
-    });
-  
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-  }
-  
+  });
+
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+}
+
 // mail("azimkarimrahim@gmail.com","[Azim kha]")
 
-  module.exports = {mail};
+module.exports = { mail };

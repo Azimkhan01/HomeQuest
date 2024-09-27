@@ -271,19 +271,25 @@ body {
     height: 70%;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    /* gap: 0px 0px; */
+    /* background-color: red; */
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
 }
 
 .individual {
-    width: 25%;
-    height: 54%;
+    
+    width: 22%;
+    height: 48%;
     background-color: #EFFDF5;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-color: red; */
+    margin: 1%;
+    padding: 0px;
 }
 
 .individual-box {
@@ -328,6 +334,348 @@ body {
 
 }
 
+/* read more */
+
+#readMore {
+    /* position: relative; */
+    z-index: 2;
+    margin-top: 5%;
+    min-height: 91.5vh;
+    width: 100%;
+    display: flex;
+    margin-bottom: 5%;
+    /* background-color: red; */
+    flex-direction: row;
+    overflow: hidden;
+    /* overflow: hidden; */
+}
+
+
+
+.readMoreImg {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.readMoreImg::after {
+    translate: -300px;
+    transform: rotate(160deg);
+    z-index: 1;
+    content: "";
+    position: absolute;
+    height: 150%;
+    width: 80%;
+    background-color: #00B98E;
+}
+
+
+.readMoreImg img {
+    height: 85%;
+    width: 80%;
+    z-index: 2;
+}
+
+.readMoreContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3%;
+    gap: 8%;
+    width: 50%;
+    height: auto;
+    /* background-color: red;     */
+}
+
+.readMoreh {
+    font-family: inter, sans-serif;
+    font-size: 20px;
+    color: #0E2E50;
+    width: 100%;
+}
+
+.readMorep p {
+    font-size: 18px;
+    text-align: justify;
+    font-family: heebo, sans-serif;
+    color: #666565;
+    line-height: 1.5;
+}
+
+.check {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    font-size: 18px;
+    height: 15%;
+}
+
+.check p i {
+    color: #00B98E;
+    font-weight: 900;
+
+}
+
+.check p {
+    color: #666565;
+}
+
+.readMoreBtnBox {
+    width: 100%;
+    align-self: self-start;
+    height: 2%;
+}
+
+.readMoreBtn {
+    width: 100%;
+    height: 2%;
+    text-decoration: none;
+    background-color: #00B98E;
+    color: white;
+    align-items: center;
+    padding: 20px 30px;
+    font-size: 18px;
+    border-radius: 5px;
+
+}
+
+.readMoreBtn:hover {
+    background-color: #00b98ec6;
+}
+
+/* Property List */
+
+#propertyListing {
+    height: 155vh;
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 5px;
+
+}
+
+.propertyListingContent {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.propertyListHP {
+
+    /* background-color: red; */
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* align-items: center; */
+    width: 70%;
+    height: 100%;
+    gap: 20px;
+}
+
+.propertyListingHeading {
+    font-family: heebo, sans-serif;
+    color: #0E2E50;
+    font-size: 20px;
+}
+
+.propertyLisitngParagraph {
+    font-family: inter, sans-serif;
+    font: 18px;
+    color: #666565;
+
+}
+
+.propertyListChange {
+    padding: 1%;
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    justify-content: end;
+
+}
+
+.changeProperty {
+    display: flex;
+    text-align: center;
+    align-self: self-end;
+    height: 50%;
+    width: 100%;
+    padding: 10%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: red; */
+}
+
+.changeProperty p {
+    font-family: heebo, sans-serif;
+    background-color: #ffffff;
+    color: #0E2E50;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid #00B98E;
+}
+
+.active {
+    background-color: #00B98E;
+    color: white;
+    border: 10px solid #00b98e65;
+}
+
+.changeProperty p:hover {
+    border: 5px solid #00b98e65;
+    background-color: #00B98E;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.PropertListing {
+    gap: 0px 5px;
+    margin: 5px;
+    height: 80%;
+    width: 100%;
+    /* background-color: greenyellow; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+}
+
+.Listing{
+    padding: 0px 10px;
+display: flex;
+flex-direction: column;
+align-items: center;
+height: 50%;
+width: 30%;
+/* gap: 5px; */
+/* background-color: #EFFDF5; */
+/* background-color: rgb(247, 162, 162); */
+}
+
+.listing-Img{
+    background-size: cover;
+    padding: 2.5% 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+    width: 100%;
+    /* background-color: green; */
+}
+
+.listingInfo{
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    width: 100%;
+    background-color:#EFFDF5 ;
+    gap: 5px;
+}
+
+.HouseInfo{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 70%;
+    background-color: white;    
+}
+
+.HouseInfo div h4{
+    font-size: 24px;
+    color: #00B98E;
+    font-family: inter,sans-serif;
+}
+
+.HouseInfo div a{
+    font-size: 24px;
+    text-decoration: none;
+    color: #0E2E50;
+    font-family: inter,sans-serif;
+    font-weight: 700; 
+}
+
+.HouseInfo div a:hover{
+color: #00B98E;
+}
+
+.HouseInfo div p i{
+    color: #00B98E;
+    font-size: 16px;
+}
+
+.HouseInfo div p {
+    font-family: heebo,sans-serif;
+    color: #666565;
+}
+
+.HouseMeasure{
+    gap: 0px;
+    align-items: center;
+    background-color:#EFFDF5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 30%;
+}
+
+.HouseMeasure div{
+    text-align: center;
+    height: 90%;
+    padding: 10px;
+    background-color: white;
+   margin-left: 2px;
+    width: 50%;
+}
+
+.HouseMeasure i{
+    color: #00B98E;
+}
+
+.HouseMeasure span{
+ color: #666565;   
+}
+
+.readListing{
+    text-align: center;
+    padding: 5%;
+    height: 2%;
+    width: 100%;
+}
+
+.readListing a{
+text-decoration: none;
+color: white;
+background-color: #00B98E;
+border-radius: 5px;
+padding: 15px 20px;
+font-size: 110%;
+}
+
+.readListing a:hover{
+    background-color: #00b98ed5;
+    transition: all 0.2s ease-in-out;
+}
+
 /* MEdia query  */
 
 /* Mobile styles */
@@ -338,7 +686,7 @@ body {
         width: 100%;
     }
 
-   
+
     #page1 {
 
         min-height: 100vh;
@@ -497,11 +845,13 @@ body {
         align-items: center;
         justify-content: space-around;
         color: #0E2E50;
-        height: 80%;
+        height: 95%;
+        padding: 8%;
         width: 85%;
         margin: 10px;
         background-color: white;
     }
+
 
     .type h4 {
         font-family: inter, sans-serif;
@@ -532,6 +882,237 @@ body {
         width: 30%;
 
     }
+
+    /* read more */
+
+    #readMore {
+        position: relative;
+        z-index: 2;
+        margin-top: 5%;
+        min-height: 150vh;
+        width: 100%;
+        display: flex;
+        margin-bottom: 5%;
+        /* background-color: red; */
+        flex-direction: column;
+        overflow: hidden;
+        /* overflow: hidden; */
+    }
+
+
+
+    .readMoreImg {
+        z-index: 1;
+        width: 100%;
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* overflow: hidden; */
+
+    }
+
+    .readMoreImg::after {
+        translate: -150px;
+        transform: rotate(160deg);
+        z-index: 1;
+        content: "";
+        position: absolute;
+        height: 150%;
+        width: 60%;
+        background-color: #00B98E;
+    }
+
+
+    .readMoreImg img {
+        height: 80%;
+        width: 80%;
+        z-index: 2;
+        object-fit: contain;
+    }
+
+    .readMoreContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 3%;
+        gap: 8%;
+        width: 100%;
+        height: 60%;
+        /* background-color: red;     */
+    }
+
+    .readMoreh {
+        font-family: inter, sans-serif;
+        font-size: 20px;
+        color: #0E2E50;
+        width: 100%;
+    }
+
+    .readMorep p {
+        font-size: 18px;
+        text-align: justify;
+        font-family: heebo, sans-serif;
+        color: #666565;
+        line-height: 1.5;
+    }
+
+    .check {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        font-size: 18px;
+        height: 15%;
+    }
+
+    .check p i {
+        color: #00B98E;
+        font-weight: 900;
+
+    }
+
+    .check p {
+        color: #666565;
+    }
+
+    .readMoreBtnBox {
+        width: 100%;
+        align-self: self-start;
+        height: 2%;
+    }
+
+    .readMoreBtn {
+        width: 100%;
+        height: 2%;
+        text-decoration: none;
+        background-color: #00B98E;
+        color: white;
+        align-items: center;
+        padding: 20px 30px;
+        font-size: 18px;
+        border-radius: 5px;
+
+    }
+
+    .readMoreBtn:hover {
+        background-color: #00b98ec6;
+    }
+    
+
+    /* Property List */
+
+    #propertyListing {
+        height: 450vh;
+        /* background-color: red; */
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 10px;
+
+    }
+
+    .propertyListingContent {
+        height: 20%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+        align-items: center;
+        /* background-color: red; */
+    }
+
+    .propertyListHP {
+
+        /* background-color: red; */
+        padding: 5%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        /* align-items: center; */
+        width: 100%;
+        height: 100%;
+        gap: 20px;
+    }
+
+    .propertyListingHeading {
+        font-family: heebo, sans-serif;
+        color: #0E2E50;
+        font-size: 16px;
+    }
+
+    .propertyLisitngParagraph {
+        text-align: justify;
+        line-height: 1.5;
+        font-family: inter, sans-serif;
+        font: 14px;
+        color: #666565;
+
+    }
+
+    .propertyListChange {
+        padding: 1%;
+        /* background-color: green; */
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: end;
+
+    }
+
+    .changeProperty {
+        display: flex;
+        text-align: center;
+        align-self: self-end;
+        height: 50%;
+        width: 100%;
+        padding: 10%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        /* background-color: red; */
+    }
+
+    .changeProperty p {
+        font-family: heebo, sans-serif;
+        background-color: #ffffff;
+        color: #0E2E50;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: 2px solid #00B98E;
+    }
+
+    .active {
+        background-color: #00B98E;
+        color: white;
+    }
+
+    .changeProperty p:hover {
+
+        background-color: #00B98E;
+        color: white;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .PropertListing {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin: 5px;
+        height: 80%;
+        width: 100%;
+        /* background-color: greenyellow; */
+
+    }
+    .Listing{
+        width: 100%;
+    }
+
+    
+
+
 
 
 }

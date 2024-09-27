@@ -52,34 +52,42 @@ let array = [
   {
     type: "Apartment",
     number: 100,
+    image:"public/Assets/Homepage/icon-apartment.png"
   },
   {
     type: "Villa",
     number: 50,
+    image:"public/Assets/Homepage/icon-villa.png"
   },
   {
     type: "Home",
     number: 500,
+    image:"public/Assets/Homepage/icon-house.png"
   },
   {
     type: "Office",
     number: "20",
+    image:"public/Assets/Homepage/icon-housing.png"
   },
   {
     type: "Building",
     number: 40,
+    image:"public/Assets/Homepage/icon-building.png"
   },
   {
     type: "TownHouse",
     number: "12",
+    image:"public/Assets/Homepage/icon-neighborhood.png"
   },
   {
     type: "Shop",
     number: 60,
+    image:"public/Assets/Homepage/icon-condominium.png"
   },
   {
     type: "Garage",
     number: 99,
+    image:"public/Assets/Homepage/icon-condominium.png"
   },
 ];
 
@@ -93,7 +101,7 @@ let addAllProperty = () => {
  
   string =  string + `<div class="individual" id="individual${+i}">
                         <div class="individual-box">
-                            <div class="circle"></div>
+                            <div class="circle" style="background-image:url(${element.image});background-size:fix"></div>
                             <div class="combo">
                               <div class="type"><h4>${element.type}</h4></div>
                             <div class="numberOfProperty"><p>${element.number} Properties</p></div>
@@ -117,4 +125,30 @@ for(i=0;i<array.length;i++)
     window.location.href="/";
   });
 }
-  
+
+//property Listing 
+let s = "";
+
+for (let i = 0; i < 6; i++) {  
+    s += `<div class="Listing">
+                <div class="listing-Img" style=" background-image: url(https://demo.htmlcodex.com/2259/real-estate-html-template/img/property-${i+1}.jpg);">
+                    <p style="background-color:#00B98E; color: white; font-family: heebo, sans-serif; width: 25%; border-radius: 5px; padding: 8px; text-align: center;">For Sell</p>
+                    <p style="color: #00B98E; background-color: white; font-family: heebo, sans-serif; width: 28%; border-radius: 5px; margin-bottom: -12px; padding: 8px; text-align: center;">AppartMent</p>
+                </div>
+                <div class="listingInfo">
+                    <div class="HouseInfo">
+                        <div><h4>$${Math.floor(12*3.142/(i+1))},${Math.floor(220*3.14/(i+1))}</h4></div>
+                        <div><a href="#">Golden Urban House</a></div>
+                        <div><p><i class="fa-solid fa-location-dot"></i> E3 502 lokudyan kalyan west</p></div>
+                    </div>
+                    <div class="HouseMeasure">
+                        <div><i class="fa-solid fa-ruler-combined"></i>&nbsp;&nbsp;&nbsp;<span>1000 sqft</span></div>
+                        <div><i class="fa-solid fa-bed"></i>&nbsp;&nbsp;&nbsp;<span>3 Bed</span></div>
+                        <div><i class="fa-solid fa-bath"></i>&nbsp;&nbsp;&nbsp;<span>2 Bath</span></div>
+                    </div>
+                </div>
+            </div>`;
+}
+
+let propertyListing = document.getElementById("popertyListing");
+propertyListing.innerHTML = s;

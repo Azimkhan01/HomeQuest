@@ -2,10 +2,10 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 const path = require("path");
-const helmet = require("helmet")
+const helmet = require("helmet");
 const hbs = require("hbs");
 const colors = require("colors");
-const cors = require("cors")
+const cors = require("cors");
 
 const cookieParser = require("cookie-parser");
 //initializing port ,routers,staticpath and partailspath

@@ -1,5 +1,5 @@
-const main = (req,res)=>{
- res.render("main")
-}
+const main = (req, res) => {
+  res.render("main");
+};
 
-module.exports = {main}
+module.exports = { main };

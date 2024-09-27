@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
@@ -7,21 +7,19 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // Use `true` for port 465, `false` for all other ports
   auth: {
-
     user: process.env.email,
     pass: process.env.emailpass,
-
   },
 });
 
-async function mail(clientEmail,clientName) {
-    // send mail with defined transport object
-    const info = await transporter.sendMail({
-      from: process.env.email, // sender address
-      to: clientEmail, // list of receivers
-      subject: "Welcome to Home Quest!", // Subject line
+async function mail(clientEmail, clientName) {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: process.env.email, // sender address
+    to: clientEmail, // list of receivers
+    subject: "Welcome to Home Quest!", // Subject line
     //   text: "Hello world?", // plain text body
-      html: `
+    html: `
       <head>
     <style>
         body {
@@ -74,12 +72,10 @@ async function mail(clientEmail,clientName) {
             <p>Home Quest &copy; 2024</p>
         </div>
     </div>`, // html body
-    });
-  
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-  }
-  
+  });
 
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+}
 
-  module.exports = {mail};
+module.exports = { mail };
