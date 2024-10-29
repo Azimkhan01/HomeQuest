@@ -1,0 +1,317 @@
+h1 {
+    word-spacing: 0px;
+    margin: 0;
+    color: #2c3e50;
+    /* Darker shade for headings */
+}
+
+#information {
+    
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    /* White background for the info container */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#information div img {
+    object-fit: contain;
+    border-radius: 10px;
+    /* Rounded corners for images */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+}
+
+#image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.image-container{
+
+    /* margin: 0px 40px; */
+    /* padding: 0px 45px; */
+    /* height: 300px; */
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    /* padding-bottom: 10%; */
+    border-radius: 50%;
+}
+
+.image-container img{
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+/* border-radius: 50px; */
+    height: 300px;
+    width: 100%;
+    object-fit: contain;
+}
+
+
+#personalInformation,
+#account-details {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 20px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    /* Rounded corners */
+    background: #f9f9f9;
+    /* Light gray background for sections */
+}
+
+#user-listings {
+    padding: 20px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    /* Rounded corners */
+    background: #f9f9f9;
+    /* Light gray background for listings */
+    margin-top: 20px;
+    /* Spacing between account details and listings */
+}
+
+.listings-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Distribute space evenly */
+    gap: 20px;
+    /* Space between listing items */
+}
+
+.listing-item {
+    width: 25%;
+    /* Width of each listing item */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    /* Rounded corners for listing item */
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    /* White background for listing item */
+    text-align: center;
+    /* Center text */
+}
+
+.listing-item img {
+    width: 50%;
+    /* Full width for images */
+    height: auto;
+    /* Auto height to maintain aspect ratio */
+}
+
+.reset-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00B98E;
+    /* Blue background */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+}
+
+.reset-button:hover {
+    background-color: #00b98eac;
+    /* Darker blue on hover */
+}
+
+#logout {
+    width: 100%;
+    margin-top: 20px; /* Space above logout section */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #f9f9f9; /* Light gray background for the logout section */
+    text-align: center; /* Center the logout button */
+}
+
+.logout-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e74c3c; /* Red background */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.logout-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+#form {
+    display: none;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#form h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#form form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#form form input[type="text"]::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+#form form input[type="text"]:focus {
+    outline: none;
+    border-color: #00B98E;
+    box-shadow: 0px 0px 5px rgba(92, 157, 237, 0.5);
+}
+
+#form form input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #00B98E;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#form form input[type="submit"]:hover {
+    background-color: #00b98ead;
+}
+#hideProfile
+{
+    
+    width: 100%;
+display: flex;
+justify-content: space-between;
+}
+
+#hide:hover{
+    color: red;
+}
+
+
+#reset-password {
+    display: none;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#reset-password h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#reset-password form input[type="email"],
+#reset-password form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#reset-password form input[type="email"]::placeholder,
+#reset-password form input[type="password"]::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+#reset-password form button[type="submit"] {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #00B98E; /* Button color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#reset-password form button[type="submit"]:hover {
+    background-color: #009f7d; /* Darker shade for hover effect */
+}
+
+#upload {
+    display: none;
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#upload form {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack elements vertically */
+}
+
+input[type="file"] {
+    margin-bottom: 15px; /* Space below the file input */
+    border: 1px solid #007BFF; /* Blue border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside the input */
+    font-size: 16px; /* Font size */
+    outline: none; /* Remove outline */
+}
+
+input[type="file"]:focus {
+    border-color: #0056b3; /* Darker border on focus */
+}
+
+button {
+    background-color: #00B98E; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside the button */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #009c7a; /* Darker button color on hover */
+}

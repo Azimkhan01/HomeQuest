@@ -1,1420 +1,374 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
-/* Hides the scrollbar in WebKit browsers */
-body {
-    overflow: scroll;
-    /* Allows scrolling */
-}
-
-body::-webkit-scrollbar {
-    display: none;
-    /* Hides the scrollbar */
-}
-
-
-
-.bebas-neue-regular {
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #00B98E;
-    font-size: 40px;
-
-}
-
-
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
-
 }
 
-html,
-body {
-    display: flex;
-    justify-content: center;
-    min-height: 100;
+html {
+    height: 100%;
     width: 100%;
     background-color: #EFFDF5;
 }
 
-#main {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    gap: 0px;
-    background-color: #F8F8F8;
-    height: auto;
-    width: 87%;
-}
-
-
-
-/* page 1 */
-
-#page1 {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-    height: 80vh;
-    /* background-color: red; */
-}
-
-.intro,
-.intro-image {
-    width: 50%;
-    /* background-color: red; */
-}
-
-.intro-image {
-    opacity: 1;
-    background-size: cover;
-    background-image: url(https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-1.jpg);
-    /* background-color: green; */
-    /* transition: all 0.8s ease-in; */
-}
-
-.intro-image::after {
-    box-sizing: border-box;
-    margin-left: 2%;
-    color: white;
-    position: absolute;
-    top: 50%;
-    padding: 12px;
-    content: "\f104";
-    /* Unicode for the fa-angle-left icon */
-    font-family: "Font Awesome 5 Free";
-    /* Ensure the correct font family */
-    font-weight: 900;
-    /* Font weight for solid icons */
-    background-color: #00B98E;
-    border-radius: 50%;
-    height: 55px;
-    width: 50px;
-    font-size: 30px;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.intro-image::before {
-    box-sizing: border-box;
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 89%;
-    padding: 12px;
-    content: "\f105";
-    /* Unicode for the fa-angle-left icon */
-    font-family: "Font Awesome 5 Free";
-    /* Ensure the correct font family */
-    font-weight: 900;
-    /* Font weight for solid icons */
-    background-color: #00B98E;
-    border-radius: 50%;
-    height: 55px;
-    width: 50px;
-    font-size: 30px;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.intro {
+body {
+    /* height: 200vh; */
+    /* border: 2px solid black; */
+    margin: 0px 13vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 5%;
+    gap: 50px;
 }
 
-.intro div {
-    align-self: flex-start;
+h1 {
+    letter-spacing: 1px;
+    word-spacing: -10px;
+    font-size: 30px;
+    font-family: inter, sans-serif;
 }
 
-.intro div h2 {
-    font-family: verdana, Arial, Helvetica, sans-serif;
-    font-size: 40px;
+p {
+    font-size: 18px;
+    font-family: heebo, sans-serif;
+}
+
+a {
+    text-decoration: none;
     color: #0E2E50;
-}
-
-.intro div h2 span {
-    color: #00B98E;
-}
-
-.intro div p {
-
-    font-size: 16px;
-    color: #666565;
-    font-family: Heebo, sans-serif;
+    font-size: 18px;
+    font-family: heebo, sans-serif;
 }
 
 
+/* heading topic  */
+#topic-template {
+    margin-top: -2%;
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
 
-.intro div a {
+}
+
+#topic-template-1 {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    background-color: white;
+    width: 50%;
+}
+
+#topic-template-1 div h1 {
+
+    font-size: 52px;
+    color: #0E2E50;
+    font-weight: 800;
+}
+
+#topic-template-1 div p {
+    font-family: heebo, sans-serif;
+    font-weight: 300;
+    width: 90%;
     text-align: justify;
+    color: #666565;
+}
+
+.getStarted {
+    margin-top: 5%;
+    align-self: self-start;
+}
+
+#topic-template-1 div a {
     text-decoration: none;
     color: white;
+    padding: 25px 32px;
     background-color: #00B98E;
-    font-size: 16px;
-    padding: 18px 45px;
     border-radius: 5px;
-
 }
 
-.intro div a:hover {
-    background-color: #00b98ec8;
+#topic-template-2 {
+    /* background-color: red; */
+    width: 50%;
 }
 
-/* seachBox */
+#topic-template-2 div img {
+    width: 100%;
+    height: 45%;
+}
+
+#leftRightButton {
+    width: 4%;
+    /* background-color: red; */
+    top: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Center horizontally and vertically */
+}
+
+#leftRightButton div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    /* Ensures a uniform circular shape */
+    color: white;
+    border-radius: 50%;
+    background-color: #00B98E;
+    font-size: 1.5rem;
+    /* Adjust icon size if necessary */
+}
+
+
+
+.fade-in {
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+    /* Fully visible */
+}
+
+/* heading end */
+/* search box start */
 
 #searchBox {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    /* justify-content: space-evenly; */
-    height: 16vh;
+    padding: 30px 1px;
+    flex-wrap: nowrap;
+    border-radius: 2px;
     width: 100%;
     background-color: #00B98E;
-    border-radius: 1px;
+    display: flex;
+    flex-direction: column;
+    /* Changed to column for stacking elements */
+    justify-content: center;
+    align-items: center;
 }
 
 #searchBox form {
+    width: 90%;
     display: flex;
-    justify-content: space-around;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-}
-
-#searchBox form input[type="search"] {
-    height: 45%;
-    width: 25%;
-    padding: 10px;
-    font-family: heebo, sans-serif;
-    font-size: 16px;
-    border-radius: 5px;
-
-}
-
-#searchBox form input[type="submit"] {
-    background-color: #0E2E50;
-    height: 42%;
-    width: 18%;
-    font-family: heebo, sans-serif;
-    color: white;
-    border-radius: 5px;
-    font-size: 18px;
-    box-shadow: none;
-    border: none;
-}
-
-#location,
-#property {
-    height: 42%;
-    width: 25%;
-    padding: 10px;
-    font-family: heebo, sans-serif;
-    font-size: 16px;
-    border-radius: 5px;
-}
-
-/* property type */
-
-#propType {
-    height: 125vh;
-    width: 100%;
-    /* background-color: red; */
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-}
-
-.combo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column
-}
-
-#headingProptype {
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 50px;
-    height: 30%;
-    width: 100%;
-    padding: 8%;
-}
-
-.headingType {
-    color: #0E2E50;
-    font-size: 30px;
-    font-family: inter, sans-serif;
-}
-
-.infotype p {
-    font-family: heebo, sans-serif;
-    text-align: center;
-    color: #666565;
-    font-size: 18px;
-}
-
-#types {
-    height: 70%;
-    width: 100%;
-    display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
-    /* gap: 0px 0px; */
-    /* background-color: red; */
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
 }
 
-.individual {
-    
-    width: 22%;
-    height: 48%;
-    background-color: #EFFDF5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: red; */
-    margin: 1%;
-    padding: 0px;
+
+
+#searchBox input {
+    width: 25%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.individual-box {
+#searchBox input::placeholder {
+    color: #888888;
+    font-weight: 400;
+}
+
+/* Styles for select elements */
+.styled-select {
+    width: 25%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
+}
+
+/* Styles for the submit button */
+.styled-button {
+    width: 20%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #0E2E50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Change button color on hover */
+.styled-button:hover {
+    background-color: #0c2437;
+    /* Darker shade on hover */
+}
+
+/* Styles for dropdown box */
+#dropdownBox {
+    width: 90%;
+    /* Full width relative to the form */
+    margin-top: 15px;
+    /* Space above the dropdown */
+    background-color: #ffffff;
+    /* White background for contrast */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* Light shadow for depth */
+    display: none;
+    /* Initially hidden */
+}
+
+/* Styles for dropdown items */
+#dropdownBox ul {
+    width: 100%;
+    list-style-type: none;
+    /* Remove default list styling */
+    padding: 0;
+    /* Remove padding */
+    margin: 0;
+    /* Remove margin */
+}
+
+#dropdownBox li {
+    width: 100%;
+    padding: 12px 16px;
+    /* Space inside each item */
+    border-bottom: 1px solid #eeeeee;
+    /* Separator between items */
+}
+
+/* Change background color on hover for items */
+#dropdownBox li:hover {
+    background-color: #f0f0f0;
+    /* Light gray on hover */
+}
+
+/* property-type start */
+.property-type {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    color: #0E2E50;
-    height: 80%;
-    width: 85%;
-    margin: 10px;
+    width: 100%;
     background-color: white;
 }
 
-.type h4 {
-    font-family: inter, sans-serif;
-}
-
-.numberOfProperty p {
-    font-family: heebo, sans-serif;
-    color: #00B98E;
-}
-
-.individual-box:hover,
-.individual-box:hover h4,
-.individual-box:hover .numberOfProperty p {
-    color: white;
-
-    transition: all 0.3s ease-in-out;
-}
-
-.individual-box:hover {
-    background-color: #00B98E;
-}
-
-.circle {
-    background-color: white;
-    border-radius: 50%;
-    border: 2px dotted #00B98E;
-    height: 38%;
-    width: 32%;
-
-}
-
-/* read more */
-
-#readMore {
-    /* position: relative; */
-    z-index: 2;
-    margin-top: 5%;
-    min-height: 91.5vh;
+.property-type-heading {
+    padding: 30px 0px;
+    display: flex;
     width: 100%;
-    display: flex;
-    margin-bottom: 5%;
-    /* background-color: red; */
-    flex-direction: row;
-    overflow: hidden;
-    /* overflow: hidden; */
-}
-
-
-
-.readMoreImg {
-    width: 50%;
-    height: 100%;
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    position: relative;
-
-}
-
-.readMoreImg::after {
-    translate: -300px;
-    transform: rotate(160deg);
-    z-index: 1;
-    content: "";
-    position: absolute;
-    height: 150%;
-    width: 80%;
-    background-color: #00B98E;
-}
-
-
-.readMoreImg img {
-    height: 85%;
-    width: 80%;
-    z-index: 2;
-}
-
-.readMoreContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 3%;
-    gap: 8%;
-    width: 50%;
-    height: auto;
-    /* background-color: red;     */
-}
-
-.readMoreh {
-    font-family: inter, sans-serif;
-    font-size: 20px;
-    color: #0E2E50;
-    width: 100%;
-}
-
-.readMorep p {
-    font-size: 18px;
-    text-align: justify;
-    font-family: heebo, sans-serif;
-    color: #666565;
-    line-height: 1.5;
-}
-
-.check {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    font-size: 18px;
-    height: 15%;
-}
-
-.check p i {
-    color: #00B98E;
-    font-weight: 900;
-
-}
-
-.check p {
-    color: #666565;
-}
-
-.readMoreBtnBox {
-    width: 100%;
-    align-self: self-start;
-    height: 2%;
-}
-
-.readMoreBtn {
-    width: 100%;
-    height: 2%;
-    text-decoration: none;
-    background-color: #00B98E;
-    color: white;
-    align-items: center;
-    padding: 20px 30px;
-    font-size: 18px;
-    border-radius: 5px;
-
-}
-
-.readMoreBtn:hover {
-    background-color: #00b98ec6;
-}
-
-/* Property List */
-
-#propertyListing {
-    height: 155vh;
-    /* background-color: red; */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 5px 5px;
-
-}
-
-.propertyListingContent {
-    height: 20%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin: 5px;
-    align-items: center;
-    /* background-color: red; */
-}
-
-.propertyListHP {
-
-    /* background-color: red; */
-    padding: 1%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    /* align-items: center; */
-    width: 70%;
-    height: 100%;
     gap: 20px;
 }
 
-.propertyListingHeading {
-    font-family: heebo, sans-serif;
-    color: #0E2E50;
-    font-size: 20px;
-}
-
-.propertyLisitngParagraph {
-    font-family: inter, sans-serif;
-    font: 18px;
-    color: #666565;
-
-}
-
-.propertyListChange {
-    padding: 1%;
-    /* background-color: green; */
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    height: 100%;
-    justify-content: end;
-
-}
-
-.changeProperty {
-    display: flex;
+.property-type-heading div {
+    width: 80%;
     text-align: center;
-    align-self: self-end;
-    height: 50%;
-    width: 100%;
-    padding: 10%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    /* background-color: red; */
 }
 
-.changeProperty p {
-    font-family: heebo, sans-serif;
-    background-color: #ffffff;
-    color: #0E2E50;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: 2px solid #00B98E;
-}
-
-.active {
-    background-color: #00B98E;
-    color: white;
-    border: 10px solid #00b98e65;
-}
-
-.changeProperty p:hover {
-    border: 5px solid #00b98e65;
-    background-color: #00B98E;
-    color: white;
-    transition: all 0.2s ease-in-out;
-}
-
-.PropertListing {
-    gap: 0px 5px;
-    margin: 5px;
-    height: 80%;
-    width: 100%;
-    /* background-color: greenyellow; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-
-}
-
-.Listing{
-    padding: 0px 10px;
-display: flex;
-flex-direction: column;
-align-items: center;
-height: 50%;
-width: 30%;
-/* gap: 5px; */
-/* background-color: #EFFDF5; */
-/* background-color: rgb(247, 162, 162); */
-}
-
-.listing-Img{
-    background-size: cover;
-    padding: 2.5% 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 50%;
-    width: 100%;
-    /* background-color: green; */
-}
-
-.listingInfo{
-    display: flex;
-    flex-direction: column;
-    height: 50%;
-    width: 100%;
-    background-color:#EFFDF5 ;
-    gap: 5px;
-}
-
-.HouseInfo{
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 70%;
-    background-color: white;    
-}
-
-.HouseInfo div h4{
-    font-size: 24px;
-    color: #00B98E;
-    font-family: inter,sans-serif;
-}
-
-.HouseInfo div a{
-    font-size: 24px;
-    text-decoration: none;
-    color: #0E2E50;
-    font-family: inter,sans-serif;
-    font-weight: 700; 
-}
-
-.HouseInfo div a:hover{
-color: #00B98E;
-}
-
-.HouseInfo div p i{
-    color: #00B98E;
-    font-size: 16px;
-}
-
-.HouseInfo div p {
-    font-family: heebo,sans-serif;
+.property-type-heading p {
     color: #666565;
 }
 
-.HouseMeasure{
-    gap: 0px;
-    align-items: center;
-    background-color:#EFFDF5;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 30%;
-}
-
-.HouseMeasure div{
-    text-align: center;
-    height: 90%;
-    padding: 10px;
-    background-color: white;
-   margin-left: 2px;
-    width: 50%;
-}
-
-.HouseMeasure i{
-    color: #00B98E;
-}
-
-.HouseMeasure span{
- color: #666565;   
-}
-
-.readListing{
-    text-align: center;
-    padding: 5%;
-    height: 2%;
-    width: 100%;
-}
-
-.readListing a{
-text-decoration: none;
-color: white;
-background-color: #00B98E;
-border-radius: 5px;
-padding: 15px 20px;
-font-size: 110%;
-}
-
-.readListing a:hover{
-    background-color: #00b98ed5;
-    transition: all 0.2s ease-in-out;
-}
-
-
-
-/* agent */
-
-#agent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2%;
-    height: 75vh;
-    width: 100%;
-    margin-bottom: 2%;
-}
-
-.agentBox{
-    display: flex;
-    height: 96%;
-    width: 96%;
-    background-color: #EFFDF5;
-}
-
-.mainAgent{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    margin: 2% 2%;
-    height: 90%;
-    width: 100%;
-    background-color: white;
-}
-
-.agentImg img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.agentImg{
-    height: 100%;
-    width: 60%;
-    padding: 2%;
-}
-
-.agentInfo{
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    align-items: center;
-    flex-direction: column;
-    width: 50%;
-    height: 100%;
-}
-
-.agentInfo div{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-self: flex-start;
-}
-
-.agentInfo div h1{
-    font-family: inter,sans-serif;
+.property-type-heading h1 {
     color: #0E2E50;
-    font-size: 40px;
 }
 
-.agentInfo div p {
-    text-align: justify;
-    font-family: heebo,sans-serif;
-    color: #666565;
-    font-size: 16px;
-    width: 95%;
-}
-
-.agentInfo div a{
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    font: 700;
-    font-family: heebo,sans-serif;
-    
-}
-
-.callAgent{
-    margin-top: 10%;
-    background-color: #00B98E;
-    padding: 18px;
-    border-radius: 5px;
-}
-
-.appointAgent{
-    margin-top: 10%;
-    background-color: #0E2E50;
-    padding: 18px;
-    border-radius: 5px;
-
-}
+/* prroperty-type end  */
 
 
-/* MEdia query  */
-
-/* Mobile styles */
-@media only screen and (max-width: 768px) {
-
-    #main {
-        overflow-y: hidden;
-        width: 100%;
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        margin: 0;
     }
 
 
-    #page1 {
+    /* heading topic  */
+    #topic-template {
 
-        min-height: 100vh;
+        width: 100%;
+        display: flex;
         flex-direction: column-reverse;
-        justify-content: flex-start;
+
     }
 
-    .intro-image,
-    .intro {
-        height: 50%;
+    #topic-template-1 {
+        width: 100%;
+        padding: 20px 20px;
+        gap: 30px;
+    }
+
+    #topic-template-1 div h1 {
+        font-size: 35px;
+    }
+
+    #topic-template-1 div a {
+        padding: 22px 35px;
+    }
+
+    #topic-template-2 {
         width: 100%;
     }
 
-    .intro-image::after {
-        top: 22%;
-        font-size: 20px;
-    }
-
-    .intro-image::before {
-        top: 22%;
-        font-size: 20px;
-        left: 85%;
-    }
-
-    .intro {
-        gap: 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 5%;
-    }
-
-    .intro div h2 {
-        font-family: verdana, Arial, Helvetica, sans-serif;
-        font-size: 30px;
-        color: #0E2E50;
-    }
-
-    .intro div h2 span {
-        color: #00B98E;
-    }
-
-    .intro div p {
-        text-align: justify;
-        font-size: 14px;
-        color: #666565;
-        font-family: Heebo, sans-serif;
-    }
-
-    .intro div {
-        align-self: flex-start;
-    }
-
-    .intro div a {
-
-        text-decoration: none;
-        color: white;
-        background-color: #00B98E;
-        font-size: 14px;
-        padding: 15px 30px;
-        border-radius: 5px;
+    #leftRightButton {
+        width: 10%;
+        top: 25%;
+        left: 8%;
 
     }
 
-    /* search box */
-
-    #searchBox {
-        flex-direction: column;
-
-        /* justify-content: space-evenly; */
-        height: 40vh;
-        width: 100%;
-        background-color: #00B98E;
-        border-radius: 1px;
-    }
-
+    /* searchbox */
     #searchBox form {
-        flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    #searchBox form input[type="search"] {
-        height: 15%;
-        width: 80%;
-        font-size: 15px;
-    }
-
-    #searchBox form input[type="submit"] {
-        height: 15%;
-        width: 80%;
-        font-size: 15px;
-    }
-
-    #location,
-    #property {
-        height: 15%;
-        width: 80%;
-        font-size: 14px;
-    }
-
-    /* property type */
-    #types {
-        overflow-y: scroll;
-        background-color: rgb(255, 0, 0);
-        height: 80%;
-        width: 100%;
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        flex-direction: column;
-
-    }
-
-    #propType {
-        height: 400vh;
-        width: 100%;
-        /* background-color: red; */
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: column;
-    }
-
-    #headingProptype {
-        gap: 25px;
-        height: 20%;
-
-    }
-
-    .headingType {
-        font-size: 30px;
-        font-family: inter, sans-serif;
-    }
-
-    .infotype p {
-        font-family: heebo, sans-serif;
-        text-align: center;
-        color: #666565;
-        font-size: 18px;
-    }
-
-    .individual {
-        width: 100%;
-        height: 35%;
-        background-color: #EFFDF5;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .individual-box {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        color: #0E2E50;
-        height: 95%;
-        padding: 8%;
-        width: 85%;
-        margin: 10px;
-        background-color: white;
-    }
-
-
-    .type h4 {
-        font-family: inter, sans-serif;
-    }
-
-    .numberOfProperty p {
-        font-family: heebo, sans-serif;
-        color: #00B98E;
-    }
-
-    .individual-box:hover,
-    .individual-box:hover h4,
-    .individual-box:hover .numberOfProperty p {
-        color: white;
-
-        transition: all 0.3s ease-in-out;
-    }
-
-    .individual-box:hover {
-        background-color: #00B98E;
-    }
-
-    .circle {
-        background-color: white;
-        border-radius: 50%;
-        border: 2px dotted #00B98E;
-        height: 38%;
-        width: 30%;
-
-    }
-
-    /* read more */
-
-    #readMore {
-        position: relative;
-        z-index: 2;
-        margin-top: 5%;
-        min-height: 150vh;
-        width: 100%;
-        display: flex;
-        margin-bottom: 5%;
-        /* background-color: red; */
-        flex-direction: column;
-        overflow: hidden;
-        /* overflow: hidden; */
-    }
-
-
-
-    .readMoreImg {
-        z-index: 1;
-        width: 100%;
-        height: 40%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* overflow: hidden; */
-
-    }
-
-    .readMoreImg::after {
-        translate: -150px;
-        transform: rotate(160deg);
-        z-index: 1;
-        content: "";
-        position: absolute;
-        height: 150%;
-        width: 60%;
-        background-color: #00B98E;
-    }
-
-
-    .readMoreImg img {
-        height: 80%;
-        width: 80%;
-        z-index: 2;
-        object-fit: contain;
-    }
-
-    .readMoreContent {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 3%;
-        gap: 8%;
-        width: 100%;
-        height: 60%;
-        /* background-color: red;     */
-    }
-
-    .readMoreh {
-        font-family: inter, sans-serif;
-        font-size: 20px;
-        color: #0E2E50;
-        width: 100%;
-    }
-
-    .readMorep p {
-        font-size: 18px;
-        text-align: justify;
-        font-family: heebo, sans-serif;
-        color: #666565;
-        line-height: 1.5;
-    }
-
-    .check {
-        width: 100%;
-        display: flex;
         justify-content: space-between;
-        flex-direction: column;
-        font-size: 18px;
-        height: 15%;
-    }
-
-    .check p i {
-        color: #00B98E;
-        font-weight: 900;
-
-    }
-
-    .check p {
-        color: #666565;
-    }
-
-    .readMoreBtnBox {
-        width: 100%;
-        align-self: self-start;
-        height: 2%;
-    }
-
-    .readMoreBtn {
-        width: 100%;
-        height: 2%;
-        text-decoration: none;
-        background-color: #00B98E;
-        color: white;
         align-items: center;
-        padding: 20px 30px;
-        font-size: 18px;
-        border-radius: 5px;
-
-    }
-
-    .readMoreBtn:hover {
-        background-color: #00b98ec6;
-    }
-    
-
-    /* Property List */
-
-    #propertyListing {
-        height: 450vh;
-        /* background-color: red; */
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 10px 10px;
-
-    }
-
-    .propertyListingContent {
-        height: 20%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        margin: 5px;
-        align-items: center;
-        /* background-color: red; */
-    }
-
-    .propertyListHP {
-
-        /* background-color: red; */
-        padding: 5%;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        /* align-items: center; */
-        width: 100%;
-        height: 100%;
         gap: 20px;
+        width: 90%;
     }
 
-    .propertyListingHeading {
-        font-family: heebo, sans-serif;
-        color: #0E2E50;
-        font-size: 16px;
-    }
-
-    .propertyLisitngParagraph {
-        text-align: justify;
-        line-height: 1.5;
-        font-family: inter, sans-serif;
-        font: 14px;
-        color: #666565;
-
-    }
-
-    .propertyListChange {
-        padding: 1%;
-        /* background-color: green; */
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-        justify-content: end;
-
-    }
-
-    .changeProperty {
-        display: flex;
-        text-align: center;
-        align-self: self-end;
-        height: 50%;
-        width: 100%;
-        padding: 10%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        /* background-color: red; */
-    }
-
-    .changeProperty p {
-        font-family: heebo, sans-serif;
-        background-color: #ffffff;
-        color: #0E2E50;
-        padding: 10px 15px;
-        border-radius: 5px;
-        border: 2px solid #00B98E;
-    }
-
-    .active {
-        background-color: #00B98E;
-        color: white;
-    }
-
-    .changeProperty p:hover {
-
-        background-color: #00B98E;
-        color: white;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .PropertListing {
-        flex-direction: column;
-        flex-wrap: nowrap;
-        margin: 5px;
-        height: 80%;
-        width: 100%;
-        /* background-color: greenyellow; */
-
-    }
-    .Listing{
-        width: 100%;
-    }
-
-    /* agent */
-
-    #agent{
-        height: 120vh;
-    }
-
-
-
-
-.mainAgent{
-    gap: 10px;
-    flex-direction: column;
-}
-
-.agentImg img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.agentImg{
-    height: 40%;
-    width: 95%;
-    padding: 2%;
-}
-
-.agentInfo{
-    /* background-color: red; */
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 60%;
-}
-
-.agentInfo div{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-self: flex-start;
-}
-
-.agentInfo div h1{
-    font-family: inter,sans-serif;
-    color: #0E2E50;
-    font-size: 40px;
-}
-
-.agentInfo div p {
-    text-align: justify;
-    font-family: heebo,sans-serif;
-    color: #666565;
-    font-size: 16px;
-    width: 95%;
-}
-
-.agentInfo div a{
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    font: 700;
-    font-family: heebo,sans-serif;
-    
-}
-
-.callAgent{
-    /* margin-top: 10%; */
-    background-color: #00B98E;
-    padding: 18px;
-    border-radius: 5px;
-}
-
-.appointAgent{
-    /* margin-top: 10%; */
-    background-color: #0E2E50;
-    padding: 18px;
-    border-radius: 5px;
-
-}
-}
-
-/* iPad portrait styles */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-
-    #main {
-        overflow-y: hidden;
-        width: 100%;
-    }
-
-    #page1 {
-
-        flex-direction: column-reverse;
-    }
-
-    .intro-image::after {
-        top: 25%;
-        font-size: 20px;
-    }
-
-    .intro-image::before {
-        top: 25%;
-        font-size: 20px;
-        left: 85%;
-    }
-
-    /* search box */
-
-    #searchBox {
-        flex-direction: column;
-        height: 40vh;
-        width: 100%;
-        background-color: #00B98E;
-        border-radius: 1px;
-    }
-
-    #searchBox form {
-        flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    #searchBox form input[type="search"] {
-        height: 15%;
+    #searchBox input {
         width: 80%;
-        font-size: 15px;
+        padding: 20px 15px;
     }
 
-    #searchBox form input[type="submit"] {
-        height: 15%;
+    .styled-select {
         width: 80%;
-        font-size: 15px;
+        padding: 20px 15px;
     }
 
-    #location,
-    #property {
-        height: 15%;
+    .styled-button {
         width: 80%;
-        font-size: 14px;
+        padding: 20px 15px;
     }
+
+    option {
+        width: 10%;
+    }
+
+    /* searchbox end */
 
 }
 
-/* iPad landscape styles */
-@media only screen and (min-width: 1024px) and (max-width: 1366px) {
 
-    #main {
-        overflow-y: hidden;
-        width: 100%;
-    }
 
-    #page1 {
 
-        flex-direction: column-reverse;
-    }
 
-    .intro-image::after {
-        top: 25%;
-        font-size: 20px;
-    }
 
-    .intro-image::before {
-        top: 25%;
-        font-size: 20px;
-        left: 85%;
-    }
 
-    /* search box */
 
-    #searchBox {
-        flex-direction: column;
+/* Media query for mobile devices in landscape orientation (up to 767px) */
+@media (max-width: 767px) and (orientation: landscape) {
+    /* Styles for mobile devices in landscape mode go here */
+}
 
-        /* justify-content: space-evenly; */
-        height: 40vh;
-        width: 100%;
-        background-color: #00B98E;
-        border-radius: 1px;
-    }
-
-    #searchBox form {
-        flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    #searchBox form input[type="search"] {
-        height: 15%;
-        width: 80%;
-        font-size: 15px;
-    }
-
-    #searchBox form input[type="submit"] {
-        height: 15%;
-        width: 80%;
-        font-size: 15px;
-    }
-
-    #location,
-    #property {
-        height: 15%;
-        width: 80%;
-        font-size: 14px;
-    }
-
+/* Media query for tablets in landscape orientation (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    /* Styles for tablets in landscape mode go here */
 }

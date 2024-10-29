@@ -6,10 +6,8 @@ const helmet = require("helmet");
 const hbs = require("hbs");
 const colors = require("colors");
 const cors = require("cors");
-
 const cookieParser = require("cookie-parser");
 //initializing port ,routers,staticpath and partailspath
-const port = process.env.port || 8000;
 
 const { router } = require("./Routers/SignupRoutes");
 
@@ -35,6 +33,7 @@ hbs.registerPartials(partialsPath);
 
 app.use(helmet());
 
+const port = process.env.port || 8000;
 app.listen(port, "127.0.0.1", () => {
   console.log(
     colors.bgRed(`Server is Running ar port : `) +

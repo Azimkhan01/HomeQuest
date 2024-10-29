@@ -8,255 +8,109 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="/public/CascadingStyle/navbar.css" />
-        <link rel="stylesheet" href="/public/CascadingStyle/home.css" />
-
+        <link rel="stylesheet" href="../public/CascadingStyle/navbar.css">
+        <link rel="stylesheet" href="../public/CascadingStyle/home.css">
     </head>
     <body>
-        <div id="main">
 
-            {{>navbar}}
+        {{>navbar}}
 
-            <div id="page1">
-
-                <div class="intro">
-                    <div class="heading">
-                        <h2>Find A <span>Perfect Home</span> To Live With Your
-                            Family</h2>
-                    </div>
-                    <div class="quotes">
-                        <p>A home is where love grows, dreams thrive, and
-                            memories are made. It’s more than just a place it's
-                            the foundation for your family future. Find the
-                            perfect space to create your story.</p>
-                    </div>
-                    <div class="getstarted">
-                        <a href="#">Get Started</a>
-                    </div>
-
-                </div>
-                <div id="intro-image" class="intro-image">
-
-                </div>
+        <!-- heading with image and slider and quote for homequest  -->
+        <div id="topic-template">
+            <div id="leftRightButton">
+                <div id="leftHouse"><i
+                        class="fa-solid fa-chevron-left"></i></div>
+                <div id="rightHouse"><i
+                        class="fa-solid fa-chevron-right"></i></div>
 
             </div>
-
-            <div id="searchBox">
-
-                <form action="/home" method="post">
-                    <input type="search" name="search"
-                        placeholder="Search Keywoard" />
-                    <select name="property" id="property">
-                        <option value="buy">Buy</option>
-                        <option value="sell">Sell</option>
-                        <option value="rent">Rent</option>
-                        <option value="villa">Villa</option>
-                    </select>
-                    <select name="location" id="location">
-                        <option value="kalyan">Kalyan</option>
-                        <option value="dombivli">Dombivli</option>
-                        <option value="mulund">Mulund</option>
-                        <option value="sion">Sion</option>
-                    </select>
-                    <input type="submit" value="Search" class="submit" />
-                </form>
-
+            <div id="topic-template-1">
+                <div>
+                    <h1>
+                        Find A <span style="color:#00B98E ;"> Perfect Home
+                        </span>To Live With Your Family
+                    </h1>
+                </div>
+                <div> <p>
+                        A place to grow, laugh, and cherish every moment.
+                        Where comfort meets elegance, and every corner feels
+                        like home.
+                        Find the perfect foundation for your family’s dreams.
+                    </p>
+                </div>
+                <div class="getStarted">
+                    <a href="#">
+                        Get Started
+                    </a>
+                </div>
             </div>
 
-            <div id="propType">
-
-                <div id="headingProptype">
-
-                    <div class="headingType">
-                        <h3>Property Types</h3>
-                    </div>
-                    <div class="infotype">
-                        <p>
-                            Property type refers to the classification of real
-                            estate based on its use or characteristics. Common
-                            property types include residential, commercial,
-                            industrial, and land. Each type serves different
-                            purposes, catering to the specific needs of buyers
-                            and investors
-                        </p>
-                    </div>
-
-                </div>
-                <div id="types">
-                    <!-- <div class="individual" id="individual">
-                        <div class="individual-box">
-                            <div class="circle"></div>
-                            <div class="type"><h4>Building</h4></div>
-                            <div class="numberOfProperty"><p>123 property</p></div>
-                        </div>
-                    </div> -->
-                </div>
-
+            <div id="topic-template-2">
+                <div><img
+                        src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-1.jpg"></div>
             </div>
+        </div>
+        <!-- heading ending -->
+        <!-- searching box -->
+        <div id="searchBox">
+            <form action="/home" method="get">
+                <input name="searchKeyWord" type="text"
+                    placeholder="Search Keyword" id="searchTxt">
+                <select name="propertyType" class="styled-select" id="property">
+                    <option value>Select Property Type</option>
+                    <option value="house">House</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="condo">Condo</option>
+                    <option value="villa">Villa</option>
+                </select>
+                <select name="location" class="styled-select" id="location">
+                    <option value>Location</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="uttar pradesh">Uttar Pradesh</option>
+                    <option value="uttra khand">Uttra Khand</option>
+                    <option value="gujrat">Gujrat</option>
+                </select>
+                <!-- <button type="submit" value="Search" class="styled-button">Search</button> -->
+            </form>
 
-            <div id="readMore">
-
-                <div class="readMoreImg"><img
-                        src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/about.jpg" /></div>
-                <div class="readMoreContent">
-
-                    <div class="readMoreh">
-                        <h1>#1 Place To Find The Perfect Property</h1>
-                    </div>
-                    <div class="readMorep">
-                        <p>Discover a wide range of premium properties tailored
-                            to your needs. Whether you’re searching for a cozy
-                            apartment or a luxurious home, we’ve got you
-                            covered. With extensive listings and expert
-                            guidance, finding your dream property has never been
-                            easier.</p>
-                    </div>
-                    <div class="check">
-                        <p><i
-                                class="fa-solid fa-check"></i>&nbsp;&nbsp;&nbsp;<span>Modern
-                                Apartments</span></p>
-                        <p><i
-                                class="fa-solid fa-check"></i>&nbsp;&nbsp;&nbsp;<span>Family
-                                Homes</span></p>
-                        <p><i
-                                class="fa-solid fa-check"></i>&nbsp;&nbsp;&nbsp;<span>Luxury
-                                Villas</span></p>
-                    </div>
-                    <div class="readMoreBtnBox">
-                        <a class="readMoreBtn" href="#">Read More</a>
-                    </div>
-
-                </div>
-
+            <!-- Dropdown box below the search form -->
+            <div id="dropdownBox">
+                <!-- <ul>
+                <li>Result 1</li>
+                <li>Result 2</li>
+                <li>Result 3</li>
+                <li>Result 4</li>
+            </ul> -->
             </div>
+        </div>
 
-            <div id="propertyListing">
+        <!-- searching box end -->
+        <!-- property type start -->
+        <div class="property-type">
 
-                <div class="propertyListingContent">
+            <div class="property-type-heading">
 
-                    <div class="propertyListHP">
-
-                        <div class="propertyListingHeading">
-                            <h1>Property Listing</h1>
-                        </div>
-                        <div class="propertyLisitngParagraph">
-                            <p>
-
-                                Discover premium properties that match your
-                                lifestyle and budget.
-                                From cozy apartments to luxurious estates, we
-                                have
-                                something for everyone.
-                                Start your journey to finding the perfect home
-                                today!
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="propertyListChange">
-
-                        <div class="changeProperty">
-                            <p onclick="List(featured)">Featured</p>
-                            <p onclick="List(forsell)">ForSell</p>
-                            <p onclick="List(forrent)">For Rent</p>
-                        </div>
-
-                    </div>
-
+                <div>
+                    <h1>Property Types</h1>
                 </div>
-
-                <div class="PropertListing" id="popertyListing">
-
-                    <div class="Listing">
-
-                        <div class="listing-Img">
-
-                            <p
-                                style="background-color:#00B98E ;color: white;font-family: heebo,sans-serif;width: 25%;border-radius: 5px;padding: 8px;text-align: center;">For
-                                Sell</p>
-                            <p
-                                style="color:#00B98E ;background-color: white;font-family: heebo,sans-serif;width: 28%;border-radius: 5px;margin-bottom: -12px;padding: 8px;text-align: center;">AppartMent</p>
-
-                        </div>
-                        <div class="listingInfo">
-
-                            <div class="HouseInfo">
-
-                                <div><h4>$12,220 </h4></div>
-                                <div><a href="#">Golden Urban House</a></div>
-                                <div><p><i class="fa-solid fa-location-dot"></i>
-                                        E3 502 lokudyan kalyan west</p></div>
-
-                            </div>
-                            <div class="HouseMeasure">
-                                <div><i
-                                        class="fa-solid fa-ruler-combined"></i>&nbsp;&nbsp;&nbsp;<span>1000sqft</span></div>
-                                <div><i
-                                        class="fa-solid fa-bed"></i>&nbsp;&nbsp;&nbsp;<span>3
-                                        Bed</span></div>
-                                <div><i
-                                        class="fa-solid fa-bath"></i>&nbsp;&nbsp;&nbsp;<span>2
-                                        Bath</span></div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                <div>
+                    <p>Every type of property tells a story—whether it's a cozy
+                        home, a bustling office, or a serene vacation retreat.
+                        Each space holds potential for dreams, investments, and
+                        memories. Choose wisely, for your property reflects your
+                        journey.</p>
                 </div>
-
-
-                <div class="readListing">
-                    <a href="#">Browse More Property</a>
-                </div>
-
-
-            </div>
-
-            <div id="agent">
-
-                <div class="agentBox">
-
-                    <div class="mainAgent">
-                    
-                        <div class="agentImg">
-                            <img src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/call-to-action.jpg" />
-                        </div>
-                        <div class="agentInfo">
-
-                            <div>
-                                <h1>
-                                    Contact With Our Certified Agent
-                                </h1>
-                            </div>
-                            <div>
-                                <p>
-                                    Get in touch with our certified agent for expert guidance and personalized assistance. Whether you're looking for advice or support, our agents are here to help you make informed decisions every step of the way!
-                                </p>
-                            </div>
-                            <div>
-                                <a class="callAgent" href="#"><i class="fa-solid fa-phone"></i> &nbsp;&nbsp;&nbsp;Make A Call</a>
-                                <a class="appointAgent" href="#"><i class="fa-regular fa-calendar-days"></i>&nbsp;&nbsp;&nbsp;Get Appointment</a>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
 
         </div>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-            integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!--property type  end-->
+
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/regular.min.js"
             integrity="sha512-kOmvRi+0imoekwslOzP/X1LXQnzcttzqYYt3urKD4nhd5fMYwRfXgDS5Nh7b7pQjKPjBPSX9PmhCLrkfkxUcBQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="/public/Script/navbar.js"></script>
-        <script src="/public/Script/home.js"></script>
+        <script src="../public/Script/navbar.js"></script>
+        <script src="../public/Script/home.js"></script>
     </body>
 </html>

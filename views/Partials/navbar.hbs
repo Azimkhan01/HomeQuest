@@ -1,28 +1,48 @@
- <nav>
-
+ <!--nav start  -->
+<nav class="navbar">
         <div class="logo">
-                <h1 class="bebas-neue-regular navbar">HomeQuest</h1>
-                <div class="smallDeviceLogo" id="option">
-                        <i class="fa-solid fa-grip-vertical"></i>
+                <a href="#"><h1>HomeQuest</h1></a>
+                <div id="hamburger">
+                        <i class="fa-solid fa-bars"></i>
                 </div>
         </div>
-        <div class="listBox">
+        <div class="nav-items" id="nav-items">
+                <a href="/home"><p>Home</p></a>
+                <a href="/profile"><p>Profile</p></a>
 
-                <ul>
-                        <a href class="list">Home <i
-                                        class="fa-solid fa-house"></i></a>
-                        <a href class="list">Search <i
-                                        class="fa-solid fa-magnifying-glass"></i></a>
-                        <a href class="list">Property</a>
-                        <a href class="list">Agents <i
-                                        class="fa-regular fa-user"></i></a>
-                        <a href class="list">About <i
-                                        class="fa-solid fa-users-viewfinder"></i></a>
-                        <a href class="list">Profile <i
-                                        class="fa-regular fa-hand"></i></a>
-                        <a class="Addproperty" href="#">Add Property</a>
-                </ul>
+                <!-- Property Dropdown -->
+                <div class="nav-item dropdown">
+                        <button class="dropdown-toggle"
+                                aria-expanded="false">Property &nbsp;<i
+                                        class="fa-solid fa-caret-down"></i></button>
+                        <div class="dropdown-content">
+                                <ul>
+                                        <li><a href="#">List</a></li>
+                                        <li><a href="#">Type</a></li>
+                                        <li><a href="#">Agent</a></li>
+                                </ul>
+                        </div>
+                </div>
 
+                <!-- Pages Dropdown -->
+                <div class="nav-item dropdown">
+                        <button class="dropdown-toggle"
+                                aria-expanded="false">Pages &nbsp;<i
+                                        class="fa-solid fa-caret-down"></i></button>
+                        <div class="dropdown-content">
+                                <ul>
+                                        <li><a href="#">Error 404</a></li>
+                                        <li><a href="#">Testimonial</a></li>
+                                </ul>
+                        </div>
+                </div>
+
+                <a href="#"><p>Contact</p></a>
         </div>
 
+        <div class="add-property" id="add-property">
+                <a href>Add Property</a>
+        </div>
 </nav>
+
+<!-- nav ending -->

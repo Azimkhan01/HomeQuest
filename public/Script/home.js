@@ -1,154 +1,187 @@
-//main scroll width 100% hojayega
+//searchbox dropdown box
+{
+  const propertiesData = [
+    {
+      address: "123 Main St, Kalyan",
+      property: "house",
+      location: "Maharashtra",
+    },
+    {
+      address: "456 Park Ave, Dombivli",
+      property: "apartment",
+      location: "Delhi",
+    },
+    {
+      address: "789 Elm St, Sion",
+      property: "condo",
+      location: "Uttar Pradesh",
+    },
+    {
+      address: "321 Maple St, Mulund",
+      property: "villa",
+      location: "Uttra Khand",
+    },
+    { address: "654 Oak St, CSMT", property: "house", location: "Gujrat" },
+    {
+      address: "135 Pine St, Kalyan",
+      property: "apartment",
+      location: "Maharashtra",
+    },
+    { address: "246 Cedar St, Dombivli", property: "condo", location: "Delhi" },
+    {
+      address: "357 Birch St, Sion",
+      property: "villa",
+      location: "Uttar Pradesh",
+    },
+    {
+      address: "468 Walnut St, Mulund",
+      property: "house",
+      location: "Uttra Khand",
+    },
+    {
+      address: "579 Maple St, CSMT",
+      property: "apartment",
+      location: "Gujrat",
+    },
+    {
+      address: "680 Spruce St, Kalyan",
+      property: "condo",
+      location: "Maharashtra",
+    },
+    { address: "791 Fir St, Dombivli", property: "villa", location: "Delhi" },
+    {
+      address: "802 Larch St, Sion",
+      property: "house",
+      location: "Uttar Pradesh",
+    },
+    {
+      address: "913 Cypress St, Mulund",
+      property: "apartment",
+      location: "Uttra Khand",
+    },
+    { address: "1020 Pine St, CSMT", property: "condo", location: "Gujrat" },
+    {
+      address: "1111 Maple St, Kalyan",
+      property: "villa",
+      location: "Maharashtra",
+    },
+    {
+      address: "1212 Birch St, Dombivli",
+      property: "house",
+      location: "Delhi",
+    },
+    {
+      address: "1313 Cedar St, Sion",
+      property: "apartment",
+      location: "Uttar Pradesh",
+    },
+    {
+      address: "1414 Walnut St, Mulund",
+      property: "condo",
+      location: "Uttra Khand",
+    },
+    { address: "1515 Oak St, CSMT", property: "villa", location: "Gujrat" },
+    {
+      address: "1616 Spruce St, Kalyan",
+      property: "house",
+      location: "Maharashtra",
+    },
+  ];
 
-window.addEventListener("scroll", (e) => {
-  nav.style.width = "100%";
-  nav.style.marginLeft = "0px";
-  const scrollPosition = window.scrollY;
-  // console.log(scrollPosition)
-  if (scrollPosition < 50 && window.innerWidth >= 1024) {
-    nav.style.width = "90%";
-    nav.style.marginLeft = "5%";
+  // Sort properties by location
+  propertiesData.sort((a, b) => {
+    if (a.location < b.location) return -1; // a comes before b
+    if (a.location > b.location) return 1; // a comes after b
+    return 0; // a and b are equal
+  });
+
+  // Function to apply filtering based on user input
+  function apply(e) {
+    const searchValue = searchTxt.value.toLowerCase();
+
+    // Check if input criteria are met
+    if (
+      searchValue.length > 2 &&
+      location.value !== "" &&
+      property.value !== ""
+    ) {
+      dropdownBox.style.display = "flex";
+      dropdownBox.innerHTML = ""; // Clear previous results
+
+      let ul = document.createElement("ul"); // Create a new <ul>
+
+      // Filter and sort properties
+      for (let i = 0; i < propertiesData.length; i++) {
+        const e = propertiesData[i]; // Access the current property object
+        // Check if the property matches the search criteria
+        if (
+          e.address.toLowerCase().includes(searchValue) &&
+          e.property.toLowerCase() === property.value.toLowerCase() &&
+          e.location.toLowerCase() === location.value.toLowerCase()
+        ) {
+          ul.innerHTML = "";
+          // Create a new list item for matching property
+          let li = document.createElement("li");
+          li.innerHTML = `<a href="${e.address}/${e.property}/${e.location}">${e.address}</a>`; // Create the link
+          ul.appendChild(li); // Append list item to the <ul>
+        }
+
+        if (ul.children.length < 1) {
+          ul.innerHTML = `<li style="font-weight:700;font-family:heebo,sans-serif">Not Found - <span style="color:tomato;font-size:20px;font-weight:700;font-family:heebo,sans-serif">${searchValue}</span> </li>`;
+        }
+      }
+
+      dropdownBox.appendChild(ul); // Append the <ul> to the dropdown box
+    } else if (
+      searchValue.length === 0 ||
+      location.value === "" ||
+      property.value === ""
+    ) {
+      dropdownBox.style.display = "none"; // Hide dropdown if input is empty
+    }
+
+    e.preventDefault();
   }
-});
 
-let i = 0;
-let z = [
-  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmlsbGF8ZW58MHx8MHx8fDA%3D",
-  "https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-1.jpg",
-  "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fGhvdXNlfGVufDB8fDB8fHww",
-];
+  // DOM Elements
+  let dropdownBox = document.getElementById("dropdownBox");
+  let searchTxt = document.getElementById("searchTxt");
+  let location = document.getElementById("location");
+  let property = document.getElementById("property");
 
-let introImg = document.getElementById("intro-image");
-let interval = setInterval(changeImage, 2000);
-
-function changeImage() {
-  introImg.style.backgroundImage = `url(${z[i]})`;
-  introImg.style.backgroundSize = "cover";
-  i = (i + 1) % z.length; // Loop back to the first image
+  // Event listeners for inputs
+  location.addEventListener("change", apply);
+  searchTxt.addEventListener("input", apply);
+  property.addEventListener("change", apply);
 }
 
-introImg.addEventListener(
-  "click",
-  function (event) {
-    // Stop the current interval
-    clearInterval(interval);
-
-    // Move to the next image
-    i = (i + 1) % z.length; // Go to the next image
-
-    // Change the background image
-    introImg.style.backgroundImage = `url(${z[i]})`;
-    introImg.style.backgroundSize = "cover";
-
-    // Restart the interval after a delay (optional, e.g., 2 seconds)
-
-    interval = setInterval(changeImage, 2000);
-  } // Change this value to adjust delay before restarting
-);
-
-//adding properties
-let array = [
-  {
-    type: "Apartment",
-    number: 100,
-    image:"public/Assets/Homepage/icon-apartment.png"
-  },
-  {
-    type: "Villa",
-    number: 50,
-    image:"public/Assets/Homepage/icon-villa.png"
-  },
-  {
-    type: "Home",
-    number: 500,
-    image:"public/Assets/Homepage/icon-house.png"
-  },
-  {
-    type: "Office",
-    number: "20",
-    image:"public/Assets/Homepage/icon-housing.png"
-  },
-  {
-    type: "Building",
-    number: 40,
-    image:"public/Assets/Homepage/icon-building.png"
-  },
-  {
-    type: "TownHouse",
-    number: "12",
-    image:"public/Assets/Homepage/icon-neighborhood.png"
-  },
-  {
-    type: "Shop",
-    number: 60,
-    image:"public/Assets/Homepage/icon-condominium.png"
-  },
-  {
-    type: "Garage",
-    number: 99,
-    image:"public/Assets/Homepage/icon-condominium.png"
-  },
-];
-
-//adding properties
-let types = document.getElementById("types");
-let addAllProperty = () => {
- 
-   let string ="";
-   let i=0;
- array.forEach(element => {
- 
-  string =  string + `<div class="individual" id="individual${+i}">
-                        <div class="individual-box">
-                            <div class="circle" style="background-image:url(${element.image});background-size:fix"></div>
-                            <div class="combo">
-                              <div class="type"><h4>${element.type}</h4></div>
-                            <div class="numberOfProperty"><p>${element.number} Properties</p></div>
-                            </div>
-                        </div>
-                    </div>`
-                    i++;
- });
- types.innerHTML = string;
-
-};
-
-addAllProperty()
-
-//onclick href to selected direction
-let individual ="";
-for(i=0;i<array.length;i++)
+//leftHOuse and rightHouse
 {
-  individual = document.getElementById(`individual${+i}`);
-  individual.addEventListener("click", (e) => {
-    window.location.href="/";
+  let i = 0;
+  let HouseImage = [
+    "https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-1.jpg",
+    "https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-2.jpg",
+  ];
+
+  let ChangingImage = document.querySelector("#topic-template-2 div img");
+  // console.log(ChangingImage);
+  let leftHouse = document.getElementById("leftHouse");
+  let rightHouse = document.getElementById("rightHouse");
+
+  function updateImage() {
+    ChangingImage.classList.remove("fade-in"); // Remove fade-in class to reset the effect
+    void ChangingImage.offsetWidth; // Trigger reflow to restart animation
+    ChangingImage.src = HouseImage[i];
+    ChangingImage.classList.add("fade-in"); // Add fade-in class to start transition
+  }
+
+  leftHouse.addEventListener("click", () => {
+    i = (i - 1 + HouseImage.length) % HouseImage.length; // Decrement index, loop back if negative
+    updateImage();
+  });
+
+  rightHouse.addEventListener("click", () => {
+    i = (i + 1) % HouseImage.length; // Increment index, loop back if out of bounds
+    updateImage();
   });
 }
-
-//property Listing 
-let s = "";
-
-for (let i = 0; i < 6; i++) {  
-    s += `<div class="Listing">
-                <div class="listing-Img" style=" background-image: url(https://demo.htmlcodex.com/2259/real-estate-html-template/img/property-${i+1}.jpg);">
-                    <p style="background-color:#00B98E; color: white; font-family: heebo, sans-serif; width: 25%; border-radius: 5px; padding: 8px; text-align: center;">For Sell</p>
-                    <p style="color: #00B98E; background-color: white; font-family: heebo, sans-serif; width: 28%; border-radius: 5px; margin-bottom: -12px; padding: 8px; text-align: center;">AppartMent</p>
-                </div>
-                <div class="listingInfo">
-                    <div class="HouseInfo">
-                        <div><h4>$${Math.floor(12*3.142/(i+1))},${Math.floor(220*3.14/(i+1))}</h4></div>
-                        <div><a href="#">Golden Urban House</a></div>
-                        <div><p><i class="fa-solid fa-location-dot"></i> E3 502 lokudyan kalyan west</p></div>
-                    </div>
-                    <div class="HouseMeasure">
-                        <div><i class="fa-solid fa-ruler-combined"></i>&nbsp;&nbsp;&nbsp;<span>1000 sqft</span></div>
-                        <div><i class="fa-solid fa-bed"></i>&nbsp;&nbsp;&nbsp;<span>3 Bed</span></div>
-                        <div><i class="fa-solid fa-bath"></i>&nbsp;&nbsp;&nbsp;<span>2 Bath</span></div>
-                    </div>
-                </div>
-            </div>`;
-}
-
-let propertyListing = document.getElementById("popertyListing");
-propertyListing.innerHTML = s;

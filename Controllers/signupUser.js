@@ -43,7 +43,7 @@ const signupUser = async (req, res) => {
     console.log(colors.red(await result, ">>is the result"));
     const myPlaintextPassword = await req.body.password;
     const someOtherPlaintextPassword = await req.body.password;
-    const saltRounds = 10;
+    const saltRounds = process.env.saltRounds;
 
     bcrypt.hash(myPlaintextPassword, saltRounds, async function (err, hash) {
       let password = await hash;

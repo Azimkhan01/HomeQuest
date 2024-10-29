@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const colors = require("colors");
-const { userSchema, dataScehma } = require("../DatabaseSchema/Users");
+const { userSchema} = require("../DatabaseSchema/Users");
 mongoose
   .connect("mongodb://localhost:27017/HomeQuest")
   .then(async () => {
@@ -15,6 +15,5 @@ mongoose
   });
 
 const user = mongoose.model("users", userSchema);
-const data = mongoose.model("datas", dataScehma);
 
-module.exports = { user, data };
+module.exports = { user};
