@@ -80,7 +80,7 @@ const handleReset = (req, res) => {
           }
           // result == true
           bcrypt
-            .hash(req.body["confirm-password"], 10)
+            .hash(req.body["confirm-password"], parseInt(process.env.saltRounds))
             .then(async function (h) {
               let updates = await user.updateOne(
                 { _id: result["_id"] },
