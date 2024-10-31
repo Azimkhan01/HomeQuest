@@ -28,6 +28,7 @@ const { main } = require("../Controllers/main");
 const { userApi } = require("../Controllers/userApi");
 const { profile } = require("../Controllers/profile");
 const { handleProfile, handleReset, handleLogout } = require("../Controllers/handleProfile");
+const { addProperty } = require("../Controllers/addProperty");
 
 
 //image
@@ -36,6 +37,10 @@ const multer = require("multer");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const { log } = require("console");
+const { handleAddproperty } = require("../Controllers/handleAddProperty");
+const { handleUploadImageListing } = require("../Controllers/handleUploadImageListing");
+const {listingStorage} = require("../Controllers/listingStorage.js");
+const { states } = require("../Controllers/states.js");
 // const { dir } = require("console");
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -67,6 +72,10 @@ const storage = multer.diskStorage({
   })
   
   const upload = multer({ storage: storage })
+  const uploadToListing= multer({ storage: listingStorage }).fields([
+    { name: 'thumbnail', maxCount: 1 },           // One file for thumbnail
+    { name: 'propertyImages', maxCount: 10 }      // Up to 10 files for property images
+]);
 //image
 
 router.route(["/signup"]).get(signup);
@@ -82,8 +91,11 @@ router.route("/profile/edit-details").post(handleProfile)
 router.route("/profile/reset-password").post(handleReset)
 router.route("/profile/logout").get(handleLogout)
 router.route("/profile/image").post(upload.single('image'), profile);
+router.route("/add-property").get(addProperty)
+router.route("/add-property").post(handleAddproperty)
+router.route("/upload-property-images").post(uploadToListing,handleUploadImageListing)
 //apis
-
+router.route("/getStates").get(states)
 //error
 router.route("*").get(error);
 

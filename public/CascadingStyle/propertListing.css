@@ -1,0 +1,177 @@
+#look {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 2.5% 0px;
+  /* background-color: red; */
+}
+
+h1,
+h2,
+a {
+  text-decoration: none;
+
+  font-family: inter, sans-serif;
+  color: #0E2E50;
+  word-spacing: 0;
+}
+
+#look-main {
+  /* background-color: red; */
+  width: 45%;
+  /* padding: 2%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+
+#Thumbnail {
+  background: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  /* background-color: red; */
+}
+
+.property-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2% 8%;
+  color: white;
+  width: auto;
+  background-color: #00B98E;
+  /* background-color: transparent; */
+  position: absolute;
+  border-radius: 5px;
+  top: 10%;
+  left: 5%;
+}
+
+#Thumbnail img {
+  object-fit: contain;
+  height: 400px;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+#Thumbnail img:hover {
+  object-fit: cover;
+  /* transform:scaleX(2px); */
+  height: 400px;
+  width: 100%;
+  transition: all 1s ease-in-out;
+}
+
+#property-info {
+  width: 100%;
+  padding-left: 2%;
+}
+
+.add-listing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2% 8%;
+  background-color: #EFFDF5;
+  width: auto;
+  color: #00B98E;
+  /* background-color: transparent; */
+  position: absolute;
+  border-radius: 5px;
+  bottom: 5%;
+  left: 5%;
+}
+
+#amenities {
+  padding: 10px;
+  gap: 20%;
+  display: flex;
+  flex-direction: row;
+
+}
+
+#amenities div {
+  display: flex;
+}
+
+#property-info {
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Form Container */
+#form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Form Inputs */
+#form input[type="text"],
+#form input[type="number"],
+#form select,
+#form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+/* Labels for File Inputs */
+#form label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+  color: #333;
+}
+
+/* Submit Button */
+#form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #00B98E;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+/* Button Hover Effect */
+#form button[type="submit"]:hover {
+  background-color: #00b98eb6;
+}
+
+
+i {
+  color: #00B98E;
+}
+
+#map {
+  z-index: 1;
+  border-top-left-radius: 1%;
+  border-bottom-right-radius: 1%;
+  border: 2px solid black;
+  height: 550px; /* Set the height of the map */
+  width: 95%;
+  margin-top: 20px;
+}
