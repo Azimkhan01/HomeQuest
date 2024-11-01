@@ -12,9 +12,13 @@ const handleAddproperty = async (req, res) => {
     area,
     bedrooms,
     bathrooms,
+    longitude,
+    latitude,
+    state
   } = req.body;
+console.log(req.body)
   var decoded = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-  console.log(decoded);
+  // console.log(decoded);
   let addListing = await listing.create({
     owner: decoded.data["_id"],
     title: title,
@@ -25,8 +29,9 @@ const handleAddproperty = async (req, res) => {
     bathrooms: bathrooms,
     propertyType: propertyType,
     ListingType: listingType,
-    longitude: req.body.longitude,
-    latitude: req.body.latitude,
+    longitude: longitude,
+    latitude: latitude,
+    state:state
   });
 
   const updateUserforIdOflisting = await user.updateOne(
@@ -35,7 +40,7 @@ const handleAddproperty = async (req, res) => {
   );
 
   let t = await user.findById(decoded.data["_id"]);
-  console.log(t);
+  // console.log(t);
   const token = jwt.sign(
     {
       exp: Math.floor(Date.now() / 1000) + 60 * 60, // Expiration in 1 hour

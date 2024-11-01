@@ -208,44 +208,14 @@ a {
 }
 
 /* Styles for dropdown box */
-#dropdownBox {
-    width: 90%;
-    /* Full width relative to the form */
-    margin-top: 15px;
-    /* Space above the dropdown */
-    background-color: #ffffff;
-    /* White background for contrast */
-    border-radius: 8px;
-    /* Rounded corners */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    /* Light shadow for depth */
-    display: none;
-    /* Initially hidden */
-}
 
-/* Styles for dropdown items */
-#dropdownBox ul {
-    width: 100%;
-    list-style-type: none;
-    /* Remove default list styling */
-    padding: 0;
-    /* Remove padding */
-    margin: 0;
-    /* Remove margin */
-}
-
-#dropdownBox li {
-    width: 100%;
-    padding: 12px 16px;
-    /* Space inside each item */
-    border-bottom: 1px solid #eeeeee;
-    /* Separator between items */
-}
-
-/* Change background color on hover for items */
-#dropdownBox li:hover {
-    background-color: #f0f0f0;
-    /* Light gray on hover */
+#map{
+    z-index: 1;
+    margin: 2%;
+    /* display: none; */
+    /* position: relative; */
+    width: 95%;
+    height:550px;
 }
 
 /* property-type start */

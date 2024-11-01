@@ -25,7 +25,7 @@ const { handleHome } = require("../Controllers/handleHome");
 const { error } = require("../Controllers/error");
 const { main } = require("../Controllers/main");
 // const { mainup } = require("../Controllers/mainup");
-const { userApi } = require("../Controllers/userApi");
+// const { userApi } = require("../Controllers/userApi");
 const { profile } = require("../Controllers/profile");
 const { handleProfile, handleReset, handleLogout } = require("../Controllers/handleProfile");
 const { addProperty } = require("../Controllers/addProperty");
@@ -41,6 +41,7 @@ const { handleAddproperty } = require("../Controllers/handleAddProperty");
 const { handleUploadImageListing } = require("../Controllers/handleUploadImageListing");
 const {listingStorage} = require("../Controllers/listingStorage.js");
 const { states } = require("../Controllers/states.js");
+const { listingApi } = require("../Controllers/listingApi.js");
 // const { dir } = require("console");
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -96,6 +97,7 @@ router.route("/add-property").post(handleAddproperty)
 router.route("/upload-property-images").post(uploadToListing,handleUploadImageListing)
 //apis
 router.route("/getStates").get(states)
+router.route("/listing").get(listingApi)
 //error
 router.route("*").get(error);
 

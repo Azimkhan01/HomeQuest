@@ -1,159 +1,146 @@
 //searchbox dropdown box
-{
-  const propertiesData = [
-    {
-      address: "123 Main St, Kalyan",
-      property: "house",
-      location: "Maharashtra",
-    },
-    {
-      address: "456 Park Ave, Dombivli",
-      property: "apartment",
-      location: "Delhi",
-    },
-    {
-      address: "789 Elm St, Sion",
-      property: "condo",
-      location: "Uttar Pradesh",
-    },
-    {
-      address: "321 Maple St, Mulund",
-      property: "villa",
-      location: "Uttra Khand",
-    },
-    { address: "654 Oak St, CSMT", property: "house", location: "Gujrat" },
-    {
-      address: "135 Pine St, Kalyan",
-      property: "apartment",
-      location: "Maharashtra",
-    },
-    { address: "246 Cedar St, Dombivli", property: "condo", location: "Delhi" },
-    {
-      address: "357 Birch St, Sion",
-      property: "villa",
-      location: "Uttar Pradesh",
-    },
-    {
-      address: "468 Walnut St, Mulund",
-      property: "house",
-      location: "Uttra Khand",
-    },
-    {
-      address: "579 Maple St, CSMT",
-      property: "apartment",
-      location: "Gujrat",
-    },
-    {
-      address: "680 Spruce St, Kalyan",
-      property: "condo",
-      location: "Maharashtra",
-    },
-    { address: "791 Fir St, Dombivli", property: "villa", location: "Delhi" },
-    {
-      address: "802 Larch St, Sion",
-      property: "house",
-      location: "Uttar Pradesh",
-    },
-    {
-      address: "913 Cypress St, Mulund",
-      property: "apartment",
-      location: "Uttra Khand",
-    },
-    { address: "1020 Pine St, CSMT", property: "condo", location: "Gujrat" },
-    {
-      address: "1111 Maple St, Kalyan",
-      property: "villa",
-      location: "Maharashtra",
-    },
-    {
-      address: "1212 Birch St, Dombivli",
-      property: "house",
-      location: "Delhi",
-    },
-    {
-      address: "1313 Cedar St, Sion",
-      property: "apartment",
-      location: "Uttar Pradesh",
-    },
-    {
-      address: "1414 Walnut St, Mulund",
-      property: "condo",
-      location: "Uttra Khand",
-    },
-    { address: "1515 Oak St, CSMT", property: "villa", location: "Gujrat" },
-    {
-      address: "1616 Spruce St, Kalyan",
-      property: "house",
-      location: "Maharashtra",
-    },
-  ];
+ // Initialize the map
+ {
+  const map = L.map('map').setView([20, 77], 4.5); // Center on India by default
 
-  // Sort properties by location
-  propertiesData.sort((a, b) => {
-    if (a.location < b.location) return -1; // a comes before b
-    if (a.location > b.location) return 1; // a comes after b
-    return 0; // a and b are equal
-  });
+  // Add OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
 
-  // Function to apply filtering based on user input
-  function apply(e) {
-    const searchValue = searchTxt.value.toLowerCase();
+  var geocoder = L.Control.geocoder({
+    defaultMarkGeocode: false,
+  })
+    .on("markgeocode", function (e) {
+      var bbox = e.geocode.bbox;
+      var poly = L.polygon([
+        bbox.getSouthEast(),
+        bbox.getNorthEast(),
+        bbox.getNorthWest(),
+        bbox.getSouthWest(),
+      ]).addTo(map);
+      map.fitBounds(poly.getBounds());
+    })
+    .addTo(map);
+  // Create a LayerGroup to hold all markers and circles
+  const markersLayerGroup = L.layerGroup().addTo(map);
 
-    // Check if input criteria are met
-    if (
-      searchValue.length > 2 &&
-      location.value !== "" &&
-      property.value !== ""
-    ) {
-      dropdownBox.style.display = "flex";
-      dropdownBox.innerHTML = ""; // Clear previous results
+  // Function to load markers from the API and add to the LayerGroup
+  function loadMarkers() {
+      fetch('http://127.0.0.1:8000/listing')
+          .then(response => response.json())
+          .then(data => {
+              data.forEach(listing => {
+                  const { latitude, longitude, title, price, thumbnail } = listing;
 
-      let ul = document.createElement("ul"); // Create a new <ul>
+                  // Check if both latitude and longitude are available
+                  if (latitude && longitude) {
+                      // Create a marker
+                      const marker = L.marker([latitude, longitude]);
+                      marker.bindPopup(`
+                        <a style="font-size:14px" href="https://www.youtube.com/watch?v=RBCk1SyC1PA&list=RD_51KXfwcPMs&index=21" target="_blank">${title}</a><br>
+                        ${price}<br><br>
+                        <img style="height:50px;width:50px;border-radius:5px" alt="thumbnail" src="${thumbnail}">
+                      `);
 
-      // Filter and sort properties
-      for (let i = 0; i < propertiesData.length; i++) {
-        const e = propertiesData[i]; // Access the current property object
-        // Check if the property matches the search criteria
-        if (
-          e.address.toLowerCase().includes(searchValue) &&
-          e.property.toLowerCase() === property.value.toLowerCase() &&
-          e.location.toLowerCase() === location.value.toLowerCase()
-        ) {
-          ul.innerHTML = "";
-          // Create a new list item for matching property
-          let li = document.createElement("li");
-          li.innerHTML = `<a href="${e.address}/${e.property}/${e.location}">${e.address}</a>`; // Create the link
-          ul.appendChild(li); // Append list item to the <ul>
-        }
+                      // Add the marker to the LayerGroup
+                      markersLayerGroup.addLayer(marker);
 
-        if (ul.children.length < 1) {
-          ul.innerHTML = `<li style="font-weight:700;font-family:heebo,sans-serif">Not Found - <span style="color:tomato;font-size:20px;font-weight:700;font-family:heebo,sans-serif">${searchValue}</span> </li>`;
-        }
-      }
-
-      dropdownBox.appendChild(ul); // Append the <ul> to the dropdown box
-    } else if (
-      searchValue.length === 0 ||
-      location.value === "" ||
-      property.value === ""
-    ) {
-      dropdownBox.style.display = "none"; // Hide dropdown if input is empty
-    }
-
-    e.preventDefault();
+                      // Create a circle around the marker and add it to the LayerGroup
+                      const circle = L.circle([latitude, longitude], {
+                          color: 'blue',       // Border color
+                          fillColor: 'lightblue', // Fill color
+                          fillOpacity: 0.3,    // Fill opacity
+                          radius: 500          // Radius in meters
+                      });
+                      markersLayerGroup.addLayer(circle);
+                  }
+              });
+          })
+          .catch(error => console.error('Error fetching data:', error));
   }
 
-  // DOM Elements
-  let dropdownBox = document.getElementById("dropdownBox");
-  let searchTxt = document.getElementById("searchTxt");
-  let location = document.getElementById("location");
-  let property = document.getElementById("property");
+  // Function to clear all markers and circles
+  function clearMarkers() {
+      markersLayerGroup.clearLayers(); // Clears all markers and circles from the LayerGroup
+  }
 
-  // Event listeners for inputs
-  location.addEventListener("change", apply);
-  searchTxt.addEventListener("input", apply);
-  property.addEventListener("change", apply);
+  // Load markers initially
+  loadMarkers();
+//search box
+{  
+  let searchTxt = document.getElementById("searchTxt");
+let property = document.getElementById("property");
+let location = document.getElementById("location");
+let markersLayerGroup = L.layerGroup().addTo(map);  // Assuming 'map' is your Leaflet map instance
+
+let fetchData = async () => {
+    try {
+        const response = await fetch('http://127.0.0.1:8000/listing');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+};
+
+let clearMarkers = () => {
+    markersLayerGroup.clearLayers();
+};
+
+let updateMarkers = async () => {
+    if (location.value !== "" && property.value !== "" || searchTxt.value.length >= 3) {
+        searchTxt.readOnly = false; 
+        let data = await fetchData();
+        clearMarkers();  // Clear previous markers
+
+        let filteredData = data.filter(item =>
+            item.location.toLowerCase().includes(searchTxt.value.toLowerCase()) &&
+            item.state.toLowerCase().includes(location.value.toLowerCase()) &&
+            item.propertyType.toLowerCase().includes(property.value.toLowerCase())
+        );
+
+        // console.log(filteredData);
+
+        filteredData.forEach(item => {
+            const { latitude, longitude, title, price, thumbnail } = item;
+            
+            if (latitude && longitude) {
+                const marker = L.marker([latitude, longitude]);
+                marker.bindPopup(`
+                    <a href="https://www.youtube.com/watch?v=RBCk1SyC1PA&list=RD_51KXfwcPMs&index=21" target="_blank">${title}</a><br>
+                    ${price}<br><br>
+                    <img style="height:50px;width:50px;border-radius:5px" alt="thumbnail" src="${thumbnail}">
+                `);
+                
+                markersLayerGroup.addLayer(marker);
+
+                const circle = L.circle([latitude, longitude], {
+                    color: 'red',
+                    fillColor: 'lightblue',
+                    fillOpacity: 0.3,
+                    radius: 500
+                });
+                markersLayerGroup.addLayer(circle);
+            }
+        });
+    }
+};
+
+// Event listeners
+searchTxt.addEventListener("input", updateMarkers);
+location.addEventListener("change", updateMarkers);
+property.addEventListener("change", updateMarkers);
+
+  
+  // Example: Clear all markers and circles after 5 seconds
+  // setTimeout(clearMarkers, 5000); // Clears markers after 5 seconds for demonstration
 }
+ }
 
 //leftHOuse and rightHouse
 {
@@ -185,3 +172,21 @@
     updateImage();
   });
 }
+
+
+  {
+    let location = document.getElementById("location");
+    
+    fetch("http://127.0.0.1:8000/getStates")
+      .then(d => d.json())
+      .then(r => {
+        r.forEach(e => {
+          let option = document.createElement("option"); // Create a new option for each state
+          option.value = e.name;
+          option.textContent = e.name;
+          location.appendChild(option); 
+        });
+      })
+      .catch(error => console.error('Error fetching states:', error));
+  }
+  

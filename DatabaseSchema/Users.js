@@ -117,6 +117,10 @@ const ListingSchema = new mongoose.Schema({
         type:String,
         trim:true,
         required:false
+    },
+    state:{
+        type:String,
+        trim:true
     }
 }, {
     timestamps: true,

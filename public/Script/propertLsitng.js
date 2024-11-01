@@ -60,10 +60,10 @@ area.addEventListener("input", (e) => {
     // Validate area constraints
     if (value < minArea) {
       areapreview.innerHTML = `Minimum area is ${minArea}.`;
-      area.value = minArea; // Set the input to minimum value if below
+      // area.value = minArea; // Set the input to minimum value if below
     } else if (value > maxArea) {
       areapreview.innerHTML = `Maximum area is ${maxArea}.`;
-      area.value = maxArea; // Set the input to maximum value if above
+      // area.value = maxArea; // Set the input to maximum value if above
     } else {
       // If value is within the valid range, update the preview
       areapreview.innerHTML = value + "Sqft";
@@ -301,7 +301,7 @@ document.addEventListener("click", (e) => {
           // Log the matched state if found
           if (matchedState) {
             if (state.value >= 3) {
-              return;
+              return;0
             } else {
               setTimeout(() => {
                 pincodeStatus.innerHTML = "";
@@ -326,3 +326,7 @@ document.addEventListener("click", (e) => {
     }
   });
 }
+
+
+
+
