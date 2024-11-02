@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeQUest</title>
+    <link rel="stylesheet" href="../public/CascadingStyle/list.css">
+    <link rel="stylesheet" href="../public/CascadingStyle/navbar.css">
+     <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+       {{>navbar}}
+       
+<div id="filter">
+    <div id="threeDot"><p id="filterBtn">Filter <i class="fa-solid fa-caret-down"></i></p></div>
+    <div class="filter-container">
+    <!-- Property Status Filter -->
+    <div>
+        <label for="statusFilter">Property Status:</label>
+        <select id="statusFilter">
+            <option value="">Select Status</option>
+            <option value="For Sale">For Sale</option>
+            <option value="For Rent">For Rent</option>
+            <option value="Sold">Sold</option>
+        </select>
+    </div>
+    
+    <!-- Price Range Filter -->
+    <div>
+        <label for="priceFilter">Price Range:</label>
+        <input type="number" id="minPrice" placeholder="Min Price">
+        <input type="number" id="maxPrice" placeholder="Max Price">
+    </div>
+
+    <!-- Property Type Filter -->
+    <div>
+        <label for="propertyTypeFilter">Property Type:</label>
+        <select id="propertyTypeFilter">
+            <option value="">Select Type</option>
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Condo">Condo</option>
+            <option value="Villa">Villa</option>
+        </select>
+    </div>
+
+    <!-- Listing Type Filter -->
+    <div>
+        <label for="listingTypeFilter">Listing Type:</label>
+        <select id="listingTypeFilter">
+            <option value="">Select Listing Type</option>
+            <option value="New Listing">Rent</option>
+            <option value="Open House">Sale</option>
+        </select>
+    </div>
+
+    <!-- Area Filter -->
+<div >
+  <label for="minArea">Min Area (sq ft):</label>
+  <input type="range" id="minArea" min="0" max="100000" step="50" value="0" oninput="updateAreaValues()" style="background-color: white;color:#00B98E">
+  <span style="color: rgba(0, 0, 0, 0.700);"   id="minAreaValue">0</span> sq ft
+
+  <label style="margin-top: 2%;" for="maxArea">Max Area (sq ft):</label>
+  <input type="range" id="maxArea" min="0" max="100000" step="50" value="100000" oninput="updateAreaValues()">
+  <span style="color: rgba(0, 0, 0, 0.700);"  id="maxAreaValue">100000</span> sq ft
+</div>
+
+    <!-- State Filter -->
+    <div>
+        <label  for="stateFilter">State:</label>
+        <select id="stateFilter">
+            <option value="">Select State</option>
+            <option value="California">California</option>
+            <option value="Texas">Texas</option>
+            <option value="New York">New York</option>
+        </select>
+    </div>
+
+    <!-- Location Search -->
+    <div style="width: 100%;">
+        <label for="locationSearch">Search by Location:</label>
+        <input type="text" id="locationSearch" placeholder="Enter location">
+    </div>
+
+    <!-- Filter Button -->
+    <div class="filter-button">
+        <button onclick="applyFilter()">Filter</button>
+    </div>
+</div>
+
+<div class="property-list" id="propertyList">
+    <div id="box">
+
+        
+
+    </div>
+</div>
+</div>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/regular.min.js"
+            integrity="sha512-kOmvRi+0imoekwslOzP/X1LXQnzcttzqYYt3urKD4nhd5fMYwRfXgDS5Nh7b7pQjKPjBPSX9PmhCLrkfkxUcBQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="../public/Script/navbar.js"></script>
+        <script src="../public/Script/list.js"></script>
+</body>
+</html>

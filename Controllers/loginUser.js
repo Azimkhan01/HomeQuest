@@ -33,7 +33,7 @@ const loginUser = async (req, res) => {
         if (!req.cookies.token) {
           await mail(result.email, result.username);
         }
-
+        // console.log(res)
         return res.redirect("home");
       } else {
         return res.render("login", {

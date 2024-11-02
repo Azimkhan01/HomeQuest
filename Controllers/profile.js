@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { user } = require("../Database/registerUsers");
+const { user ,listing } = require("../Database/registerUsers");
 
 const profile = async (req, res) => {
   const token = req.cookies.token;
@@ -25,9 +25,18 @@ const profile = async (req, res) => {
     const displayName = customer.name || "-";
     const displaySrc = customer.image || "-";
     const displayPhone = customer.phone || "-";
-    console.log(displaySrc)
+    // console.log(displaySrc)
     //define listing here
-       
+    const token = jwt.sign(
+      { data: customer },
+      process.env.JWT_SECRET , // Replace with environment variable
+      { expiresIn: "1d" }
+    );
+    res.cookie("token",token)
+   
+    let displayListing = await listing.find({ _id: { $in: customer.listing } });
+// console.log(displayListing)
+
     // Render profile page
     res.render("profile", {
       imgStatus: customer.imgStatus,
@@ -37,7 +46,7 @@ const profile = async (req, res) => {
       phone: displayPhone,
       username: customer.username,
       id: customer._id,
-      listings:""
+      listings:displayListing
       
     }); // Pass user data to the profile page if needed
   });

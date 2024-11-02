@@ -97,14 +97,17 @@
             </div>
 
             <div id="user-listings">
-                <h1>User Listings</h1>
+                <h1>Your Listings</h1>
                 <div class="listings-container">
                     {{#each listings}}
                     <div class="listing-item">
-                        <img src="{{this.image}}" alt="{{this.title}}">
-                        <h2>{{this.title}}</h2>
+                        <img style="height: 200px;width: 200px;" src="{{this.thumbnail}}" alt="{{this.title}}">
+                        <div>
+                        <a href="#"><h2>{{this.title}}</h2></a>
                         <p>Price: {{this.price}}</p>
-                        <p>Location: {{this.location}}</p>
+                        <p>Location: {{this.location}}</p></div>
+                        <form action="/delete-listing/{{this._id}}"  method="get" >
+                        <input type="submit" value="Delete"></form>
                     </div>
                     {{else}}
                     <p>No listings available.</p>

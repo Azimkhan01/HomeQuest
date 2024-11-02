@@ -25,113 +25,81 @@
       
 
 
-        <div id="look">
 
-            <div id="look-main">
-                <div id="Thumbnail">
-                    <div>
-                        <img
-                            src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/property-1.jpg"
-                            id="imgpreview">
-                    </div>
-                    <div class="property-type">
-                        <p id="property-type">
-                            Type
-                        </p>
-                    </div>
-                    <div class="add-listing">
-                        <p id="listing-type">List</p>
-                    </div>
-                </div>
-                <div id="property-info">
-                    <div><p id="pricePreview">price here</p></div>
-                    <div><h2 id="property-title">Property Title</h2></div>
-                    <div><p style="color: #666565;" id="loca">Location</p></div>
-                    <div id="amenities">
-                        <div><i class="fa-solid fa-ruler-combined"></i>&nbsp;
-                            &nbsp; <p id="areapreview">Sqft</p></div>
-                        <div><i class="fa-solid fa-bed"></i> &nbsp; &nbsp;
-                            <p id="bedPreview">Room</p></div>
-                        <div><i class="fa-solid fa-bath"></i> &nbsp; &nbsp;
-                            <p id="washRoom">WashRoom</p></div>
-                    </div>
-
-                </div>
+<div id="look">
+    <div id="look-main">
+        <div id="Thumbnail">
+            <div>
+                <img src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/property-1.jpg" id="imgpreview">
             </div>
-            <br>
-    <div><h2>Location in Map</h2></div>
-            <div id="map">
-
+            <div class="property-type">
+                <p id="property-type">Type</p>
+            </div>
+            <div class="add-listing">
+                <p id="listing-type">List</p>
             </div>
         </div>
-<div id="form">
-    <!-- Property Details Form -->
-    <form action="/add-property" method="post"  style="display:{{dispalyForm1}};">
-        <!-- Property Title -->
-        <input type="text" id="propertyTitle" name="title"  placeholder="Property Title"  required />
 
-        <!-- Property Type -->
-        <select id="propertyType" name="propertyType" required >
-            <option value disabled selected>
-                Select Property Type
-            </option>
+        <div id="property-info">
+            <div><p id="pricePreview">Price Here</p></div>
+            <div><h2 id="property-title">Property Title</h2></div>
+            <div><p id="loca">Location</p></div>
+            <div id="amenities">
+                <div><i class="fa-solid fa-ruler-combined"></i>&nbsp; <p id="areapreview">Sqft</p></div>
+                <div><i class="fa-solid fa-bed"></i>&nbsp; <p id="bedPreview">Room</p></div>
+                <div><i class="fa-solid fa-bath"></i>&nbsp; <p id="washRoom">Washroom</p></div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Location on Map</h2>
+    <div id="map"></div>
+
+    <form action="/upload-property" method="post" enctype="multipart/form-data" id="form">
+        <h1>Add Property Details</h1>
+
+        <input type="text" id="propertyTitle" name="title" placeholder="Property Title" required />
+        <select id="propertyType" name="propertyType" required>
+            <option value disabled selected>Select Property Type</option>
             <option value="Apartment">Apartment</option>
             <option value="House">House</option>
             <option value="Villa">Villa</option>
             <option value="Commercial">Commercial</option>
         </select>
-
-        <!-- Listing Type -->
         <select id="listingType" name="listingType" required>
-            <option value disabled selected>
-                Select Listing type
-            </option>
+            <option value disabled selected>Select Listing Type</option>
             <option value="For Sale">For Sale</option>
             <option value="For Rent">For Rent</option>
         </select>
+        <input type="number" id="price" name="price" placeholder="Price" min="1" required />
 
-        <!-- Price -->
-        <input type="number" id="price" name="price" placeholder="Price"  min="1"  required  />
-        <!-- State Dropdown -->
         <select id="state" name="state" required>
             <option value="" disabled selected>Select State</option>
         </select>
 
-        <!-- Pincode Input -->
         <input type="number" id="pincode" name="pincode" placeholder="Pincode" required />
-        <p style="color: rgba(255, 99, 71, 0.725);font-weight: 200;" id="pincodeStatus"></p><br>
-        <!-- Location -->
+        <p id="pincodeStatus" style="color: rgba(255, 99, 71, 0.725); font-weight: 200;"></p>
         <input type="text" id="location" name="location" placeholder="Location" required />
-<div id="suggestions" style="border: 1px solid #ddd; display: none; max-height: 200px; overflow-y: auto;"></div>
-        <input type="number" id="latitude" name="latitude" value="" placeholder="Latitude" readonly >
-        <input type="number" id="longitude" name="longitude" value="" placeholder="Longitude"  readonly>
-        <!-- Area in Sq Ft -->
-        <input type="number" id="area" name="area" placeholder="Area (in Sq Ft)"   min="1"  required />
+        <div id="suggestions" style="border: 1px solid #ddd; display: none; "></div>
 
-        <!-- Number of Bedrooms -->
-        <input type="number" id="bedrooms" name="bedrooms"  placeholder="No. of Bedrooms"    min="1" required />
+        <input type="number" id="latitude" name="latitude" placeholder="Latitude" readonly>
+        <input type="number" id="longitude" name="longitude" placeholder="Longitude" readonly>
+        <input type="number" id="area" name="area" placeholder="Area (in Sq Ft)" min="1" required />
+        <input type="number" id="bedrooms" name="bedrooms" placeholder="No. of Bedrooms" min="1" required />
+        <input type="number" id="bathrooms" name="bathrooms" placeholder="No. of Bathrooms" min="1" required />
 
-        <!-- Number of Bathrooms -->
-        <input type="number" id="bathrooms" name="bathrooms"  placeholder="No. of Bathrooms"   min="1" required  />
-
-        <!-- Submit Button for Details -->
-        <button type="submit" id="sumit-details" >Save Property Details</button>
-    </form>
-    <h1>Add Image</h1>
-    <!-- Image Upload Form -->
-    <form action="/upload-property-images" method="post" enctype="multipart/form-data">
-        <!-- Property Images (Multiple) -->
+        <h2>Upload Images</h2>
         <label for="propertyImages">Property Images</label>
         <input type="file" id="propertyImages" name="propertyImages" accept="image/*" multiple required />
 
-        <!-- Thumbnail Image -->
         <label for="thumbnailImage">Thumbnail Image</label>
         <input type="file" id="thumbnailImage" name="thumbnail" accept="image/*" required />
 
-        <!-- Submit Button for Images -->
-        <button type="submit">Upload Images</button>
+        <button type="submit">Upload</button>
     </form>
 </div>
+
+</body>
 
 <!-- Leaflet JS -->
 

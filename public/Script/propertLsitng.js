@@ -153,10 +153,7 @@ thumbnailImage.addEventListener("change", (e) => {
   }
 });
 
-let sumitdetails = document.getElementById("sumit-details");
-sumitdetails.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
+
 
 const map = L.map("map").setView([20.5937, 78.9629], 5); // Set initial view to India
 
@@ -191,6 +188,7 @@ async function fetchLocationSuggestions(query) {
   const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
     query
   )}&bounded=1&viewbox=${viewbox}`;
+  //https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(locationInput)}&format=json&addressdetails=1
 
   try {
     const response = await fetch(url);
@@ -206,13 +204,15 @@ async function fetchLocationSuggestions(query) {
 function showSuggestions(suggestions) {
   suggestionsDiv.innerHTML = "";
   if (suggestions.length > 0) {
-    suggestionsDiv.style.display = "block";
+    suggestionsDiv.style.display = "flex";
+    suggestionsDiv.style.flexDirection = "column";
     suggestions.forEach((suggestion) => {
       const suggestionItem = document.createElement("div");
       suggestionItem.textContent = suggestion.display_name;
       suggestionItem.classList.add("suggestion-item");
       suggestionItem.style.padding = "8px";
       suggestionItem.style.cursor = "pointer";
+
 
       suggestionItem.addEventListener("click", () => {
         locationInput.value = suggestion.display_name;
@@ -244,7 +244,7 @@ let longitude = document.getElementById("longitude")
 
 locationInput.addEventListener("input", async () => {
   const query = locationInput.value;
-  if (query.length > 2) {
+  if (query.length > 3) {
     const suggestions = await fetchLocationSuggestions(query);
     showSuggestions(suggestions);
   } else {

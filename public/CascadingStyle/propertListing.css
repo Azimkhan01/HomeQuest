@@ -175,3 +175,22 @@ i {
   width: 95%;
   margin-top: 20px;
 }
+
+.suggestion-item {
+  opacity: 1;
+  padding: 8px;
+  margin-bottom: 20px; /* Existing margin */
+  cursor: pointer;
+  border-radius: 5px; /* Rounded corners */
+
+}
+
+.suggestion-item:hover {
+  background-color: #EFFDF5; /* Light background on hover */
+  font-weight: 500; /* Bold text on hover */
+  transform: scale(1.02); /* Slightly enlarge on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+  transition: all 0.2s ease-in-out;
+}
+
+

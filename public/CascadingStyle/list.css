@@ -1,0 +1,112 @@
+#filter
+{
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+#threeDot{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+}
+
+#threeDot p{
+    background-color: #00A98F;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.filter-container {
+    display: none;
+    opacity: 1;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    background-color: #00B98E;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+transition: all 0.3s ease-in-out;
+}
+.filter-container > div {
+    flex: 1 1 calc(50% - 20px);
+    min-width: 200px;
+}
+.filter-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+    font-family: heebo,sans-serif;
+}
+.filter-container input,
+.filter-container select {
+    margin: 10px;
+    width: 100%;
+    padding: 2%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.filter-container input[type="number"] {
+    width: 48%;
+    display: inline-block;
+    margin-right: 4%;
+}
+.filter-container input[type="number"]:last-child {
+    margin-right: 0;
+}
+.filter-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+.filter-button button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #00796B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.filter-button button:hover {
+    background-color: #005c53;
+}
+.property-list {
+    margin-top: 20px;
+}
+.property-item {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+    }
+    .filter-container > div {
+        width: 100%;
+        min-width: unset;
+    }
+    .filter-container input[type="number"] {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

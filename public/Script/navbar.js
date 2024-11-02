@@ -68,6 +68,19 @@ document.querySelectorAll(".nav-item.dropdown").forEach(function (dropdown) {
   });
 });
 
+//getting user here
+{
+  let data = fetch("http://127.0.0.1:8000/getLoginUser").then(data=>data.json()).then((r)=>{
+    let profileImg = document.querySelector('#profile-img img')
+    // console.log(r)
+      if(r.imgStatus == true)
+      {
+        profileImg.src = r.image
 
-
+      }
+      else{
+        profileImg.src = "http://127.0.0.1:8000/public/Assets/Default/defaultimage-removebg-preview.png"
+      }
+  })
+}
 

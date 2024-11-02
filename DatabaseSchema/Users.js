@@ -1,132 +1,145 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:false,
-        trim:true,
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: false,
+      trim: true,
     },
-    phone:{
-        type:String,
-        required:false,
-        trime:true
+    phone: {
+      type: String,
+      required: false,
+      trime: true,
     },
     username: {
-        type: String,
-        required: true,
-        trim: true,
+      type: String,
+      required: true,
+      trim: true,
     },
     email: {
-        type: String,
-        required: true,
-        trim: true,
-        lowercase: true,
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
     },
     password: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     imgStatus: {
-        type: Boolean,
-        default: false, // Set the default value of image to false
+      type: Boolean,
+      default: false, // Set the default value of image to false
     },
-    image:{
-        type:String,
-        trim: true,
-        required:false
+    image: {
+      type: String,
+      trim: true,
+      required: false,
     },
-    totalListing:{
-        type:Number,
-        trim:true,
-        required:false
+    totalListing: {
+      type: Number,
+      trim: true,
+      required: false,
     },
-    listing:{
-        type:Array,
-        trim:true,
-        required:false
+    listing: {
+      type: Array,
+      trim: true,
+      required: false,
     },
-    longitude:{
-        type:Number,
-        trim:true
+    longitude: {
+      type: Number,
+      trim: true,
     },
-    latitude:{
-            type:Number,
-            trim:true
-        }
-    
-}, {
+    latitude: {
+      type: Number,
+      trim: true,
+    },
+  },
+  {
     timestamps: true,
-    strict: false // Set strict mode to false
-});
+    strict: false, // Set strict mode to false
+  }
+);
 
-const ListingSchema = new mongoose.Schema({
-    owner:{
-      type:String,
-      trim:true  
+const ListingSchema = new mongoose.Schema(
+  // Database Schema (in your schema file)
+{
+    owner: {
+      type: String,
+      trim: true,
     },
-    title:{
-        type:String,
-        required:false,
-        trim:true,
+    title: {
+      type: String,
+      required: false,
+      trim: true,
     },
-    price:{
-        type:Number,
-        required:false,
-        trime:true
+    price: {
+      type: Number,
+      required: false,
+      trim: true,
     },
     location: {
-        type: String,
-        required: false,
-        trim: true,
+      type: String,
+      required: false,
+      trim: true,
     },
     area: {
-        type: Number,
-        required: true,
-        trim: true,
-        lowercase: true,
+      type: Number,
+      required: true,
+      trim: true,
+      lowercase: true,
     },
     bedrooms: {
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
     },
     bathrooms: {
-        type: Number,
-        default: false, // Set the default value of image to false
+      type: Number,
+      default: false,
     },
-    thumbnail:{
-        type:String,
-        trim: true,
-        required:false
+    thumbnail: {
+      type: String,
+      trim: true,
+      required: false,
     },
-    AllImages:{
-        type:Number,
-        trim:true,
-        required:false
+    thumbnailStatus: {
+      type: Boolean,
+      trim: true,
     },
-    video:{
-        type:String,
-        trim:true,
-        required:false
+    AllImages: {
+      type: [String], // Array of strings to hold file paths for multiple images
+      trim: true,
+      required: false,
     },
-    propertyType:{
-        type:String,
-        trim:true,
-        required:false
+    video: {
+      type: String,
+      trim: true,
+      required: false,
     },
-    listingType:{
-        type:String,
-        trim:true,
-        required:false
+    propertyType: {
+      type: String,
+      trim: true,
+      required: false,
     },
-    state:{
-        type:String,
-        trim:true
-    }
-}, {
+    listingType: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    state: {
+      type: String,
+      trim: true,
+    },
+    buyingStatus: {
+      type: Boolean,
+      trim: true,
+    },
+  }
+  ,
+  {
     timestamps: true,
-    strict: false // Set strict mode to false
-});
-
-
+    strict: false, // Set strict mode to false
+  }
+);
 
 module.exports = { userSchema, ListingSchema };
