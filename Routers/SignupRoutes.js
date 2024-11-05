@@ -49,6 +49,7 @@ const { listingApi } = require("../Controllers/listingApi.js");
 const { getLoginUser } = require("../Controllers/getLoginUser.js");
 const { list } = require("../Controllers/list.js");
 const { deleteListing } = require("../Controllers/deleteListing.js");
+const { stream } = require("../Controllers/stream.js");
 // const { dir } = require("console");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -92,6 +93,7 @@ const upload = multer({ storage: storage });
 const uploadToListing = multer({ storage: listingStorage }).fields([
   { name: "thumbnail", maxCount: 1 }, // One file for thumbnail
   { name: "propertyImages", maxCount: 10 }, // Up to 10 files for property images
+  { name: "propertyVideo", maxCount: 1 } // One file for property video
 ]);
 //image
 
@@ -118,6 +120,7 @@ router.route("/delete-listing/:id").get(deleteListing)
 router.route("/getStates").get(states);
 router.route("/listing/:id?").get(listingApi);
 router.route("/getLoginUser").get(getLoginUser);
+router.route("/stream/:id").get(stream)
 //error
 router.route("*").get(error);
 

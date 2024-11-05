@@ -71,7 +71,7 @@ const ListingSchema = new mongoose.Schema(
     title: {
       type: String,
       required: false,
-      trim: true,
+
     },
     price: {
       type: Number,
@@ -81,7 +81,7 @@ const ListingSchema = new mongoose.Schema(
     location: {
       type: String,
       required: false,
-      trim: true,
+
     },
     area: {
       type: Number,
@@ -99,21 +99,21 @@ const ListingSchema = new mongoose.Schema(
     },
     thumbnail: {
       type: String,
-      trim: true,
+
       required: false,
     },
     thumbnailStatus: {
       type: Boolean,
-      trim: true,
+ 
     },
     AllImages: {
       type: [String], // Array of strings to hold file paths for multiple images
-      trim: true,
+      
       required: false,
     },
     video: {
       type: String,
-      trim: true,
+      
       required: false,
     },
     propertyType: {

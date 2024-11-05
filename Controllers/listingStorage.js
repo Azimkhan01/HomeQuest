@@ -1,37 +1,52 @@
 const multer = require("multer");
 const path = require("path");
 const jwt = require("jsonwebtoken");
-const { user,listing } = require("../Database/registerUsers");
+const fs = require("fs");
 
 const listingStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const directory = path.join(__dirname, "../public/Assets/ListingImages");
+    let directory;
+console.log(file)
+    if (file.fieldname === "propertyImages") {
+      directory = path.join(__dirname, "../public/Assets/ListingImages");
+    } else if (file.fieldname === "propertyVideo") {
+      directory = path.join(__dirname, "../public/Assets/ListingVideos");
+    } else if (file.fieldname === "thumbnail") {
+      directory = path.join(__dirname, "../public/Assets/Thumbnails");
+    } else {
+      return cb(new Error("Invalid file field name"));
+    }
+
+    // Ensure the directory exists
+    fs.mkdirSync(directory, { recursive: true });
+
     cb(null, directory);
   },
   filename: function (req, file, cb) {
     jwt.verify(
       req.cookies.token,
       process.env.JWT_SECRET,
-      async (err, decoded) => {
+      (err, decoded) => {
         if (err) {
-          cb(err); // Handle error if token verification fails
-          return;
+          return cb(err);
         }
-        const userId = decoded.data["_id"]; // Get user ID from decoded token
-        const timestamp = Date.now(); // Unique timestamp for each upload
-        const fileExtension = path.extname(file.originalname); // File extension (e.g., .jpg, .png)
-        
 
-        // Differentiate filename based on field name
+        const userId = decoded.data["_id"];
+        const timestamp = Date.now();
+        const fileExtension = path.extname(file.originalname);
+
+        let filename;
         if (file.fieldname === "thumbnail") {
           filename = `${userId}-thumbnail-${timestamp}${fileExtension}`;
         } else if (file.fieldname === "propertyImages") {
           filename = `${userId}-property-${timestamp}${fileExtension}`;
+        } else if (file.fieldname === "propertyVideo") {
+          filename = `${userId}-video-${timestamp}${fileExtension}`;
+        } else {
+          return cb(new Error("Invalid file field name"));
         }
 
         cb(null, filename);
-
-        
       }
     );
   },

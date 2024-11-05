@@ -101,7 +101,7 @@
                 <div class="listings-container">
                     {{#each listings}}
                     <div class="listing-item">
-                        <img style="height: 200px;width: 200px;" src="{{this.thumbnail}}" alt="{{this.title}}">
+                        <img style="height: 200px;width: 200px;" src={{this.thumbnail}} alt="{{this.title}}">
                         <div>
                         <a href="#"><h2>{{this.title}}</h2></a>
                         <p>Price: {{this.price}}</p>

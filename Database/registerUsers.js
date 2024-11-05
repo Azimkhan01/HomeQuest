@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const colors = require("colors");
+const path = require("path")
+const fs = require("fs")
 const { userSchema ,ListingSchema} = require("../DatabaseSchema/Users");
 mongoose
   .connect("mongodb://localhost:27017/HomeQuest")

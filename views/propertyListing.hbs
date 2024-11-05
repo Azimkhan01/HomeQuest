@@ -54,7 +54,12 @@
 
     <h2>Location on Map</h2>
     <div id="map"></div>
+<div id="locationStatus">
+    <p></p>
+    <div id="animationLine">
 
+    </div>
+</div>
     <form action="/upload-property" method="post" enctype="multipart/form-data" id="form">
         <h1>Add Property Details</h1>
 
@@ -89,15 +94,22 @@
         <input type="number" id="bathrooms" name="bathrooms" placeholder="No. of Bathrooms" min="1" required />
 
         <h2>Upload Images</h2>
-        <label for="propertyImages">Property Images</label>
-        <input type="file" id="propertyImages" name="propertyImages" accept="image/*" multiple required />
+       <label for="propertyVideo">Property Video</label>
+<input type="file" id="propertyVideo" name="propertyVideo" accept="video/*" required />
+<div id="videoError" style="color: red; margin-top: 10px; opacity: 0; transition: opacity 0.5s;"></div>
+
 
         <label for="thumbnailImage">Thumbnail Image</label>
         <input type="file" id="thumbnailImage" name="thumbnail" accept="image/*" required />
 
-        <button type="submit">Upload</button>
+ <label for="propertyImages">Property Images</label>
+<input type="file" id="propertyImages" name="propertyImages" accept="image/*" multiple required />
+<div id="imageError" style="color: red; margin-top: 10px; opacity: 0; transition: opacity 0.5s;"></div>
+
+        <button id="submit" type="submit">Upload</button>
     </form>
 </div>
+
 
 </body>
 
