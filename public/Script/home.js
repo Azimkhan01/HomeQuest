@@ -28,7 +28,7 @@
 
   // Function to load markers from the API and add to the LayerGroup
   function loadMarkers() {
-      fetch('http://127.0.0.1:8000/listing')
+      fetch(`${window.location.protocol}//${window.location.hostname}:${window.location.port}/listing`)
           .then(response => response.json())
           .then(data => {
               data.forEach(listing => {
@@ -77,7 +77,7 @@ let markersLayerGroup = L.layerGroup().addTo(map);  // Assuming 'map' is your Le
 
 let fetchData = async () => {
     try {
-        const response = await fetch('http://127.0.0.1:8000/listing');
+        const response = await fetch(`${window.location.protocol}//${window.location.hostname}:${window.location.port}/listing`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

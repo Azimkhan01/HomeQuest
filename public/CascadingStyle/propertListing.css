@@ -226,3 +226,21 @@ width: 75%;
 width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+
+  #look-main{
+    width: 100%;
+  }
+
+  .property-type{
+    top: 15%;
+  }
+
+  .add-listing{
+    bottom: 10%;
+  }
+#Thumbnail img {
+  height: 50%;
+}
+}

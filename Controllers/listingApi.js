@@ -4,15 +4,17 @@ const { listing } = require("../Database/registerUsers");
 
 const listingApi = async (req, res) => {
   try {
-    const { id } = req.params;
-  console.log(Math.round(id / 10) * 10)
-
-    if (id) {
-      // If id is provided, find listing by id
-      data = await listing.find({}).skip(Math.round(id / 10) * 10).limit(10);
+    let { id } = req.params;
+    let offset = parseInt(id, 10); // Convert `id` to an integer
+// console.log(offset)
+    // Check if `id` is `NaN` or invalid; if so, retrieve all listings
+    let data;
+    if (isNaN(offset) || offset < 0) {
+      data = await listing.find({}); // Return all listings
+    // console.log('data is loaded')
     } else {
-      // If no id is provided, retrieve all listings
-      data = await listing.find({});
+      // Fetch listings with pagination
+      data = await listing.find({}).skip(offset).limit(10);
     }
 
     res.json(data);
@@ -21,7 +23,5 @@ const listingApi = async (req, res) => {
     res.status(500).json({ error: "An error occurred while retrieving listings" });
   }
 };
-
-router.route("/listing/:id?").get(listingApi);
 
 module.exports = { listingApi };

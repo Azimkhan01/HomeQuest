@@ -336,7 +336,7 @@ document.addEventListener("click", (e) => {
 
 {
   let state = document.getElementById("state");
-  fetch("http://127.0.0.1:8000/getStates")
+  fetch(`${window.location.protocol}//${window.location.hostname}:${window.location.port}/getStates`)
     .then((response) => response.json())
     .then((data) => {
       // console.log(data)
@@ -358,7 +358,7 @@ document.addEventListener("click", (e) => {
 
     // Check if the pincode is a valid length and is numeric
     if (pin.length >= 6 && !isNaN(pin)) {
-      fetch("http://127.0.0.1:8000/getStates")
+      fetch(`${window.location.protocol}//${window.location.hostname}:${window.location.port}/getStates`)
         .then((response) => response.json())
         .then((data) => {
           let matchedState = null; // Initialize variable to store matched state

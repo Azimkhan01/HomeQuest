@@ -1,112 +1,289 @@
-#filter
-{
-    margin-top: 10%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+h2 {
+  font-family: inter, sans-serif;
 }
 
 
-#threeDot{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 10px;
+
+#filter {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-#threeDot p{
-    background-color: #00A98F;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+
+#threeDot {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+}
+
+#threeDot p {
+  background-color: #00A98F;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
 .filter-container {
-    display: none;
-    opacity: 1;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 20px;
-    background-color: #00B98E;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-transition: all 0.3s ease-in-out;
+  display: none;
+  opacity: 1;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 20px;
+  background-color: #00B98E;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
 }
-.filter-container > div {
-    flex: 1 1 calc(50% - 20px);
-    min-width: 200px;
+
+.filter-container>div {
+  flex: 1 1 calc(50% - 20px);
+  min-width: 200px;
 }
+
 .filter-container label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #fff;
-    font-family: heebo,sans-serif;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #fff;
+  font-family: heebo, sans-serif;
 }
+
 .filter-container input,
 .filter-container select {
-    margin: 10px;
-    width: 100%;
-    padding: 2%;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  width: 100%;
+  padding: 2%;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .filter-container input[type="number"] {
-    width: 48%;
-    display: inline-block;
-    margin-right: 4%;
+  width: 48%;
+  display: inline-block;
+  margin-right: 4%;
 }
+
 .filter-container input[type="number"]:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
+
 .filter-button {
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
 }
+
 .filter-button button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #00796B;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #00796B;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .filter-button button:hover {
-    background-color: #005c53;
+  background-color: #005c53;
 }
+
 .property-list {
-    margin-top: 20px;
+  margin-top: 20px;
 }
+
 .property-item {
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+#box {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column-reverse;
+  /* flex-wrap: wrap; */
+  gap: 1%;
+  padding: 2.5%;
+  justify-content: space-evenly;
+}
 
+#property-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  /* padding: 10px;  */
+  width: 100%;
+}
+
+.card {
+  width: 50%;
+}
+
+.card-image {
+  position: relative;
+}
+
+.property-listing {
+  position: absolute;
+  top: 5%;
+  left: 8%;
+  padding: 10px 15px;
+  background-color: #00B98E;
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.propertyType {
+  position: absolute;
+  bottom: -2px;
+  left: 8%;
+  padding: 10px 15px;
+  background-color: white;
+  color: #00B98E;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.property-image img {
+  text-align: center;
+  width: 95%;
+  object-fit: cover;
+}
+
+.property-image {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-size: 12px;
+  text-align: justify;
+  color: rgba(0, 0, 0, 0.567);
+}
+
+.card-content {
+  padding: 5px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.amenities {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+i {
+  color: #00B98E;
+}
+
+#navigation-button,
+#dynamicBtn {
+
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+
+}
+
+#navigation-button p {
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  background-color: #00B98E;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+#dynamicBtn {
+  padding: 5px;
+  display: flex;
+  gap: 10px;
+}
+
+#dynamicBtn p:hover {
+  background-color: #fff;
+  color: #00B98E;
+  font-weight: 700;
+  transition: all 0.2s ease-in-out;
+}
+
+.disable {
+  background-color: #005c53;
+}
+
+.enable {
+  background-color: #00B98E;
+}
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .filter-container {
-        flex-direction: column;
-    }
-    .filter-container > div {
-        width: 100%;
-        min-width: unset;
-    }
-    .filter-container input[type="number"] {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
+
+  #filter{
+    margin-top: 22%;
+    width: 100%;
+    padding: 5px;
+  }
+
+  #property-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  
+    /* padding: 10px;  */
+    width: 100%;
+  }
+  
+  .card {
+    width: 100%;
+  }
+
+  .filter-container {
+    flex-direction: column;
+  }
+
+  .filter-container>div {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .filter-container input[type="number"] {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  #property-box
+  {
+    flex-direction: column;
+    width: 100%;
+  }
+
 }
