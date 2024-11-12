@@ -50,6 +50,7 @@ const { getLoginUser } = require("../Controllers/getLoginUser.js");
 const { list } = require("../Controllers/list.js");
 const { deleteListing } = require("../Controllers/deleteListing.js");
 const { stream } = require("../Controllers/stream.js");
+const {identityKey} = require("../Controllers/identitiKey.js");
 // const { dir } = require("console");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
