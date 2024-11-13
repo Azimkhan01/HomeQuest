@@ -1,5 +1,4 @@
 const express = require("express");
-const router = express.Router();
 const { listing } = require("../Database/registerUsers");
 
 const listingApi = async (req, res) => {

@@ -123,6 +123,7 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  /* gap: 5px; */
   justify-content: space-between;
 
   /* padding: 10px;  */
@@ -130,7 +131,10 @@ h2 {
 }
 
 .card {
-  width: 50%;
+  padding:10px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.148) 0px 5px 15px;
+  width: 49.5%;
 }
 
 .card-image {
@@ -138,6 +142,7 @@ h2 {
 }
 
 .property-listing {
+  z-index: 2;
   position: absolute;
   top: 5%;
   left: 8%;
@@ -149,6 +154,7 @@ h2 {
 }
 
 .propertyType {
+  z-index: 2;
   position: absolute;
   bottom: -2px;
   left: 8%;
@@ -159,19 +165,46 @@ h2 {
   font-weight: 500;
 }
 
-.property-image img {
-  text-align: center;
-  width: 95%;
-  object-fit: cover;
-}
+
 
 .property-image {
-  height: 40%;
+ position: relative;
+  background-position: center;
+  height: 300px; /* Set height as needed */
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
+
+.background-blur{
+  position: absolute;
+  top: 0;
+  /* left: 0; */
+  width: 75%;
+  height: 100%;
+  background-size: cover;
+  filter: blur(10px); /* Controls the blur effect */
+  transform: scale(1.2); /* Scales up the blurred background to fill the area */
+  z-index: 1;
+}
+
+.property-image img {
+  position: relative;
+  z-index: 2;
+  max-height: 400px;
+  max-width: 400px;
+  object-fit: contain;
+}
+
+.property-image img:hover {
+  object-fit: contain;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.1); /* Slightly zoom in the image */
+}
+
+
 
 p {
   font-size: 12px;

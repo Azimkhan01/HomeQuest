@@ -22,15 +22,7 @@
                         class="fa-solid fa-caret-down"></i></p></div>
             <div class="filter-container">
                 <!-- Property Status Filter -->
-                <div>
-                    <label for="statusFilter">Property Status:</label>
-                    <select id="statusFilter">
-                        <option value>Select Status</option>
-                        <option value="For Sale">For Sale</option>
-                        <option value="For Rent">For Rent</option>
-                        <option value="Sold">Sold</option>
-                    </select>
-                </div>
+               
 
                 <!-- Price Range Filter -->
                 <div>
@@ -56,8 +48,8 @@
                     <label for="listingTypeFilter">Listing Type:</label>
                     <select id="listingTypeFilter">
                         <option value>Select Listing Type</option>
-                        <option value="New Listing">Rent</option>
-                        <option value="Open House">Sale</option>
+                        <option value="For Sale">Rent</option>
+                        <option value="For Rent">Sale</option>
                     </select>
                 </div>
 
@@ -86,16 +78,12 @@
                     </select>
                 </div>
 
-                <!-- Location Search -->
-                <div style="width: 100%;">
-                    <label for="locationSearch">Search by Location:</label>
-                    <input type="text" id="locationSearch"
-                        placeholder="Enter location">
-                </div>
+
+                
 
                 <!-- Filter Button -->
                 <div class="filter-button">
-                    <button onclick="applyFilter()">Filter</button>
+                    <button id="applyFilter">Filter</button>
                 </div>
             </div>
 
@@ -103,7 +91,7 @@
                 <div id="box">
 
                     <div id="property-box">
-                        <div class="card">
+                        {{!-- <div class="card">
                             <div class="card-image">
                                 <div class="property-image"><a href=""><img
                                         src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/property-1.jpg"></a>
@@ -126,18 +114,18 @@
                                         Bathrooms</div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div id="navigation-button">
                 
                        <div id="previous" > <p>Previous</p></div>
                         <div id="dynamicBtn">
-                            <p>1</p>
+                            {{!-- <p>1</p>
                             <p>2</p>
-                            <p>3</p>
+                            <p>3</p> --}}
                         </div>
-                       <div id="next" > <p>Next</p></div>
+                       <div id="next"> <p>Next</p></div>
                     </div>
                 
             </div>

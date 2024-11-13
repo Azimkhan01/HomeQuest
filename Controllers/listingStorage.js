@@ -6,7 +6,7 @@ const fs = require("fs");
 const listingStorage = multer.diskStorage({
   destination: function (req, file, cb) {
     let directory;
-console.log(file)
+// console.log(file)
     if (file.fieldname === "propertyImages") {
       directory = path.join(__dirname, "../public/Assets/ListingImages");
     } else if (file.fieldname === "propertyVideo") {

@@ -2,7 +2,7 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 const path = require("path");
-const helmet = require("helmet");
+// const helmet = require("helmet");
 const hbs = require("hbs");
 const colors = require("colors");
 const cors = require("cors");
@@ -13,8 +13,37 @@ const { router } = require("./Routers/SignupRoutes");
 
 const partialsPath = path.join(__dirname, "views/Partials");
 
+
 const app = express();
+
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: {
+//       directives: {
+//         defaultSrc: ["'self'"],
+//         scriptSrc: [
+//           "'self'",
+//           "https://cdnjs.cloudflare.com",         // For Font Awesome
+//           "https://unpkg.com",                     // For Leaflet scripts
+//         ],
+//         styleSrc: [
+//           "'self'",
+//           "https://cdnjs.cloudflare.com",         // For Font Awesome styles
+//           "https://unpkg.com",                     // For Leaflet styles
+//         ],
+//         imgSrc: [
+//           "'self'",
+//           "data:",
+//           "https://*.tile.openstreetmap.org",      // Allow any OpenStreetMap tile server
+//         ],
+//       },
+//     },
+//   })
+// );
+
 app.use("/public", express.static(path.join(__dirname, "public")));
+
+
 const dotenv = require("dotenv");
 dotenv.config();
 // console.log(process.env.secret,process.env.email,process.env.emailpass)
@@ -30,8 +59,6 @@ app.use("/", router);
 app.set("view engine", "hbs");
 
 hbs.registerPartials(partialsPath);
-
-app.use(helmet());
 
 const port = process.env.port || 8000;
 app.listen(port, "127.0.0.1", () => {

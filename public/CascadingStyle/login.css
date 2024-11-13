@@ -1,13 +1,12 @@
+/* Common styles for all screen sizes */
 body {
-    background-image: url("");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    transition: all 0.3 ease-in-out;
     background-image: url("../../Assets/logincover3.webp");
+    background-size: cover;
+    background-position: center;
+    font-family: "gilroy", sans-serif;
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
-    font-family: "gilroy";
 }
 
 h4 {
@@ -22,193 +21,131 @@ h4 {
 #container {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    background-image: url();
     flex-direction: row;
     flex-wrap: nowrap;
-    height: 90%;
+    min-height: 100vh;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0);
-    margin-top: 2%;
-    margin-left: 2%;
-
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 #container1 {
-    margin-top: 0%;
-    height: 100%;
-    width: 50%;
-    background-color: rgba(255, 255, 255, 0.234);
-
-}
-
-#container2 {
-    display: none;
-    /* background-image: url("../../Assets/logincover3.webp"); */
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    max-width: 500px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2% auto;
 }
 
 form {
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    gap: 50px;
-    height: 100%;
+    gap: 20px;
     width: 100%;
-    margin-top: 0%;
-    align-items: center;
-    padding-top: 10%;
 }
 
-input {
-    border: 0px solid transparent;
-    height: 8%;
-    width: 70%;
-    align-items: center;
+input[type="text"],
+input[type="password"] {
+    height: 40px;
+    width: 90%;
     padding: 10px;
-    border: 2px solid transparent;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     border-bottom: 3px solid rgb(46, 175, 231);
+    box-sizing: border-box;
 }
 
-input:hover {
+input[type="text"]:hover,
+input[type="password"]:hover {
     border-bottom: 3px solid rgb(0, 0, 0);
-    transition: all steps(10) 0.3s;
+    transition: all ease 0.3s;
 }
 
 .subbtn {
-    font-weight: 700;
-    width: 20%;
-    color: rgb(255, 255, 255);
+    height: 40px;
+    width: 50%;
+    margin: 0 auto;
+    color: #ffffff;
     background-color: #71c0dd;
+    font-weight: bold;
     text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .subbtn:hover {
-    font-weight: 700;
     color: rgb(46, 175, 231);
     background-color: white;
-    transition: all ease-in-out 0.3s;
-    border-bottom: 3px solid rgb(255, 255, 255);
+    transition: all ease 0.3s;
 }
 
 a {
+    display: inline-block;
     text-decoration: none;
     color: #ffffff;
-    border: 2px solid #3EB8E5;
     background-color: #3EB8E5;
-    padding: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
 }
 
 a:hover {
-    font-weight: 700;
+    font-weight: bold;
     background-color: #ffffff;
     color: rgb(0, 0, 0);
-    border: 2PX solid transparent;
-    transition: all ease-in-out 0.3s;
+    transition: all ease 0.3s;
 }
 
+/* Mobile view (max-width: 600px) */
 @media only screen and (max-width: 600px) {
-    #container {
-        background-color: white;
-        width: 100%;
-    }
-
-    #container2 {
-        display: none;
-    }
-
-    form {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        gap: 50px;
-        height: 100%;
-        width: 100%;
-        margin-top: 0%;
-        align-items: center;
-        padding-top: 10%;
-    }
-
-    input {
-        border: 0px solid transparent;
-        height: 3%;
-        width: 110%;
-        align-items: center;
+    #container1 {
+        max-width: 100%;
         padding: 10px;
-        border: 2px solid transparent;
-        border-radius: 5px;
-        border-bottom: 3px solid rgb(46, 175, 231);
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 95%;
+        height: 35px;
     }
 
     .subbtn {
-        font-weight: 700;
-        padding-bottom: 20px;
-        height: 5%;
-        width: 50%;
-        color: rgb(197, 197, 197);
-        background-color: #71c0dd;
-        text-align: center;
+        width: 70%;
+        height: 35px;
     }
 
     a {
-        width: 100%;
+        width: 80%;
         font-size: 12px;
-        text-align: center;
-
     }
-
 }
 
+/* Tablet view (min-width: 600px and max-width: 900px) */
 @media (min-width: 600px) and (max-width: 900px) {
-
-    /* Styles for viewport widths between 600px and 900px */
-    #container {
-        background-color: white;
-        width: 100%;
+    #container1 {
+        max-width: 80%;
+        padding: 20px;
     }
 
-    #container2 {
-        display: none;
-    }
-
-    form {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        gap: 50px;
-        height: 100%;
-        width: 100%;
-        margin-top: 0%;
-        align-items: center;
-        padding-top: 10%;
-    }
-
-    input {
-        border: 0px solid transparent;
-        height: 3%;
-        width: 110%;
-        align-items: center;
-        padding: 10px;
-        border: 2px solid transparent;
-        border-radius: 5px;
-        border-bottom: 3px solid rgb(46, 175, 231);
+    input[type="text"],
+    input[type="password"] {
+        width: 90%;
     }
 
     .subbtn {
-        font-weight: 700;
-        padding-bottom: 20px;
-        height: 5%;
-        width: 50%;
-        color: rgb(197, 197, 197);
-        background-color: #71c0dd;
-        text-align: center;
+        width: 60%;
     }
 
     a {
-        width: 100%;
-        font-size: 16px;
-        text-align: center;
+        font-size: 14px;
     }
-
 }

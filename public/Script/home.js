@@ -1,12 +1,13 @@
 //searchbox dropdown box
- // Initialize the map
- {
-  const map = L.map('map').setView([20, 77], 4.5); // Center on India by default
+// Initialize the map
+{
+  const map = L.map("map").setView([20, 77], 4.5); // Center on India by default
 
   // Add OpenStreetMap tiles
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© OpenStreetMap contributors'
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
   var geocoder = L.Control.geocoder({
@@ -28,119 +29,141 @@
 
   // Function to load markers from the API and add to the LayerGroup
   function loadMarkers() {
-      fetch(`${window.location.protocol}//${window.location.hostname}:${window.location.port}/listing`)
-          .then(response => response.json())
-          .then(data => {
-              data.forEach(listing => {
-                  const { latitude, longitude, title, price, thumbnail } = listing;
+    fetch(
+      `${window.location.protocol}//${window.location.hostname}:${window.location.port}/listing`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((listing) => {
+          const { latitude, longitude, title, price, thumbnail } = listing;
 
-                  // Check if both latitude and longitude are available
-                  if (latitude && longitude) {
-                      // Create a marker
-                      const marker = L.marker([latitude, longitude]);
-                      marker.bindPopup(`
+          // Check if both latitude and longitude are available
+          if (latitude && longitude) {
+            // Create a marker
+            const marker = L.marker([latitude, longitude]);
+            marker.bindPopup(`
                         <a style="font-size:14px" href="https://www.youtube.com/watch?v=RBCk1SyC1PA&list=RD_51KXfwcPMs&index=21" target="_blank">${title}</a><br>
                         ${price}<br><br>
                         <img style="height:50px;width:50px;border-radius:5px" alt="thumbnail" src="${thumbnail}">
                       `);
 
-                      // Add the marker to the LayerGroup
-                      markersLayerGroup.addLayer(marker);
+            // Add the marker to the LayerGroup
+            markersLayerGroup.addLayer(marker);
 
-                      // Create a circle around the marker and add it to the LayerGroup
-                      const circle = L.circle([latitude, longitude], {
-                          color: 'blue',       // Border color
-                          fillColor: 'lightblue', // Fill color
-                          fillOpacity: 0.3,    // Fill opacity
-                          radius: 500          // Radius in meters
-                      });
-                      markersLayerGroup.addLayer(circle);
-                  }
-              });
-          })
-          .catch(error => console.error('Error fetching data:', error));
+            // Create a circle around the marker and add it to the LayerGroup
+            const circle = L.circle([latitude, longitude], {
+              color: "blue", // Border color
+              fillColor: "lightblue", // Fill color
+              fillOpacity: 0.3, // Fill opacity
+              radius: 500, // Radius in meters
+            });
+            markersLayerGroup.addLayer(circle);
+          }
+        });
+      })
+      .catch((error) => console.error("Error fetching data:", error));
   }
 
   // Function to clear all markers and circles
   function clearMarkers() {
-      markersLayerGroup.clearLayers(); // Clears all markers and circles from the LayerGroup
+    markersLayerGroup.clearLayers(); // Clears all markers and circles from the LayerGroup
   }
 
   // Load markers initially
   loadMarkers();
-//search box
-{  
-  let searchTxt = document.getElementById("searchTxt");
-let property = document.getElementById("property");
-let location = document.getElementById("location");
-let markersLayerGroup = L.layerGroup().addTo(map);  // Assuming 'map' is your Leaflet map instance
+  //search box
+  {
+    let searchTxt = document.getElementById("searchTxt");
+    let property = document.getElementById("property");
+    let location = document.getElementById("location");
+    let markersLayerGroup = L.layerGroup().addTo(map); // Assuming 'map' is your Leaflet map instance
 
-let fetchData = async () => {
-    try {
-        const response = await fetch(`${window.location.protocol}//${window.location.hostname}:${window.location.port}/listing`);
+    let fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${window.location.protocol}//${window.location.hostname}:${window.location.port}/listing`
+        );
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
         return data;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-};
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-let clearMarkers = () => {
-    markersLayerGroup.clearLayers();
-};
+    let clearMarkers = () => {
+      markersLayerGroup.clearLayers();
+    };
 
-let updateMarkers = async () => {
-    if (location.value !== "" && property.value !== "" || searchTxt.value.length >= 3) {
-        searchTxt.readOnly = false; 
+    let updateMarkers = async () => {
+      if (
+        (location.value !== "" && property.value !== "") ||
+        searchTxt.value.length >= 3
+      ) {
+        searchTxt.readOnly = false;
         let data = await fetchData();
-        clearMarkers();  // Clear previous markers
+        clearMarkers(); // Clear previous markers
 
-        let filteredData = data.filter(item =>
-            item.location.toLowerCase().includes(searchTxt.value.toLowerCase()) &&
+        let filteredData = data.filter(
+          (item) =>
+            item.location
+              .toLowerCase()
+              .includes(searchTxt.value.toLowerCase()) &&
             item.state.toLowerCase().includes(location.value.toLowerCase()) &&
-            item.propertyType.toLowerCase().includes(property.value.toLowerCase())
+            item.propertyType
+              .toLowerCase()
+              .includes(property.value.toLowerCase())
         );
 
         // console.log(filteredData);
+        filteredData.forEach((item) => {
+          const { latitude, longitude, title, price, thumbnail } = item;
 
-        filteredData.forEach(item => {
-            const { latitude, longitude, title, price, thumbnail } = item;
-            
-            if (latitude && longitude) {
-                const marker = L.marker([latitude, longitude]);
-                marker.bindPopup(`
+          if (latitude && longitude) {
+            var marker = L.marker([51.5, -0.09], {
+              icon: L.divIcon({
+                className: "icon-only", // Optional class for styling if needed
+                html: '<i class="fa-solid fa-house" style="font-size: 30px; color: #00B98E;"></i>', // Only the FontAwesome icon
+                iconSize: [30, 30], // Size of the icon
+                iconAnchor: [15, 15], // Anchor the icon in the center
+                popupAnchor: [1, -34], // Adjust popup position
+              }),
+              // Set the opacity to 0 or use no icon to remove the marker's default icon.
+              opacity: 0,
+            }).addTo(map);
+
+            marker.bindPopup(`
                     <a href="https://www.youtube.com/watch?v=RBCk1SyC1PA&list=RD_51KXfwcPMs&index=21" target="_blank">${title}</a><br>
                     ${price}<br><br>
                     <img style="height:50px;width:50px;border-radius:5px" alt="thumbnail" src="${thumbnail}">
                 `);
-                
-                markersLayerGroup.addLayer(marker);
 
-                const circle = L.circle([latitude, longitude], {
-                    color: 'red',
-                    fillColor: 'lightblue',
-                    fillOpacity: 0.3,
-                    radius: 500
-                });
-                markersLayerGroup.addLayer(circle);
-            }
+            markersLayerGroup.addLayer(marker);
+
+            const circle = L.circle([latitude, longitude], {
+              color: "green",
+              fillColor: "lightgreen",
+              fillOpacity: 0.1,
+              radius: 250,
+            });
+            markersLayerGroup.addLayer(circle);
+            map.setView([latitude, longitude], 12);
+          }
         });
-    }
-};
+      }
+    };
 
-// Event listeners
-searchTxt.addEventListener("input", updateMarkers);
-location.addEventListener("change", updateMarkers);
-property.addEventListener("change", updateMarkers);
+    // Event listeners
+    searchTxt.addEventListener("input", updateMarkers);
+    location.addEventListener("change", updateMarkers);
+    property.addEventListener("change", updateMarkers);
 
-  
-  // Example: Clear all markers and circles after 5 seconds
-  // setTimeout(clearMarkers, 5000); // Clears markers after 5 seconds for demonstration
+    // Example: Clear all markers and circles after 5 seconds
+    // setTimeout(clearMarkers, 5000); // Clears markers after 5 seconds for demonstration
+  }
 }
- }
 
 //leftHOuse and rightHouse
 {
@@ -173,20 +196,20 @@ property.addEventListener("change", updateMarkers);
   });
 }
 
+{
+  let location = document.getElementById("location");
 
-  {
-    let location = document.getElementById("location");
-    
-    fetch("http://127.0.0.1:8000/getStates")
-      .then(d => d.json())
-      .then(r => {
-        r.forEach(e => {
-          let option = document.createElement("option"); // Create a new option for each state
-          option.value = e.name;
-          option.textContent = e.name;
-          location.appendChild(option); 
-        });
-      })
-      .catch(error => console.error('Error fetching states:', error));
-  }
-  
+  fetch(
+    `${window.location.protocol}//${window.location.hostname}:${window.location.port}/getStates`
+  )
+    .then((d) => d.json())
+    .then((r) => {
+      r.forEach((e) => {
+        let option = document.createElement("option"); // Create a new option for each state
+        option.value = e.name;
+        option.textContent = e.name;
+        location.appendChild(option);
+      });
+    })
+    .catch((error) => console.error("Error fetching states:", error));
+}

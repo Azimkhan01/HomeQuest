@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    
-    {{!-- {{>commonCss}} --}}
     <link rel="stylesheet" type="text/css" href="/public/CascadingStyle/login.css" />
 </head>
 <body>
     <div id="container">
         <div id="container1">
-            <span><h4 style="text-align: center;color:#3EB8E5;padding:10px;position:relative;top:100px" ><i class="fa-solid fa-house"></i> HomeQuest</h4></i></span>
+            <span><h4 style="text-align: center;color:#3EB8E5;padding:10px" ><i class="fa-solid fa-house"></i> HomeQuest</h4></i></span>
            <form action="/login" method="post">
              <input id="inp" class="inp" type="text" name="email" placeholder="Email" />
              <input id="inp2" class="inp" type="password" name="password" placeholder="Password" autocomplete="on"/>
@@ -21,13 +19,9 @@
              <p style="text-align: center;color:red">{{error}}</p>
           </form>
         </div>
-        <div id="container2">
- 
-        </div>
+
     </div>
-   
-     
-     {{!-- {{>commonJs}} --}}
+
      <script src="/public/Script/login.js"></script>
 </body>
 </html>
