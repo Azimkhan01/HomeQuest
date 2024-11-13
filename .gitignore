@@ -47,3 +47,23 @@ coverage/
 
 # Jest test results
 jest-test-results.json
+# Image files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.ico
+
+# Video files
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.flv
+*.webm
+*.ogv
+*.wmv
+*.m4v
