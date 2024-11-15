@@ -243,16 +243,33 @@ i {
 }
 
 #navigation-button p {
+  display: inline-flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   cursor: pointer;
   background-color: #00B98E;
   color: white;
-  padding: 5px 10px;
-  text-align: center;
+  padding: 8px 15px;
   border-radius: 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 
+    rgba(50, 50, 93, 0.25) 0px 20px 40px -10px, 
+    rgba(0, 0, 0, 0.3) 0px 10px 20px -10px, 
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
+#navigation-button p:hover {
+  background-color: #009970;
+  transform: translateY(-2px);
+}
+
+#navigation-button p:active {
+  background-color: #008060;
+  transform: translateY(1px);
+}
+
 
 #dynamicBtn {
   padding: 5px;

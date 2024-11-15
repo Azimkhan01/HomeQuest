@@ -75,11 +75,11 @@ document.querySelectorAll(".nav-item.dropdown").forEach(function (dropdown) {
     // console.log(r)
       if(r.imgStatus == true)
       {
-        profileImg.src = r.image
+        profileImg.src = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`+r.image
 
       }
       else{
-        profileImg.src = "http://127.0.0.1:8000/public/Assets/Default/defaultimage-removebg-preview.png"
+        profileImg.src = `${window.location.protocol}//${window.location.hostname}:${window.location.port}/public/Assets/Default/defaultimage-removebg-preview.png`;
       }
   })
 }

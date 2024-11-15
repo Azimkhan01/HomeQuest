@@ -45,9 +45,35 @@ let upload = document.getElementById("upload");
 
 let image = document.getElementById("image");
 
-image.addEventListener("click", () => {
+image.addEventListener("dblclick",() => {
   showUpload();
 });
+
+image.addEventListener("click", () => {
+  let fullScreenImage = document.getElementById('fullScreenImage');
+  fullScreenImage.classList.add("active");  // Show with transition
+
+  let fullImage = document.getElementById('fullImage');
+  fullImage.src = image.children[0].src;   // Set the src of fullImage to the clicked image's src
+
+  document.body.style.overflow = "hidden";  // Disable page scrolling
+});
+
+
+
+// Hide the fullscreen overlay when clicking outside the image
+let fullScreenImage = document.getElementById('fullScreenImage');
+fullScreenImage.addEventListener("click", (e) => {
+    fullScreenImage.classList.remove("active");  // Hide with transition
+    document.body.style.overflow = "auto";       // Re-enable page scrolling
+});
+
+// Prevent closing the overlay when clicking on the image itself
+let fullImage = document.getElementById('fullImage');
+fullImage.addEventListener("click", (e) => {
+    e.stopPropagation();  // Stop the click event from reaching #fullScreenImage
+});
+
 
 function showUpload() {
   upload.style.display = "block";

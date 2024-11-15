@@ -400,3 +400,49 @@ button:hover {
 .nav-item button{
     background-color: white;
 }
+
+#fullScreenImage {
+    padding: 20px;
+    top: 0;
+    left: 0;
+    align-self: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    
+    /* Transition and initial state for fade effect */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.3s ease;
+}
+
+/* When active, make the overlay visible with full opacity */
+#fullScreenImage.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+#fullScreenImage div img {
+    align-self: center;
+    object-fit: contain;
+    max-height: 100%;    /* Limit image height to fit within the container */
+    max-width: 100%;     /* Limit image width to fit within the container */
+    margin: auto;       /* Center the image both horizontally and vertically */
+    transition: opacity 0.2s ease; /* Optional: smooth transition on appearance */
+}
+
+
+
+
+
+

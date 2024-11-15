@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const fs = require('fs');
 let { user } = require("../Database/registerUsers");
 // const multer = require('multer')
 
@@ -49,9 +50,15 @@ const { listingApi } = require("../Controllers/listingApi.js");
 const { getLoginUser } = require("../Controllers/getLoginUser.js");
 const { list } = require("../Controllers/list.js");
 const { deleteListing } = require("../Controllers/deleteListing.js");
+
 const { stream } = require("../Controllers/stream.js");
 const { property } = require("../Controllers/property.js");
 const { filterApi } = require("../Controllers/filterApi.js");
+const { decode } = require("punycode");
+
+// const { stream } = require("../Controllers/stream.js");
+// const {apiKeyMiddleware} = require("../Controllers/identitiKey.js");
+
 // const { dir } = require("console");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -72,15 +79,31 @@ const storage = multer.diskStorage({
           {
             $set: {
               imgStatus: true,
-              image: `http://127.0.0.1:8000/public/Assets/UserImage/${filename}`,
+              image: `/public/Assets/UserImage/${filename}`,
             },
           }
         );
         let newToken = await user.findById(decoded.data["_id"], {
           password: 0,
         });
-        console.log(newToken);
-        console, log(result);
+        if(decode.imgStatus)
+        {
+         
+          function deleteFileSync(filePath) {
+            try {
+                fs.unlinkSync(filePath);
+                console.log('File deleted successfully');
+            } catch (err) {
+                console.error(`Error deleting file: ${err}`);
+            }
+        }
+
+        
+        // Usage
+        deleteFileSync(path.join(__dirname,decoded.image));
+        }
+        // console.log(newToken);
+        // console, log(result);
         const token = jwt.sign(
           { data: await user.findById },
           process.env.JWT_SECRET, // Replace with environment variable
