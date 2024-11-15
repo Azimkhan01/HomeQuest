@@ -28,6 +28,7 @@ h2 {
 }
 
 .filter-container {
+  
   display: none;
   opacity: 1;
   flex-wrap: wrap;
@@ -75,24 +76,28 @@ h2 {
 }
 
 .filter-button {
+
   width: 100%;
   text-align: center;
   margin-top: 10px;
 }
 
 .filter-button button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #00796B;
+  padding: 20px 40px;
+  font-size: 20px;
+  font-family: inter,sans-serif;
+  font-weight: 500;
+  background-color: #00a18940;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-end-end-radius: 25%;
+  /* border-top-left-radius: 25%; */
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .filter-button button:hover {
-  background-color: #005c53;
+  background-color: #008a7c;
 }
 
 .property-list {
@@ -107,6 +112,21 @@ h2 {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+option{font-family: heebo,sans-serif;
+  color: #6E6E6E;
+font-weight: 500;
+font-size: 16px;}
 
 #box {
   width: 100%;
@@ -337,3 +357,44 @@ i {
   }
 
 }
+
+#loading {
+  display: none; /* Initially hidden, will be displayed via JavaScript */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.loading {
+  width: 100%;
+  border: 5px solid #00B98E;
+  animation: shrinkAnimation 4s linear alternate 2; /* Cubic bezier easing function */
+}
+
+/* Keyframes for the loading animation */
+@keyframes shrinkAnimation {
+  0% {
+    width: 0%;
+    opacity: 1;
+  
+  }
+  50% {
+    width: 50%;
+    opacity: 1;
+   
+  }
+  51% {
+    width: 51%;
+    opacity: 1;
+   
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+   
+  }
+}
+
+
+

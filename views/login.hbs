@@ -8,20 +8,75 @@
 </head>
 <body>
     <div id="container">
+        <!-- Login Form -->
         <div id="container1">
-            <span><h4 style="text-align: center;color:#3EB8E5;padding:10px" ><i class="fa-solid fa-house"></i> HomeQuest</h4></i></span>
-           <form action="/login" method="post">
-             <input id="inp" class="inp" type="text" name="email" placeholder="Email" />
-             <input id="inp2" class="inp" type="password" name="password" placeholder="Password" autocomplete="on"/>
-             <input class="inp subbtn" type="submit" value="Log In"/>
-             {{!-- <a href="/forgetpassword" style="border-radius: 5px;" target="_blank">Forget Password</a>  --}}
-             <a href="/signup" style="border-radius: 5px;">Not Registered ? Signup Now</a>
-             <p style="text-align: center;color:red">{{error}}</p>
-          </form>
+            <h4 style="text-align: center; color: #3EB8E5; padding: 10px;">
+                <i class="fa-solid fa-house"></i> HomeQuest
+            </h4>
+            <form action="/login" method="post">
+                <input id="inp" class="inp" type="text" name="email" placeholder="Email" required />
+                <input id="inp2" class="inp" type="password" name="password" placeholder="Password" autocomplete="on" required />
+                <input class="inp subbtn" type="submit" value="Log In" />
+                <a href="/signup" style="border-radius: 5px;">Not Registered? Signup Now</a>
+                <p style="text-align: center; color: red;">{{error}}</p>
+            </form>
+            <button onclick="handleForgetPassword()">Forget Password?</button>
         </div>
+
+        <!-- OTP Verification Form -->
+        <div id="container2" style="display: none;">
+            <h4 style="text-align: center; color: #3EB8E5; padding: 10px;">
+                <i class="fa-solid fa-house"></i> HomeQuest
+            </h4>
+            <form id="otpHandleForm">
+                <input id="inp3" class="inp" type="text" name="verifyEmail" placeholder="Email" required />
+                <input id="handleSendOtp" class="inp subbtn" type="button" value="Send OTP" />
+                <a href="/signup" style="border-radius: 5px;">Not Registered? Signup Now</a>
+                <p style="text-align: center; color: red;">{{error}}</p>
+            </form>
+            <button onclick="handleBackToLogin()">Back To Login</button>
+        </div>
+
+        <!-- OTP Form After Sending OTP -->
+        <div id="container3" style="display: none;">
+            <h4 style="text-align: center; color: #3EB8E5; padding: 10px;">
+                <i class="fa-solid fa-house"></i> HomeQuest
+            </h4>
+            <form id="otpVerificationForm">
+                <input id="inp4" class="inp" type="text" name="verifyEmailOtp" placeholder="Email" readonly />
+                <input id="inp5" class="inp" type="text" name="otp" placeholder="OTP" required />
+                <P id="timer"></P>
+                <input class="inp subbtn" type="button" id="verifyOtp" value="Verify OTP" />
+                <a href="/signup" style="border-radius: 5px;">Not Registered? Signup Now</a>
+                <p style="text-align: center; color: red;">{{error}}</p>
+            </form>
+            <button onclick="handleChangeMail()">Change the Mail</button>
+        </div>
+
+
+<!-- Password Reset Form (Container 4) -->
+<div id="container4" style="display: none;">
+    <h4 style="text-align: center; color: #3EB8E5; padding: 10px;">
+        <i class="fa-solid fa-house"></i> HomeQuest
+    </h4>
+    <form id="resetPasswordForm">
+        <input id="inp6" class="inp" type="text" name="verifyEmailReset" placeholder="Email" readonly />
+        <input id="newPassword" class="inp" type="password" name="newPassword" placeholder="New Password" required />
+        <input id="confirmPassword" class="inp" type="password" name="confirmPassword" placeholder="Confirm Password" required />
+        <input class="inp subbtn" type="button" id="resetPasswordBtn" value="Reset Password" />
+        <div>
+            <label for="showpassword">Show Password</label>
+        <input type="checkbox" onclick="handleShowPassword()" id="showPass">
+        </div>
+        <p style="text-align: center; color: red;" id="resetErrorMessage"></p>
+    </form>
+</div>
+
 
     </div>
 
-     <script src="/public/Script/login.js"></script>
+    <div id="loading-spinner" class="spinner" style="display: none;"></div>
+
+    <script src="/public/Script/login.js"></script>
 </body>
 </html>

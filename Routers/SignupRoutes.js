@@ -54,7 +54,8 @@ const { deleteListing } = require("../Controllers/deleteListing.js");
 const { stream } = require("../Controllers/stream.js");
 const { property } = require("../Controllers/property.js");
 const { filterApi } = require("../Controllers/filterApi.js");
-const { decode } = require("punycode");
+const { sendOtp, verifyOtp, resetPassword } = require("../Controllers/sendOtp.js");
+// const { decode } = require("punycode");
 
 // const { stream } = require("../Controllers/stream.js");
 // const {apiKeyMiddleware} = require("../Controllers/identitiKey.js");
@@ -141,13 +142,16 @@ router
   .post(uploadToListing, handleUploadImageListing);
 router.route("/list").get(list);
 router.route("/property/:id").get(property)
+router.route("/sendOtp").post(sendOtp)
 //apis
 router.route("/delete-listing/:id").get(deleteListing)
 router.route("/getStates").get(states);
 router.route("/listing/:id?").get(listingApi);
 router.route("/getLoginUser").get(getLoginUser);
 router.route("/stream/:id").get(stream)
-router.route("/filterApi/:skip?/:propertyType?/:propertyListing?/:maxArea?/:minArea?/:maxPrice?/:minPrice?/:state?/:location?").get(filterApi)
+router.route("/filterApi").get(filterApi)
+router.route("/verifyOtp").post(verifyOtp)
+router.route("/resetPassword").post(resetPassword)
 //error
 router.route("*").get(error);
 

@@ -1,4 +1,4 @@
-/* Common styles for all screen sizes */
+/* General body styles */
 body {
     background-image: url("../../Assets/logincover3.webp");
     background-size: cover;
@@ -9,6 +9,8 @@ body {
     overflow-x: hidden;
 }
 
+
+
 h4 {
     font-size: 30px;
 }
@@ -18,6 +20,7 @@ h4 {
     color: black;
 }
 
+/* Main container styles */
 #container {
     display: flex;
     justify-content: center;
@@ -28,7 +31,8 @@ h4 {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-#container1 {
+/* Login container */
+#container1,#container3,#container4 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,6 +47,23 @@ h4 {
     margin: 2% auto;
 }
 
+/* OTP container (hidden by default) */
+#container2 {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    max-width: 500px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2% auto;
+}
+
+/* Form styles */
 form {
     display: flex;
     flex-direction: column;
@@ -50,8 +71,9 @@ form {
     width: 100%;
 }
 
-input[type="text"],
-input[type="password"] {
+input[type="email"],input[type="text"],
+input[type="password"],
+input[type="number"] {
     height: 40px;
     width: 90%;
     padding: 10px;
@@ -62,12 +84,14 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
-input[type="text"]:hover,
-input[type="password"]:hover {
+input[type="email"]:hover,input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="number"]:hover {
     border-bottom: 3px solid rgb(0, 0, 0);
     transition: all ease 0.3s;
 }
 
+/* Submit button styles */
 .subbtn {
     height: 40px;
     width: 50%;
@@ -87,6 +111,36 @@ input[type="password"]:hover {
     transition: all ease 0.3s;
 }
 
+/* General button styles */
+button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-family: "gilroy", sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #3EB8E5;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #3EB8E5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #2a9fc3;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+/* Anchor (link) styles */
 a {
     display: inline-block;
     text-decoration: none;
@@ -105,20 +159,25 @@ a:hover {
     transition: all ease 0.3s;
 }
 
+/* Responsive styles */
+
 /* Mobile view (max-width: 600px) */
 @media only screen and (max-width: 600px) {
-    #container1 {
+    #container1,
+    #container2,#container3,#container4 {
         max-width: 100%;
         padding: 10px;
     }
 
-    input[type="text"],
-    input[type="password"] {
+    input[type="email"],input[type="text"],
+    input[type="password"],
+    input[type="number"] {
         width: 95%;
         height: 35px;
     }
 
-    .subbtn {
+    .subbtn,
+    button {
         width: 70%;
         height: 35px;
     }
@@ -131,21 +190,48 @@ a:hover {
 
 /* Tablet view (min-width: 600px and max-width: 900px) */
 @media (min-width: 600px) and (max-width: 900px) {
-    #container1 {
+    #container1,
+    #container2,#container3,#container4 {
         max-width: 80%;
         padding: 20px;
     }
 
-    input[type="text"],
-    input[type="password"] {
+    input[type="email"],input[type="text"],
+    input[type="password"],
+    input[type="number"] {
         width: 90%;
     }
 
-    .subbtn {
+    .subbtn,
+    button {
         width: 60%;
     }
 
     a {
         font-size: 14px;
+    }
+}
+/* Loading Spinner Styles */
+.spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #3EB8E5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1000;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
