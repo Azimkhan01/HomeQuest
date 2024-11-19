@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const fs = require('fs');
+const fs = require("fs");
 let { user } = require("../Database/registerUsers");
 // const multer = require('multer')
 
@@ -54,7 +54,19 @@ const { deleteListing } = require("../Controllers/deleteListing.js");
 const { stream } = require("../Controllers/stream.js");
 const { property } = require("../Controllers/property.js");
 const { filterApi } = require("../Controllers/filterApi.js");
-const { sendOtp, verifyOtp, resetPassword } = require("../Controllers/sendOtp.js");
+const {
+  sendOtp,
+  verifyOtp,
+  resetPassword,
+} = require("../Controllers/sendOtp.js");
+const { agent } = require("../Controllers/agent.js");
+const { admin } = require("../Controllers/admin.js");
+const { getAgent } = require("../Controllers/getAgent.js");
+const { agentStorage, handleAdmin } = require("../Controllers/handleAdmin.js");
+const { agentListing } = require("../Controllers/agentListing.js");
+const { filterAgent } = require("../Controllers/filterAgent.js");
+const {handleAppointment} = require("../Controllers/handleAppointment.js");
+const { agentDashboard } = require("../Controllers/agentDashboard.js");
 // const { decode } = require("punycode");
 
 // const { stream } = require("../Controllers/stream.js");
@@ -87,21 +99,18 @@ const storage = multer.diskStorage({
         let newToken = await user.findById(decoded.data["_id"], {
           password: 0,
         });
-        if(decode.imgStatus)
-        {
-         
+        if (decode.imgStatus) {
           function deleteFileSync(filePath) {
             try {
-                fs.unlinkSync(filePath);
-                console.log('File deleted successfully');
+              fs.unlinkSync(filePath);
+              console.log("File deleted successfully");
             } catch (err) {
-                console.error(`Error deleting file: ${err}`);
+              console.error(`Error deleting file: ${err}`);
             }
-        }
+          }
 
-        
-        // Usage
-        deleteFileSync(path.join(__dirname,decoded.image));
+          // Usage
+          deleteFileSync(path.join(__dirname, decoded.image));
         }
         // console.log(newToken);
         // console, log(result);
@@ -119,8 +128,9 @@ const upload = multer({ storage: storage });
 const uploadToListing = multer({ storage: listingStorage }).fields([
   { name: "thumbnail", maxCount: 1 }, // One file for thumbnail
   { name: "propertyImages", maxCount: 10 }, // Up to 10 files for property images
-  { name: "propertyVideo", maxCount: 1 } // One file for property video
+  { name: "propertyVideo", maxCount: 1 }, // One file for property video
 ]);
+const uploadAgent = multer({ storage: agentStorage });
 //image
 
 router.route(["/signup"]).get(signup);
@@ -141,17 +151,25 @@ router
   .route("/upload-property")
   .post(uploadToListing, handleUploadImageListing);
 router.route("/list").get(list);
-router.route("/property/:id").get(property)
-router.route("/sendOtp").post(sendOtp)
+router.route("/property/:id").get(property);
+router.route("/agent").get(agent);
+router.route("/admin").get(admin);
+router.route("/getAgent").get(getAgent);
+router.route("/Dashboard").get(agentDashboard)
 //apis
-router.route("/delete-listing/:id").get(deleteListing)
+router.route("/delete-listing/:id").get(deleteListing);
 router.route("/getStates").get(states);
 router.route("/listing/:id?").get(listingApi);
 router.route("/getLoginUser").get(getLoginUser);
-router.route("/stream/:id").get(stream)
-router.route("/filterApi").get(filterApi)
-router.route("/verifyOtp").post(verifyOtp)
-router.route("/resetPassword").post(resetPassword)
+router.route("/stream/:id").get(stream);
+router.route("/filterApi").get(filterApi);
+router.route("/verifyOtp").post(verifyOtp);
+router.route("/resetPassword").post(resetPassword);
+router.route("/sendOtp").post(sendOtp);
+router.post("/handleAdmin", uploadAgent.single("photo"), handleAdmin);
+router.route("/agentList/:id?").get(agentListing)
+router.route("/filterAgent").get(filterAgent);
+router.route("/handleAppointment").post(handleAppointment)
 //error
 router.route("*").get(error);
 

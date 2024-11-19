@@ -62,7 +62,9 @@ const video = req.files.propertyVideo[0].filename
           thumbnail,
           thumbnailStatus: Boolean(thumbnail),
           AllImages: allImages,
-          video:video
+          video:video,
+          authrorize:"local",
+          view:0
         });
 
         // Find the user and update the listing array with the new listing ID

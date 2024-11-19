@@ -1,0 +1,715 @@
+body {
+    background-color: #f9f9f9;
+}
+
+
+li,p{
+    font-family: heebo,sans-serif;
+    font-size: 16px;
+ 
+}
+
+h2{
+    font-family: heebo,sans-serif;
+   
+}
+
+
+
+#container1 {
+    margin-top: 12%;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.agent-card {
+ 
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 10px;
+    background: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.agent-info-ul-appointment{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sendAppointmentBtn{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.Agent-title{
+
+    background: #00B98E;
+background: linear-gradient(to left, #00B98E 0%, #0E2E50 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+    
+}
+
+/* From Uiverse.io by Creatlydev */ 
+.button {
+    text-decoration: none;
+    line-height: 1;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 10px 10px 20px rgba(0,0,0,.05);
+    background-color: #fff;
+    color: #121212;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .button-decor {
+    position: absolute;
+    inset: 0;
+    background-color: var(--clr);
+    transform: translateX(-100%);
+    transition: transform .3s;
+    z-index: 0;
+  }
+  
+  .button-content {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .button__icon {
+    width: 48px;
+    height: 40px;
+    background-color: var(--clr);
+    display: grid;
+    place-items: center;
+  }
+  
+  .button__text {
+    display: inline-block;
+    transition: color .2s;
+    padding: 2px 1.5rem 2px;
+    padding-left: .75rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 150px;
+  }
+  
+  .button:hover .button__text {
+    color: #fff;
+  }
+  
+  .button:hover .button-decor {
+    transform: translate(0);
+  }
+/*agent more info css for linkedin whatsapp and many more sharing media   */
+/* From Uiverse.io by wilsondesouza */ 
+ul {
+    list-style: none;
+  }
+  
+  .example-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .example-2 .icon-content {
+    margin: 0 10px;
+    position: relative;
+  }
+  .example-2 .icon-content .tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .example-2 .icon-content:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: -50px;
+  }
+  .example-2 .icon-content a {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #4d4d4d;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  .example-2 .icon-content a:hover {
+    box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+  }
+  .example-2 .icon-content a svg {
+    position: relative;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+  }
+  .example-2 .icon-content a:hover {
+    color: white;
+  }
+  .example-2 .icon-content a .filled {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #000;
+    transition: all 0.3s ease-in-out;
+  }
+  .example-2 .icon-content a:hover .filled {
+    height: 100%;
+  }
+  
+  .example-2 .icon-content a[data-social="linkedin"] .filled,
+  .example-2 .icon-content a[data-social="linkedin"] ~ .tooltip {
+    background-color: #0274b3;
+  }
+  
+  .example-2 .icon-content a[data-social="github"] .filled,
+  .example-2 .icon-content a[data-social="github"] ~ .tooltip {
+    background-color: #24262a;
+  }
+  .example-2 .icon-content a[data-social="instagram"] .filled,
+  .example-2 .icon-content a[data-social="instagram"] ~ .tooltip {
+    background: linear-gradient(
+      45deg,
+      #405de6,
+      #5b51db,
+      #b33ab4,
+      #c135b4,
+      #e1306c,
+      #fd1f1f
+    );
+  }
+  .example-2 .icon-content a[data-social="youtube"] .filled,
+  .example-2 .icon-content a[data-social="youtube"] ~ .tooltip {
+    background-color: #ff0000;
+  }
+  .example-2 .icon-content a[data-social="whatsapp"] .filled,
+.example-2 .icon-content a[data-social="whatsapp"] ~ .tooltip {
+    background-color: #28B213; /* WhatsApp Green */
+}
+
+
+/*  */
+.agent-info {
+    /* overflow-y: scroll; */
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+}
+
+.agent-info h2 {
+    margin: 0 0 10px;
+    color: #0E2E50;
+    font-size: 30px;
+}
+
+.agent-info p {
+    color: #00B98E;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.agent-info ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.agent-info ul li {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.agent-img {
+    height: 100%;
+    overflow: hidden;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.main-img img {
+    height: 100%;
+    width: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.main-img img:hover {
+    transform: scale(1.05);
+    filter: blur(4px); /* Add blur effect */
+}
+
+.more-info {
+    transform: translateX(-50%);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    color: black;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.agent-img:hover .more-info {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.agent-img:hover .main-img img {
+    filter: blur(1.5px); /* Ensure the blur effect applies on hover */
+}
+
+.popular-listing {
+    height: 30%;
+    overflow: hidden;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.popular-listing:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.popular-listing h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.popular-listing a {
+ /* Start from normal position */
+    animation: moveDown 5s linear infinite alternate-reverse;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+@keyframes moveDown {
+    0% {
+        transform: translateY(150%); /* Start at the normal position */
+    }
+    100% {
+        transform: translateY(-300%); /* Move completely out of the container */
+    }
+}
+
+
+.popular-listing a:hover {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+}
+
+.popular-listing-img {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    position: relative;
+}
+
+.popular-listing-img img {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.popular-listing-img:hover img {
+    transform: scale(1.1);
+}
+
+.popular-listing-info p {
+    color: #555;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.popular-listing-info p i {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+.popular-listing-info p:hover {
+    color: #007bff;
+}
+
+.popular-listing a:active {
+    transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+    .popular-listing {
+        padding: 15px;
+    }
+    .popular-listing a {
+        flex-direction: column;
+        align-items: center;
+    }
+    .popular-listing-img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .agent-card{
+        flex-direction: column-reverse;
+    }
+    .agent-info{
+        width: 100%;
+    }
+    .agent-img{
+        width: 100%;
+    }
+    .popular-listing{
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+    }
+    @keyframes moveDown {
+        0% {
+            transform: translateX(150%); /* Start at the normal position */
+        }
+        100% {
+            transform: translateX(-300%); /* Move completely out of the container */
+        }
+    }
+}
+
+/* laoder */
+
+/* From Uiverse.io by scissorsdog */ 
+.loader{
+    z-index: 1500;
+    background-color: rgba(255, 255, 255, 0.544);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.loader__balls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+  .loader__balls__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    height: 100px;
+    width: 40px;
+  }
+  .ball {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    position: absolute;
+    transform-origin: bottom;
+  }
+  
+  /* ANIMATION BALL 1*/
+  .loader__balls__group :nth-child(1) {
+    background-color: #99e2d0;
+    animation-name: jumpinBallAnimation1;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+  }
+  @keyframes jumpinBallAnimation1 {
+    0% {
+      transform: translateY(0) scale(1, 1);
+    }
+    10% {
+      transform: translateY(0) scale(1.3, 0.8);
+    }
+    11% {
+      transform: translateY(0) scale(0.7, 1.2);
+      animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+    }
+    39% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+    }
+    40% {
+      transform: translateY(-75px) scale(1);
+    }
+    41% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 0);
+    }
+    69% {
+      transform: translateY(0px) scale(1, 1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 0);
+    }
+    70% {
+      transform: translateY(0) scale(1.5, 0.4);
+    }
+    80% {
+      transform: translateY(0) scale(0.8, 1.2);
+    }
+    90% {
+      transform: translateY(0) scale(1.1, 0.8);
+    }
+    100% {
+      transform: translateY(0) scale(1, 1);
+    }
+  }
+  
+  /* ANIMATION BALL 2*/
+  .loader__balls__group :nth-child(2) {
+    background-color: #12e0ad;
+    animation-name: jumpinBallAnimation2;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+  }
+  @keyframes jumpinBallAnimation2 {
+    0% {
+      transform: translateY(0) scale(1, 1);
+    }
+    10% {
+      transform: translateY(0) scale(1.3, 0.8);
+    }
+    11% {
+      transform: translateY(0) scale(0.7, 1.2);
+      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    39% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    40% {
+      transform: translateY(-75px) scale(1);
+    }
+    41% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 0.5);
+    }
+    69% {
+      transform: translateY(0px) scale(1, 1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 0.5);
+    }
+    70% {
+      transform: translateY(0) scale(1.5, 0.4);
+    }
+    80% {
+      transform: translateY(0) scale(0.8, 1.2);
+    }
+    90% {
+      transform: translateY(0) scale(1.1, 0.8);
+    }
+    100% {
+      transform: translateY(0) scale(1, 1);
+    }
+  }
+  
+  /* ANIMATION BALL 3*/
+  .loader__balls__group :nth-child(3) {
+    background-color: #16c197;
+    animation-name: jumpinBallAnimation3;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+  }
+  @keyframes jumpinBallAnimation3 {
+    0% {
+      transform: translateY(0) scale(1, 1);
+    }
+    10% {
+      transform: translateY(0) scale(1.3, 0.8);
+    }
+    11% {
+      transform: translateY(0) scale(0.7, 1.2);
+      animation-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    }
+    39% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    }
+    40% {
+      transform: translateY(-75px) scale(1);
+    }
+    41% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 1);
+    }
+    69% {
+      transform: translateY(0px) scale(1, 1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 1);
+    }
+    70% {
+      transform: translateY(0) scale(1.5, 0.4);
+    }
+    80% {
+      transform: translateY(0) scale(0.8, 1.2);
+    }
+    90% {
+      transform: translateY(0) scale(1.1, 0.8);
+    }
+    100% {
+      transform: translateY(0) scale(1, 1);
+    }
+  }
+  .loader__balls__group .item1 {
+    animation-delay: 0ms;
+  }
+  .loader__balls__group .item2 {
+    animation-delay: 100ms;
+  }
+  .loader__balls__group .item3 {
+    animation-delay: 200ms;
+  }
+  
+
+/* loader */
+/* alert message */
+
+
+
+/* From Uiverse.io by akshat-patel28 */ 
+.alert{
+    z-index: 1501;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.card {
+    width: 330px;
+    height: 80px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 15px;
+    transition: all 0.2s ease-in-out;
+  }
+  .wave {
+    position: absolute;
+    transform: rotate(90deg);
+    left: -31px;
+    top: 32px;
+    width: 80px;
+    fill: #04e4003a;
+  }
+  .icon-container {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #04e40048;
+    border-radius: 50%;
+    margin-left: 8px;
+  }
+  .icon {
+    width: 17px;
+    height: 17px;
+    color: #269b24;
+  }
+  .message-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 1;
+  }
+  .message-text,
+  .sub-text {
+    margin: 0;
+    cursor: default;
+  }
+  .message-text {
+    color: #269b24;
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .sub-text {
+    font-size: 14px;
+    color: #555;
+  }
+  .cross-icon {
+    width: 18px;
+    height: 18px;
+    color: #555;
+    cursor: pointer;
+  }
+  
+
+
+
+
+
+
+/* alert messagew end */

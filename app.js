@@ -67,3 +67,10 @@ app.listen(port, "127.0.0.1", () => {
       colors.bgGreen.underline.bold(`127.0.0.1:${port}`)
   );
 });
+
+app.listen(9000, "127.0.0.1", () => {
+  console.log(
+    colors.bgRed(`Server is Running ar port : `) +
+      colors.bgGreen.underline.bold(`127.0.0.1:${port}`)
+  );
+});

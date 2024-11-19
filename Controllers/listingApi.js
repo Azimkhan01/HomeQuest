@@ -1,4 +1,4 @@
-const express = require("express");
+
 const { listing } = require("../Database/registerUsers");
 
 const listingApi = async (req, res) => {
