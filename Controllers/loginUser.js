@@ -56,37 +56,37 @@ const loginUser = async (req, res) => {
           if (result.password == password) {
             res.redirect("/admin");
           }
-        }
-      } else {
-        if (result) {
-          const isPasswordValid = await bcrypt.compare(
-            password,
-            result.password
-          );
-
-          if (isPasswordValid) {
-            const token = jwt.sign(
-              { data: result },
-              process.env.JWT_SECRET, // Replace with environment variable
-              { expiresIn: "1d" }
+        } else {
+          if (result) {
+            const isPasswordValid = await bcrypt.compare(
+              password,
+              result.password
             );
 
-            res.cookie("token", token);
+            if (isPasswordValid) {
+              const token = jwt.sign(
+                { data: result },
+                process.env.JWT_SECRET, // Replace with environment variable
+                { expiresIn: "1d" }
+              );
 
-            if (!req.cookies.token) {
-              await mail(result.email, result.username);
+              res.cookie("token", token);
+
+              if (!req.cookies.token) {
+                await mail(result.email, result.username);
+              }
+              // console.log(res)
+              return res.redirect("home");
+            } else {
+              return res.render("login", {
+                error: "Incorrect email or password",
+              });
             }
-            // console.log(res)
-            return res.redirect("home");
           } else {
             return res.render("login", {
-              error: "Incorrect email or password",
+              error: "User not found, please try again later",
             });
           }
-        } else {
-          return res.render("login", {
-            error: "User not found, please try again later",
-          });
         }
       }
     }

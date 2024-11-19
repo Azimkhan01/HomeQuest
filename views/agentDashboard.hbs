@@ -16,7 +16,50 @@
     </head>
     <body>
 
-        {{>navbar}}
+        {{>navDash}}
+         <div class="appointment-container">
+    <h1>Manage Appointment</h1>
+    
+    <form id="appointment-form">
+      <!-- Appointment Details -->
+      <div class="form-group">
+        <label for="appointment-date">Select Date:</label>
+        <input type="date" id="appointment-date" name="appointment-date" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="appointment-time">Select Time:</label>
+        <input type="time" id="appointment-time" name="appointment-time" required>
+      </div>
+
+      <!-- Appointment Mode -->
+      <div class="form-group">
+        <label>Appointment Mode:</label>
+        <div class="radio-group">
+          <label>
+            <input type="radio" name="mode" value="call" required>
+            Over Call
+          </label>
+          <label>
+            <input type="radio" name="mode" value="office" required>
+            At Office
+          </label>
+        </div>
+      </div>
+
+      <!-- Appointment Status -->
+      <div class="form-group">
+        <label>Action:</label>
+        <div class="button-group">
+          <button type="button" class="accept-btn">Accept</button>
+          <button type="button" class="reject-btn">Reject</button>
+        </div>
+      </div>
+    </form>
+  </div>
+        <div class="analysis">
+
+        </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js" ></script>
