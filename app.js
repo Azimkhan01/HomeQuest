@@ -13,7 +13,6 @@ const { router } = require("./Routers/SignupRoutes");
 
 const partialsPath = path.join(__dirname, "views/Partials");
 
-
 const app = express();
 
 // app.use(
@@ -43,7 +42,6 @@ const app = express();
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
-
 const dotenv = require("dotenv");
 dotenv.config();
 // console.log(process.env.secret,process.env.email,process.env.emailpass)
@@ -60,7 +58,7 @@ app.set("view engine", "hbs");
 
 hbs.registerPartials(partialsPath);
 
-const port = process.env.port || 8000;
+const port = process.env.port || 9000;
 app.listen(port, "127.0.0.1", () => {
   console.log(
     colors.bgRed(`Server is Running ar port : `) +
@@ -68,7 +66,7 @@ app.listen(port, "127.0.0.1", () => {
   );
 });
 
-app.listen(9000, "127.0.0.1", () => {
+app.listen(3000, "127.0.0.1", () => {
   console.log(
     colors.bgRed(`Server is Running ar port : `) +
       colors.bgGreen.underline.bold(`127.0.0.1:${port}`)

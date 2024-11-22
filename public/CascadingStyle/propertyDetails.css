@@ -1,0 +1,151 @@
+/* Main Container */
+.overview-container {
+    margin-top: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+/* Image Section */
+.overview-images {
+    flex: 1 1 40%;
+    max-width: 40%;
+}
+
+.overview-images .main-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Description Section */
+.main-image-description {
+    width: 50%;
+    /* flex: 1 1 55%; */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Individual Elements */
+.image-owner i {
+    font-size: 16px;
+    color: #666;
+}
+
+.image-title h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+}
+
+.image-location p,
+.image-price p,
+.image-listingType p,
+.propertyType p {
+    margin: 0;
+    font-size: 18px;
+    color: #555;
+}
+
+.image-price p {
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* Area, Bedrooms, and Bathrooms */
+.iamge-abb {
+    display: flex;
+    gap: 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+.views-like,.view,.like{
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+    color: #666;
+}
+
+.view,.like{
+gap: 5px;
+cursor: pointer;
+}
+
+.like:hover{
+    color: #00B98E;
+}
+
+.left-right-button{
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    color: #666666f7;
+    text-align: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.iamge-abb div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.image-navigation {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.image-navigation img {
+    /* flex: 1; */
+    padding: 1vh 2vh;
+    object-fit: contain;
+    height: 200px;
+    width: 200px;
+    display: flex;
+}
+
+.image-blur {
+    opacity: 0.5;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .overview-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .overview-images,
+    .main-image-description {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .iamge-abb {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .iamge-abb div {
+        width: 80px;
+    }
+}

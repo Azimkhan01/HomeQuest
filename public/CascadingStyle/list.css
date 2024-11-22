@@ -28,7 +28,7 @@ h2 {
 }
 
 .filter-container {
-  
+
   display: none;
   opacity: 1;
   flex-wrap: wrap;
@@ -85,7 +85,7 @@ h2 {
 .filter-button button {
   padding: 20px 40px;
   font-size: 20px;
-  font-family: inter,sans-serif;
+  font-family: inter, sans-serif;
   font-weight: 500;
   background-color: #00a18940;
   color: white;
@@ -115,18 +115,20 @@ h2 {
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
-option{font-family: heebo,sans-serif;
+option {
+  font-family: heebo, sans-serif;
   color: #6E6E6E;
-font-weight: 500;
-font-size: 16px;}
+  font-weight: 500;
+  font-size: 16px;
+}
 
 #box {
   width: 100%;
@@ -143,7 +145,6 @@ font-size: 16px;}
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* gap: 5px; */
   justify-content: space-between;
 
   /* padding: 10px;  */
@@ -151,7 +152,7 @@ font-size: 16px;}
 }
 
 .card {
-  padding:10px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.148) 0px 5px 15px;
   width: 49.5%;
@@ -188,9 +189,10 @@ font-size: 16px;}
 
 
 .property-image {
- position: relative;
+  position: relative;
   background-position: center;
-  height: 300px; /* Set height as needed */
+  height: 300px;
+  /* Set height as needed */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -198,15 +200,17 @@ font-size: 16px;}
   overflow: hidden;
 }
 
-.background-blur{
+.background-blur {
   position: absolute;
   top: 0;
   /* left: 0; */
   width: 75%;
   height: 100%;
   background-size: cover;
-  filter: blur(10px); /* Controls the blur effect */
-  transform: scale(1.2); /* Scales up the blurred background to fill the area */
+  filter: blur(10px);
+  /* Controls the blur effect */
+  transform: scale(1.2);
+  /* Scales up the blurred background to fill the area */
   z-index: 1;
 }
 
@@ -221,7 +225,8 @@ font-size: 16px;}
 .property-image img:hover {
   object-fit: contain;
   transition: all 0.3s ease-in-out;
-  transform: scale(1.1); /* Slightly zoom in the image */
+  transform: scale(1.1);
+  /* Slightly zoom in the image */
 }
 
 
@@ -259,7 +264,6 @@ i {
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 255, 255);
-
 }
 
 #navigation-button p {
@@ -273,9 +277,9 @@ i {
   border-radius: 5px;
   font-size: 16px;
   font-weight: 500;
-  box-shadow: 
-    rgba(50, 50, 93, 0.25) 0px 20px 40px -10px, 
-    rgba(0, 0, 0, 0.3) 0px 10px 20px -10px, 
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 20px 40px -10px,
+    rgba(0, 0, 0, 0.3) 0px 10px 20px -10px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -313,9 +317,10 @@ i {
 }
 
 /* Responsive Styles */
+
 @media (max-width: 768px) {
 
-  #filter{
+  #filter {
     margin-top: 22%;
     width: 100%;
     padding: 5px;
@@ -326,11 +331,11 @@ i {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-  
+    gap: 20px;
     /* padding: 10px;  */
     width: 100%;
   }
-  
+
   .card {
     width: 100%;
   }
@@ -350,16 +355,26 @@ i {
     margin-bottom: 10px;
   }
 
-  #property-box
-  {
+  #property-box {
     flex-direction: column;
     width: 100%;
+  }
+
+  #dynamicBtn {
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  #dynamicBtn::-webkit-scrollbar {
+    display: none;
   }
 
 }
 
 #loading {
-  display: none; /* Initially hidden, will be displayed via JavaScript */
+  display: none;
+  /* Initially hidden, will be displayed via JavaScript */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -369,7 +384,8 @@ i {
 .loading {
   width: 100%;
   border: 5px solid #00B98E;
-  animation: shrinkAnimation 4s linear alternate 2; /* Cubic bezier easing function */
+  animation: shrinkAnimation 4s linear alternate 2;
+  /* Cubic bezier easing function */
 }
 
 /* Keyframes for the loading animation */
@@ -377,22 +393,25 @@ i {
   0% {
     width: 0%;
     opacity: 1;
-  
+
   }
+
   50% {
     width: 50%;
     opacity: 1;
-   
+
   }
+
   51% {
     width: 51%;
     opacity: 1;
-   
+
   }
+
   100% {
     width: 100%;
     opacity: 1;
-   
+
   }
 }
 
@@ -422,8 +441,11 @@ i {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
-
-

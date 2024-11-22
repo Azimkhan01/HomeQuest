@@ -67,6 +67,9 @@ const { agentListing } = require("../Controllers/agentListing.js");
 const { filterAgent } = require("../Controllers/filterAgent.js");
 const {handleAppointment} = require("../Controllers/handleAppointment.js");
 const { agentDashboard } = require("../Controllers/agentDashboard.js");
+const { getAppointment } = require("../Controllers/getAppointments.js");
+const { acceptOrReject } = require("../Controllers/acceptOrReject.js");
+const { propertyDetails } = require("../Controllers/propertyDetails.js");
 // const { decode } = require("punycode");
 
 // const { stream } = require("../Controllers/stream.js");
@@ -156,6 +159,9 @@ router.route("/agent").get(agent);
 router.route("/admin").get(admin);
 router.route("/getAgent").get(getAgent);
 router.route("/Dashboard").get(agentDashboard)
+router.route("/getAppointments").get(getAppointment)
+router.route("/acceptOrReject").post(acceptOrReject)
+router.route("/property-details").get(propertyDetails)
 //apis
 router.route("/delete-listing/:id").get(deleteListing);
 router.route("/getStates").get(states);
@@ -170,6 +176,7 @@ router.post("/handleAdmin", uploadAgent.single("photo"), handleAdmin);
 router.route("/agentList/:id?").get(agentListing)
 router.route("/filterAgent").get(filterAgent);
 router.route("/handleAppointment").post(handleAppointment)
+router.route("/getAppointments").get(getAppointment)
 //error
 router.route("*").get(error);
 

@@ -2,25 +2,27 @@
 let timeLeft = 150;
 
 // Get the timer element by its ID
-let timerElement = document.getElementById('timer');
+let timerElement = document.getElementById("timer");
 
 // Function to update the timer
 function updateTimer() {
-    // Calculate minutes and seconds
-    let minutes = Math.floor(timeLeft / 60);
-    let seconds = timeLeft % 60;
+  // Calculate minutes and seconds
+  let minutes = Math.floor(timeLeft / 60);
+  let seconds = timeLeft % 60;
 
-    // Format the time as MM:SS (e.g., "02:30")
-    timerElement.textContent = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+  // Format the time as MM:SS (e.g., "02:30")
+  timerElement.textContent = `${minutes < 10 ? "0" + minutes : minutes}:${
+    seconds < 10 ? "0" + seconds : seconds
+  }`;
 
-    // Decrease time left by 1 second
-    timeLeft--;
+  // Decrease time left by 1 second
+  timeLeft--;
 
-    // Stop the timer when time is up
-    if (timeLeft < 0) {
-        clearInterval(timerInterval); // Clear the interval when timer reaches 0
-        timerElement.textContent = "OTP Expired go back and generate another OTP";
-    }
+  // Stop the timer when time is up
+  if (timeLeft < 0) {
+    clearInterval(timerInterval); // Clear the interval when timer reaches 0
+    timerElement.textContent = "OTP Expired go back and generate another OTP";
+  }
 }
 
 // Update the timer every second (1000ms)
@@ -99,7 +101,7 @@ handleSendOtp.addEventListener("click", async () => {
     // Ensure the response is OK before parsing it
     if (response.ok) {
       const result = await response.json(); // Parse the JSON response
-      console.log(result); // Debugging line
+      // console.log(result); // Debugging line
 
       // Check if OTP was sent successfully
       if (result.status === "ok") {
@@ -117,6 +119,7 @@ handleSendOtp.addEventListener("click", async () => {
       console.error("Error sending OTP:", error);
       alert(error.message || "Failed to send OTP.");
       spinner.style.display = "none"; // Hide the spinner if error occurs
+      window.location.href = `${window.location.origin}/login`;
     }
   } catch (error) {
     // Catch and handle any errors during the fetch request (e.g., network errors)
@@ -199,7 +202,10 @@ verifyOtp.addEventListener("click", async () => {
         // Redirect or show next step, e.g. change password form
       } else {
         // OTP verification failed
+        console.log(result.message)
         alert(result.message); // Show error message
+        spinner.style.display = "none";
+
       }
     } else {
       // Handle server errors
@@ -215,11 +221,10 @@ verifyOtp.addEventListener("click", async () => {
 });
 
 //reset password code here
-let spinner = document.getElementById("loading-spinner")
+let spinner = document.getElementById("loading-spinner");
 let resetPasswordBtn = document.getElementById("resetPasswordBtn");
 
 resetPasswordBtn.addEventListener("click", async (e) => {
-
   e.preventDefault(); // Prevent form submission if using a form
   const newPassword = document.getElementById("confirmPassword").value; // Get new password from input field
   const email = document.querySelector('input[name="verifyEmailReset"]').value; // Get the email from input
@@ -282,26 +287,19 @@ function handleShowPassword() {
 
 let confirmPassword = document.getElementById("confirmPassword");
 let newPassword = document.getElementById("newPassword");
-confirmPassword.addEventListener("change",()=>{
-    if(confirmPassword.value != newPassword.value )
-    {
-        resetPasswordBtn.disabled = true
-        // alert("password not match")
-
-    }
-    else{
-        resetPasswordBtn.disabled = false
-    }
-})
-newPassword.addEventListener("change",()=>{
-    if(confirmPassword.value != newPassword.value)
-    {
-        resetPasswordBtn.disabled = true
-        // alert("password not match")
-    }
-    else{
-        resetPasswordBtn.disabled = false
-    }
-})
-
-
+confirmPassword.addEventListener("change", () => {
+  if (confirmPassword.value != newPassword.value) {
+    resetPasswordBtn.disabled = true;
+    // alert("password not match")
+  } else {
+    resetPasswordBtn.disabled = false;
+  }
+});
+newPassword.addEventListener("change", () => {
+  if (confirmPassword.value != newPassword.value) {
+    resetPasswordBtn.disabled = true;
+    // alert("password not match")
+  } else {
+    resetPasswordBtn.disabled = false;
+  }
+});

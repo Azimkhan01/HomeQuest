@@ -1,74 +1,99 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html> --}}
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HomeQuest</title>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-           
-        <link rel="stylesheet" href="../public/CascadingStyle/navbar.css">
-        <link rel="stylesheet" href="../public/CascadingStyle/agentDashboard.css">
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeQuest</title>
+    <link rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin />
+    <link rel="stylesheet"
+      href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        {{>navDash}}
-         <div class="appointment-container">
-    <h1>Manage Appointment</h1>
-    
-    <form id="appointment-form">
-      <!-- Appointment Details -->
-      <div class="form-group">
-        <label for="appointment-date">Select Date:</label>
-        <input type="date" id="appointment-date" name="appointment-date" required>
+    <link rel="stylesheet" href="../public/CascadingStyle/navbar.css">
+    <link rel="stylesheet" href="../public/CascadingStyle/agentDashboard.css">
+  </head>
+  <body>
+
+    {{>navDash}}
+    <div id="allAppointment">
+      <div class="appointment-container">
+        <h1>Manage Appointment</h1>
+
+        <form id="appointment-form">
+          <!-- Appointment Details -->
+          <div class="form-group">
+            <input type="text" id="appointment-date" name="username"
+              placeholder="Client Name" readonly>
+          </div>
+          <div class="form-group">
+            <label for="appointment-date">Select Date:</label>
+            <input type="date" id="appointment-date" name="appointment-date"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="appointment-time">Select Time:</label>
+            <input type="time" id="appointment-time" name="appointment-time"
+              required>
+          </div>
+
+          <!-- Appointment Mode -->
+          <div class="form-group">
+            <label>Appointment Mode:</label>
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="mode" value="call" required>
+                Over Call
+              </label>
+              <label>
+                <input type="radio" name="mode" value="office" required>
+                At Office
+              </label>
+            </div>
+          </div>
+
+          <!-- Appointment Status -->
+          <div class="form-group">
+            <label>Action:</label>
+            <div class="button-group">
+              <button type="button" class="accept-btn">Accept</button>
+              <button type="button" class="reject-btn">Reject</button>
+            </div>
+          </div>
+        </form>
       </div>
-      
-      <div class="form-group">
-        <label for="appointment-time">Select Time:</label>
-        <input type="time" id="appointment-time" name="appointment-time" required>
+    </div>
+    <div id="alert">
+      <div>
+        <p>Please fill in all the fields before accepting the appointment.</p>
       </div>
+      <div id="slider-alert">
 
-      <!-- Appointment Mode -->
-      <div class="form-group">
-        <label>Appointment Mode:</label>
-        <div class="radio-group">
-          <label>
-            <input type="radio" name="mode" value="call" required>
-            Over Call
-          </label>
-          <label>
-            <input type="radio" name="mode" value="office" required>
-            At Office
-          </label>
-        </div>
       </div>
+    </div>
+    <div class="loader"></div>
+    <div class="analysis">
 
-      <!-- Appointment Status -->
-      <div class="form-group">
-        <label>Action:</label>
-        <div class="button-group">
-          <button type="button" class="accept-btn">Accept</button>
-          <button type="button" class="reject-btn">Reject</button>
-        </div>
-      </div>
-    </form>
-  </div>
-        <div class="analysis">
+    </div>
 
-        </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"
+      integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js" ></script>
-       
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/regular.min.js"
-            integrity="sha512-kOmvRi+0imoekwslOzP/X1LXQnzcttzqYYt3urKD4nhd5fMYwRfXgDS5Nh7b7pQjKPjBPSX9PmhCLrkfkxUcBQ=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="../public/Script/navbar.js"></script>
-        <script src="../public/Script/agentDashboard.js" ></script>
-    </body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/regular.min.js"
+      integrity="sha512-kOmvRi+0imoekwslOzP/X1LXQnzcttzqYYt3urKD4nhd5fMYwRfXgDS5Nh7b7pQjKPjBPSX9PmhCLrkfkxUcBQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../public/Script/navbar.js"></script>
+    <script src="../public/Script/agentDashboard.js"></script>
+  </body>
 </html>

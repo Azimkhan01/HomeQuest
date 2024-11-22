@@ -78,84 +78,6 @@ async function mail(clientEmail, clientName) {
   // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
 
-confirm = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Appointment Confirmation</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f2f2f2;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      color: #007bff;
-    }
-
-    p {
-      font-size: 16px;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .details {
-      background-color: #f9f9f9;
-      padding: 15px;
-      border-radius: 5px;
-      margin: 20px 0;
-      font-size: 16px;
-      color: #333;
-    }
-
-    .details p {
-      margin: 5px 0;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-      color: #666;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Appointment Confirmed!</h1>
-    <p>Dear <strong>[Client Name]</strong>,</p>
-    <p>Your appointment with <strong>[Agent Name]</strong> has been successfully confirmed. Below are the details of your appointment:</p>
-
-    <div class="details">
-      <p><strong>Date:</strong> [Appointment Date]</p>
-      <p><strong>Time:</strong> [Appointment Time]</p>
-      <p><strong>Location:</strong> [Appointment Location]</p>
-    </div>
-
-    <p>If you have any questions or need to reschedule, feel free to contact us at <strong>[Contact Information]</strong>.</p>
-
-    <p>Thank you for choosing our services!</p>
-
-    <div class="footer">
-      <p>&copy; 2024 Your Real Estate Company. All rights reserved.</p>
-    </div>
-  </div>
-</body>
-</html>
-`
 async function appointmentReceivedMail(clientEmail, clientName) {
   const appointmentReceived = `<!DOCTYPE html>
   <html lang="en">
@@ -212,22 +134,27 @@ async function appointmentReceivedMail(clientEmail, clientName) {
     </div>
   </body>
   </html>
-  `
+  `;
   // send mail with defined transport object
   const info = await transporter.sendMail({
     from: process.env.email, // sender address
     to: clientEmail, // list of receivers
     subject: "Welcome to Home Quest Your Appointment !", // Subject line
     //   text: "Hello world?", // plain text body
-    html: appointmentReceived
+    html: appointmentReceived,
   });
 
   console.log("Message sent: %s", info.messageId);
   // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
 
-async function appointmentNoticeMail(clientEmail, clientName,agentMail,agentName) {
- const  appointmentNotice = `<!DOCTYPE html>
+async function appointmentNoticeMail(
+  clientEmail,
+  clientName,
+  agentMail,
+  agentName
+) {
+  const appointmentNotice = `<!DOCTYPE html>
   <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -302,19 +229,115 @@ async function appointmentNoticeMail(clientEmail, clientName,agentMail,agentName
     </div>
   </body>
   </html>
-  `
+  `;
   // send mail with defined transport object
   const info = await transporter.sendMail({
     from: process.env.email, // sender address
     to: agentMail, // list of receivers
     subject: "Welcome to Home Quest Your Appointment Request !", // Subject line
     //   text: "Hello world?", // plain text body
-    html: appointmentNotice
+    html: appointmentNotice,
   });
 
   console.log("Message sent: %s", info.messageId);
   // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
 
+async function appointmentConfirmMail(
+  clientEmail,
+  clientName,
+  agentName,
+  date,time,mode
+) {
+  confirm = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Confirmation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
 
-module.exports = { mail,appointmentReceivedMail,appointmentNoticeMail };
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #007bff;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .details {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .details p {
+      margin: 5px 0;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Appointment Confirmed!</h1>
+    <p>Dear <strong>${clientName}</strong>,</p>
+    <p>Your appointment with <strong>${agentName}</strong> has been successfully confirmed. Below are the details of your appointment:</p>
+
+    <div class="details">
+      <p><strong>Date:</strong> ${date} </p>
+      <p><strong>Time:</strong> ${time} </p>
+      <p><strong>Location:</strong> ${mode}</p>
+    </div>
+
+    <p>If you have any questions or need to reschedule, feel free to contact us at <strong>${process.env.CONTACT}</strong>.</p>
+
+    <p>Thank you for choosing our services!</p>
+
+    <div class="footer">
+      <p>&copy; 2024 Your Real Estate Company. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
+`;
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: process.env.email, // sender address
+    to: clientEmail, // list of receivers
+    subject: "Welcome to Home Quest Your Appointment Request !", // Subject line
+    //   text: "Hello world?", // plain text body
+    html: confirm,
+  });
+
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+}
+
+module.exports = { mail, appointmentReceivedMail, appointmentNoticeMail ,appointmentConfirmMail};

@@ -210,6 +210,12 @@ const AgentSchema = new mongoose.Schema(
     appointment:{
       type:[String],
       required:false
+    },accept:{
+      type:[String],
+      required:false
+    },reject:{
+      type:[String],
+      required:false
     }
   },
   {

@@ -31,13 +31,13 @@ const handleUploadImageListing = async (req, res) => {
       const allImages = [];
       req.files.propertyImages.forEach((element) => {
         allImages.push(
-          `http://127.0.0.1:8000/public/Assets/ListingImages/${element.filename}`
+          `/public/Assets/ListingImages/${element.filename}`
         );
       });
 
       // Save the thumbnail and all images
       const thumbnail =
-        "http://127.0.0.1:8000/public/Assets/Thumbnails/" +
+        "/public/Assets/Thumbnails/" +
         req.files.thumbnail[0]["filename"];
 
       // console.log(req.files.thumbnail[0]['filename'])

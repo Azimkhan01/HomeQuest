@@ -94,7 +94,7 @@ let updatePropertyBox = (d) => {
     storedCard += `
       <div class="card">
         <div class="card-image">
-          <div class="property-image"><a href="#"><img src=${e.thumbnail} lazy></a></div>
+          <div class="property-image"><a href='${'/'+'property-details'+'?id='+e["_id"]}'><img src=${window.location.origin+e.thumbnail} lazy></a></div>
           <div class="property-listing">${e.listingType}</div>
           <div class="propertyType">${e.propertyType}</div>
         </div>
