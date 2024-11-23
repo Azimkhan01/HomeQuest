@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HomeQuest</title>
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
         <link rel="stylesheet"
             href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
             integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -24,10 +25,23 @@
         {{>navbar}}
         <div class="overview-container">
             <div class="overview-images">
-                <div class="main-image">
-                    <img
-                        src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/about.jpg">
-                </div>
+                 <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-1.jpg"></div>
+      <div class="swiper-slide"><img src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-1.jpg"></div>
+      <div class="swiper-slide"><img src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-1.jpg"></div>
+      <div class="swiper-slide"><img src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-1.jpg"></div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+    <div class="autoplay-progress">
+      <svg viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="20"></circle>
+      </svg>
+      <span></span>
+    </div>
+  </div>
             </div>
             <div class="main-image-description">
                 <div class="image-owner">
@@ -48,7 +62,7 @@
                         price
                     </p>
                 </div>
-                <div class="iamge-abb">
+                <div class="image-abb">
                     <div>
                         <p>
                             Area
@@ -110,7 +124,7 @@
 
             </div>
         </div>
-
+ <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"
             integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg=="

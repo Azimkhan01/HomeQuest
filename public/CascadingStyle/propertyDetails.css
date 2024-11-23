@@ -1,3 +1,8 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
+
 /* Main Container */
 .overview-container {
     margin-top: 10%;
@@ -26,7 +31,6 @@
 /* Description Section */
 .main-image-description {
     width: 50%;
-    /* flex: 1 1 55%; */
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -39,6 +43,7 @@
 }
 
 .image-title h1 {
+    font-family: inter, sans-serif;
     font-size: 24px;
     margin: 0;
     color: #333;
@@ -48,6 +53,7 @@
 .image-price p,
 .image-listingType p,
 .propertyType p {
+    font-family: heebo, sans-serif;
     margin: 0;
     font-size: 18px;
     color: #555;
@@ -59,40 +65,14 @@
 }
 
 /* Area, Bedrooms, and Bathrooms */
-.iamge-abb {
+.image-abb {
     display: flex;
     gap: 20px;
     font-size: 16px;
     color: #666;
 }
 
-.views-like,.view,.like{
-    display: flex;
-    gap: 15px;
-    font-size: 20px;
-    color: #666;
-}
-
-.view,.like{
-gap: 5px;
-cursor: pointer;
-}
-
-.like:hover{
-    color: #00B98E;
-}
-
-.left-right-button{
-    padding: 10px;
-    display: flex;
-    gap: 10px;
-    color: #666666f7;
-    text-align: center;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.iamge-abb div {
+.image-abb div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,48 +84,183 @@ cursor: pointer;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.image-abb p:hover {
+    color: #00b98e;
+    font-weight: 500;
+}
+
+/* Views and Likes */
+.views-like,
+.view,
+.like {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+    color: #666;
+    align-items: center;
+}
+
+.view,
+.like {
+    gap: 5px;
+    cursor: pointer;
+}
+
+.like:hover {
+    color: #00b98e;
+}
+
+/* Navigation Buttons */
+.left-right-button {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    color: #666666f7;
+    text-align: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.left-right-button div {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+}
+
+.left-right-button div:hover {
+    background-color: #00b98e;
+    color: white;
+}
+
+/* Image Navigation */
 .image-navigation {
     width: 100%;
     display: flex;
     flex-direction: row;
     gap: 10px;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
 }
 
 .image-navigation img {
-    /* flex: 1; */
     padding: 1vh 2vh;
     object-fit: contain;
     height: 200px;
     width: 200px;
     display: flex;
-}
-
-.image-blur {
     opacity: 0.5;
+    transition: opacity 0.3s ease;
 }
 
+.image-navigation img:hover {
+    opacity: 1;
+    cursor: pointer;
+}
 
-
-
+/* Media Queries */
 @media screen and (max-width: 768px) {
     .overview-container {
+        margin-top: 20%;
         flex-direction: column;
         align-items: center;
     }
 
-    .overview-images,
-    .main-image-description {
-        flex: 1 1 100%;
-        max-width: 100%;
+    .overview-images {
+        width: 100%; /* Adjust width to container */
+        max-width: 90%; /* Optional: Add a max-width for better scaling */
+        height: auto; /* Maintain aspect ratio */
+        padding: 0;
+        background-color: red; /* This might be a debug/test color */
     }
 
-    .iamge-abb {
+    .overview-images .main-image img {
+        width: auto; /* Use auto width to respect the image's inherent dimensions */
+        max-width: 100%; /* Prevent the image from overflowing its container */
+        height: auto; /* Maintain aspect ratio */
+        margin: 0 auto; /* Center the image if needed */
+        border-radius: 0; /* Remove rounded corners */
+    }
+
+    .main-image-description {
+        flex-direction: column-reverse;
+    }
+
+    .image-abb {
         flex-wrap: wrap;
         gap: 10px;
         justify-content: center;
     }
 
-    .iamge-abb div {
+    .image-abb div {
         width: 80px;
     }
+
+    .image-navigation {
+        overflow-x: scroll;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .image-navigation img {
+        height: 100px;
+        width: 100px;
+    }
 }
+
+
+/* swiper css */
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--swiper-theme-color);
+  }
+
+  .autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--swiper-theme-color);
+    fill: none;
+    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+  }
