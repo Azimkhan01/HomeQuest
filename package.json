@@ -5,7 +5,9 @@
   "main": "cluster.js",
   "scripts": {
     "start": "nodemon -e hbs,js,css",
-    "gitupdate":"git add . && git commit -m \"some minor updates\" && git push origin main"
+    "gitUpdate":"git add . && git commit -m \"some minor updates\" && git push origin main",
+    "tunnelOne":"cloudflared tunnel --url http://127.0.0.1:9000 ",
+    "tunnelTwo":"cloudflared tunnel --url http://127.0.0.1:3000 "
 
   },
   "repository": {
