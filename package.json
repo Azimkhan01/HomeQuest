@@ -5,10 +5,9 @@
   "main": "cluster.js",
   "scripts": {
     "start": "nodemon -e hbs,js,css",
-    "gitUpdate":"git add . && git commit -m \"some minor updates\" && git push origin main",
-    "tunnelOne":"cloudflared tunnel --url http://127.0.0.1:9000 ",
-    "tunnelTwo":"cloudflared tunnel --url http://127.0.0.1:3000 "
-
+    "gitUpdate": "git add . && git commit -m \"some minor updates\" && git push origin main",
+    "tunnelOne": "cloudflared tunnel --url http://127.0.0.1:9000 ",
+    "tunnelTwo": "cloudflared tunnel --url http://127.0.0.1:3000 "
   },
   "repository": {
     "type": "git",
@@ -41,6 +40,7 @@
     "nodemon": "^3.1.4",
     "os": "^0.1.2",
     "path": "^0.12.7",
+    "socket.io": "^4.8.1",
     "uuid": "^10.0.0"
   }
 }

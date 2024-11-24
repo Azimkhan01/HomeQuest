@@ -71,6 +71,8 @@ const { agentDashboard } = require("../Controllers/agentDashboard.js");
 const { getAppointment } = require("../Controllers/getAppointments.js");
 const { acceptOrReject } = require("../Controllers/acceptOrReject.js");
 const { propertyDetails } = require("../Controllers/propertyDetails.js");
+const { addComment } = require("../Controllers/addComment.js");
+const { getComment } = require("../Controllers/getComment.js");
 // const { decode } = require("punycode");
 
 // const { stream } = require("../Controllers/stream.js");
@@ -180,6 +182,8 @@ router.route("/handleAppointment").post(handleAppointment)
 router.route("/getAppointments").get(getAppointment)
 router.route("/getPropertyDetails/:id").get(getPropertyDetails)
 router.route("/getViews/:id").get(getViews)
+router.route("/addComment/:id").post(addComment)
+router.route("/getComment/:id").get(getComment)
 //error
 router.route("*").get(error);
 

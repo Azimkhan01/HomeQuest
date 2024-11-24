@@ -119,6 +119,62 @@
 
 
     </div>
+
+   <div id="commentSection">
+    <!-- Input Section -->
+    <div class="add-comment">
+        <label for="feedbackInput">Your Feedback:</label>
+        <input type="text" id="feedbackInput" placeholder="Write your feedback here..." />
+        <button id="addComment">Add Feedback</button>
+    </div>
+
+    <!-- Feedback Display Section -->
+    <div id="feedbackDisplay">
+        <!-- Sample Feedback Structure -->
+        <!-- This will be dynamically populated using JavaScript -->
+        <!-- Example of a feedback -->
+        <div class="feedback-item" id="feedback-item">
+            <div class="feedback-header">
+                <img src="https://via.placeholder.com/50" alt="User Avatar" class="user-avatar" />
+                <div class="user-info">
+                    <p class="user-name">John Doe</p>
+                    <p class="feedback-date">Nov 24, 2024 - 10:30 AM</p>
+                </div>
+            </div>
+            <div class="feedback-content">
+                <p>This is a sample feedback.</p>
+            </div>
+            <button class="reply-button" id="reply-button">Reply</button>
+            <div id="replyToReply">
+                <input type="text" placeholder="Reply"/>
+                <button id="cancelReply">Cancel</button>
+                <button id="addReplyToReply" >Add a reply</button>
+            </div>
+            <div class="showMoreReplies">
+                <p><i class="fa-solid fa-chevron-down"></i> 50 Replies</p>
+            </div>
+            <div class="replies">
+                <!-- Nested replies -->
+                <div class="reply-item">
+                    <div class="feedback-header">
+                        <img src="https://via.placeholder.com/40" alt="User Avatar" class="user-avatar" />
+                        <div class="user-info">
+                            <p class="user-name">Jane Doe</p>
+                            <p class="feedback-date">Nov 24, 2024 - 11:00 AM</p>
+                        </div>
+                    </div>
+                    <div class="feedback-content">
+                        <p>This is a reply to the feedback.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    {{!-- THIS FULLVIEW FOR VID3O ANBDD IAMGE THE FULL VIEW DISPLAY FOR IAMGES AND VIDEO --}}
     <div id="imagesFullView">
         <div id="removeimage">
             <i class="fa-solid fa-xmark"></i>
@@ -133,7 +189,6 @@
         </div>
 
     </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"
         integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

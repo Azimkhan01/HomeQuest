@@ -129,7 +129,7 @@ const ListingSchema = new mongoose.Schema(
       trim: true,
     },
     comment:{
-      type:[String],
+      type:[],
       required:false
     },
     views:{

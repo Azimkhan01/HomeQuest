@@ -5,12 +5,14 @@ const hbs = require("hbs");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
+const { createServer } = require("http");
 
-// Load environment variables
+// Initialize environment variables
 dotenv.config();
 
-// Initialize app
+// Create Express app and HTTP server
 const app = express();
+const server = createServer(app);
 
 // Import routes
 const { router } = require("./Routers/SignupRoutes");
@@ -18,7 +20,7 @@ const { router } = require("./Routers/SignupRoutes");
 // Paths for static files and partials
 const partialsPath = path.join(__dirname, "views/Partials");
 
-// Middlewares
+// Middleware setup
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(cors());
@@ -29,21 +31,14 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "hbs");
 hbs.registerPartials(partialsPath);
 
-// Using routes
+// Use routes
 app.use("/", router);
 
 // Start server
 const port = process.env.PORT || 9000;
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(
     colors.bgBlue(`Worker ${process.pid} listening at http://127.0.0.1:${port}`)
-  );
-});
-
-const port1 = process.env.PORT1 || 6000;
-app.listen(port1, () => {
-  console.log(
-    colors.bgBlue(`Worker ${process.pid} listening at http://127.0.0.1:${port1}`)
   );
 });
 

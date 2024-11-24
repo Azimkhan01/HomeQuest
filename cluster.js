@@ -9,7 +9,7 @@ if (cluster.isMaster) {
   // Fork workers for each CPU core
   const numCPUs = os.cpus().length;
   console.log(colors.bgMagenta(`Forking ${numCPUs} workers...`));
-  for (let i = 0; i < numCPUs; i++) {
+  for (let i = 0; i < numCPUs-5; i++) {
     console.log("cluster forking: "+i)
     cluster.fork();
     console.log("cluster forked: "+i)
