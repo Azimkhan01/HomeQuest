@@ -1,74 +1,50 @@
-// importing required packages and routes and middlewares.
-const bodyParser = require("body-parser");
 const express = require("express");
 const path = require("path");
-// const helmet = require("helmet");
-const hbs = require("hbs");
 const colors = require("colors");
+const hbs = require("hbs");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-//initializing port ,routers,staticpath and partailspath
+const dotenv = require("dotenv");
 
-const { router } = require("./Routers/SignupRoutes");
+// Load environment variables
+dotenv.config();
 
-const partialsPath = path.join(__dirname, "views/Partials");
-
+// Initialize app
 const app = express();
 
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: {
-//       directives: {
-//         defaultSrc: ["'self'"],
-//         scriptSrc: [
-//           "'self'",
-//           "https://cdnjs.cloudflare.com",         // For Font Awesome
-//           "https://unpkg.com",                     // For Leaflet scripts
-//         ],
-//         styleSrc: [
-//           "'self'",
-//           "https://cdnjs.cloudflare.com",         // For Font Awesome styles
-//           "https://unpkg.com",                     // For Leaflet styles
-//         ],
-//         imgSrc: [
-//           "'self'",
-//           "data:",
-//           "https://*.tile.openstreetmap.org",      // Allow any OpenStreetMap tile server
-//         ],
-//       },
-//     },
-//   })
-// );
+// Import routes
+const { router } = require("./Routers/SignupRoutes");
 
+// Paths for static files and partials
+const partialsPath = path.join(__dirname, "views/Partials");
+
+// Middlewares
 app.use("/public", express.static(path.join(__dirname, "public")));
-
-const dotenv = require("dotenv");
-dotenv.config();
-// console.log(process.env.secret,process.env.email,process.env.emailpass)
 app.use(cookieParser());
-
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(bodyParser.urlencoded());
-
-app.use("/", router);
-
+// Setting up view engine and partials
 app.set("view engine", "hbs");
-
 hbs.registerPartials(partialsPath);
 
-const port = process.env.port || 9000;
-app.listen(port, "127.0.0.1", () => {
+// Using routes
+app.use("/", router);
+
+// Start server
+const port = process.env.PORT || 9000;
+app.listen(port, () => {
   console.log(
-    colors.bgRed(`Server is Running ar port : `) +
-      colors.bgGreen.underline.bold(`127.0.0.1:${port}`)
+    colors.bgBlue(`Worker ${process.pid} listening at http://127.0.0.1:${port}`)
   );
 });
 
-app.listen(3000, "127.0.0.1", () => {
+const port1 = process.env.PORT1 || 6000;
+app.listen(port1, () => {
   console.log(
-    colors.bgRed(`Server is Running ar port : `) +
-      colors.bgGreen.underline.bold(`127.0.0.1:${port}`)
+    colors.bgBlue(`Worker ${process.pid} listening at http://127.0.0.1:${port1}`)
   );
 });
+
+module.exports = app;

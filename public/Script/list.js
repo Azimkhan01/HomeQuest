@@ -62,14 +62,13 @@ function getCurrentLocation() {
 }
 
 // Fetch and display sorted listings
-getCurrentLocation().then((location) => {
-  console.log(
-    `Latitude: ${location.latitude}, Longitude: ${location.longitude}`
-  );
-
-  const userLatitude = location.latitude;
-  const userLongitude = location.longitude;
-});
+getCurrentLocation()
+  .then((location) => {
+    console.log(`Latitude: ${location.latitude}, Longitude: ${location.longitude}`);
+  })
+  .catch((error) => {
+    console.error("Error fetching location:", error); // Log the full error object
+  });
 
 // Define the getListing function to fetch data
 let getListing = async (offset = 0) => {

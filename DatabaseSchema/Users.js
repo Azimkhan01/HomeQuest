@@ -38,17 +38,14 @@ const userSchema = new mongoose.Schema(
     },
     totalListing: {
       type: Number,
-      trim: true,
       required: false,
     },
     listing: {
       type: Array,
-      trim: true,
       required: false,
     },
-    view: {
-      type: Number,
-      trim: true,
+    viewed: {
+      type: Array,
     },
     role: {
       type: String,
@@ -134,6 +131,12 @@ const ListingSchema = new mongoose.Schema(
     comment:{
       type:[String],
       required:false
+    },
+    views:{
+      type:Number
+    },
+    like:{
+      type:Number
     }
   },
   {

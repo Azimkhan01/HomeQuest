@@ -21,7 +21,7 @@ body {
 
 h1 {
     letter-spacing: 1px;
-    word-spacing: -10px;
+    word-spacing: 1px;
     font-size: 30px;
     font-family: inter, sans-serif;
 }

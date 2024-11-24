@@ -46,8 +46,9 @@ const {
 } = require("../Controllers/handleUploadImageListing");
 const { listingStorage } = require("../Controllers/listingStorage.js");
 const { states } = require("../Controllers/states.js");
-const { listingApi } = require("../Controllers/listingApi.js");
+const { listingApi, getPropertyDetails } = require("../Controllers/listingApi.js");
 const { getLoginUser } = require("../Controllers/getLoginUser.js");
+const { getViews} = require("../Controllers/getViews")
 const { list } = require("../Controllers/list.js");
 const { deleteListing } = require("../Controllers/deleteListing.js");
 
@@ -177,6 +178,8 @@ router.route("/agentList/:id?").get(agentListing)
 router.route("/filterAgent").get(filterAgent);
 router.route("/handleAppointment").post(handleAppointment)
 router.route("/getAppointments").get(getAppointment)
+router.route("/getPropertyDetails/:id").get(getPropertyDetails)
+router.route("/getViews/:id").get(getViews)
 //error
 router.route("*").get(error);
 

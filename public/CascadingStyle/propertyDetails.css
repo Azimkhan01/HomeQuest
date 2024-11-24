@@ -1,8 +1,3 @@
-/* Global Styles */
-* {
-    box-sizing: border-box;
-}
-
 /* Main Container */
 .overview-container {
     margin-top: 10%;
@@ -16,26 +11,44 @@
     width: 100%;
 }
 
-/* Image Section */
-.overview-images {
-    flex: 1 1 40%;
-    max-width: 40%;
+.overview-images{
+    padding: 10px;
+    background-color: #F2F3F5;
+    height: 400px;
+    overflow: hidden;
+    width: 55%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
 }
 
-.overview-images .main-image img {
+.overview-images div{
+    display: flex;
+    justify-content: center;
     width: 100%;
-    height: auto;
-    border-radius: 10px;
+}
+
+
+ .overview-images img{
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
 }
 
 /* Description Section */
-.main-image-description {
-    width: 50%;
+.main-image-description, .other-image-description {
+  
+    width: 40%;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
-
+.other-image-description
+{
+    width: 100%;
+}
 /* Individual Elements */
 .image-owner i {
     font-size: 16px;
@@ -43,10 +56,11 @@
 }
 
 .image-title h1 {
+    color: #0E2E50;
+    word-spacing: 1px;
     font-family: inter, sans-serif;
     font-size: 24px;
     margin: 0;
-    color: #333;
 }
 
 .image-location p,
@@ -56,7 +70,7 @@
     font-family: heebo, sans-serif;
     margin: 0;
     font-size: 18px;
-    color: #555;
+    color: #666565;
 }
 
 .image-price p {
@@ -67,9 +81,10 @@
 /* Area, Bedrooms, and Bathrooms */
 .image-abb {
     display: flex;
-    gap: 20px;
-    font-size: 16px;
-    color: #666;
+    flex-direction: row;
+    gap: 10px;
+    /* width: 100%; */
+    /* background-color: red; */
 }
 
 .image-abb div {
@@ -80,7 +95,6 @@
     background-color: #f1f1f1;
     padding: 10px;
     border-radius: 5px;
-    width: 100px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -96,7 +110,7 @@
     display: flex;
     gap: 15px;
     font-size: 20px;
-    color: #666;
+    color: #666565;
     align-items: center;
 }
 
@@ -115,7 +129,7 @@
     padding: 10px;
     display: flex;
     gap: 10px;
-    color: #666666f7;
+    color: #666565;
     text-align: center;
     width: 100%;
     justify-content: space-between;
@@ -129,20 +143,26 @@
     transition: background-color 0.3s ease;
 }
 
-.left-right-button div:hover {
+/* .left-right-button div:hover {
     background-color: #00b98e;
     color: white;
+} */
+
+.btn-navigation-image{
+   display: flex;
+   flex-direction: column;
 }
+
 
 /* Image Navigation */
 .image-navigation {
+    padding: 10px;
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 5px;
     justify-content: center;
     align-items: center;
-    overflow-x: auto;
 }
 
 .image-navigation img {
@@ -151,13 +171,73 @@
     height: 200px;
     width: 200px;
     display: flex;
-    opacity: 0.5;
+    opacity: 1;
     transition: opacity 0.3s ease;
 }
 
 .image-navigation img:hover {
-    opacity: 1;
+    opacity: 0.5;
     cursor: pointer;
+}
+
+#imagesFullView{
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 10px;
+    height: 100vh;
+    width: 90%;
+    background-color: #666666e8;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+#removeimage{
+    top: 0;
+    cursor: pointer;
+    position: fixed;
+    padding: 20px;
+    color: white;
+    font-size: 20px;
+    align-self: flex-end;
+}
+
+#imagesFullView img{
+    height: 55vh;
+    width: 100%;
+    object-fit: contain;
+}
+
+#show-all-images,#show-video    
+{
+    /* position: relative; */
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+}
+
+#show-all-images div,#show-video div{
+    align-self: center;
+    text-align: center;
+}
+
+.icon-container,.videoPlayButton{
+    font-size: 30px;
+    opacity: 0.5;
+}
+
+
+
+.icon-container:hover,.videoPlayButton:hover{
+    opacity: 1;
+}
+
+#mainVideo{
+    height: 90vh;
+    width: 100%;
+    object-fit: contain;
 }
 
 /* Media Queries */
@@ -169,23 +249,20 @@
     }
 
     .overview-images {
-        width: 100%; /* Adjust width to container */
-        max-width: 90%; /* Optional: Add a max-width for better scaling */
-        height: auto; /* Maintain aspect ratio */
+        width: 100%;  /* Allow the image container to take full width */
+        max-width: 90%;  /* Optional: Add a max-width for better scaling */
+        height: auto;  /* Maintain aspect ratio */
         padding: 0;
-        background-color: red; /* This might be a debug/test color */
     }
 
-    .overview-images .main-image img {
-        width: auto; /* Use auto width to respect the image's inherent dimensions */
-        max-width: 100%; /* Prevent the image from overflowing its container */
-        height: auto; /* Maintain aspect ratio */
-        margin: 0 auto; /* Center the image if needed */
-        border-radius: 0; /* Remove rounded corners */
+    .overview-images .swiper-slide img {
+        width: 100%;  /* Make image responsive */
+        height: 250px;  /* Set a max height of 250px for mobile */
+        object-fit: contain;  /* Ensure the image maintains its aspect ratio */
     }
 
     .main-image-description {
-        flex-direction: column-reverse;
+        width: 100%;
     }
 
     .image-abb {
@@ -209,58 +286,18 @@
         height: 100px;
         width: 100px;
     }
+    .other-image-description{
+        order: 2;
+    }
+    .btn-navigation-image{
+        order: 1;
+    }
+    #imagesFullView{
+        justify-content: space-around;
+        top: 0;
+        width: 100%;
+    }
+    #removeimage{
+        top: 0;
+    } 
 }
-
-
-/* swiper css */
-
-.swiper {
-    width: 100%;
-    height: 100%;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .autoplay-progress {
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
-    z-index: 10;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: var(--swiper-theme-color);
-  }
-
-  .autoplay-progress svg {
-    --progress: 0;
-    position: absolute;
-    left: 0;
-    top: 0px;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    stroke-width: 4px;
-    stroke: var(--swiper-theme-color);
-    fill: none;
-    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
-    stroke-dasharray: 125.6;
-    transform: rotate(-90deg);
-  }

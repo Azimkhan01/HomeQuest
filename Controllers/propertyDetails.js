@@ -1,6 +1,12 @@
 const propertyDetails = (req,res)=>{
     console.log(req.query)
-res.render("propertyDetails")
+    if(req.cookies.token)
+    {
+        res.render("propertyDetails")
+    }else{
+        res.redirect("/login")
+    }
+
 }
 
 module.exports = {propertyDetails}
