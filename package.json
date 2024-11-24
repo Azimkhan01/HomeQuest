@@ -4,7 +4,9 @@
   "description": "This is a dynamic realestae aplication",
   "main": "cluster.js",
   "scripts": {
-    "start": "nodemon -e hbs,js,css"
+    "start": "nodemon -e hbs,js,css",
+    "gitupdate":"git add . && git commit -m \"some minor updates\" && git push origin main"
+
   },
   "repository": {
     "type": "git",
