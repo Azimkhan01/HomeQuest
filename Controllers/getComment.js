@@ -15,7 +15,7 @@ const getComment = async (req, res) => {
     }
 
     // Fetch comments from the database
-    const details = await listing.findOne({ _id: id }, { comment: 1, _id: 0 });
+    const details = await listing.findOne({ _id: id }, { comment: 1 });
 
     if (!details) {
       return res.status(404).json({

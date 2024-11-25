@@ -73,6 +73,7 @@ const { acceptOrReject } = require("../Controllers/acceptOrReject.js");
 const { propertyDetails } = require("../Controllers/propertyDetails.js");
 const { addComment } = require("../Controllers/addComment.js");
 const { getComment } = require("../Controllers/getComment.js");
+const { addReply } = require("../Controllers/addReply.js");
 // const { decode } = require("punycode");
 
 // const { stream } = require("../Controllers/stream.js");
@@ -184,6 +185,7 @@ router.route("/getPropertyDetails/:id").get(getPropertyDetails)
 router.route("/getViews/:id").get(getViews)
 router.route("/addComment/:id").post(addComment)
 router.route("/getComment/:id").get(getComment)
+router.route("/addReply/:id").post(addReply)
 //error
 router.route("*").get(error);
 

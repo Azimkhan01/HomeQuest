@@ -40,7 +40,7 @@ const addComment = async (req, res) => {
     // Add the comment to the database
     const result = await listing.updateOne(
       { _id: id },
-      { $push: { comment: { text: comment,image:decoded.data.image,username:decoded.data.username, userId: decoded.data['_id'], date: new Date() } } } // Store comment with user ID and timestamp
+      { $push: { comment: { text: comment,image:decoded.data.image,username:decoded.data.username, userId: decoded.data['_id'], date: new Date(),reply:[] } } } // Store comment with user ID and timestamp
     );
 
     // Check if the update was successful

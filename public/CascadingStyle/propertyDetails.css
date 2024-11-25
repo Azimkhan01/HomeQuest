@@ -313,6 +313,8 @@
 
 /* Feedback Header */
 .feedback-header {
+    margin-top: 10px;
+    padding: 2px;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -387,7 +389,7 @@
     height: 40px;
 }
 
-#replyToReply {
+.replyToReply {
     display: none;            /* Use flexbox to align elements horizontally */
     align-items: center;      /* Center the items vertically */
     gap: 10px;                /* Add space between the input field and button */
@@ -399,7 +401,7 @@
     margin: 10px 0;           /* Margin to separate from other elements */
 }
 
-#replyToReply input {
+.replyToReply input {
     transition: all ease-in-out 0.3s;
     width: 30%;             /* Make the input field take up available space */
     padding: 8px 12px;
@@ -412,14 +414,14 @@
     outline: none;         /* Font size for readability */
 }
 
-#replyToReply input:focus{
+.replyToReply input:focus{
     width: 60%; 
     opacity: 1;
       transition: all ease-in-out 0.2s;
     border-bottom: 3px solid #00d7a5;            /* Add some padding inside the container */
 }
 
-#replyToReply button {
+.replyToReply button {
     background-color: #02a882; /* Blue button background */
     color: white;              /* White text color */
     padding: 8px 16px;         /* Padding inside the button */
@@ -430,7 +432,7 @@
     transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
-#replyToReply button:hover {
+.replyToReply button:hover {
     background-color: #008062; /* Darker blue on hover */
 }
 
@@ -514,4 +516,12 @@
     #removeimage{
         top: 0;
     } 
+
+    .replyToReply{
+        width: 100%;
+    }
+    .feedback-header{
+        padding: 2px;
+        margin-top: 10px;
+    }
 }

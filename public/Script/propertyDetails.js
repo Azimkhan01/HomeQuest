@@ -194,20 +194,8 @@ let video = document.getElementById('show-video')
     console.error("Error fetching property details:", error.message);
   });
 
-//reply input on off
-let cancelReply = document.getElementById('cancelReply')
-let replyToReply = document.getElementById('replyToReply')
-let  replyButton = document.getElementById("reply-button")
-replyButton.addEventListener("click",()=>{
-replyToReply.style.display = "flex"
-cancelReply.addEventListener('click',(e)=>{
-  replyToReply.style.display = 'none'
-})
-})
+
 //onclick send then
-
-
-
 let feedbackInput = document.getElementById('feedbackInput');
 let addComment = document.getElementById("addComment");
 
@@ -235,8 +223,9 @@ addComment.addEventListener("click", async (e) => {
       }
 
       const data = await response.json();
-      console.log("Comment added successfully:", data);
+      // console.log("Comment added successfully:", data);
       feedbackInput.value = "";
+      console.log("yeh run hua")
       updateCommentSection(paramId)
     } catch (error) {
       console.error("Error adding comment:", error);
@@ -250,56 +239,151 @@ addComment.addEventListener("click", async (e) => {
   }
 });
 
-let updateCommentSection = async(paramId)=>{
-  try{
-fetch(`${window.location.origin}/getComment/${paramId}`).then(data=>data.json()).then((e)=>{
-console.log(e)  
-let s = ``
-let feedbackItem = document.getElementById("feedback-item")
-e.data.forEach((e)=>{
-  console.log(e)
-s+= ` <div class="feedback-header">
-                <img src="${e.image}" alt="User Avatar" class="user-avatar" />
-                <div class="user-info">
-                    <p class="user-name">${e.username}</p>
-                    <p class="feedback-date">${e.date}</p>
-                </div>
-            </div>
-            <div class="feedback-content">
-                <p>${e.text}</p>
-            </div>
-            <button class="reply-button" id="reply-button">Reply</button>
-            <div id="replyToReply">
-                <input type="text" placeholder="Reply"/>
-                <button id="cancelReply">Cancel</button>
-                <button id="addReplyToReply" >Add a reply</button>
-            </div>
-            <div class="showMoreReplies">
-                <p><i class="fa-solid fa-chevron-down"></i> 50 Replies</p>
-            </div>
-            <div class="replies">
-                <!-- Nested replies -->
-                <div class="reply-item">
-                    <div class="feedback-header">
-                        <img src="https://via.placeholder.com/40" alt="User Avatar" class="user-avatar" />
-                        <div class="user-info">
-                            <p class="user-name">Jane Doe</p>
-                            <p class="feedback-date">Nov 24, 2024 - 11:00 AM</p>
-                        </div>
-                    </div>
-                    <div class="feedback-content">
-                        <p>This is a reply to the feedback.</p>
-                    </div>
-                </div>
-            </div>`
-});
-feedbackItem.innerHTML = ''
-feedbackItem.innerHTML = s
-})
-  }catch(error)
-  {
-    console.error("the fetching error for getting the comment may be:"+error)
-  }
-}
+let updateCommentSection = async (paramId) => {
+  try {
+    const response = await fetch(`${window.location.origin}/getComment/${paramId}`);
+    const { data } = await response.json();
 
-updateCommentSection(paramId)
+    const feedbackItem = document.getElementById("feedback-item");
+
+    // Clear the feedback section
+    feedbackItem.innerHTML = "";
+
+    if (!data || data.length === 0) {
+      feedbackItem.innerHTML = "<p>No Comment. Be the One to Comment!!</p>";
+      return;
+    }
+
+    // Build the HTML content
+    let html = "";
+    data.forEach((comment, index) => {
+      const isThereReply = comment.reply && comment.reply.length > 0;
+
+      html += `
+        <div class="feedback-item">
+          <div class="feedback-header">
+            <img src="${comment.image}" alt="User Avatar" class="user-avatar" />
+            <div class="user-info">
+              <p class="user-name">${comment.username}</p>
+              <p class="feedback-date">${comment.date}</p>
+            </div>
+          </div>
+          <div class="feedback-content">
+            <p>${comment.text}</p>
+          </div>
+          <button class="reply-button" id="reply-button-${index}">Reply</button>
+          <div class="replyToReply" id="replyToReply-${index}" style="display: none;">
+            <input class="repliedText" id="repliedText-${index}" type="text" placeholder="Reply" />
+            <button class="cancelReply" id="cancelReply-${index}">Cancel</button>
+            <button class="addReplyToReply" id="addReplyToReply-${index}" onclick="addReply(${index})">Add a reply</button>
+          </div>
+          ${isThereReply ? 
+            `<div class="showMoreReplies" id="${comment.userId}-${index}" >
+              <p ><i class="fa-solid fa-chevron-down"></i> ${comment.reply.length} Replies</p>
+            </div>` 
+            : ""
+          }
+          <div id="replies-${index}" class="replies">
+            ${isThereReply ? comment.reply.map(reply => `
+              <div class="reply-item">
+                <div class="feedback-header">
+                  <img src="${reply.image || "https://via.placeholder.com/40"}" alt="User Avatar" class="user-avatar" />
+                  <div class="user-info">
+                    <p class="user-name">${reply.username}</p>
+                    <p class="feedback-date">${reply.date}</p>
+                  </div>
+                </div>
+                <div class="feedback-content">
+                  <p>${reply.text}</p>
+                </div>
+              </div>`).join("") 
+            : ""}
+          </div>
+        </div>`;
+    });
+
+    feedbackItem.innerHTML = html;
+
+    // Attach Event Listeners for Reply Buttons
+    data.forEach((_, index) => {
+      const replyButton = document.getElementById(`reply-button-${index}`);
+      const replyToReply = document.getElementById(`replyToReply-${index}`);
+      const cancelReply = document.getElementById(`cancelReply-${index}`);
+
+      replyButton.addEventListener("click", () => {
+        replyToReply.style.display = "flex";
+      });
+
+      cancelReply.addEventListener("click", () => {
+        replyToReply.style.display = "none";
+      });
+    });
+    data.forEach((e, index) => {
+      const replyDiv = document.getElementById(`${e.userId}-${index}`);
+      const replies = document.getElementById(`replies-${index}`);
+      
+      if (replyDiv && replies) {
+        replyDiv.addEventListener('click', () => {
+          // console.log("Reply div clicked");
+    
+          // Check the current display state of the replies div
+          if (replies.style.display === "none" || replies.style.display === "") {
+            // console.log("Display is none, showing replies");
+            replies.style.display = "flex";
+          } else {
+            // console.log("Hiding replies");
+            replies.style.display = "none";
+          }
+        });
+      } else {
+        // console.log(`Element with ID ${e.userId}-${index} or replies-${index} not found`);
+      }
+    });
+    
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+  }
+};
+
+updateCommentSection(paramId);
+
+
+
+const addReply = async (index) => {
+  try {
+   
+    let replytext = document.getElementById(`repliedText-${index}`);
+    console.log(replytext.value)
+    // Check if the replytext is valid (not empty)
+    // if (replytext.value.length == 0 ) {
+    //   throw new Error("Reply text is required.");
+    // }
+    const response = await fetch(`${window.location.origin}/addReply/${paramId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        'text': replytext.value,
+        'index':index
+      })
+    });
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to add reply');
+    }
+    const responseData = await response.json();
+
+    // Log the response data to the console
+    console.log('Reply added successfully:', responseData);
+    replytext.value = '';
+    
+  } catch (error) {
+    // Handle errors and log them
+    console.error('Error adding reply:', error);
+    alert(error.message); 
+  }
+};
+
+
+console.log("end hai bhai pura code run hua hai pakka")                                                                                   
