@@ -65,9 +65,11 @@ getDetails(paramId)
 <div class="main-image-description">
     <div class="other-image-description">
         <div class="image-owner">
-            <i>Owner Name : <strong>${details.byOwner.username
-                    } <a style="color:#3EB8E5" href="mailto:${details.byOwner.email
-      }">mail</a></strong></i>
+            <i>Owner Name : <strong>${
+              details.byOwner.username
+            } <a style="color:#3EB8E5" href="mailto:${
+      details.byOwner.email
+    }">mail</a></strong></i>
         </div>
         <div class="image-abb">
             <div>
@@ -132,11 +134,14 @@ getDetails(paramId)
                 <div class="icon-container">
                     <i class="fa-regular fa-images"></i>
                 </div>
-                <img class="image-blur" src="${window.location.origin}${details.details.AllImages[2] ||
+                <img class="image-blur" src="${window.location.origin}${
+      details.details.AllImages[2] ||
       details.details.AllImages[1] ||
       details.details.AllImages[0]
-      }" alt="Gallery Thumbnail">
-                <p style="color: #666565;">${details.details.AllImages.length} Images</p>
+    }" alt="Gallery Thumbnail">
+                <p style="color: #666565;">${
+                  details.details.AllImages.length
+                } Images</p>
             </div>
 
 
@@ -145,7 +150,9 @@ getDetails(paramId)
                 <div class="videoPlayButton">
                     <i class="fa-regular fa-circle-play"></i>
                 </div>
-                <img class="image=blur" src="${window.location.origin}${details.details.thumbnail}">
+                <img class="image=blur" src="${window.location.origin}${
+      details.details.thumbnail
+    }">
                 <p style="color:#666565">video</p>
             </div>
         </div>
@@ -156,7 +163,7 @@ getDetails(paramId)
     container.innerHTML = s;
     let videoDiv = ` <div id="removeimage">
 <i class="fa-solid fa-xmark"></i>
-        </div>`
+        </div>`;
     let imagesDiVImages = ` <div id="removeimage">
 <i class="fa-solid fa-xmark"></i>
         </div>`;
@@ -165,38 +172,36 @@ getDetails(paramId)
             <img src="${window.location.origin}${e}">
         </div>`;
     });
-    videoDiv+= `<div><video id="mainVideo" src="${window.location.origin}/stream/${details.details.video}" controls  controlsList="nopictureinpicture">></video><div>`
+    videoDiv += `<div><video id="mainVideo" src="${window.location.origin}/stream/${details.details.video}" controls  controlsList="nopictureinpicture">></video><div>`;
 
-let video = document.getElementById('show-video')
+    let video = document.getElementById("show-video");
     let showallimages = document.getElementById("show-all-images");
     showallimages.addEventListener("click", (e) => {
       imagesFullView.style.display = "flex";
       imagesFullView.innerHTML = imagesDiVImages;
       let removeimage = document.getElementById("removeimage");
       removeimage.addEventListener("click", () => {
-        imagesFullView.innerHTML = ''
+        imagesFullView.innerHTML = "";
         imagesFullView.style.display = "none";
-
       });
     });
-    video.addEventListener("click",(e)=>{
+    video.addEventListener("click", (e) => {
       imagesFullView.style.display = "flex";
-      imagesFullView.innerHTML = ''
-      imagesFullView.innerHTML = videoDiv
+      imagesFullView.innerHTML = "";
+      imagesFullView.innerHTML = videoDiv;
       let removeimage = document.getElementById("removeimage");
       removeimage.addEventListener("click", () => {
-        imagesFullView.innerHTML = ''
+        imagesFullView.innerHTML = "";
         imagesFullView.style.display = "none";
       });
-    })
+    });
   })
   .catch((error) => {
     console.error("Error fetching property details:", error.message);
   });
 
-
 //onclick send then
-let feedbackInput = document.getElementById('feedbackInput');
+let feedbackInput = document.getElementById("feedbackInput");
 let addComment = document.getElementById("addComment");
 
 addComment.addEventListener("click", async (e) => {
@@ -205,13 +210,16 @@ addComment.addEventListener("click", async (e) => {
     alert("Submitting your comment...");
 
     try {
-      const response = await fetch(`${window.location.origin}/addComment/${paramId}`, {
-        method: "POST", // HTTP POST method
-        headers: {
-          "Content-Type": "application/json", // Send JSON data
-        },
-        body: JSON.stringify({ comment: feedbackInput.value }), // Pass the comment in the request body
-      });
+      const response = await fetch(
+        `${window.location.origin}/addComment/${paramId}`,
+        {
+          method: "POST", // HTTP POST method
+          headers: {
+            "Content-Type": "application/json", // Send JSON data
+          },
+          body: JSON.stringify({ comment: feedbackInput.value }), // Pass the comment in the request body
+        }
+      );
 
       if (!response.ok) {
         console.error(`Error: ${response.status} - ${response.statusText}`);
@@ -225,8 +233,8 @@ addComment.addEventListener("click", async (e) => {
       const data = await response.json();
       // console.log("Comment added successfully:", data);
       feedbackInput.value = "";
-      console.log("yeh run hua")
-      updateCommentSection(paramId)
+      console.log("yeh run hua");
+      updateCommentSection(paramId);
     } catch (error) {
       console.error("Error adding comment:", error);
       alert("An error occurred while adding the comment.");
@@ -241,7 +249,9 @@ addComment.addEventListener("click", async (e) => {
 
 let updateCommentSection = async (paramId) => {
   try {
-    const response = await fetch(`${window.location.origin}/getComment/${paramId}`);
+    const response = await fetch(
+      `${window.location.origin}/getComment/${paramId}`
+    );
     const { data } = await response.json();
 
     const feedbackItem = document.getElementById("feedback-item");
@@ -277,17 +287,24 @@ let updateCommentSection = async (paramId) => {
             <button class="cancelReply" id="cancelReply-${index}">Cancel</button>
             <button class="addReplyToReply" id="addReplyToReply-${index}" onclick="addReply(${index})">Add a reply</button>
           </div>
-          ${isThereReply ? 
-            `<div class="showMoreReplies" id="${comment.userId}-${index}" >
-              <p ><i class="fa-solid fa-chevron-down"></i> ${comment.reply.length} Replies</p>
-            </div>` 
-            : ""
+          ${
+            isThereReply
+              ? `<div class="showMoreReplies" id="totalUser-${index}">
+              <p ><i class="fa-solid fa-chevron-down"></i> <span id='totalUserDisplay-${index}'>${comment.reply.length}</span> Replies</p>
+            </div>`
+              : `<div class="showMoreReplies" id="totalUser-${index}"></div>`
           }
           <div id="replies-${index}" class="replies">
-            ${isThereReply ? comment.reply.map(reply => `
+            ${
+              isThereReply
+                ? comment.reply
+                    .map(
+                      (reply) => `
               <div class="reply-item">
                 <div class="feedback-header">
-                  <img src="${reply.image || "https://via.placeholder.com/40"}" alt="User Avatar" class="user-avatar" />
+                  <img src="${
+                    reply.image || "https://via.placeholder.com/40"
+                  }" alt="User Avatar" class="user-avatar" />
                   <div class="user-info">
                     <p class="user-name">${reply.username}</p>
                     <p class="feedback-date">${reply.date}</p>
@@ -296,8 +313,11 @@ let updateCommentSection = async (paramId) => {
                 <div class="feedback-content">
                   <p>${reply.text}</p>
                 </div>
-              </div>`).join("") 
-            : ""}
+              </div>`
+                    )
+                    .join("")
+                : ""
+            }
           </div>
         </div>`;
     });
@@ -319,15 +339,18 @@ let updateCommentSection = async (paramId) => {
       });
     });
     data.forEach((e, index) => {
-      const replyDiv = document.getElementById(`${e.userId}-${index}`);
+      const replyDiv = document.getElementById(`totalUser-${index}`);
       const replies = document.getElementById(`replies-${index}`);
-      
+
       if (replyDiv && replies) {
-        replyDiv.addEventListener('click', () => {
+        replyDiv.addEventListener("click", () => {
           // console.log("Reply div clicked");
-    
+
           // Check the current display state of the replies div
-          if (replies.style.display === "none" || replies.style.display === "") {
+          if (
+            replies.style.display === "none" ||
+            replies.style.display === ""
+          ) {
             // console.log("Display is none, showing replies");
             replies.style.display = "flex";
           } else {
@@ -339,7 +362,6 @@ let updateCommentSection = async (paramId) => {
         // console.log(`Element with ID ${e.userId}-${index} or replies-${index} not found`);
       }
     });
-    
   } catch (error) {
     console.error("Error fetching comments:", error);
   }
@@ -347,63 +369,72 @@ let updateCommentSection = async (paramId) => {
 
 updateCommentSection(paramId);
 
-
-
 const addReply = async (index) => {
   try {
-   
+    let repliesDiv = document.getElementById(`replies-${index}`);
     let replytext = document.getElementById(`repliedText-${index}`);
-    console.log(replytext.value)
-    // Check if the replytext is valid (not empty)
-    // if (replytext.value.length == 0 ) {
-    //   throw new Error("Reply text is required.");
-    // }
-    const response = await fetch(`${window.location.origin}/addReply/${paramId}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        'text': replytext.value,
-        'index':index
-      })
-    });
+
+    // Validate reply text
+    if (!replytext.value.trim()) {
+      throw new Error("Reply text is required.");
+    }
+    // Send POST request to add the reply
+    const response = await fetch(
+      `${window.location.origin}/addReply/${paramId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: replytext.value.trim(),
+          index: index,
+        }),
+      }
+    );
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.error || 'Failed to add reply');
+      throw new Error(errorData.error || "Failed to add reply");
     }
+    // Parse the response
     const responseData = await response.json();
 
-    // Log the response data to the console
-    // console.log('Reply added successfully:', responseData);
-    fetch(`${window.location.origin}/getLoginUser`).then(data=>data.json()).then((r)=>{
-      // ****alert yaha tujhe pehle check kar ki jo replies id hai woh hai ki nahi agar nhi hai toh usko flex kar phir usko add kar agar pehle se flex hai toh direct add akr or jo value of the replies hai usko plus one bhi karna padega samjha ki nahi
-       let replieDiv = document.getElementById(`replies-${index}`)
-       replieDiv.innerHTML += ` <div class="reply-item">
-                 <div class="feedback-header">
-                   <img src="${r.image || "https://via.placeholder.com/40"}" alt="User Avatar" class="user-avatar" />
-                   <div class="user-info">
-                     <p class="user-name">${r.username}</p>
-                     <p class="feedback-date">${new Date.now()}</p>
-                   </div>
-                 </div>
-                 <div class="feedback-content">
-                   <p>${replytext.value}</p>
-                 </div>
-               </div>`
-     }).catch((error)=>{
-       console.error("error happen while get login userdata")
-     })
+    let totalUser = document.getElementById(`totalUser-${index}`);
+    if (totalUser.innerHTML == "") {
+      totalUser.innerHTML = ` <p><i class="fa-solid fa-chevron-down"></i> <span id='totalUserDisplay-${index}'>1</span> Reply</p>`;
+    } else {
+      let totalUserDisplay = document.getElementById(`totalUserDisplay-${index}`)
+      let total = totalUserDisplay.innerText
+      total = Number(total) + 1
+      totalUserDisplay.innerText = total
+    }
+    // Fetch logged-in user details and update the replies
+    const userResponse = await fetch(`${window.location.origin}/getLoginUser`);
+    const userData = await userResponse.json();
 
-    replytext.value = '';
-   
-    
+    const formattedDate = new Date().toLocaleString();
+    let temp = `
+    <div class="reply-item">
+      <div class="feedback-header">
+        <img src="${
+          userData.image || `${window.location.origin}/public/Assets/Default/defaultimage-removebg-preview`
+        }" alt="User Avatar" class="user-avatar" />
+        <div class="user-info">
+          <p class="user-name">${userData.username}</p>
+          <p class="feedback-date">${formattedDate}</p>
+        </div>
+      </div>
+      <div class="feedback-content">
+        <p>${replytext.value.trim()}</p>
+      </div>
+    </div>`;
+    repliesDiv.innerHTML = temp + repliesDiv.innerHTML;
+
+    // Clear the reply text input
+    replytext.value = "";
   } catch (error) {
-    // Handle errors and log them
-    console.error('Error adding reply:', error);
-    alert(error.message); 
+    console.error("Error adding reply:", error);
+    alert(error.message);
   }
 };
-
-
-// console.log("end hai bhai pura code run hua hai pakka")                                                                                   
+// console.log("end hai bhai pura code run hua hai pakka")

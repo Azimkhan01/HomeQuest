@@ -381,6 +381,7 @@ font-size: 16px;
 
 /* Replies Section */
 .replies {
+    transition: all 0.2s ease-in-out;
     display: none;
     flex-direction: column;
     margin-top: 0px;
