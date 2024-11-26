@@ -320,6 +320,10 @@
     margin-bottom: 10px;
 }
 
+.feedback-header p{
+font-size: 16px;
+}
+
 .user-avatar {
     width: 50px;
     height: 50px;
@@ -349,15 +353,22 @@
 .feedback-content {
     font-size: 14px;
     margin: 10px 0;
-    color: #333;
+    color: #33333386;
 }
 
+.feedback-content p{
+    font-size: 12px;
+}
+
+.feedback-date{
+    font-size: 10px;
+}
 /* Reply Button */
 .reply-button {
     background-color: #f0f0f0;
     border: none;
-    padding: 8px 15px;
-    font-size: 14px;
+    padding: 6px 12px;
+    font-size: 12px;
     cursor: pointer;
     border-radius: 4px;
     color: #555;
@@ -371,7 +382,8 @@
 /* Replies Section */
 .replies {
     display: none;
-    margin-top: 10px;
+    flex-direction: column;
+    margin-top: 0px;
     padding-left: 20px;
     border-left: 2px solid #eee;
 }

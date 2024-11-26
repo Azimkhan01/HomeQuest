@@ -67,7 +67,7 @@ getDetails(paramId)
         <div class="image-owner">
             <i>Owner Name : <strong>${details.byOwner.username
                     } <a style="color:#3EB8E5" href="mailto:${details.byOwner.email
-      }">Mail</a></strong></i>
+      }">mail</a></strong></i>
         </div>
         <div class="image-abb">
             <div>
@@ -115,7 +115,7 @@ getDetails(paramId)
         <div class="views-like">
             <div class="view">
                 <i class="fa-regular fa-eye"></i>
-                <p>${details.details.views || "NA"}</p>
+                <p>${details.details.views || "0"}</p>
             </div>
             <div class="like">
                 <i class="fa-solid fa-thumbs-up"></i>
@@ -375,8 +375,28 @@ const addReply = async (index) => {
     const responseData = await response.json();
 
     // Log the response data to the console
-    console.log('Reply added successfully:', responseData);
+    // console.log('Reply added successfully:', responseData);
+    fetch(`${window.location.origin}/getLoginUser`).then(data=>data.json()).then((r)=>{
+      // ****alert yaha tujhe pehle check kar ki jo replies id hai woh hai ki nahi agar nhi hai toh usko flex kar phir usko add kar agar pehle se flex hai toh direct add akr or jo value of the replies hai usko plus one bhi karna padega samjha ki nahi
+       let replieDiv = document.getElementById(`replies-${index}`)
+       replieDiv.innerHTML += ` <div class="reply-item">
+                 <div class="feedback-header">
+                   <img src="${r.image || "https://via.placeholder.com/40"}" alt="User Avatar" class="user-avatar" />
+                   <div class="user-info">
+                     <p class="user-name">${r.username}</p>
+                     <p class="feedback-date">${new Date.now()}</p>
+                   </div>
+                 </div>
+                 <div class="feedback-content">
+                   <p>${replytext.value}</p>
+                 </div>
+               </div>`
+     }).catch((error)=>{
+       console.error("error happen while get login userdata")
+     })
+
     replytext.value = '';
+   
     
   } catch (error) {
     // Handle errors and log them
@@ -386,4 +406,4 @@ const addReply = async (index) => {
 };
 
 
-console.log("end hai bhai pura code run hua hai pakka")                                                                                   
+// console.log("end hai bhai pura code run hua hai pakka")                                                                                   
