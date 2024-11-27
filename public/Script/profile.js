@@ -1,86 +1,94 @@
+// Form Visibility Handlers
 let form = document.getElementById("form");
 function handleEdit() {
   form.style.display = "block";
 }
-
 function handleHide() {
   form.style.display = "none";
 }
 
+// Password Reset Handlers
 let resetPass = document.getElementById("reset-password");
-
 function showReset() {
   resetPass.style.display = "block";
 }
-
 function handlePassword() {
   resetPass.style.display = "none";
 }
 
+// Password Validation
 let newPassword = document.getElementById("new-password");
 let confirmPassword = document.getElementById("confirm-password");
 let internalerror = document.getElementById("internalerror");
+let externalerror = document.getElementById("externalerror");
 let resetpasswordbtn = document.getElementById("resetpasswordbtn");
+
 confirmPassword.addEventListener("change", (e) => {
   externalerror.innerHTML = "";
-  if (newPassword.value != e.target.value) {
-    internalerror.innerHTML =
-      "New Passoword and Confirm password doesn't match";
+  const isMatch = newPassword.value === e.target.value;
+  const isLengthValid = confirmPassword.value.length >= 8;
+
+  if (!isLengthValid) {
+    internalerror.innerHTML = "The length of the password should be greater than 8";
+    resetpasswordbtn.disabled = true;
+  } else if (!isMatch) {
+    internalerror.innerHTML = "New Password and Confirm Password don't match";
     resetpasswordbtn.disabled = true;
   } else {
     internalerror.innerHTML = `<i class="fa-sharp-duotone fa-solid fa-check" style="color:#00B98E"></i>`;
     resetpasswordbtn.disabled = false;
   }
-  if (confirmPassword.value.length >= 8) {
-    resetpasswordbtn.disabled = false;
-  } else {
-    resetpasswordbtn.disabled = true;
-    internalerror.innerHTML = "The length of passowrd should be greater than 8";
-  }
 });
 
-// for upload hide
-
+// Image Overlay and Upload Handlers
 let upload = document.getElementById("upload");
-
 let image = document.getElementById("image");
 
-image.addEventListener("dblclick",() => {
+let fullScreenImage = document.getElementById("fullScreenImage");
+let fullImage = document.getElementById("fullImage");
+
+image.addEventListener("click", () => {
+
+
   showUpload();
 });
 
-image.addEventListener("click", () => {
-  let fullScreenImage = document.getElementById('fullScreenImage');
-  fullScreenImage.classList.add("active");  // Show with transition
-
-  let fullImage = document.getElementById('fullImage');
-  fullImage.src = image.children[0].src;   // Set the src of fullImage to the clicked image's src
-
-  document.body.style.overflow = "hidden";  // Disable page scrolling
+image.addEventListener("dblclick", () => {
+  let imageElement = image.children[0];
+  if (upload.style.display === "block") {
+    upload.style.display = "none";
+    // upload.style.transition = "all 0.3s ease-in-out";
+  }
+  if (imageElement && imageElement.tagName === "IMG") {
+    fullScreenImage.classList.add("active");
+    fullImage.src = imageElement.src;
+    document.body.style.overflow = "hidden";
+  } else {
+    // console.error("Invalid image source!");
+  }
 });
 
-
-
-// Hide the fullscreen overlay when clicking outside the image
-let fullScreenImage = document.getElementById('fullScreenImage');
-fullScreenImage.addEventListener("click", (e) => {
-    fullScreenImage.classList.remove("active");  // Hide with transition
-    document.body.style.overflow = "auto";       // Re-enable page scrolling
+// Close full-screen overlay
+fullScreenImage.addEventListener("click", () => {
+  fullScreenImage.classList.remove("active");
+  document.body.style.overflow = "auto";
 });
 
-// Prevent closing the overlay when clicking on the image itself
-let fullImage = document.getElementById('fullImage');
+// Prevent overlay from closing on image click
 fullImage.addEventListener("click", (e) => {
-    e.stopPropagation();  // Stop the click event from reaching #fullScreenImage
+  e.stopPropagation();
 });
-
 
 function showUpload() {
-  upload.style.display = "block";
-  upload.style.transition = "all 0.3s ease-in-out";
+  if (upload.style.display !== "block") {
+    upload.style.display = "block";
+    upload.style.transition = "all 0.3s ease-in-out";
+  }
 }
 
 function handleImage() {
-  upload.style.display = "none";
-  console.log("clicked");
+  if (upload.style.display === "block") {
+    upload.style.display = "none";
+    // console.log("Upload hidden");
+  }
 }

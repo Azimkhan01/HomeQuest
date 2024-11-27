@@ -106,7 +106,7 @@ const storage = multer.diskStorage({
         let newToken = await user.findById(decoded.data["_id"], {
           password: 0,
         });
-        if (decode.imgStatus) {
+        if (decoded.imgStatus) {
           function deleteFileSync(filePath) {
             try {
               fs.unlinkSync(filePath);

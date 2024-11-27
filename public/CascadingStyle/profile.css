@@ -104,17 +104,6 @@ h1 {
     /* Spacing between account details and listings */
 }
 
-* {
-    box-sizing: border-box; /* Ensures padding and border are included in element's total width/height */
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Arial', sans-serif; /* Base font for the body */
-    background-color: #f4f4f4; /* Soft background color for the whole page */
-}
-
 .listings-container {
     display: flex;
     flex-wrap: wrap;
@@ -184,6 +173,9 @@ body {
 }
 
 @media (max-width: 768px) {
+    #information{
+        margin-top: 20%;
+    }
     .listing-item {
         width: calc(45% - 20px); /* Adjust for smaller screens */
     }

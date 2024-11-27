@@ -33,7 +33,7 @@ const profile = async (req, res) => {
 
       // Prepare data for profile page rendering
       const displayName = customer.name || "-";
-      const displaySrc = customer.image || "-";
+      const displaySrc = customer.image || '-';
       const displayPhone = customer.phone || "-";
 
       // Generate a new token for the customer

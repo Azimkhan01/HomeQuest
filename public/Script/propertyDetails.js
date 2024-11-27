@@ -168,11 +168,9 @@ getDetails(paramId)
 <i class="fa-solid fa-xmark"></i>
         </div>`;
     details.details.AllImages.forEach((e) => {
-      imagesDiVImages += ` <div>
-            <img src="${window.location.origin}${e}">
-        </div>`;
+      imagesDiVImages += `<div><img src="${window.location.origin}${e}" lazy></div>`;
     });
-    videoDiv += `<div><video id="mainVideo" src="${window.location.origin}/stream/${details.details.video}" controls  controlsList="nopictureinpicture">></video><div>`;
+    videoDiv += `<div><video id="mainVideo" src="${window.location.origin}/stream/${details.details.video}" controls  controlsList="nopictureinpicture"></video><div>`;
 
     let video = document.getElementById("show-video");
     let showallimages = document.getElementById("show-all-images");
@@ -272,7 +270,7 @@ let updateCommentSection = async (paramId) => {
       html += `
         <div class="feedback-item">
           <div class="feedback-header">
-            <img src="${comment.image}" alt="User Avatar" class="user-avatar" />
+            <img src="${comment.image}" alt="User Avatar" class="user-avatar" lazy />
             <div class="user-info">
               <p class="user-name">${comment.username}</p>
               <p class="feedback-date">${comment.date}</p>
@@ -304,7 +302,7 @@ let updateCommentSection = async (paramId) => {
                 <div class="feedback-header">
                   <img src="${
                     reply.image || "https://via.placeholder.com/40"
-                  }" alt="User Avatar" class="user-avatar" />
+                  }" alt="User Avatar" class="user-avatar" lazy />
                   <div class="user-info">
                     <p class="user-name">${reply.username}</p>
                     <p class="feedback-date">${reply.date}</p>
@@ -418,7 +416,7 @@ const addReply = async (index) => {
       <div class="feedback-header">
         <img src="${
           userData.image || `${window.location.origin}/public/Assets/Default/defaultimage-removebg-preview`
-        }" alt="User Avatar" class="user-avatar" />
+        }" alt="User Avatar" class="user-avatar" lazy />
         <div class="user-info">
           <p class="user-name">${userData.username}</p>
           <p class="feedback-date">${formattedDate}</p>

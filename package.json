@@ -2,8 +2,9 @@
   "name": "homequest",
   "version": "1.0.0",
   "description": "This is a dynamic realestae aplication",
-  "main": "cluster.js",
+  "main": "app.js",
   "scripts": {
+    "cluster":"node cluster",
     "start": "nodemon -e hbs,js,css",
     "gitUpdate": "git add . && git commit -m \"some minor updates\" && git push origin main",
     "t1": "cloudflared tunnel --url http://127.0.0.1:9000 ",
