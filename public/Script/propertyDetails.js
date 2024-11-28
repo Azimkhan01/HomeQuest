@@ -120,7 +120,7 @@ getDetails(paramId)
         <div class="views-like">
             <div class="view">
                 <i class="fa-regular fa-eye"></i>
-                <p>${details.details.views || "NA"}</p>
+                <p>${details.details.views || 0}</p>
             </div>
             
             <div id="like" class="like ${userData.like.includes(paramId)?"liked" :"" }">
