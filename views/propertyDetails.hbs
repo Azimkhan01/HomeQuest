@@ -1,204 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeQuest</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HomeQuest</title>
+        <link rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin />
+        <link rel="stylesheet"
+            href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="../public/CascadingStyle/navbar.css">
-    <link rel="stylesheet" href="../public/CascadingStyle/propertyDetails.css">
-</head>
-
-<body>
-
-    {{>navbar}}
-    <div id="container" class="overview-container">
-        <div class="overview-images">
-            <div>
-                <img
-                    src="">
+        <link rel="stylesheet" href="../public/CascadingStyle/navbar.css">
+        <link rel="stylesheet"
+            href="../public/CascadingStyle/propertyDetails.css">
+    </head>
+    <body>
+        {{>navbar}}
+        <div id="container" class="overview-container">
+            <div class="overview-images">
+                <div>
+                    <img
+                        src>
+                </div>
+                {{!-- <div>
+                    <img
+                        src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-1.jpg">
+                </div> --}}
             </div>
-            {{!-- <div>
-                <img src="https://demo.htmlcodex.com/2259/real-estate-html-template/img/carousel-1.jpg">
-            </div> --}}
+            <div class="main-image-description">
+                <div class="other-image-description">
+                    <div class="image-owner">
+                        <i>By Owner name</i>
+                    </div>
+                    <div class="image-abb">
+                        <div>
+                            <p>
+                                Area
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                Bedroom
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                Bathroom
+                            </p>
+                        </div>
+                    </div>
+                    <div class="image-title">
+                        <h1>
+                            Title
+                        </h1>
+                    </div>
+                    <div class="image-location">
+                        <p>
+                            Location
+                        </p>
+                    </div>
+                    <div class="image-price">
+                        <p>
+                            Price
+                        </p>
+                    </div>
+
+                    <div class="image-listingType">
+                        <p>
+                            ListingType
+                        </p>
+                    </div>
+                    <div class="propertyType">
+                        <p>
+                            PropertyType
+                        </p>
+                    </div>
+                    <div class="views-like">
+                        <div class="view">
+                            <i class="fa-regular fa-eye"></i>
+                            <p>2</p>
+                        </div>
+                        <div class="like">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                            <p>2</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-navigation-image">
+                    <div class="left-right-button">
+                        <div id="left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </div>
+                        <div id="right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                    </div>
+                    <div class="image-navigation">
+                        <div>
+                            <img class="image-blur"
+                                src>
+                        </div>
+                        <div>
+                            <img
+                                src>
+                        </div>
+                        <div>
+                            <img class="image-blur"
+                                src>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="main-image-description">
-            <div class="other-image-description">
-                <div class="image-owner">
-                    <i>By Owner name</i>
-                </div>
-                <div class="image-abb">
-                    <div>
-                        <p>
-                            Area
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            Bedroom
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            Bathroom
-                        </p>
-                    </div>
-                </div>
-                <div class="image-title">
-                    <h1>
-                        Title
-                    </h1>
-                </div>
-                <div class="image-location">
-                    <p>
-                        Location
-                    </p>
-                </div>
-                <div class="image-price">
-                    <p>
-                        Price
-                    </p>
-                </div>
-
-                <div class="image-listingType">
-                    <p>
-                        ListingType
-                    </p>
-                </div>
-                <div class="propertyType">
-                    <p>
-                        PropertyType
-                    </p>
-                </div>
-                <div class="views-like">
-                    <div class="view">
-                        <i class="fa-regular fa-eye"></i>
-                        <p>2</p>
-                    </div>
-                    <div class="like">
-                        <i class="fa-solid fa-thumbs-up"></i>
-                        <p>2</p>
-                    </div>
-                </div>
+        <div id="commentSection">
+            <!-- Input Section -->
+            <div class="add-comment">
+                <label for="feedbackInput">Your Feedback:</label>
+                <input type="text" id="feedbackInput"
+                    placeholder="Write your feedback here..." />
+                <button id="addComment">Add Feedback</button>
             </div>
-            <div class="btn-navigation-image">
-
-
-                <div class="left-right-button">
-                    <div id="left">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </div>
-                    <div id="right">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                </div>
-                <div class="image-navigation">
-                    <div>
-                        <img class="image-blur"
-                            src="">
-                    </div>
-                    <div>
-                        <img
-                            src="">
-                    </div>
-                    <div>
-                        <img class="image-blur"
-                            src="">
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-
-   <div id="commentSection">
-    <!-- Input Section -->
-    <div class="add-comment">
-        <label for="feedbackInput">Your Feedback:</label>
-        <input type="text" id="feedbackInput" placeholder="Write your feedback here..." />
-        <button id="addComment">Add Feedback</button>
-    </div>
-
-    <!-- Feedback Display Section -->
-    <div id="feedbackDisplay">
-        <!-- Sample Feedback Structure -->
-        <!-- This will be dynamically populated using JavaScript -->
-        <!-- Example of a feedback -->
-        <div class="feedback-item" id="feedback-item">
-            <div class="feedback-header">
-                <img src="https://via.placeholder.com/50" alt="User Avatar" class="user-avatar" />
-                <div class="user-info">
-                    <p class="user-name">John Doe</p>
-                    <p class="feedback-date">Nov 24, 2024 - 10:30 AM</p>
-                </div>
-            </div>
-            <div class="feedback-content">
-                <p>This is a sample feedback.</p>
-            </div>
-            <button class="reply-button" id="reply-button">Reply</button>
-            <div id="replyToReply">
-                <input type="text" placeholder="Reply"/>
-                <button id="cancelReply">Cancel</button>
-                <button id="addReplyToReply" >Add a reply</button>
-            </div>
-            <div class="showMoreReplies">
-                <p><i class="fa-solid fa-chevron-down"></i> 50 Replies</p>
-            </div>
-            <div class="replies">
-                <!-- Nested replies -->
-                <div class="reply-item">
+            <!-- Feedback Display Section -->
+            <div id="feedbackDisplay">
+                <!-- Sample Feedback Structure -->
+                <!-- This will be dynamically populated using JavaScript -->
+                <!-- Example of a feedback -->
+                <div class="feedback-item" id="feedback-item">
                     <div class="feedback-header">
-                        <img src="https://via.placeholder.com/40" alt="User Avatar" class="user-avatar" />
+                        <img src="https://via.placeholder.com/50"
+                            alt="User Avatar" class="user-avatar" />
                         <div class="user-info">
-                            <p class="user-name">Jane Doe</p>
-                            <p class="feedback-date">Nov 24, 2024 - 11:00 AM</p>
+                            <p class="user-name">John Doe</p>
+                            <p class="feedback-date">Nov 24, 2024 - 10:30 AM</p>
                         </div>
                     </div>
                     <div class="feedback-content">
-                        <p>This is a reply to the feedback.</p>
+                        <p>This is a sample feedback.</p>
+                    </div>
+                    <button class="reply-button"
+                        id="reply-button">Reply</button>
+                    <div id="replyToReply">
+                        <input type="text" placeholder="Reply" />
+                        <button id="cancelReply">Cancel</button>
+                        <button id="addReplyToReply">Add a reply</button>
+                    </div>
+                    <div class="showMoreReplies">
+                        <p><i class="fa-solid fa-chevron-down"></i> 50
+                            Replies</p>
+                    </div>
+                    <div class="replies">
+                        <!-- Nested replies -->
+                        <div class="reply-item">
+                            <div class="feedback-header">
+                                <img src="https://via.placeholder.com/40"
+                                    alt="User Avatar" class="user-avatar" />
+                                <div class="user-info">
+                                    <p class="user-name">Jane Doe</p>
+                                    <p class="feedback-date">Nov 24, 2024 -
+                                        11:00 AM</p>
+                                </div>
+                            </div>
+                            <div class="feedback-content">
+                                <p>This is a reply to the feedback.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
-
-    {{!-- THIS FULLVIEW FOR VID3O ANBDD IAMGE THE FULL VIEW DISPLAY FOR IAMGES AND VIDEO --}}
-    <div id="imagesFullView">
-        <div id="removeimage">
-            <i class="fa-solid fa-xmark"></i>
+        {{!-- THIS FULLVIEW FOR VID3O ANBDD IAMGE THE FULL VIEW DISPLAY FOR
+        IAMGES AND VIDEO --}}
+        <div id="imagesFullView">
+            <div id="removeimage">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div>
+                <img
+                    src="https://subcommittee-cards-supervisors-peace.trycloudflare.com/public/Assets/Thumbnails/673f3b3a9e8b96566faa190c-thumbnail-1732198308569.jpg">
+            </div>
+            <div>
+                <img
+                    src="https://subcommittee-cards-supervisors-peace.trycloudflare.com/public/Assets/Thumbnails/673f3b3a9e8b96566faa190c-thumbnail-1732198308569.jpg">
+            </div>
         </div>
-        <div>
-            <img
-                src="https://subcommittee-cards-supervisors-peace.trycloudflare.com/public/Assets/Thumbnails/673f3b3a9e8b96566faa190c-thumbnail-1732198308569.jpg">
-        </div>
-        <div>
-            <img
-                src="https://subcommittee-cards-supervisors-peace.trycloudflare.com/public/Assets/Thumbnails/673f3b3a9e8b96566faa190c-thumbnail-1732198308569.jpg">
-        </div>
-
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"
-        integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/regular.min.js"
-        integrity="sha512-kOmvRi+0imoekwslOzP/X1LXQnzcttzqYYt3urKD4nhd5fMYwRfXgDS5Nh7b7pQjKPjBPSX9PmhCLrkfkxUcBQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="../public/Script/navbar.js"></script>
-    <script src="../public/Script/propertyDetails.js"></script>
-</body>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"
+            integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script
+            src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/regular.min.js"
+            integrity="sha512-kOmvRi+0imoekwslOzP/X1LXQnzcttzqYYt3urKD4nhd5fMYwRfXgDS5Nh7b7pQjKPjBPSX9PmhCLrkfkxUcBQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="../public/Script/navbar.js"></script>
+        <script src="../public/Script/propertyDetails.js"></script>
+    </body>
 
 </html>

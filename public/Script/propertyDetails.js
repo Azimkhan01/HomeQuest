@@ -45,7 +45,7 @@ async function getDetails(Id) {
 
 // Fetch details
 getDetails(paramId)
-  .then((details) => {
+  .then(async (details) => {
     let container = document.getElementById("container");
     let imagesFullView = document.getElementById("imagesFullView");
     // console.log(details.details.AllImages);
@@ -55,6 +55,9 @@ getDetails(paramId)
     });
     let comeback = ``;
     let setImageDiv = imagesdiv || comeback;
+    // console.log(details.details)
+    let userResponse = await fetch(`${window.location.origin}/getLoginUser`);
+    let userData = await userResponse.json();
     let s = `
        <div class="overview-images">
     <div>
@@ -117,11 +120,12 @@ getDetails(paramId)
         <div class="views-like">
             <div class="view">
                 <i class="fa-regular fa-eye"></i>
-                <p>${details.details.views || "0"}</p>
+                <p>${details.details.views || "NA"}</p>
             </div>
-            <div class="like">
+            
+            <div id="like" class="like ${userData.like.includes(paramId)?"liked" :"" }">
                 <i class="fa-solid fa-thumbs-up"></i>
-                <p>${details.details.like || "loading ....."}</p>
+                <p id="mainView" >${details.details.like || 0 }</p>
             </div>
         </div>
     </div>
@@ -143,8 +147,6 @@ getDetails(paramId)
                   details.details.AllImages.length
                 } Images</p>
             </div>
-
-
 
             <div id="show-video">
                 <div class="videoPlayButton">
@@ -193,6 +195,42 @@ getDetails(paramId)
         imagesFullView.style.display = "none";
       });
     });
+    
+    let like = document.getElementById("like");
+    like.addEventListener("click", async (e) => {
+      like.classList.toggle("liked");
+      async function getLikeStatus(paramId,query) {
+        try {
+          const response = await fetch(`${window.location.origin}/getLike/${paramId}/?action=${encodeURIComponent(query)}`);
+          const data = await response.json();
+          const likeStatus = data.status; 
+          return likeStatus; 
+        } catch (error) {
+          console.error("Error fetching like status:", error);
+          alert("An error occurred while fetching the like status.");
+        }
+      }
+     
+      
+      let mainView = document.getElementById("mainView")
+        if(like.classList.contains("liked"))
+        {
+            mainView.innerText = Number(mainView.innerHTML) + 1
+            getLikeStatus(paramId,"add").then(likeStatus => {
+              // alert(likeStatus)
+            });
+             
+        }else{
+
+          mainView.innerText = Number(mainView.innerHTML) - 1
+          getLikeStatus(paramId,"remove").then(likeStatus => {
+            // alert(likeStatus)
+          });
+        }
+     
+    });
+    
+
   })
   .catch((error) => {
     console.error("Error fetching property details:", error.message);
@@ -205,7 +243,7 @@ let addComment = document.getElementById("addComment");
 addComment.addEventListener("click", async (e) => {
   if (feedbackInput.value.trim() !== "") {
     e.target.disabled = true; // Disable the button while processing
-    alert("Submitting your comment...");
+    // alert("Submitting your comment...");
 
     try {
       const response = await fetch(
@@ -270,7 +308,9 @@ let updateCommentSection = async (paramId) => {
       html += `
         <div class="feedback-item">
           <div class="feedback-header">
-            <img src="${comment.image}" alt="User Avatar" class="user-avatar" lazy />
+            <img src="${
+              comment.image
+            }" alt="User Avatar" class="user-avatar" lazy />
             <div class="user-info">
               <p class="user-name">${comment.username}</p>
               <p class="feedback-date">${comment.date}</p>
@@ -319,7 +359,6 @@ let updateCommentSection = async (paramId) => {
           </div>
         </div>`;
     });
-
     feedbackItem.innerHTML = html;
 
     // Attach Event Listeners for Reply Buttons
@@ -364,9 +403,7 @@ let updateCommentSection = async (paramId) => {
     console.error("Error fetching comments:", error);
   }
 };
-
 updateCommentSection(paramId);
-
 const addReply = async (index) => {
   try {
     let repliesDiv = document.getElementById(`replies-${index}`);
@@ -401,21 +438,24 @@ const addReply = async (index) => {
     if (totalUser.innerHTML == "") {
       totalUser.innerHTML = ` <p><i class="fa-solid fa-chevron-down"></i> <span id='totalUserDisplay-${index}'>1</span> Reply</p>`;
     } else {
-      let totalUserDisplay = document.getElementById(`totalUserDisplay-${index}`)
-      let total = totalUserDisplay.innerText
-      total = Number(total) + 1
-      totalUserDisplay.innerText = total
+      let totalUserDisplay = document.getElementById(
+        `totalUserDisplay-${index}`
+      );
+      let total = totalUserDisplay.innerText;
+      total = Number(total) + 1;
+      totalUserDisplay.innerText = total;
     }
     // Fetch logged-in user details and update the replies
-    const userResponse = await fetch(`${window.location.origin}/getLoginUser`);
-    const userData = await userResponse.json();
+    let userResponse = await fetch(`${window.location.origin}/getLoginUser`);
+    let userData = await userResponse.json();
 
     const formattedDate = new Date().toLocaleString();
     let temp = `
     <div class="reply-item">
       <div class="feedback-header">
         <img src="${
-          userData.image || `${window.location.origin}/public/Assets/Default/defaultimage-removebg-preview`
+          userData.image ||
+          `${window.location.origin}/public/Assets/Default/defaultimage-removebg-preview`
         }" alt="User Avatar" class="user-avatar" lazy />
         <div class="user-info">
           <p class="user-name">${userData.username}</p>
@@ -432,7 +472,7 @@ const addReply = async (index) => {
     replytext.value = "";
   } catch (error) {
     console.error("Error adding reply:", error);
-    alert(error.message);
+    // alert(error.message);
   }
 };
 // console.log("end hai bhai pura code run hua hai pakka")

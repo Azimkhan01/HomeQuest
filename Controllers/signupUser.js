@@ -36,6 +36,8 @@ const signupUser = async (req, res) => {
       username,
       email,
       password: hashedPassword,
+      viewed:[],
+      like:[]
     });
 
     // console.log(colors.green("User added successfully: " + colors.cyan(newUser)));

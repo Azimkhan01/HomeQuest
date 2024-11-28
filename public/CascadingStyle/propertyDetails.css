@@ -11,7 +11,7 @@
     width: 100%;
 }
 
-.overview-images{
+.overview-images {
     padding: 10px;
     background-color: #F2F3F5;
     height: 400px;
@@ -24,31 +24,33 @@
     /* overflow: hidden; */
 }
 
-.overview-images div{
+.overview-images div {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
 
- .overview-images img{
+.overview-images img {
     width: 400px;
     height: 400px;
     object-fit: contain;
 }
 
 /* Description Section */
-.main-image-description, .other-image-description {
-  
+.main-image-description,
+.other-image-description {
+
     width: 40%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.other-image-description
-{
+
+.other-image-description {
     width: 100%;
 }
+
 /* Individual Elements */
 .image-owner i {
     font-size: 16px;
@@ -120,10 +122,6 @@
     cursor: pointer;
 }
 
-.like:hover {
-    color: #00b98e;
-}
-
 /* Navigation Buttons */
 .left-right-button {
     padding: 10px;
@@ -147,12 +145,10 @@
     background-color: #00b98e;
     color: white;
 } */
-
-.btn-navigation-image{
-   display: flex;
-   flex-direction: column;
+.btn-navigation-image {
+    display: flex;
+    flex-direction: column;
 }
-
 
 /* Image Navigation */
 .image-navigation {
@@ -180,7 +176,7 @@
     cursor: pointer;
 }
 
-#imagesFullView{
+#imagesFullView {
     overflow-y: auto;
     z-index: 1000;
     display: none;
@@ -194,7 +190,7 @@
     gap: 20px;
 }
 
-#removeimage{
+#removeimage {
     top: 0;
     cursor: pointer;
     position: fixed;
@@ -204,37 +200,38 @@
     align-self: flex-end;
 }
 
-#imagesFullView img{
+#imagesFullView img {
     height: 55vh;
     width: 100%;
     object-fit: contain;
 }
 
-#show-all-images,#show-video    
-{
+#show-all-images,
+#show-video {
     /* position: relative; */
     /* background-color: red; */
     display: flex;
     flex-direction: column;
 }
 
-#show-all-images div,#show-video div{
+#show-all-images div,
+#show-video div {
     align-self: center;
     text-align: center;
 }
 
-.icon-container,.videoPlayButton{
+.icon-container,
+.videoPlayButton {
     font-size: 30px;
     opacity: 0.5;
 }
 
-
-
-.icon-container:hover,.videoPlayButton:hover{
+.icon-container:hover,
+.videoPlayButton:hover {
     opacity: 1;
 }
 
-#mainVideo{
+#mainVideo {
     height: 90vh;
     width: 100%;
     object-fit: contain;
@@ -242,7 +239,7 @@
 
 /* Style for the main comment section container */
 #commentSection {
-    width:100%;
+    width: 100%;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -320,8 +317,8 @@
     margin-bottom: 10px;
 }
 
-.feedback-header p{
-font-size: 16px;
+.feedback-header p {
+    font-size: 16px;
 }
 
 .user-avatar {
@@ -356,13 +353,14 @@ font-size: 16px;
     color: #33333386;
 }
 
-.feedback-content p{
+.feedback-content p {
     font-size: 12px;
 }
 
-.feedback-date{
+.feedback-date {
     font-size: 10px;
 }
+
 /* Reply Button */
 .reply-button {
     background-color: #f0f0f0;
@@ -403,60 +401,82 @@ font-size: 16px;
 }
 
 .replyToReply {
-    display: none;            /* Use flexbox to align elements horizontally */
-    align-items: center;      /* Center the items vertically */
-    gap: 10px;                /* Add space between the input field and button */
+    display: none;
+    /* Use flexbox to align elements horizontally */
+    align-items: center;
+    /* Center the items vertically */
+    gap: 10px;
+    /* Add space between the input field and button */
     padding: 10px;
-    background-color: #f9f9f9; /* Light gray background color */
-    border-radius: 8px;       /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow effect */
-    width: 50%;             /* Set a fixed width */
-    margin: 10px 0;           /* Margin to separate from other elements */
+    background-color: #f9f9f9;
+    /* Light gray background color */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Light shadow effect */
+    width: 50%;
+    /* Set a fixed width */
+    margin: 10px 0;
+    /* Margin to separate from other elements */
 }
 
 .replyToReply input {
     transition: all ease-in-out 0.3s;
-    width: 30%;             /* Make the input field take up available space */
+    width: 30%;
+    /* Make the input field take up available space */
     padding: 8px 12px;
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 2px solid #00775b;            /* Add some padding inside the container */
-    border-radius: 4px;       /* Rounded corners for the input */
-    font-size: 14px; 
-    outline: none;         /* Font size for readability */
+    border-bottom: 2px solid #00775b;
+    /* Add some padding inside the container */
+    border-radius: 4px;
+    /* Rounded corners for the input */
+    font-size: 14px;
+    outline: none;
+    /* Font size for readability */
 }
 
-.replyToReply input:focus{
-    width: 60%; 
+.replyToReply input:focus {
+    width: 60%;
     opacity: 1;
-      transition: all ease-in-out 0.2s;
-    border-bottom: 3px solid #00d7a5;            /* Add some padding inside the container */
+    transition: all ease-in-out 0.2s;
+    border-bottom: 3px solid #00d7a5;
+    /* Add some padding inside the container */
 }
 
 .replyToReply button {
-    background-color: #02a882; /* Blue button background */
-    color: white;              /* White text color */
-    padding: 8px 16px;         /* Padding inside the button */
-    border: none;              /* Remove default border */
-    border-radius: 4px;       /* Rounded corners for the button */
-    font-size: 14px;           /* Font size for readability */
-    cursor: pointer;          /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    background-color: #02a882;
+    /* Blue button background */
+    color: white;
+    /* White text color */
+    padding: 8px 16px;
+    /* Padding inside the button */
+    border: none;
+    /* Remove default border */
+    border-radius: 4px;
+    /* Rounded corners for the button */
+    font-size: 14px;
+    /* Font size for readability */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for background color */
 }
 
 .replyToReply button:hover {
-    background-color: #008062; /* Darker blue on hover */
+    background-color: #008062;
+    /* Darker blue on hover */
 }
 
-.showMoreReplies{
+.showMoreReplies {
     cursor: pointer;
     color: #019e79;
     padding: 15px 5px 5px 0px;
     font-size: 12px;
 }
 
-.showMoreReplies P{
+.showMoreReplies P {
     font-size: 12px;
 }
 
@@ -471,6 +491,7 @@ font-size: 16px;
         width: 100%;
         text-align: center;
     }
+
     .overview-container {
         margin-top: 20%;
         flex-direction: column;
@@ -478,16 +499,22 @@ font-size: 16px;
     }
 
     .overview-images {
-        width: 100%;  /* Allow the image container to take full width */
-        max-width: 90%;  /* Optional: Add a max-width for better scaling */
-        height: auto;  /* Maintain aspect ratio */
+        width: 100%;
+        /* Allow the image container to take full width */
+        max-width: 90%;
+        /* Optional: Add a max-width for better scaling */
+        height: auto;
+        /* Maintain aspect ratio */
         padding: 0;
     }
 
     .overview-images .swiper-slide img {
-        width: 100%;  /* Make image responsive */
-        height: 250px;  /* Set a max height of 250px for mobile */
-        object-fit: contain;  /* Ensure the image maintains its aspect ratio */
+        width: 100%;
+        /* Make image responsive */
+        height: 250px;
+        /* Set a max height of 250px for mobile */
+        object-fit: contain;
+        /* Ensure the image maintains its aspect ratio */
     }
 
     .main-image-description {
@@ -515,26 +542,38 @@ font-size: 16px;
         height: 100px;
         width: 100px;
     }
-    .other-image-description{
+
+    .other-image-description {
         order: 2;
     }
-    .btn-navigation-image{
+
+    .btn-navigation-image {
         order: 1;
     }
-    #imagesFullView{
+
+    #imagesFullView {
         justify-content: space-around;
         top: 0;
         width: 100%;
     }
-    #removeimage{
-        top: 0;
-    } 
 
-    .replyToReply{
+    #removeimage {
+        top: 0;
+    }
+
+    .replyToReply {
         width: 100%;
     }
-    .feedback-header{
+
+    .feedback-header {
         padding: 2px;
         margin-top: 10px;
     }
+}
+
+.liked {
+    color: #00B98E;
+}
+label{
+    font-family: inter,sans-serif;
 }

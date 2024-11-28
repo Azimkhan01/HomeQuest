@@ -1,14 +1,17 @@
 let jwt = require("jsonwebtoken");
-const getLoginUser = (req, res) => {
+let {user,agent} = require("../Database/registerUsers.js")
+const getLoginUser = async(req, res) => {
   if (req.cookies.agentToken) {
     jwt.verify(
       req.cookies.agentToken,
       process.env.JWT_SECRET,
-      function (err, decoded) {
+      async function (err, decoded) {
         if (err) {
           res.render("login");
         } else {
-          res.json(decoded.data);
+          let result = await agent.findById(decoded.data["_id"],{password:0})
+          // console.log(result)
+          res.json(result)
         }
       }
     );
@@ -16,11 +19,13 @@ const getLoginUser = (req, res) => {
     jwt.verify(
       req.cookies.token,
       process.env.JWT_SECRET,
-      function (err, decoded) {
+     async function (err, decoded) {
         if (err) {
           res.render("login");
         } else {
-          res.json(decoded.data);
+          let result = await user.findById(decoded.data["_id"],{password:0})
+          // console.log(result)
+          res.json(result)
         }
       }
     );

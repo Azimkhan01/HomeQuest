@@ -47,6 +47,9 @@ const userSchema = new mongoose.Schema(
     viewed: {
       type: Array,
     },
+    like:{
+      type:Array
+    },
     role: {
       type: String,
       trim: true,
@@ -132,7 +135,7 @@ const ListingSchema = new mongoose.Schema(
       type:[],
       required:false
     },
-    views:{
+    view:{
       type:Number
     },
     like:{
