@@ -153,8 +153,6 @@ thumbnailImage.addEventListener("change", (e) => {
   }
 });
 
-
-
 const map = L.map("map").setView([20.5937, 78.9629], 5); // Set initial view to India
 
 // Add OpenStreetMap tile layer
@@ -213,7 +211,6 @@ function showSuggestions(suggestions) {
       suggestionItem.style.padding = "8px";
       suggestionItem.style.cursor = "pointer";
 
-
       suggestionItem.addEventListener("click", () => {
         locationInput.value = suggestion.display_name;
         suggestionsDiv.style.display = "none";
@@ -222,92 +219,87 @@ function showSuggestions(suggestions) {
         const lat = suggestion.lat;
         const lon = suggestion.lon;
         map.setView([lat, lon], 13); // Adjust zoom level as needed
-let latitude = document.getElementById("latitude")
-let longitude = document.getElementById("longitude")
+        let latitude = document.getElementById("latitude");
+        let longitude = document.getElementById("longitude");
         // Place a marker at the selected location
         if (marker) {
-         
           marker.setLatLng([lat, lon]);
         } else {
           // Assuming lat, lon, and title are defined and available
-// Set initial latitude and longitude
-const initialLat = lat; // Store the initial latitude
-const initialLng = lon; // Store the initial longitude
-latitude.value = initialLat;
-longitude.value = initialLng;
+          // Set initial latitude and longitude
+          const initialLat = lat; // Store the initial latitude
+          const initialLng = lon; // Store the initial longitude
+          latitude.value = initialLat;
+          longitude.value = initialLng;
 
-// Create a fixed circle at the initial coordinates
-const radius = 2000; // Set the desired radius in meters
-const circle = L.circle([initialLat, initialLng], {
-  color: 'red', // Circle color
-  fillColor: '#30f', // Fill color
-  fillOpacity: 0.5, // Fill opacity
-  radius: radius // Circle radius
-}).addTo(map);
+          // Create a fixed circle at the initial coordinates
+          const radius = 2000; // Set the desired radius in meters
+          const circle = L.circle([initialLat, initialLng], {
+            color: "red", // Circle color
+            fillColor: "#30f", // Fill color
+            fillOpacity: 0.5, // Fill opacity
+            radius: radius, // Circle radius
+          }).addTo(map);
 
-// Create a draggable marker at the initial coordinates
-let marker = L.marker([initialLat, initialLng], { draggable: true })
-  .addTo(map)
-  .bindPopup(title.value);
+          // Create a draggable marker at the initial coordinates
+          let marker = L.marker([initialLat, initialLng], { draggable: true })
+            .addTo(map)
+            .bindPopup(title.value);
 
-// Function to check if the marker is within the circle
-function isInsideCircle(latLng) {
-  const center = circle.getLatLng();
-  const distance = center.distanceTo(latLng); // Get the distance from the center to the marker position
-  return distance <= radius; // Check if within radius
-}
+          // Function to check if the marker is within the circle
+          function isInsideCircle(latLng) {
+            const center = circle.getLatLng();
+            const distance = center.distanceTo(latLng); // Get the distance from the center to the marker position
+            return distance <= radius; // Check if within radius
+          }
 
-// Update the marker's position when it is dragged
-marker.on('drag', function(event) {
-  const position = marker.getLatLng(); // Get the current position of the marker
+          // Update the marker's position when it is dragged
+          marker.on("drag", function (event) {
+            const position = marker.getLatLng(); // Get the current position of the marker
 
-  // Check if the new position is within the circle
-  if (isInsideCircle(position)) {
-    latitude.value = position.lat; // Update latitude input
-    longitude.value = position.lng; // Update longitude input
-  } else {
-    const mapElement = document.getElementById('map');
+            // Check if the new position is within the circle
+            if (isInsideCircle(position)) {
+              latitude.value = position.lat; // Update latitude input
+              longitude.value = position.lng; // Update longitude input
+            } else {
+              const mapElement = document.getElementById("map");
 
-    // Get the position and size of the #map element
-    const rect = mapElement.getBoundingClientRect();
+              // Get the position and size of the #map element
+              const rect = mapElement.getBoundingClientRect();
 
-    // Extract position values
-    const top = rect.top;    // Distance from the top of the viewport
-    const left = rect.left;  // Distance from the left of the viewport
-    const width = rect.width; // Width of the element
-    const height = rect.height; // Height of the element
+              // Extract position values
+              const top = rect.top; // Distance from the top of the viewport
+              const left = rect.left; // Distance from the left of the viewport
+              const width = rect.width; // Width of the element
+              const height = rect.height; // Height of the element
+              let errorStatus = document.getElementById("locationStatus");
+              errorStatus.style.display = "flex";
+              errorStatus.style.top = top + 500;
+              console.log(errorStatus.style.top);
+              errorStatus.style.left = left;
+              const firstChild = errorStatus.children[0];
+              firstChild.innerHTML =
+                "Select Location with in the radius or change the location ";
+              setTimeout(() => {
+                errorStatus.style.display = "none";
+              }, 3000);
+              // If outside the radius, reset marker to the original position
+              marker.setLatLng([initialLat, initialLng]); // Reset to initial position
+            }
+          });
+          // Update the circle's position when the marker is dragged and dropped
+          marker.on("dragend", function (event) {
+            const position = marker.getLatLng(); // Get the new position of the marker
 
-    let errorStatus = document.getElementById("locationStatus")
-
-errorStatus.style.display = "flex"
-errorStatus.style.top = top+500
-console.log(errorStatus.style.top)
-errorStatus.style.left = left
-const firstChild = errorStatus.children[0];
-firstChild.innerHTML = "Select Location with in the radius or change the location "
-setTimeout(()=>{
-errorStatus.style.display = "none"
-},3000)
-    // If outside the radius, reset marker to the original position
-    marker.setLatLng([initialLat, initialLng]); // Reset to initial position
-  }
-});
-
-// Update the circle's position when the marker is dragged and dropped
-marker.on('dragend', function(event) {
-  const position = marker.getLatLng(); // Get the new position of the marker
-
-  // Check if the marker is still within the circle after dragging ends
-  if (isInsideCircle(position)) {
-    latitude.value = position.lat; // Update latitude input
-    longitude.value = position.lng; // Update longitude input
-  } else {
-    // If outside the radius, reset marker to the original position
-    marker.setLatLng([initialLat, initialLng]); // Reset to initial position
-  }
-});
-
-
+            // Check if the marker is still within the circle after dragging ends
+            if (isInsideCircle(position)) {
+              latitude.value = position.lat; // Update latitude input
+              longitude.value = position.lng; // Update longitude input
+            } else {
+              // If outside the radius, reset marker to the original position
+              marker.setLatLng([initialLat, initialLng]); // Reset to initial position
+            }
+          });
         }
       });
 
@@ -336,7 +328,9 @@ document.addEventListener("click", (e) => {
 
 {
   let state = document.getElementById("state");
-  fetch(`${window.location.protocol}//${window.location.hostname}:${window.location.port}/getStates`)
+  fetch(
+    `${window.location.protocol}//${window.location.hostname}:${window.location.port}/getStates`
+  )
     .then((response) => response.json())
     .then((data) => {
       // console.log(data)
@@ -358,7 +352,9 @@ document.addEventListener("click", (e) => {
 
     // Check if the pincode is a valid length and is numeric
     if (pin.length >= 6 && !isNaN(pin)) {
-      fetch(`${window.location.protocol}//${window.location.hostname}:${window.location.port}/getStates`)
+      fetch(
+        `${window.location.protocol}//${window.location.hostname}:${window.location.port}/getStates`
+      )
         .then((response) => response.json())
         .then((data) => {
           let matchedState = null; // Initialize variable to store matched state
@@ -377,7 +373,8 @@ document.addEventListener("click", (e) => {
           // Log the matched state if found
           if (matchedState) {
             if (state.value >= 3) {
-              return;0
+              return;
+              0;
             } else {
               setTimeout(() => {
                 pincodeStatus.innerHTML = "";
@@ -405,39 +402,40 @@ document.addEventListener("click", (e) => {
 
 {
   const videoInput = document.getElementById("propertyVideo");
-const imageInput = document.getElementById("propertyImages");
-const videoErrorDiv = document.getElementById("videoError");
-const imageErrorDiv = document.getElementById("imageError");
-const submitButton = document.getElementById("submit");
+  const imageInput = document.getElementById("propertyImages");
+  const videoErrorDiv = document.getElementById("videoError");
+  const imageErrorDiv = document.getElementById("imageError");
+  const submitButton = document.getElementById("submit");
 
-videoInput.addEventListener("change", function() {
+  videoInput.addEventListener("change", function () {
     const file = this.files[0];
     videoErrorDiv.textContent = ""; // Clear previous error message
     videoErrorDiv.style.opacity = "0"; // Hide error message initially
 
     if (file) {
-        const maxSize = 120 * 1024 * 1024; // 120 MB in bytes
-        if (file.size > maxSize) {
-            videoErrorDiv.textContent = "The video file size exceeds 120 MB. Please upload a smaller file.";
-            this.value = ""; // Clear the file input
-            videoErrorDiv.style.opacity = "1"; // Show the error message
-            submitButton.disabled = true; // Disable the submit button
-            
-            // Fade out the error message after 2 seconds
-            setTimeout(() => {
-              // console.log("erro")
-                videoErrorDiv.style.opacity = "0"; // Fade out
-                setTimeout(() => {
-                    videoErrorDiv.textContent = ""; // Clear the message after fade out
-                }, 500); // Match this time with the CSS transition duration
-            }, 2000); // 2 seconds
-        } else {
-            submitButton.disabled = false; // Enable the submit button if no error
-        }
-    }
-});
+      const maxSize = 120 * 1024 * 1024; // 120 MB in bytes
+      if (file.size > maxSize) {
+        videoErrorDiv.textContent =
+          "The video file size exceeds 120 MB. Please upload a smaller file.";
+        this.value = ""; // Clear the file input
+        videoErrorDiv.style.opacity = "1"; // Show the error message
+        submitButton.disabled = true; // Disable the submit button
 
-imageInput.addEventListener("change", function() {
+        // Fade out the error message after 2 seconds
+        setTimeout(() => {
+          // console.log("erro")
+          videoErrorDiv.style.opacity = "0"; // Fade out
+          setTimeout(() => {
+            videoErrorDiv.textContent = ""; // Clear the message after fade out
+          }, 500); // Match this time with the CSS transition duration
+        }, 2000); // 2 seconds
+      } else {
+        submitButton.disabled = false; // Enable the submit button if no error
+      }
+    }
+  });
+
+  imageInput.addEventListener("change", function () {
     const files = this.files;
     imageErrorDiv.textContent = ""; // Clear previous error message
     imageErrorDiv.style.opacity = "0"; // Hide error message initially
@@ -445,22 +443,20 @@ imageInput.addEventListener("change", function() {
     const maxImages = 10; // Maximum number of images allowed
 
     if (files.length > maxImages) {
-        imageErrorDiv.textContent = `You can upload a maximum of ${maxImages} images. Please select fewer images.`;
-        this.value = ""; // Clear the file input
-        imageErrorDiv.style.opacity = "1"; // Show the error message
-        submitButton.disabled = true; // Disable the submit button
-        
-        // Fade out the error message after 2 seconds
+      imageErrorDiv.textContent = `You can upload a maximum of ${maxImages} images. Please select fewer images.`;
+      this.value = ""; // Clear the file input
+      imageErrorDiv.style.opacity = "1"; // Show the error message
+      submitButton.disabled = true; // Disable the submit button
+
+      // Fade out the error message after 2 seconds
+      setTimeout(() => {
+        imageErrorDiv.style.opacity = "0"; // Fade out
         setTimeout(() => {
-            imageErrorDiv.style.opacity = "0"; // Fade out
-            setTimeout(() => {
-                imageErrorDiv.textContent = ""; // Clear the message after fade out
-            }, 500); // Match this time with the CSS transition duration
-        }, 2000); // 2 seconds
+          imageErrorDiv.textContent = ""; // Clear the message after fade out
+        }, 500); // Match this time with the CSS transition duration
+      }, 2000); // 2 seconds
     } else {
-        submitButton.disabled = false; // Enable the submit button if no error
+      submitButton.disabled = false; // Enable the submit button if no error
     }
-});
+  });
 }
-
-

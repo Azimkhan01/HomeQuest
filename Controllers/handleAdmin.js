@@ -10,9 +10,15 @@ const { Agent } = require("http");
 const handleAdmin = async (req, res) => {
   // Check if admin is logged in (based on cookies)
   if (req.cookies.admin) {
-    const { username, email, phone, bio, adhaarcard, license, password } =
+    const { username, email, phone, bio, adhaarcard, license, password,instagram,whatsapp,youtube } =
       req.body;
-
+  let checkEmail = await agent.findOne({email:email})
+  if(checkEmail)
+  {
+    res.status(400).render("admin",{
+      status:"the agent already exist"
+    })
+  }
     // Check if a photo was uploaded
     if (!req.file) {
       return res.status(400).send("User photo is required");
@@ -34,6 +40,9 @@ const handleAdmin = async (req, res) => {
 
       // Create a new agent document with the uploaded photo and hashed password
       const newAgent = await agent.create({
+        instagram,
+        whatsapp,
+        youtube,
         username,
         email,
         phone,

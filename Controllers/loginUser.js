@@ -16,80 +16,62 @@ const loginUser = async (req, res) => {
       });
     }
 
+    // Check if the user is an agent
     const agentResult = await agent.findOne({ email: email });
-
     if (agentResult) {
-      if (agentResult.role == "agent") {
-        // console.log(agentResult);
-
-        // res.cookie("admin", adminToken);
-
-        bcrypt.compare(password, agentResult.password).then(function (correct) {
-          console.log(correct);
-          if (correct) {
-            let agentToken = jwt.sign(
-              { data: agentResult },
-              process.env.JWT_SECRET,
-              {
-                expiresIn: "1d",
-              }
-            );
-            res.cookie("agentToken", agentToken);
-            res.redirect("/Dashboard");
-          } else {
-            res.render("login", {
-              error: "password or username is wrong",
-            });
-          }
-        });
-      }
-    } else {
-      const result = await user.findOne({ email: email });
-      if (result) {
-        if (result.role == "admin") {
-          // console.log(result.role)
-
-          let adminToken = jwt.sign({ data: result }, process.env.JWT_SECRET, {
-            expiresIn: "1d",
-          });
-          res.cookie("admin", adminToken);
-          if (result.password == password) {
-            res.redirect("/admin");
-          }
+      if (agentResult.role === "agent") {
+        const correct = await bcrypt.compare(password, agentResult.password);
+        if (correct) {
+          const agentToken = jwt.sign(
+            { data: agentResult },
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
+          );
+          res.cookie("agentToken", agentToken);
+          return res.redirect("/Dashboard");
         } else {
-          if (result) {
-            const isPasswordValid = await bcrypt.compare(
-              password,
-              result.password
-            );
-
-            if (isPasswordValid) {
-              const token = jwt.sign(
-                { data: result },
-                process.env.JWT_SECRET, // Replace with environment variable
-                { expiresIn: "1d" }
-              );
-
-              res.cookie("token", token);
-
-              if (!req.cookies.token) {
-                await mail(result.email, result.username);
-              }
-              // console.log(res)
-              return res.redirect("home");
-            } else {
-              return res.render("login", {
-                error: "Incorrect email or password",
-              });
-            }
-          } else {
-            return res.render("login", {
-              error: "User not found, please try again later",
-            });
-          }
+          return res.render("login", {
+            error: "Incorrect email or password",
+          });
         }
       }
     }
+
+    // Check if the user is an admin or regular user
+    const result = await user.findOne({ email: email });
+    if (result) {
+      const isPasswordValid = await bcrypt.compare(password, result.password);
+      if (isPasswordValid) {
+        const token = jwt.sign(
+          { data: result },
+          process.env.JWT_SECRET,
+          { expiresIn: "1d" }
+        );
+
+        // Set cookie based on role
+        if (result.role === "admin") {
+          res.cookie("admin", token);
+          return res.redirect("/admin");
+        } else {
+          res.cookie("token", token);
+
+          // Send login email if no cookie exists
+          if (!req.cookies.token) {
+            await mail(result.email, result.username);
+          }
+          return res.redirect("/home");
+        }
+      } else {
+        return res.render("login", {
+          error: "Incorrect email or password",
+        });
+      }
+    }
+
+    // If no user or agent was found
+    return res.render("login", {
+      error: "No user found with this email. Please register first.",
+    });
   } catch (error) {
     console.error(colors.red("Error in loginUser function: "), error);
     return res.render("login", {

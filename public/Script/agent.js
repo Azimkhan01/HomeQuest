@@ -33,20 +33,16 @@ async function handleAppointment(agentMail, agentName, agentID) {
       let alert = document.getElementById("alert");
 
       alert.style.display = "flex";
-
       //   console.log(data)
       crossButton.addEventListener("click", () => {
         alert.style.display = "none";
       });
     }
-
     // Hide loader once response is received
     document.getElementById("loader").style.display = "none";
-
     return data;
   }
 }
-
 // Function to fetch agent data
 async function getAgentData() {
   try {
@@ -192,7 +188,8 @@ async function getAgentData() {
                         <ul class="example-2">
                             <li class="icon-content">
                                 <a
-                                    href="https://wa.me/"
+                                    href="${e.whatsapp || "#"}"
+                                    target="_blank"
                                     aria-label="WhatsApp"
                                     data-social="whatsapp">
                                     <div class="filled"></div>
@@ -213,7 +210,8 @@ async function getAgentData() {
                             </li>
                             <li class="icon-content">
                                 <a
-                                    href="https://www.instagram.com/"
+                                    href="${e.instagram || "#"}"
+                                    target="_blank"
                                     aria-label="Instagram"
                                     data-social="instagram">
                                     <div class="filled"></div>
@@ -233,7 +231,8 @@ async function getAgentData() {
                                 <div class="tooltip">Instagram</div>
                             </li>
                             <li class="icon-content">
-                                <a href="https://youtube.com/"
+                                <a href="${e.youtube || "#"}"
+                                    target="_blank"
                                     aria-label="Youtube" data-social="youtube">
                                     <div class="filled"></div>
                                     <svg
@@ -257,7 +256,6 @@ async function getAgentData() {
                 </div>
             </div>
       `;
-
       //   console.log('done')
     });
     container1.innerHTML = s; // Log the response data (agent details)
@@ -265,6 +263,5 @@ async function getAgentData() {
     console.error("Error:", error); // Log any error that occurs
   }
 }
-
 // Call the function to fetch agent data
 getAgentData();
