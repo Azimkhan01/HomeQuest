@@ -104,6 +104,4 @@ async function mail(clientEmail, clientName) {
   // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
 
-// mail("azimkarimrahim@gmail.com","[Azim kha]")
-
-module.exports = { mail };
+module.exports = { mail  };

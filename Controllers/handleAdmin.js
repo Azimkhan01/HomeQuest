@@ -9,7 +9,7 @@ const { Agent } = require("http");
 // Function to handle admin actions such as adding a new agent
 const handleAdmin = async (req, res) => {
   // Check if admin is logged in (based on cookies)
-  if (req.cookies.admin) {
+  if (req.cookies.admin || req.cookies.temporary) {
     const { username, email, phone, bio, adhaarcard, license, password,instagram,whatsapp,youtube } =
       req.body;
   let checkEmail = await agent.findOne({email:email})
@@ -36,7 +36,7 @@ const handleAdmin = async (req, res) => {
 
     try {
       // Hash the password using bcrypt
-      const hashedPassword = await bcrypt.hash(password, 10); // 10 is the salt rounds
+      const hashedPassword = await bcrypt.hash(password, parseInt(process.env.SALTROUNDS) || 10); // 10 is the salt rounds
 
       // Create a new agent document with the uploaded photo and hashed password
       const newAgent = await agent.create({

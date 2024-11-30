@@ -1,76 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Agents</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Agents</title>
 
-   
-    
-    <link rel="stylesheet" href="../public/CascadingStyle/admin.css">
+
+
+  <link rel="stylesheet" href="../public/CascadingStyle/admin.css">
 </head>
+
 <body>
-  
 
-    <div id="admin">
-        <div id="admin-main">
-            <h1>Add Agents</h1>
-            <form action="/handleAdmin" method="POST" enctype="multipart/form-data" id="agent-form">
-                <input type="text" id="agentName" name="username" placeholder="Agent Name" required />
-                <input type="email" id="agentEmail" name="email" placeholder="Agent Email" required />
-                <input type="number" id="agentPhone" name="phone" placeholder="Agent Phone Number" required />
-                <input type="text" id="agentBio" name="bio" placeholder="Title"  required></input>
- <input type="password" id="agentPassword" name="password" placeholder="Agent Password" required />
-<input type="number" id="agentAdhaar" name="adhaarcard" placeholder="Adhaarcard" required />
-<input type="text" id="agentLicense" name="license" placeholder="Agent License" required />
-<input type="text" id="whatsapp" name="whatsapp" placeholder="Whatsapp" />
-<input type="text" id="instagram" name="instagram" placeholder="Instagram" />
-<input type="text" id="youtube" name="youtube" placeholder="Youtube" />
-                <label for="agentPhoto">Agent Photo</label>
-<input type="file" id="agentPhoto" name="photo" accept="image/*" multiple required />
 
-<p id="error" color="red">{{status}}</p>
-                <button id="addAgent" type="submit">Add Agent</button>
-            </form>
+  <div id="admin">
+    <div id="linkandFormHandling">
+      <div id="getLink" class="getLink">
+        <a href="#">
+          Get Link
+        </a>
+      </div>
+      {{!-- toggle start --}}
+      <label class="toggle-switch">
+        <input id="turnForm" type="checkbox">
+        <div class="toggle-switch-background">
+          <div class="toggle-switch-handle"></div>
         </div>
+      </label>
 
-        <div id="agent-list">
-            <h2>Existing Agents</h2>
-            <div id="agent-cards">
-                <!-- Dynamically populate agent cards -->
+      {{!-- toggle end --}}
+    </div>
+<div id="handleEmail">
 
-<div class="card">
- <div class="image">
-    <img src="" alt="thumbnail">
- </div>
-  <div class="content">
-    <a href="#">
-      <span class="title">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </span>
-    </a>
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" name="email" required placeholder="example@example.com">
+        <br><br>
+        
+        <!-- Input for the link -->
+        <label for="link">Enter the link:</label>
+        <input type="url" id="link" name="link" required placeholder="https://example.com">
+        <br><br>
+        
+        <!-- Send button -->
+        <button type="submit" id="sendButton">Send</button>
 
-    <p class="desc">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-      dolores, possimus pariatur animi temporibus nesciunt praesentium 
-    </p>
-
-    <a class="action" href="#">
-      See more
-      <span aria-hidden="true">
-        →
-      </span>
-    </a>
-  </div>
 </div>
-{{!-- dynamic card --}}
-            </div>
-        </div>
+
+    <div id="admin-main">
+      <h1>Add Agents</h1>
+      <form action="/handleAdmin" method="POST" enctype="multipart/form-data" id="agent-form">
+        <input type="text" id="agentName" name="username" placeholder="Agent Name" required />
+        <input type="email" id="agentEmail" name="email" placeholder="Agent Email" required />
+        <input type="number" id="agentPhone" name="phone" placeholder="Agent Phone Number" required />
+        <input type="text" id="agentBio" name="bio" placeholder="Title" required></input>
+        <input type="password" id="agentPassword" name="password" placeholder="Agent Password" required />
+        <input type="number" id="agentAdhaar" name="adhaarcard" placeholder="Adhaarcard" required />
+        <input type="text" id="agentLicense" name="license" placeholder="Agent License" required />
+        <input type="text" id="whatsapp" name="whatsapp" placeholder="Whatsapp" />
+        <input type="text" id="instagram" name="instagram" placeholder="Instagram" />
+        <input type="text" id="youtube" name="youtube" placeholder="Youtube" />
+        <label for="agentPhoto">Agent Photo</label>
+        <input type="file" id="agentPhoto" name="photo" accept="image/*" multiple required />
+
+        <p id="error" color="red">{{status}}</p>
+        <button id="addAgent" type="submit">Add Agent</button>
+      </form>
     </div>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="agent-list">
+      <h2 style="text-align: center;">Existing Agents</h2>
+      <div id="agent-cards">
+        <!-- Dynamically populate agent cards -->
 
-    <script src="../public/Script/admin.js"></script>
+        <div class="card">
+          <div class="image">
+            <img src="" alt="thumbnail">
+          </div>
+          <div class="content">
+            <a href="#">
+              <span class="title">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </span>
+            </a>
+
+            <p class="desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
+              dolores, possimus pariatur animi temporibus nesciunt praesentium
+            </p>
+
+            <a class="action" href="#">
+              See more
+              <span aria-hidden="true">
+                →
+              </span>
+            </a>
+          </div>
+        </div>
+        {{!-- dynamic card --}}
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../public/Script/admin.js"></script>
 </body>
+
 </html>

@@ -233,5 +233,19 @@ const AgentSchema = new mongoose.Schema(
     strict: false, // Set strict mode to false
   }
 );
+const linkSchema = new mongoose.Schema({
+  timestamp: { 
+    type: Date,
+    required: true,
+  },
+  time: { 
+    type: String,
+    required: true,
+    match: [/^\d{6}$/, 'Time must be in hhmmss format'],
+  },
+});
 
-module.exports = { userSchema, ListingSchema, AgentSchema };
+
+
+
+module.exports = { userSchema, ListingSchema, AgentSchema , linkSchema };

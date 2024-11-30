@@ -340,4 +340,113 @@ async function appointmentConfirmMail(
   // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
 
-module.exports = { mail, appointmentReceivedMail, appointmentNoticeMail ,appointmentConfirmMail};
+async function sendLinkTo(clientEmail,link) {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: process.env.email, // sender address
+    to: clientEmail, // list of receivers
+    subject: "Welcome to Home Quest!", // Subject line
+    //   text: "Hello world?", // plain text body
+    html: `
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Registration Message</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container for the message box */
+        .message-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+        }
+
+        /* Header of the message */
+        .message-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Content of the message */
+        .message-body {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Link styling */
+        .message-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .message-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer note */
+        .footer-note {
+            font-size: 14px;
+            color: #777;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <!-- Header -->
+        <div class="message-header">
+            Welcome to Homequest Agent Registration
+        </div>
+
+        <!-- Body -->
+        <div class="message-body">
+            <p>Dear Agent,</p>
+            <p>Thank you for choosing to register with Homequest! To complete your registration, please click on the link below:</p>
+            <p><a href="${link}" class="message-link" target="_blank">Register as Agent on Homequest</a></p>
+            <p>If you have any questions, feel free to reach out to us.</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-note">
+            Best regards,<br>
+            Homequest Team
+        </div>
+    </div>
+</body>
+</html>
+
+      `, // html body
+  });
+
+  console.log("this mail is send for link sending >> Message sent: %s", info.messageId);
+  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+}
+
+module.exports = { mail, appointmentReceivedMail, appointmentNoticeMail ,appointmentConfirmMail , sendLinkTo};

@@ -75,6 +75,9 @@ const { addComment } = require("../Controllers/addComment.js");
 const { getComment } = require("../Controllers/getComment.js");
 const { addReply } = require("../Controllers/addReply.js");
 const { getLike } = require("../Controllers/getLike.js");
+const { linkAgent } = require("../Controllers/linkAgent.js");
+const { addLink } = require("../Controllers/addLink.js");
+const { sendLink } = require("../Controllers/sendLink.js");
 // const { decode } = require("punycode");
 
 // const { stream } = require("../Controllers/stream.js");
@@ -188,6 +191,9 @@ router.route("/addComment/:id").post(addComment)
 router.route("/getComment/:id").get(getComment)
 router.route("/addReply/:id").post(addReply)
 router.route("/getLike/:id").get(getLike)
+router.route("/agentLink/:id?").get(linkAgent)
+router.route("/addLink").get(addLink)
+router.route("/sendLink").post(sendLink)
 //error
 router.route("*").get(error);
 

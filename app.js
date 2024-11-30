@@ -20,7 +20,6 @@ const partialsPath = path.join(__dirname, "views/Partials");
 // Middleware setup
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

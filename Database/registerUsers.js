@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const colors = require("colors");
 const path = require("path")
 const fs = require("fs")
-const { userSchema ,ListingSchema,AgentSchema} = require("../DatabaseSchema/Users");
+const { userSchema ,ListingSchema,AgentSchema, linkSchema} = require("../DatabaseSchema/Users");
 mongoose
   .connect("mongodb://localhost:27017/HomeQuest")
   .then(async () => {
@@ -19,6 +19,7 @@ mongoose
 const user = mongoose.model("users", userSchema);
 const listing = mongoose.model("listings",ListingSchema)
 const agent = mongoose.model("agent",AgentSchema)
+const link = mongoose.model("link",linkSchema)
 // {
 //   const { MongoClient } = require('mongodb');
 
@@ -77,4 +78,4 @@ const agent = mongoose.model("agent",AgentSchema)
 // }
 
 
-module.exports = { user,listing,agent};
+module.exports = { user,listing,agent , link};

@@ -1,6 +1,5 @@
 //get whether the link is right or not
 
-
 let links = ['instagram', 'whatsapp', 'youtube'];
 let addAgent = document.getElementById("addAgent");
 let error = document.getElementById("error");
@@ -103,83 +102,4 @@ document.getElementById("agentPhoto").addEventListener("change", function (event
   }
 });
 
-let adminMain = document.getElementById("admin-main") 
-adminMain.style.display = "none"
-let turnForm = document.getElementById("turnForm")
-turnForm.addEventListener('click',()=>{
-  if(turnForm.checked)
-  {
-    adminMain.style.display = "block"
-  }else{
-    adminMain.style.display = "none"
-  }
-})
-
-const getLink = document.getElementById("getLink");
-const handleEmail = document.getElementById('handleEmail')
-getLink.addEventListener('click', (e) => {
-  // The link you want to copy
-  let  linkToCopy;
-  try{
-fetch(`${window.location.origin}/addLink`).then(data => data.json()).then((r)=>{
-linkToCopy = `${window.location.origin}/agentLink/${r['id']}`
-const tempInput = document.createElement("input");
-tempInput.value = linkToCopy;
-document.body.appendChild(tempInput);
-tempInput.select();
-document.execCommand("copy");
-document.body.removeChild(tempInput);
-let p = document.createElement("a")
-p.href = linkToCopy
-p.style.background = "white"
-p.style.color = "#05C46B"
-p.innerText = linkToCopy
-getLink.appendChild(p)
-setTimeout(()=>{
-getLink.removeChild(p)
-},20000)
-handleEmail.style.display = "block"
-})
-  } catch(err){
-console.error(err+"error happen while fetching for the link")
-  }
- 
-});
-handleEmail.style.display = "none"
-let sendButton = document.getElementById('sendButton')
-document.getElementById("sendButton").addEventListener("click", async (e) => {
-  e.preventDefault(); // Prevent the default form submission
-
-  try {
-    let link = document.getElementById("link").value;
-    let email = document.getElementById("email").value;
-
-    // Send a POST request with email and link data
-    let response = await fetch(`${window.location.origin}/sendLink`, {
-      method: "POST", // Specify the method as POST
-      headers: {
-        "Content-Type": "application/json" // Specify the content type as JSON
-      },
-      body: JSON.stringify({ 'email':email, 'link':link }) // Send the email and link as JSON
-    });
-
-    if (response.ok) {
-      setTimeout(()=>{
-        document.getElementById("handleEmail").style.display = "none";
-      },2000)
-      // If the response is successful, hide the form
-    
-      // alert("Link sent successfully!");
-
-    } else {
-      // Handle server errors or unsuccessful response
-      console.error("Failed to send link:", response.status);
-      alert("There was an error sending the link. Please try again.");
-    }
-  } catch (error) {
-    // Catch any errors in the fetch request
-    console.error(error);
-    alert("An error occurred. Please try again.");
-  }
-});
 

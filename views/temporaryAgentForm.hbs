@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Agents</title>
+
+
+
+  <link rel="stylesheet" href="../public/CascadingStyle/admin.css">
+</head>
+
+<body>
+  <div id="admin">
+    <div id="admin-main">
+      <h1>Add Agents</h1>
+      <form action="/handleAdmin" method="POST" enctype="multipart/form-data" id="agent-form">
+        <input type="text" id="agentName" name="username" placeholder="Agent Name" required />
+        <input type="email" id="agentEmail" name="email" placeholder="Agent Email" required />
+        <input type="number" id="agentPhone" name="phone" placeholder="Agent Phone Number" required />
+        <input type="text" id="agentBio" name="bio" placeholder="Title" required></input>
+        <input type="password" id="agentPassword" name="password" placeholder="Agent Password" required />
+        <input type="number" id="agentAdhaar" name="adhaarcard" placeholder="Adhaarcard" required />
+        <input type="text" id="agentLicense" name="license" placeholder="Agent License" required />
+        <input type="text" id="whatsapp" name="whatsapp" placeholder="Whatsapp" />
+        <input type="text" id="instagram" name="instagram" placeholder="Instagram" />
+        <input type="text" id="youtube" name="youtube" placeholder="Youtube" />
+        <label for="agentPhoto">Agent Photo</label>
+        <input type="file" id="agentPhoto" name="photo" accept="image/*" multiple required />
+
+        <p id="error" color="red">{{status}}</p>
+        <button id="addAgent" type="submit">Add Agent</button>
+      </form>
+    </div>
+  </div>
+  <script src="../public/Script/temporaryAgentForm.js"></script>
+  <script>
+    let adminMain = document.getElementById("admin-main") 
+adminMain.style.display = "none"z
+  </script>
+</body>
+
+</html>
