@@ -78,6 +78,8 @@ const { getLike } = require("../Controllers/getLike.js");
 const { linkAgent } = require("../Controllers/linkAgent.js");
 const { addLink } = require("../Controllers/addLink.js");
 const { sendLink } = require("../Controllers/sendLink.js");
+const { addAgentProperty } = require("../Controllers/addAgentProperty.js");
+
 // const { decode } = require("punycode");
 
 // const { stream } = require("../Controllers/stream.js");
@@ -137,10 +139,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 const uploadToListing = multer({ storage: listingStorage }).fields([
-  { name: "thumbnail", maxCount: 1 }, // One file for thumbnail
-  { name: "propertyImages", maxCount: 10 }, // Up to 10 files for property images
-  { name: "propertyVideo", maxCount: 1 }, // One file for property video
+  { name: "thumbnail", maxCount: 1 }, 
+  { name: "propertyImages", maxCount: 10 }, 
+  { name: "propertyImages360", maxCount: 10 }, 
+  { name: "propertyVideo", maxCount: 1 }, 
 ]);
+
 const uploadAgent = multer({ storage: agentStorage });
 //image
 
@@ -158,6 +162,7 @@ router.route("/profile/reset-password").post(handleReset);
 router.route("/profile/logout").get(handleLogout);
 router.route("/profile/image").post(upload.single("image"), profile);
 router.route("/add-property").get(addProperty);
+router.route("/add-agent-property").get(addAgentProperty);
 router
   .route("/upload-property")
   .post(uploadToListing, handleUploadImageListing);

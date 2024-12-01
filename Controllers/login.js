@@ -5,7 +5,8 @@ const login = (req, res) => {
   } else {
     if (req.cookies.token || req.cookies.agentToken) {
       setTimeout(() => {
-        res.redirect("/home");
+        req.cookies.agentToken ? res.redirect("/Dashboard") : res.redirect("/home")
+
       }, 1500);
     } else {
       res.render("login");

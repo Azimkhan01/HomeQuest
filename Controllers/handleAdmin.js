@@ -1,10 +1,9 @@
-const { agent } = require("../Database/registerUsers.js"); // Assuming `agent` schema exists
+const { user , agent } = require("../Database/registerUsers.js"); // Assuming `agent` schema exists
 const { mail } = require("../Controllers/mailTo.js");
 const path = require("path");
 const multer = require("multer");
 const fs = require("fs");
 const bcrypt = require("bcrypt"); // Import bcrypt
-const { Agent } = require("http");
 
 // Function to handle admin actions such as adding a new agent
 const handleAdmin = async (req, res) => {
@@ -13,7 +12,8 @@ const handleAdmin = async (req, res) => {
     const { username, email, phone, bio, adhaarcard, license, password,instagram,whatsapp,youtube } =
       req.body;
   let checkEmail = await agent.findOne({email:email})
-  if(checkEmail)
+  let checkUser = await user.findOne({email:email})
+  if(checkEmail || checkUser)
   {
     res.status(400).render("admin",{
       status:"the agent already exist"

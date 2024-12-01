@@ -214,7 +214,7 @@ const indiaRegions =
 
 
 const states = (req, res) => {
-if(req.cookies.token)
+if(req.cookies.token || req.cookies.agentToken)
 {
    setTimeout(()=>{
     res.json(indiaRegions)

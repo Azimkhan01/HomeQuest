@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const colors = require("colors");
-var jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const { mail } = require("./mailToLogin");
 const { user, agent } = require("../Database/registerUsers");
 require("dotenv").config();
@@ -16,45 +16,53 @@ const loginUser = async (req, res) => {
       });
     }
 
-    // Check if the user is an agent
-    const agentResult = await agent.findOne({ email: email });
+    // First check for agent
+    const agentResult = await agent.findOne({ email });
     if (agentResult) {
-      if (agentResult.role === "agent") {
-        const correct = await bcrypt.compare(password, agentResult.password);
-        if (correct) {
-          const agentToken = jwt.sign(
-            { data: agentResult },
-            process.env.JWT_SECRET,
-            { expiresIn: "1d" }
-          );
-          res.cookie("agentToken", agentToken);
-          return res.redirect("/Dashboard");
-        } else {
-          return res.render("login", {
-            error: "Incorrect email or password",
-          });
-        }
+      const correct = await bcrypt.compare(password, agentResult.password);
+      if (correct) {
+        const agentToken = jwt.sign(
+          {
+            data: {
+              _id: agentResult._id,
+              role: agentResult.role,
+              email: agentResult.email,
+            },
+          },
+          process.env.JWT_SECRET,
+          { expiresIn: "1d" }
+        );
+        res.cookie("agentToken", agentToken, { httpOnly: true, secure: true });
+        return res.redirect("/Dashboard");
+      } else {
+        return res.render("login", { error: "Incorrect email or password" });
       }
     }
 
-    // Check if the user is an admin or regular user
-    const result = await user.findOne({ email: email });
+    // Check for user or admin
+    const result = await user.findOne({ email });
     if (result) {
       const isPasswordValid = await bcrypt.compare(password, result.password);
       if (isPasswordValid) {
+        let tokenName = "";
         const token = jwt.sign(
-          { data: result },
+          { data: { _id: result._id, role: result.role, email: result.email } },
           process.env.JWT_SECRET,
           { expiresIn: "1d" }
         );
 
-        // Set cookie based on role
+        // Determine token name based on role
         if (result.role === "admin") {
-          res.cookie("admin", token);
+          tokenName = "admin";
+          res.cookie("admin", token, { httpOnly: true, secure: true });
           return res.redirect("/admin");
+        } else if (result.role === "agent") {
+          tokenName = "agentToken";
+          res.cookie("agentToken", token, { httpOnly: true, secure: true });
+          return res.redirect("/Dashboard");
         } else {
-          res.cookie("token", token);
-
+          tokenName = "token";
+          res.cookie("token", token, { httpOnly: true, secure: true });
           // Send login email if no cookie exists
           if (!req.cookies.token) {
             await mail(result.email, result.username);
@@ -62,9 +70,7 @@ const loginUser = async (req, res) => {
           return res.redirect("/home");
         }
       } else {
-        return res.render("login", {
-          error: "Incorrect email or password",
-        });
+        return res.render("login", { error: "Incorrect email or password" });
       }
     }
 
@@ -79,5 +85,4 @@ const loginUser = async (req, res) => {
     });
   }
 };
-
 module.exports = { loginUser };
