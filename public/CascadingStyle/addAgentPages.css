@@ -1,0 +1,249 @@
+/* Global Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Inter', sans-serif;
+    color: #0E2E50;
+}
+
+/* Post Container */
+.post-container {
+    padding: 1%;
+    background-color: white;
+    width: 100%;
+    margin-top: 12%;
+}
+
+.add-post-corousel {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.add-post-corousel div {
+    width: 50%;
+    padding: 0.5%;
+}
+
+.add-post-corousel :nth-child(2) {
+    display: flex;
+    justify-content: end;
+}
+
+.add-post-corousel button {
+    cursor: pointer;
+    padding: 1.8%;
+    border-radius: 8px;
+    outline: none;
+    border: 0 solid transparent;
+    background-color: #00b98e; /* Updated button color */
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.add-post-corousel button:hover {
+    background-color: #009374; /* Slightly darker shade for hover */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.add-post-corousel button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.add-post-corousel button + button {
+    margin-left: 10px;
+}
+
+/* Form Container */
+.form-container {
+    max-width: 75%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+    transform: scale(1.02);
+}
+
+/* Form Elements */
+#main-post form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#main-post input,
+#main-post textarea,
+#main-post button {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#main-post input:focus,
+#main-post textarea:focus {
+    border-color: #00b98e; /* Matching button color for focus */
+    box-shadow: 0 0 5px rgba(0, 185, 142, 0.5);
+    outline: none;
+}
+
+/* Placeholder Styles */
+#main-post input::placeholder,
+#main-post textarea::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+/* Textarea */
+#main-post textarea {
+    resize: none; /* Disable resize */
+    font-family: inherit; /* Match input font */
+    transition: border 0.3s;
+}
+
+/* Button */
+#main-post button {
+    background-color: #00b98e; /* Updated button color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#main-post button:hover {
+    background-color: #009374; /* Slightly darker shade */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+#main-post button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Label */
+#main-post label {
+    font-size: 14px;
+    color: #555;
+}
+
+#add{
+    transition: all 0.2s ease-in-out;
+}
+
+#main-post{
+    transition: all 0.2s ease-in-out;
+}
+
+/* General card styles */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for the image in the card header */
+.container1 img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Styling for the post info container */
+.container2 {
+    padding: 15px;
+}
+
+.container2 .tag {
+    background-color: #00bcd4;
+    color: white;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.container2 h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.container2 .description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Styling for the user info container */
+.container3 {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.container3 .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.container3 img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.container3 p {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.container3 h6 {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .post-container {
+        margin-top: 20%;
+        padding: 5%;
+    }
+
+    .form-container {
+        padding: 15px;
+    }
+
+    .add-post-corousel div {
+        width: 100%;
+    }
+}

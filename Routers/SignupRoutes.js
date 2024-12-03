@@ -80,6 +80,7 @@ const { addLink } = require("../Controllers/addLink.js");
 const { sendLink } = require("../Controllers/sendLink.js");
 const { addAgentProperty } = require("../Controllers/addAgentProperty.js");
 const { agentListingApi } = require("../Controllers/agentListingApi.js");
+const { addAgentPages } = require("../Controllers/addAgentPages.js");
 
 // const { decode } = require("punycode");
 
@@ -200,7 +201,8 @@ router.route("/addReply/:id").post(addReply)
 router.route("/getLike/:id").get(getLike)
 router.route("/agentLink/:id?").get(linkAgent)
 router.route("/addLink").get(addLink)
-router.route("/sendLink").post(sendLink)
+router.route("/sendLink").post(sendLink);
+router.route("/agent/addPages").get(addAgentPages);
 //error
 router.route("*").get(error);
 
