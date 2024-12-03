@@ -79,6 +79,7 @@ const { linkAgent } = require("../Controllers/linkAgent.js");
 const { addLink } = require("../Controllers/addLink.js");
 const { sendLink } = require("../Controllers/sendLink.js");
 const { addAgentProperty } = require("../Controllers/addAgentProperty.js");
+const { agentListingApi } = require("../Controllers/agentListingApi.js");
 
 // const { decode } = require("punycode");
 
@@ -179,6 +180,7 @@ router.route("/property-details").get(propertyDetails)
 router.route("/delete-listing/:id").get(deleteListing);
 router.route("/getStates").get(states);
 router.route("/listing/:id?").get(listingApi);
+router.route("/agentListingApi/:id?").get(agentListingApi);
 router.route("/getLoginUser").get(getLoginUser);
 router.route("/stream/:id").get(stream);
 router.route("/filterApi").get(filterApi);

@@ -75,7 +75,7 @@ getCurrentLocation().then((location) => {
 let getListing = async (offset = 0) => {
   try {
     const response = await fetch(
-      `${window.location.protocol}//${window.location.host}/listing/${offset}`
+      `${window.location.protocol}//${window.location.host}/agentListingApi/${offset}`
     );
     const data = await response.json();
     return data;
@@ -91,10 +91,11 @@ let updatePropertyBox = (d) => {
   propertyBox.innerHTML = "";
   let storedCard = "";
   d.forEach((e) => {
+    console.log(e)
     storedCard += `
       <div class="card">
         <div class="card-image">
-          <div class="property-image"><a href="#"><img src=${e.thumbnail} lazy></a></div>
+          <div class="property-image"><a href="${'/'+'property-details'+'?id='+e["_id"]}"><img src=${e.thumbnail} lazy></a></div>
           <div class="property-listing">${e.listingType}</div>
           <div class="propertyType">${e.propertyType}</div>
         </div>
@@ -171,7 +172,7 @@ next.addEventListener("click", (e) => {
 
   // Fetch data with the filter and pagination parameters
   fetch(
-    `${window.location.protocol}//${window.location.hostname}:${window.location.port}/filterApi?${q}&skip=0`
+    `${window.location.protocol}//${window.location.hostname}:${window.location.port}/filterAgent?${q}&skip=0`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -234,7 +235,7 @@ function handleApplyFilter() {
     q = queryParams;
 
     fetch(
-      `${window.location.protocol}//${window.location.hostname}:${window.location.port}/filterApi?${queryParams}`
+      `${window.location.protocol}//${window.location.hostname}:${window.location.port}/filterAgent?${queryParams}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -266,7 +267,7 @@ function handleApplyFilter() {
             skip = index * 10;
 
             fetch(
-              `${window.location.protocol}//${window.location.hostname}:${window.location.port}/filterApi?${queryParams}&skip=${skip}`
+              `${window.location.protocol}//${window.location.hostname}:${window.location.port}/filterAgent?${queryParams}&skip=${skip}`
             )
               .then((d) => d.json())
               .then((r) => {
@@ -354,7 +355,7 @@ function fetchFilteredData() {
   fetch(
     `${window.location.protocol}//${window.location.hostname}:${
       window.location.port
-    }/filterApi?${queryParams.toString()}`
+    }/filterAgent?${queryParams.toString()}`
   )
     .then((response) => response.json())
     .then((data) => {

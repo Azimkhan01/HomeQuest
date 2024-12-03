@@ -1,5 +1,5 @@
 
-const { listing, user } = require("../Database/registerUsers");
+const { listing, user ,agent } = require("../Database/registerUsers");
 
 const listingApi = async (req, res) => {
   try {
@@ -9,11 +9,11 @@ const listingApi = async (req, res) => {
     // Check if `id` is `NaN` or invalid; if so, retrieve all listings
     let data;
     if (isNaN(offset) || offset < 0) {
-      data = await listing.find({}); // Return all listings
+      data = await listing.find({},{comment:0,reply:0,like:0}); // Return all listings
     // console.log('data is loaded')
     } else {
       // Fetch listings with pagination
-      data = await listing.find({}).skip(offset).limit(10);
+      data = await listing.find({},{comment:0,reply:0,like:0}).skip(offset).limit(10);
     }
 
     res.json(data);
@@ -37,12 +37,22 @@ const getPropertyDetails = async (req, res) => {
 
     // Fetch property details from the database
     const details = await listing.findById(req.params.id);
-
     // Check if details exist
     if (details) {
-      let byOwner = await user.findOne({
-        _id:details.owner
-      },{username:1,email:1,_id:0}); 
+      let byOwner =
+            await user.findOne({
+            _id:details.owner
+            },{username:1,email:1,_id:0})
+                                    ||
+                                    await agent.findOne({
+                                      _id:details.owner
+                                    },{username:1,email:1,role:1,_id:0}) 
+      // if(!byOwner)
+      // {
+      //   let byOwner = await agent.findOne({
+      //     _id:details.owner
+      //   },{username:1,email:1,_id:0}); 
+      // }
       return res.status(200).json({details,byOwner});
     } else {
       return res

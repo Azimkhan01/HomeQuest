@@ -46,6 +46,7 @@ async function getDetails(Id) {
 // Fetch details
 getDetails(paramId)
   .then(async (details) => {
+    console.log(details)
     let container = document.getElementById("container");
     let imagesFullView = document.getElementById("imagesFullView");
     // console.log(details.details.AllImages);
