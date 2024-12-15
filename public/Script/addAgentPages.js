@@ -12,10 +12,9 @@ handleAddPost.addEventListener("click", (e) => {
         add.style.rotate = "-45deg"; 
          mainPost.style.display = "flex"
          mainPost.innerHTML = `<div class="form-container">
-                <form>
+                <form action="/addPages" method="post" enctype="multipart/form-data">
                     <!-- Title Input -->
                     <input type="text" placeholder="Title" name="title" maxlength="250" required />
-
                     <!-- Description Textarea -->
                     <textarea name="description" placeholder="Write your description here..." rows="5" maxlength="500"
                         required>
@@ -23,8 +22,7 @@ handleAddPost.addEventListener("click", (e) => {
 
                     <!-- File Input for Images -->
                     <label for="image-upload">Upload Images (Max 6):</label>
-                    <input type="file" id="image-upload" name="images" accept="image/*" multiple
-                        onchange="validateFiles(this)" />
+                    <input type="file" id="image-upload" name="images" accept="image/*" onclick="validateFiles()" multiple />
 
                     <!-- Hashtag Input -->
                     <input type="text" placeholder="Enter hashtags (separated by space)" name="hashtags" />
@@ -40,3 +38,20 @@ handleAddPost.addEventListener("click", (e) => {
     isOpen = !isOpen; 
    
 });
+
+// handlefile
+async function validateFiles() {
+    const imageUpload = document.getElementById('image-upload');
+    
+    imageUpload.addEventListener('change', (e) => {
+        const files = e.target.files; // Get the uploaded files
+        if (files.length > 6) {
+            alert("You can only upload up to 6 images.");
+            imageUpload.value = ""; // Clear the file input
+        } else {
+            console.log("Files are valid:", files);
+            // Proceed with your logic for valid file uploads
+        }
+    });
+}
+

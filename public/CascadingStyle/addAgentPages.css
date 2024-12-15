@@ -65,7 +65,7 @@ h6 {
 
 /* Form Container */
 .form-container {
-    max-width: 75%;
+    /* max-width: %; */
     margin: 50px auto;
     padding: 20px;
     border: 1px solid #ddd;
@@ -81,6 +81,7 @@ h6 {
 
 /* Form Elements */
 #main-post form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -146,6 +147,7 @@ h6 {
 }
 
 #add{
+    padding: 5px;
     transition: all 0.2s ease-in-out;
 }
 
@@ -235,15 +237,25 @@ h6 {
 /* Responsive Design */
 @media (max-width: 768px) {
     .post-container {
+        width: 100%;
         margin-top: 20%;
         padding: 5%;
     }
 
     .form-container {
-        padding: 15px;
+        width: 100%;
+        /* background-color: red; */
+        /* padding: 10px; */
     }
-
+    
     .add-post-corousel div {
         width: 100%;
+    }
+    #main-post{
+        margin: 0;
+     /* background-color: red; */
+        width: 100%;
+        padding: 10px;
+        transition: all 0.2s ease-in-out;
     }
 }

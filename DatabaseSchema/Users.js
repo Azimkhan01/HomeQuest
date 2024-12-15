@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { type } = require("os");
 
 const userSchema = new mongoose.Schema(
   {
@@ -226,6 +227,8 @@ const AgentSchema = new mongoose.Schema(
     },reject:{
       type:[String],
       required:false
+    },feed:{
+      type:Array
     }
   },
   {
@@ -245,7 +248,26 @@ const linkSchema = new mongoose.Schema({
   },
 });
 
+const feedSchema = new mongoose.Schema({
+  owner:{
+    type:String,
+    trim:true
+  },
+  title:{
+    type:String,
+    trim:true
+  },images:{
+    type:Array
+  },hashtags:{
+    type:Array
+  },link:{
+    type:Array
+  },description:{
+    type:String,
+    trim:true
+  }
+})
 
 
 
-module.exports = { userSchema, ListingSchema, AgentSchema , linkSchema };
+module.exports = { userSchema, ListingSchema, AgentSchema , linkSchema , feedSchema};

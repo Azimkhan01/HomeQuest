@@ -1,4 +1,4 @@
-const { agent } = require("../Database/registerUsers");
+const { agent, listing } = require("../Database/registerUsers");
 
 const getAgent = async (req, res) => {
   try {
@@ -12,16 +12,33 @@ const getAgent = async (req, res) => {
 
     let { id } = req.params;
     let offset = parseInt(id, 10); // Convert `id` to an integer
-
+let page = req.query.page
     let data;
-    if (isNaN(offset) || offset < 0) {
-      console.log("Nan running")
-      data = await agent.find({}); // Return all agents
-    } else {
-      data = await agent.find({}).skip(offset).limit(10); // Paginated agent data
-    }
+    if (isNaN(offset) || offset < 0 || page) {
+      console.log("NaN running");
 
-    res.json(data);
+      // Fetch all agents and convert to plain objects
+      data = await agent.find({}).limit(page*10).lean();
+const maxCount = await agent.find({}).countDocuments();
+      // Process each agent to find associated listings
+      await Promise.all(
+        data.map(async (element) => {
+          const listings = await listing.find({ owner: element._id },{views:1,title:1,thumbnail:1});
+          if (listings.length > 0) {
+            element.listAvailable = listings; // Add `listAvailable` to the agent object
+          } else {
+            element.listAvailable = []; // Ensure the field exists even if no listings
+          }
+        })
+      );
+
+      // console.log(data); // Debug: Check updated data in server logs
+      return res.json({'data':data,'maxCount':maxCount});
+    } else {
+      // Fetch paginated agents
+      data = await agent.find({}).skip(offset).limit(10).lean(); // Use `.lean()` to get plain objects
+      return res.json(data);
+    }
   } catch (error) {
     console.error("Error retrieving agents:", error);
     res.status(500).json({ error: "An error occurred while retrieving agents" });

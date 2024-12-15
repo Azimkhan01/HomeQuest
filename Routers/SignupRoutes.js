@@ -81,6 +81,8 @@ const { sendLink } = require("../Controllers/sendLink.js");
 const { addAgentProperty } = require("../Controllers/addAgentProperty.js");
 const { agentListingApi } = require("../Controllers/agentListingApi.js");
 const { addAgentPages } = require("../Controllers/addAgentPages.js");
+const { handleAddPages ,  pageImageUpload } = require("../Controllers/handleAddPages.js");
+const { pages } = require("../Controllers/pages.js");
 
 // const { decode } = require("punycode");
 
@@ -150,6 +152,11 @@ const uploadToListing = multer({ storage: listingStorage }).fields([
 const uploadAgent = multer({ storage: agentStorage });
 //image
 
+// page image 
+const pageUpload = multer({ storage: pageImageUpload }).fields([{name:"images"}]);
+// page image end
+
+
 router.route(["/signup"]).get(signup);
 router.route("/signup").post(signupUser);
 router.route("/login").get(login);
@@ -203,6 +210,8 @@ router.route("/agentLink/:id?").get(linkAgent)
 router.route("/addLink").get(addLink)
 router.route("/sendLink").post(sendLink);
 router.route("/agent/addPages").get(addAgentPages);
+router.route("/addPages").post(pageUpload,handleAddPages)
+router.route("/pages").get(pages)
 //error
 router.route("*").get(error);
 

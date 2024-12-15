@@ -344,6 +344,59 @@ ul {
     transition: background-color 0.3s ease, border 0.3s ease;
 }
 
+#end-message{
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #00B98E;
+ padding: 1%;
+ /* border: 2px solid #00B98E; */
+ border-radius: 5px;
+ animation: borderMove ease-in-out 5s infinite alternate-reverse;
+}
+
+@keyframes borderMove {
+  0% {
+    transition: all 0.2s ease-in-out;
+    border-left: 2px solid #12e0ad;
+    border-top: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+  }
+  25% {
+    transition: all 0.2s ease-in-out;
+    border-left: 2px solid transparent;
+    border-bottom: 2px solid #12e0ad;
+    border-top: 2px solid transparent;
+    border-right: 2px solid transparent;
+  }
+  50% {
+    transition: all 0.2s ease-in-out;
+    border-left: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-right: 2px solid #12e0ad;
+    border-top: 2px solid transparent;
+  }
+  75% {
+    transition: all 0.2s ease-in-out;
+    border-left: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 2px solid #12e0ad;
+  }
+  100% {
+    transition: all 0.2s ease-in-out;
+    border-left: 2px solid #12e0ad;
+    border-top: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+  }
+}
+
+#end-message p{
+  font-size: 20px;
+}
 @keyframes moveDown {
     0% {
         transform: translateY(150%); /* Start at the normal position */
@@ -383,11 +436,13 @@ ul {
     font-size: 16px;
     font-weight: 500;
     display: flex;
+    gap: 0.1%;
     align-items: center;
 }
 
 .popular-listing-info p i {
-    margin-right: 8px;
+  width: 50%;  
+  margin-right: 0px;
     color: #007bff;
 }
 
