@@ -265,8 +265,9 @@ const feedSchema = new mongoose.Schema({
   },description:{
     type:String,
     trim:true
-  }
-})
+  },viewed:{type:Number},
+  viewedUser:{type:Array}
+},{strict:false,timestamps: true})
 
 
 

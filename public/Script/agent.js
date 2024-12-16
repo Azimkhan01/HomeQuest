@@ -290,12 +290,12 @@ async function getAgentData(page = 1) {
             ? agent.listAvailable
                 .map(
                   (listing) => `  
-                  <a href="#">
+                  <a href="/property-details?id=${listing._id}">
                     <div class="popular-listing-img">
                       <img src="${window.location.origin}${listing.thumbnail}" alt="Property Image">
                     </div>
                     <div class="popular-listing-info">
-                      <p style="font-size:12px"><i class="fa-solid fa-eye">${listing.views || "NA"}</i> ${listing.title || "Property Title"}</p>
+                      <p style="font-size:12px"> ${capitalizeFirstLetter(listing.title) || "Property Title"}  <i class="fa-solid fa-eye">  ${listing.views || "NA"}</i></p>
                     </div>
                   </a>`
                 )
