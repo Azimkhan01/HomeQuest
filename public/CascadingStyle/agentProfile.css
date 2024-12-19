@@ -1,0 +1,340 @@
+#profile{
+    background-color: white;
+    width: 100%;
+    margin-top: 11%;
+}
+
+.info{
+    padding: 15px;
+    display: flex;
+    width: 100%;
+}
+
+.image-container{
+    padding: 1%;
+    width: 40%;
+}
+
+.image-holder{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.image-holder img{
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.agent-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+}
+
+.agent-info p {
+    font-family: inter,sans-serif;
+    color: #0e2e50a4;
+}
+
+.agent-info div{
+    border-radius: 5px;
+    padding: 1%;
+}
+
+.agent-info div:hover{
+   border: 1px solid transparent ;
+}
+
+.appointment{
+    width: 100%;
+    display: flex;
+    gap: 1%;
+    flex-direction: row;
+    justify-content: center;
+}
+.appointment div{
+    padding: 1%;
+    width: 30%;
+    border: 1px solid #0E2E50;
+    border-radius: 5px;
+}
+
+.appointment div p {
+    font-family: inter,sans-serif;
+    font-size: 16px;
+}
+.appointment div:first-child{
+    background-color: #00b98e84;
+}
+.appointment div:last-child{
+    background-color: rgba(255, 0, 0, 0.500);
+}
+
+/* .post{
+    width: 100%;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+.post div{
+    display: flex;
+    flex-direction: row;
+    padding: 1%;
+    justify-content: space-between;
+}
+
+.post div p {
+    color: #00B98E;
+    font-family: inter,sans-serif;
+}
+
+.post div button{
+    color: #00B98E;
+    padding: 10px;
+    border: none;
+}
+
+.post div button:hover{
+    color: white;
+    transition: all 0.1s ease-in-out;
+    border: 1px solid #0E2E50;
+    background-color: #00B98E;
+    border-radius: 5px;
+} */
+
+.buttons{
+    border-top: 1px solid #00B98E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 50px;
+}
+
+.buttons div button i  {
+    font-size: 25px;
+    color: #00B98E;
+}
+
+.buttons div button span{
+
+    font-family: heebo,sans-serif;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.500);
+}
+
+.buttons div button{
+    background-color: transparent;
+    border: none;
+    padding: 0.5%;
+}
+
+.buttons div{
+    border-top: 2px solid white;
+    padding: 10px;
+}
+
+.buttons div:hover{
+    border-top: 2px solid rgba(0, 0, 0, 0.500);
+}
+
+#asked {
+    padding: 10px;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    gap: 1%;
+}
+
+.feed, .listing {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 5px;
+}
+
+.imgFeed {
+    width: calc(33.33% - 10px);
+    display: flex;
+    justify-content: center;
+}
+.imgFeed img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.imgFeed a {
+    max-width: auto;
+    display: block;
+}
+
+.imgFeed img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.listing{
+    display: none;
+}
+
+/* From Uiverse.io by mrhyddenn */ 
+.spinner {
+    font-size: 28px;
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+  }
+
+#spinner{
+    display: none;
+}
+  
+  .spinner.center {
+    margin: auto;
+  }
+  
+  .spinner .spinner-blade {
+    position: absolute;
+    left: 0.4629em;
+    bottom: 0;
+    width: 0.074em;
+    height: 0.2777em;
+    border-radius: 0.0555em;
+    background-color: transparent;
+    -webkit-transform-origin: center -0.2222em;
+    -ms-transform-origin: center -0.2222em;
+    transform-origin: center -0.2222em;
+    animation: spinner-fade9234 1s infinite linear;
+  }
+  
+  .spinner .spinner-blade:nth-child(1) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  
+  .spinner .spinner-blade:nth-child(2) {
+    -webkit-animation-delay: 0.083s;
+    animation-delay: 0.083s;
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    transform: rotate(30deg);
+  }
+  
+  .spinner .spinner-blade:nth-child(3) {
+    -webkit-animation-delay: 0.166s;
+    animation-delay: 0.166s;
+    -webkit-transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    transform: rotate(60deg);
+  }
+  
+  .spinner .spinner-blade:nth-child(4) {
+    -webkit-animation-delay: 0.249s;
+    animation-delay: 0.249s;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  
+  .spinner .spinner-blade:nth-child(5) {
+    -webkit-animation-delay: 0.332s;
+    animation-delay: 0.332s;
+    -webkit-transform: rotate(120deg);
+    -ms-transform: rotate(120deg);
+    transform: rotate(120deg);
+  }
+  
+  .spinner .spinner-blade:nth-child(6) {
+    -webkit-animation-delay: 0.415s;
+    animation-delay: 0.415s;
+    -webkit-transform: rotate(150deg);
+    -ms-transform: rotate(150deg);
+    transform: rotate(150deg);
+  }
+  
+  .spinner .spinner-blade:nth-child(7) {
+    -webkit-animation-delay: 0.498s;
+    animation-delay: 0.498s;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  
+  .spinner .spinner-blade:nth-child(8) {
+    -webkit-animation-delay: 0.581s;
+    animation-delay: 0.581s;
+    -webkit-transform: rotate(210deg);
+    -ms-transform: rotate(210deg);
+    transform: rotate(210deg);
+  }
+  
+  .spinner .spinner-blade:nth-child(9) {
+    -webkit-animation-delay: 0.664s;
+    animation-delay: 0.664s;
+    -webkit-transform: rotate(240deg);
+    -ms-transform: rotate(240deg);
+    transform: rotate(240deg);
+  }
+  
+  .spinner .spinner-blade:nth-child(10) {
+    -webkit-animation-delay: 0.747s;
+    animation-delay: 0.747s;
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+  
+  .spinner .spinner-blade:nth-child(11) {
+    -webkit-animation-delay: 0.83s;
+    animation-delay: 0.83s;
+    -webkit-transform: rotate(300deg);
+    -ms-transform: rotate(300deg);
+    transform: rotate(300deg);
+  }
+  
+  .spinner .spinner-blade:nth-child(12) {
+    -webkit-animation-delay: 0.913s;
+    animation-delay: 0.913s;
+    -webkit-transform: rotate(330deg);
+    -ms-transform: rotate(330deg);
+    transform: rotate(330deg);
+  }
+  
+  @keyframes spinner-fade9234 {
+    0% {
+      background-color: #69717d;
+    }
+  
+    100% {
+      background-color: transparent;
+    }
+  }
+
+@media (max-width:768px) {
+    #profile{
+        margin-top: 18%;
+    }
+    .info{
+flex-direction: column;
+gap: 10px;
+    }
+    .image-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .image-holder{
+        width: 50%;
+    }
+    .agent-info{
+        width: 100%;
+    }
+}
+

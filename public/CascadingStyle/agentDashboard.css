@@ -135,3 +135,9 @@
   animation: l3 1s infinite linear;
 }
 @keyframes l3 {to{transform: rotate(1turn)}}
+
+@media (max-width:678px) {
+  #allAppointment{
+    margin-top: 8%;
+  }
+}

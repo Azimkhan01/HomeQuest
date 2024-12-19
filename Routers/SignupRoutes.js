@@ -84,6 +84,8 @@ const { addAgentPages } = require("../Controllers/addAgentPages.js");
 const { handleAddPages ,  pageImageUpload } = require("../Controllers/handleAddPages.js");
 const { pages } = require("../Controllers/pages.js");
 const { getFeed } = require("../Controllers/getFeed.js");
+const {agentProfile} = require('../Controllers/agentProfile.js');
+const { getCurrentAgent } = require("../Controllers/getCurrentAgent.js");
 
 // const { decode } = require("punycode");
 
@@ -214,6 +216,8 @@ router.route("/agent/addPages").get(addAgentPages);
 router.route("/addPages").post(pageUpload,handleAddPages)
 router.route("/pages").get(pages)
 router.route("/getFeed").get(getFeed)
+router.route("/AgentProfile").get(agentProfile);
+router.route('/getCurrentAgent').get(getCurrentAgent)
 //error
 router.route("*").get(error);
 

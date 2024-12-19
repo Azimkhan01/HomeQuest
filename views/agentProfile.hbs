@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeQuest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../public/CascadingStyle/navbar.css">
+    <link rel="stylesheet" href="../public/CascadingStyle/agentProfile.css">
+</head>
+
+<body>
+    {{>navDash}}
+    <div id="profile">
+       
+    </div>
+    {{!-- <div class="post">
+        <div>
+            <div><p>Post</p></div>
+            <div><button onclick="handlePost()"><i class="fa-solid fa-plus"></i></button></div>
+        </div>
+    </div>
+        <div class="post">
+        <div>
+            <div><p>Listing</p></div>
+            <div><button onclick="handleListing()"><i class="fa-solid fa-plus"></i></button></div>
+        </div>
+    </div>
+    <div id="post">
+
+    </div>
+    <div id="listing">
+
+    </div> --}}
+    <div class="buttons">
+        <div>
+            <button onclick="handleFeed()"><i class="fa-solid fa-border-all"></i> <span>Feed</span></button>
+        </div>
+        <div>
+            <button onclick="handleListing()"><i class="fa-solid fa-image"></i> <span>Listing</span></button>
+        </div>
+    </div>
+
+<div id="asked">
+    <div class="feed" id="feed">
+        <div class="imgFeed">
+            <a href="#"><img src="/public/Assets/Default/defaultimage-removebg-preview.png" alt="Feed Image"></a>
+        </div>
+    </div>
+
+    <div class="listing" id="listing">
+        <div class="imgFeed">
+            <a href="#"><img src="/public/Assets/Default/defaultimage-removebg-preview.png" alt="Listing Image"></a>
+        </div>
+         <div class="imgFeed">
+            <a href="#"><img src="/public/Assets/Default/defaultimage-removebg-preview.png" alt="Listing Image"></a>
+        </div>
+    </div>
+<div class="spinner center" id="spinner">
+    <div class="spinner-blade"></div>
+    <div class="spinner-blade"></div>
+    <div class="spinner-blade"></div>
+    <div class="spinner-blade"></div>
+    <div class="spinner-blade"></div>
+    <div class="spinner-blade"></div>
+    <div class="spinner-blade"></div>
+    <div class="spinner-blade"></div>
+    <div class="spinner-blade"></div>
+    <div class="spinner-blade"></div>
+    <div class="spinner-blade"></div>
+    <div class="spinner-blade"></div>
+</div>
+</div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/regular.min.js"
+        integrity="sha512-kOmvRi+0imoekwslOzP/X1LXQnzcttzqYYt3urKD4nhd5fMYwRfXgDS5Nh7b7pQjKPjBPSX9PmhCLrkfkxUcBQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../public/Script/navbar.js"></script>
+    <script src="../public/Script/agentProfile.js"></script>
+</body>
+
+</html>
