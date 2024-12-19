@@ -300,7 +300,7 @@ let updateCommentSection = async (paramId) => {
       feedbackItem.innerHTML = "<p>No Comment. Be the One to Comment!!</p>";
       return;
     }
-
+console.log(data)
     // Build the HTML content
     let html = "";
     data.forEach((comment, index) => {

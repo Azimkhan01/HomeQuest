@@ -1,4 +1,4 @@
-const { listing } = require("../Database/registerUsers.js");
+const { listing, user } = require("../Database/registerUsers.js");
 const jwt = require("jsonwebtoken"); // Import jsonwebtoken for token decoding
 
 const addComment = async (req, res) => {
@@ -6,7 +6,7 @@ const addComment = async (req, res) => {
     console.log("Adding comment...");
 
     // Check for token in cookies
-    const token = req.cookies.token;
+    const token = req.cookies.token ;
     if (!token) {
       return res.status(401).json({ error: "Access denied. No token provided." });
     }
@@ -36,11 +36,11 @@ const addComment = async (req, res) => {
 
     // Log request details for debugging
     console.log(`Comment: ${comment}, ID: ${id}`);
-
     // Add the comment to the database
+    let userDet= await user.findById(decoded.data['_id']);
     const result = await listing.updateOne(
       { _id: id },
-      { $push: { comment: { text: comment,image:decoded.data.image,username:decoded.data.username, userId: decoded.data['_id'], date: new Date(),reply:[] } } } // Store comment with user ID and timestamp
+      { $push: { comment: { text: comment,image:userDet.image,username:userDet.username, userId: userDet['_id'], date: new Date(),reply:[] } } } // Store comment with user ID and timestamp
     );
 
     // Check if the update was successful

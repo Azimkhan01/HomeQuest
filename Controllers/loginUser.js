@@ -26,7 +26,7 @@ const loginUser = async (req, res) => {
             data: {
               _id: agentResult._id,
               role: agentResult.role,
-              email: agentResult.email,
+              email: agentResult.email
             },
           },
           process.env.JWT_SECRET,

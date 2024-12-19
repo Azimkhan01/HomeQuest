@@ -13,7 +13,7 @@ const listingApi = async (req, res) => {
     // console.log('data is loaded')
     } else {
       // Fetch listings with pagination
-      data = await listing.find({},{comment:0,reply:0,like:0}).skip(offset).limit(10);
+      data = await listing.find({'role':{$nin:["agent"]}},{comment:0,reply:0,like:0}).skip(offset).limit(10);
     }
 
     res.json(data);

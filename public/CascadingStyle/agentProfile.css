@@ -140,6 +140,23 @@
     border-top: 2px solid rgba(0, 0, 0, 0.500);
 }
 
+.seeMore{
+    padding: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+    width: 100%;
+
+}
+.seeMore a{
+    font-family: heebo,sans-serif;
+    color: white;
+    border-radius: 5px;
+    background-color: #00B98E;
+    padding: 10px ;
+    font-size: 16px;
+}
+
 #asked {
     padding: 10px;
     background-color: white;
@@ -152,31 +169,29 @@
     flex: 1;
     display: flex;
     flex-wrap: wrap;
-    gap: 2px 5px;
+    gap: 5px; /* Reduced gap between items to 5px */
 }
 
 .imgFeed {
-    width: calc(33.33% - 10px);
+    width: calc(33.33% - 5px); /* Adjusting width to ensure more space for images */
     display: flex;
     justify-content: center;
-}
-.imgFeed img{
-    width: 100%;
-    object-fit: cover;
+    margin-bottom: 5px; /* Optional: Adds some space at the bottom of each row */
 }
 
 .imgFeed a {
-    max-width: auto;
+    width: 100%;
     display: block;
 }
 
 .imgFeed img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    object-fit: cover; /* Ensure images cover the available area */
+    height: 100%; /* Allow height to adjust automatically */
     display: block;
 }
 
-.listing{
+.listing {
     display: none;
 }
 

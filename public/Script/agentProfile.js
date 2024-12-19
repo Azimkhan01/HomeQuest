@@ -85,6 +85,10 @@ const getAgentData = async () => {
                     <p>Rejected : ${result.info.reject ? result.info.reject.length : "0"}</p>
                 </div>
             </div>
+            
+                <div class="seeMore">
+                    <a href='/Dashboard'>Show Appointment</a>
+                </div>
         `;
         
     } else {
