@@ -8,68 +8,73 @@ let isLoading = false;
 
 // Function to handle the scroll event
 const onScroll = () => {
-    if (isLoading) return;
-    document.querySelector(".loader").style.display = "block"
+    if (isLoading) return; // Avoid multiple fetches
+    document.querySelector(".loader").style.display = "block";
+
     const bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
-    console.log("scrolling ...");
-    console.table([window.innerHeight, window.scrollY, window.innerHeight + window.scrollY, document.documentElement.scrollHeight - 50]);
 
-    // Check if the user has scrolled to the bottom of the page
     if (bottom) {
-        // Set loading to true to avoid multiple fetches at the same time
-        console.log("scroll value matched ...");
-        isLoading = true;
+        isLoading = true; // Set loading to true to prevent duplicate calls
 
-        // Trigger an action when the user reaches the bottom of the page
         setTimeout(() => {
-            feedFetcher.getFeed().then((r) => {
-                console.log(r); // Log the response
+            feedFetcher.getFeed()
+                .then((response) => {
+                    // console.log(response); // Log the response for debugging
 
-                if (r.status === "end" || r.feed.length === 0) {
-                    // Display the "You’ve reached the end" message if no more posts
-                    if (!document.querySelector('.end-message')) {
-                        feed.appendChild(endMessageDiv);
+                    if (response.status === "end") {
+                        // Display the "You’ve reached the end" message if no more posts
+                        if (!document.querySelector('.end-message')) {
+                            const endMessageDiv = document.createElement("div");
+                            endMessageDiv.className = "end-message";
+                            endMessageDiv.textContent = "You’ve reached the end!";
+                            feed.appendChild(endMessageDiv);
+                            window.removeEventListener("scroll", onScroll); // Remove the scroll event listener
+                        }
+                    } else {
+                        // Append new posts to the feed
+                        response.feed.forEach(post => {
+                            const div = document.createElement("div");
+                            div.className = "card";
+                            div.innerHTML = `
+                                <div class="card-header">
+                                    <img src="${post.ownerDetails.image}" alt="User Profile">
+                                    <div class="user-info">
+                                        <span class="username" style="font-family:inter,sans-serif;color:#0E2E50;">
+                                            ${post.ownerDetails.username.toUpperCase()}
+                                        </span>
+                                        <span class="timestamp">${post.createdAt ? timeAgo(post.createdAt) : "Recently"}</span>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <p>${post.title}</p>
+                                    <p>${post.description}</p>
+                                    <div class="feed-image">
+                                        ${post.images.map(img => `
+                                            <div class="feedmain-img">
+                                                <img src="${window.location.origin + '/public/Assets/postImage/' + img}" alt="Post Image">
+                                            </div>`).join('')}
+                                    </div>
+                                </div>
+                                <div class="card-footer"></div>
+                            `;
+                            feed.appendChild(div);
+                        });
                     }
-                } else {
-                    // Assuming 'r.feed' contains the list of fetched posts
-                    r.feed.forEach(post => {
-                        let div = document.createElement("div");
-                        div.className = "card";
-                        div.innerHTML = `
-                            <div class="card-header">
-                                <img src="${post.ownerDetails.image}" alt="User Profile">
-                                <div class="user-info">
-                                    <span style="font-family:inter,sans-serif;color:#0E2E50" class="username">${(post.ownerDetails.username).toUpperCase()}</span>
-                                    <span class="timestamp">${post.createdAt ? timeAgo(post.createdAt) : "Recently"}</span>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <p>${post.title}</p>
-                                <p>${post.description}</p>
-                                <div class="feed-image">
-                                    ${post.images.map(img => `<div class="feedmain-img"><img src="${window.location.origin + '/public/Assets/postImage/' + img}" alt="Post Image"></div>`).join('')}
-                                </div>
-                            </div>
-                            <div class="card-footer">
-    
-                            </div>
-                        `;
-                        feed.appendChild(div);
-                    });
-                }
 
-                // Increment the current page for the next fetch
-                feedFetcher.incrementCurrent();
-            }).catch((err) => {
-                console.error(err); // Handle any errors
-            }).finally(() => {
-                // Set loading to false after fetching is complete
-                isLoading = false;
-            });
- document.querySelector(".loader").style.display = "none"
-        }, 500); // 500ms delay before appending new cards
+                    // Increment the current page for the next fetch
+                    feedFetcher.incrementCurrent();
+                })
+                .catch((error) => {
+                    console.error(error); // Handle errors gracefully
+                })
+                .finally(() => {
+                    isLoading = false; // Reset loading state
+                    document.querySelector(".loader").style.display = "none";
+                });
+        }, 500); // Add a slight delay before appending new content
     }
 };
+
 
 // Add the scroll event listener
 window.addEventListener("scroll", onScroll);
