@@ -1,42 +1,91 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Main</title>
-        {{!-- {{>commonCss}} --}}
-        <link rel="stylesheet" href="/public/CascadingStyle/main.css" />
-    </head>
-    <body>
 
-        <nav id="navbar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeQuest</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/public/CascadingStyle/main.css" />
+</head>
 
-            <div id="nc1">
-                <li class="img"><a href="/"><img
-                            src="/public/Assets/Web/icons8-home-cloud-96.png"></a></li>
-                <li style="margin-right : -50rem;"><a href="/signup">Sign
-                        up</a></li>
-                <li><a href="/login">Log in</a></li>
-            </div>
+<body>
 
-        </nav>
-
-        <div id="container">
-
-            <div id="cont1">
-                <div id="heading">
-                    <div id="heading1"><h>Find Your Dream Home with
-                            HomeQuest</h></div>
-                    <div id="heading2">
-                        <p> Your Gateway to Real Estate Bliss.</p>
-                    </div>
-                </div>
-                <div class="obj"></div>
-                <div class="obj1"></div>
-            </div>
-
+    <nav>
+        <div>
+            <h1>HomeQuest</h1>
         </div>
-        {{!-- {{>commonJs}} --}}
-        <script src="/public/Script/main.js"></script>
-    </body>
+        <div>
+            <ul>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Signup</a></li>
+            </ul>
+        </div>
+    </nav>
+  <div class="video">
+      <video src="/stream/intro.mp4" autoplay muted loop playsinline></video>
+  </div>
+  <div id="services">
+{{!-- added dynamically the page agent and listing services information --}}
+  </div>
+
+    <div class="service1">
+        <div>
+            <video src="/stream/pages.mp4" autoplay muted playsinline loop></video> 
+        </div>
+        <div>
+            <video src="/stream/pages2.mp4" autoplay muted playsinline loop ></video>
+        </div>
+    </div>
+     <div class="service1-info">
+            <h1>Agent Pages</h1>
+            <p>Agent with lots of experience can share there point for find the and making you search easier.</p>
+        </div>
+     <div class="service1">
+        <div>
+            <video src="/stream/appointment.mp4" autoplay muted playsinline loop></video> 
+        </div>
+        <div>
+            <video src="/stream/appointment2.mp4" autoplay muted playsinline loop ></video>
+        </div>
+    </div>
+     <div class="service1-info">
+            <h1>Appointment</h1>
+            <p>Book the Appointment with agent to get what are searching for.</p>
+        </div>
+     <div class="service1">
+        <div>
+            <video src="/stream/propertyListing.mp4" autoplay muted playsinline loop></video> 
+        </div>
+        <div>
+            <video src="/stream/propertyListing2.mp4" autoplay muted playsinline loop ></video>
+        </div>
+    </div>
+     <div class="service1-info">
+            <h1>Property Listing</h1>
+            <p>Agents and Users can list there property.</p>
+        </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"
+        integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/regular.min.js"
+        integrity="sha512-yp4xbJGTx8AEOiU0F5fvbau3PajjDuxEwXpAPNVFtvJK52vjKuvxHLtOvxZFE6UBQr0hWvSciggEZJ82VwpkTQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/public/Script/main.js"></script>
+
+</body>
+
 </html>

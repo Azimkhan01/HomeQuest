@@ -267,7 +267,6 @@ ul {
 }
 
 .main-img img {
-    height: 100%;
     width: 300px;
     object-fit: cover;
     transition: transform 0.3s ease, filter 0.3s ease;

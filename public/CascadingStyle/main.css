@@ -1,135 +1,251 @@
-body {
-    background-color: #1F2123;
-    color: #E6EDF3;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-::selection {
-    color: #6BD0FF;
+html {
+    height: 100%;
+    width: 100%;
 }
+
+body {
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* navbar */
 
 nav {
-    z-index: 1;
-    margin-top: 2%;
-    position: sticky;
-    top: 0;
-    height: 10%;
-    width: 100%;
-    background-color: transparent;
-
-}
-
-#nc1 {
-    position: relative;
+    border-radius: 2px;
+    background-color: white;
+    position: fixed;
+    top: 5%;
+    padding: 2% 2%;
     display: flex;
     justify-content: space-between;
+    width: 80%;
     align-items: center;
-    flex-direction: row;
-    padding: 0px 10%;
-    /* background-color: blue; */
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    overflow: hidden;
-
+    transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-#nc1 li a {
-    text-decoration: none;
-    color: #E6EDF3;
-}
-
-li {
-    border: 2px solid #E6EDF3;
-    border-radius: 10px;
-    list-style: none;
-    padding: 10px;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-li:hover {
-    opacity: 0.5;
-
-    transition: all ease-in-out 0.3s;
-}
-
-.img {
-    margin-left: -110px;
-    border: 0px solid #E6EDF3;
-    border-radius: 0px;
-}
-
-img {
-    padding-top: -10%;
-    height: 100%;
+/* Styles when scrolled */
+nav.scrolled {
+    background-color: #ffffffd7;
     width: 70%;
-    object-fit: cover;
-
 }
 
-#container {
-    overflow: hidden;
-    height: 500vh;
+nav h1 {
+    font-family: inter, sans-serif;
+    font-size: xx-large;
+    background: linear-gradient(90deg, #30fbaa, #00B98E, #00B98E);
+    background-size: 200%;
+    /* Makes the gradient scrollable */
+    background-clip: text;
+    -webkit-background-clip: text;
+    /* Ensures compatibility with WebKit browsers */
+    color: transparent;
+    animation: gradientAnimation 3s infinite alternate;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+nav div ul li a {
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-family: heebo, sans-serif;
+    color: white;
+    font-weight: 500;
+    background-color: #00B98E;
+}
+
+nav div ul li a:hover {
+    background-color: #00b98ecb;
+    transition: all 0.2s ease-in-out;
+    color: white;
+}
+
+nav div {
+    width: 50%;
+}
+
+nav div ul {
+    padding: 1%;
     width: 100%;
-}
-
-#cont1 {
-    /* background-color: red; */
-    height: 80vh;
-    width: 100%;
-}
-
-#heading {
     display: flex;
-    justify-content: start;
-    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
     align-items: center;
-    height: 100%;
-    /* background-color: blue; */
+}
+
+nav div ul li {
+    list-style: none;
 }
 
 
 
-#heading1 {
-    z-index: 2;
-    margin-top: 5%;
-    font-size: 70px;
-    margin-left: 0%;
-    font-weight: 900;
+.video {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 8%;
+    overflow: hidden;
+}
+
+video {
+    border-radius: 10px;
+    width: 60%;
+    padding: 5px;
+    background-color: #00b98e;
+    transition: transform 0.1s ease-out;
+    z-index: -1;
+    /* height: 80%; */
+}
+#services{
+    background-color: white;
+    /* border: 1px solid black; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#services div{
+    background-color: white;
+    padding: 20px;
+    border-top: 1px solid #00B98E;
+    border-bottom: 1px solid #00B98E;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    gap: 10px;
+    flex-direction: column;
+}
+
+#services div div {
+border: none;
+}
+
+#services div div h4{
+    font-family: inter,sans-serif;
+    color: #0E2E50;
+}
+
+#services div img{
+    color: #00B98E;
+    max-width: 100px;
 
 }
 
+.service1{
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
 
-
-#heading2 {
-    z-index: 2;
-    margin-top: 2%;
-    font-size: 40px;
-    margin-left: -40%;
-    font-weight: 700;
-    opacity: 0;
 }
 
-
-
-.obj {
-    left: -100px;
-    height: 150px;
-    width: 150px;
-    background-color: #6BD0FF;
-    position: relative;
-    z-index: 1;
-    border-radius: 50%;
-    filter: blur(40px);
+.service1 div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.service1 div:nth-child(1) video{
+    width: 80%;
+}
+.service1 div:nth-child(2) video{
+    width: 25%;
 }
 
-.obj1 {
-    left: -200px;
-    height: 150px;
-    width: 150px;
-    background-color: #6BD0FF;
-    position: relative;
-    z-index: 1;
-    border-radius: 50%;
-    filter: blur(40px);
+.service1-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.service1-info h1{
+    font-family: inter,sans-serif;
+    font-size: 60px;
+    color: #0E2E50;
+}
+.service1-info p{
+    font-family: heebo,sans-serif;
+    color: #666565;
+    text-align: center;
+}
+
+/* navbar end */
+
+@media (max-width:786px) {
+    body {
+        width: 100%;
+    }
+
+    nav {
+        padding: 4%;
+        top: 0;
+        background-color: white;
+        width: 100%;
+    }
+
+    nav div h1 {
+        font-size: 25px;
+    }
+
+    nav div ul li a {
+        padding: 10px 10px;
+        font-size: 14px;
+    }
+
+    .video {
+        width: 100%;
+        padding: 2%;
+        margin-top: 16%;
+    }
+
+    .video video {
+        width: 100%;
+    }
+    #services{
+        border: 2px solid #00B98E;
+        flex-direction: column;
+    }
+    #services div{
+        border: none;
+        width: 100%;
+    }
+    .service1{
+        padding: 5px;
+          flex-direction: column;
+          gap: 10px;
+    }
+    .service1-info h1{
+        font-size: 40px;
+    }
+    #services div img{
+        color: #00B98E;
+        max-width: 180px;
+    
+    }
 }
