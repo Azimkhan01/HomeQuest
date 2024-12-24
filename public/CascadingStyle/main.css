@@ -22,7 +22,7 @@ body {
 
 nav {
     border-radius: 2px;
-    background-color: white;
+    background-color: transparent;
     position: fixed;
     top: 5%;
     padding: 2% 2%;
@@ -182,6 +182,8 @@ border: none;
     justify-content: center;
     align-items: center;
     padding: 10px;
+    border-bottom: 1px solid #0E2E50;
+    /* width: 80%; */
 }
 
 .service1-info h1{

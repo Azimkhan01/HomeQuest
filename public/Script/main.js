@@ -116,3 +116,30 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll(".service1 video");
+  
+    const handleVideoPlayback = () => {
+      videos.forEach((video) => {
+        const rect = video.getBoundingClientRect();
+        const isInViewport = rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+  
+        if (isInViewport) {
+            // console.log("play")
+          video.play();
+        } else {
+            // console.log('pause')
+          video.pause();
+        }
+      });
+    };
+  
+    // Initial check
+    handleVideoPlayback();
+  
+    // Attach event listeners for scroll and resize events
+    window.addEventListener("scroll", handleVideoPlayback);
+    window.addEventListener("resize", handleVideoPlayback);
+  });
+  
