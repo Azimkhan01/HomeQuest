@@ -28,7 +28,7 @@ window.addEventListener("scroll", (e) => {
     navItems.style.transition = "all 0.5s ease-in-out";
   }else{
     window.addEventListener("resize",(e)=>{
-        location.reload()
+        // location.reload()
         addProperty.style.display = 'block';
     addProperty.style.transition = "all 0.5s ease-in-out";
     navItems.style.display = "flex";

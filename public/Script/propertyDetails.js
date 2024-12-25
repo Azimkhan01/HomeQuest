@@ -169,14 +169,21 @@ getDetails(paramId)
         </div>`;
     let imagesDiVImages = ` <div id="removeimage">
 <i class="fa-solid fa-xmark"></i>
-        </div>`;
+        </div><div class="arrow">
+                <div id="down">
+                    <i class="fa-solid fa-arrow-down"></i>
+                </div>
+                <div id='up'>
+                    <i class="fa-solid fa-arrow-up"></i>
+                </div>
+            </div>`;
     details.details.AllImages.forEach((e) => {
       
       imagesDiVImages += `${(details.byOwner.role ==="agent")
       ?
       `<div class="tour-container">
-      <a-scene id="scene" embedded>
-      <a-sky id="sky" src="https://l13.alamy.com/360/2A62K6T/full-seamless-spherical-hdri-panorama-360-degrees-angle-view-on-wooden-pier-among-the-bushes-of-forest-near-river-or-lake-in-equirectangular-projectio-2A62K6T.jpg" rotation="0 -90 0"></a-sky>
+      <a-scene class="scene" embedded>
+      <a-sky id="sky" src="${window.origin}${e}" rotation="0 -90 0"></a-sky>
     </a-scene>
     </div>`
     :
@@ -188,21 +195,90 @@ getDetails(paramId)
     let showallimages = document.getElementById("show-all-images");
     showallimages.addEventListener("click", (e) => {
       imagesFullView.style.display = "flex";
+      document.body.classList.add('no-scroll');
       imagesFullView.innerHTML = imagesDiVImages;
+      
+      const down = document.getElementById('down');
+      const up = document.getElementById('up');
+      
+      let scrollInterval; // To hold the interval ID
+      
+      // Function to start scrolling
+      const startScrolling = (direction) => {
+          scrollInterval = setInterval(() => {
+              window.scrollBy({
+                  top: direction === 'down' ? 20 : -20, // Scroll by 20 pixels in the specified direction
+                  behavior: 'smooth', // Smooth scrolling animation
+              });
+              console.log(`Scrolling ${direction}`);
+          }, 50); // Adjust interval for smoothness
+      };
+      
+      // Function to stop scrolling
+      const stopScrolling = () => {
+          clearInterval(scrollInterval);
+      };
+      
+      // Attach event listeners for the "down" button
+      down.addEventListener('mousedown', () => startScrolling('down'));
+      down.addEventListener('mouseup', stopScrolling);
+      down.addEventListener('mouseleave', stopScrolling); // Stop scrolling if the mouse leaves the button
+      
+      // Attach event listeners for the "up" button
+      up.addEventListener('mousedown', () => startScrolling('up'));
+      up.addEventListener('mouseup', stopScrolling);
+      up.addEventListener('mouseleave', stopScrolling);
+      
+      // Scroll down
+down.addEventListener('click', () => {
+  window.scrollBy({
+      top: 100, // Adjust the value for how much you want to scroll down
+      behavior: 'smooth' // Smooth scrolling animation
+  });
+  console.log("scrolling");
+  
+});
+
+// Scroll up
+up.addEventListener('click', () => {
+  window.scrollBy({
+      top: -100, // Adjust the value for how much you want to scroll up
+      behavior: 'smooth' // Smooth scrolling animation
+  });
+});
+
+if(details.details.AllImages.length < 4)
+{
+  down.style.display = "none"
+  up.style.display = 'none'
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+  
+
+}
+
+
+
       let removeimage = document.getElementById("removeimage");
       removeimage.addEventListener("click", () => {
         imagesFullView.innerHTML = "";
         imagesFullView.style.display = "none";
+        document.body.classList.remove('no-scroll');
       });
     });
     video.addEventListener("click", (e) => {
       imagesFullView.style.display = "flex";
+      document.body.classList.add('no-scroll');
       imagesFullView.innerHTML = "";
       imagesFullView.innerHTML = videoDiv;
       let removeimage = document.getElementById("removeimage");
       removeimage.addEventListener("click", () => {
         imagesFullView.innerHTML = "";
         imagesFullView.style.display = "none";
+        document.body.classList.remove('no-scroll');
       });
     });
     

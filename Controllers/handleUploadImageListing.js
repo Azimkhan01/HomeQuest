@@ -36,8 +36,11 @@ const handleUploadImageListing = async (req, res) => {
       } = req.body;
 
       try {
+        // console.log('====================================')
+        // console.log(req.files.propertyVideo[0])
+        // console.log('====================================')
         let allImages = [];
-        let videoPath = `/public/Assets/Videos/${req.files.propertyVideo[0].filename}`;
+        let videoPath = `${req.files.propertyVideo[0].filename}`;
         let thumbnailPath = `/public/Assets/Thumbnails/${req.files.thumbnail[0].filename}`;
         let userRole = "";
 

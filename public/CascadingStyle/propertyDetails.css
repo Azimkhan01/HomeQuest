@@ -175,30 +175,73 @@
     opacity: 0.5;
     cursor: pointer;
 }
+/* Prevent background scrolling when the modal is active */
 
+
+/* Adjusted #imagesFullView */
 #imagesFullView {
-    overflow-y: auto;
+    margin-top: 10px;
+    overflow: scroll; /* Enable vertical scrolling */
     z-index: 1000;
-    display: none;
+    display: none; /* Initially hidden */
     flex-direction: column;
-    position: fixed;
-    top: 10px;
-    height: 100vh;
-    width: 90%;
-    background-color: #666666e8;
+    position: absolute;
+    top: 0; /* Align to the top of the viewport */
+    left: 0; /* Align to the left of the viewport */
+    height: auto; /* Full viewport height */
+    width: 100%; /* Full viewport width */
+    background-color: #666666e8; /* Semi-transparent background */
     justify-content: space-around;
+    align-items: center;
     gap: 20px;
 }
 
+
 #removeimage {
+    background-color: #00b98e;
     top: 0;
+    z-index: 1;
     cursor: pointer;
     position: fixed;
-    padding: 20px;
-    color: white;
+    padding: 1%;
+    color: black;
     font-size: 20px;
     align-self: flex-end;
+    align-content: end;
+    margin: 2%;
+    border-radius: 5px;
 }
+.arrow{
+    /* background-color: white; */
+    bottom: 1%;
+    z-index: 1;
+    cursor: pointer;
+    position: fixed;
+    padding: 10px;
+    color: black;
+    font-size: 20px;
+    align-self: center;
+    /* width: 100%; */
+    align-content: end;
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+  .arrow div{
+    background-color: #00B98E;
+    border-radius: 50%;
+    padding: 50%;
+    font-size: 18px;
+    border: 2px solid rgba(0, 0, 0, 0);
+  }
+
+  .arrow div:hover{
+    transition: all 0.2s ease-in-out;
+    border: 2px solid #00775b;
+  }
 
 #imagesFullView img {
     height: 55vh;
@@ -206,10 +249,11 @@
     object-fit: contain;
 }
 
+
+
 #show-all-images,
 #show-video {
     /* position: relative; */
-    /* background-color: red; */
     display: flex;
     flex-direction: column;
 }
@@ -481,19 +525,39 @@
 }
 
 .tour-container {
-    width: 80%;
-    max-width: 800px;
-    height: 60vh;
-    border: 2px solid #ccc;
+    width: 95vw;
+    height: 95vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Black background for contrast */
     overflow: hidden;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    border-radius: 10px;
   }
+  
+  .scene {
+    width: 95vw;
+    height: 95vh;
+    position: relative;
+  }
+  
+  a-scene {
+    width: 95vw;
+    height: 95vh;
+  }
+  
+  #sky {
+    width: 95vw;
+    height: 95vh;
+  }
+  
+ 
 
 /* Media Queries */
 @media screen and (max-width: 768px) {
+
+    .no-scroll {
+        overflow: hidden;
+    }
     #commentSection {
         padding: 15px;
     }
@@ -565,11 +629,11 @@
     #imagesFullView {
         justify-content: space-around;
         top: 0;
-        width: 100%;
     }
 
     #removeimage {
         top: 0;
+        padding: 10px;
     }
 
     .replyToReply {
@@ -580,6 +644,32 @@
         padding: 2px;
         margin-top: 10px;
     }
+    .tour-container {
+        width: 100%;
+        height: 50vh; /* Full viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000; /* Black background for contrast */
+        overflow: hidden;
+      }
+      
+      .scene {
+        width: 95vw;
+        height: 95vh;
+        position: relative;
+      }
+      
+      a-scene {
+        width: 95vw;
+        height: 95vh;
+      }
+      
+      #sky {
+        width: 95vw;
+        height: 95vh;
+      }
+      
 }
 
 .liked {

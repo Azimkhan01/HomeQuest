@@ -154,6 +154,7 @@ video {
 }
 
 .service1 {
+    width: 80%;
     overflow: hidden;
     padding: 20px;
     display: flex;
