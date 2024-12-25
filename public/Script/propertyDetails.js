@@ -171,7 +171,16 @@ getDetails(paramId)
 <i class="fa-solid fa-xmark"></i>
         </div>`;
     details.details.AllImages.forEach((e) => {
-      imagesDiVImages += `<div><img src="${window.location.origin}${e}" lazy></div>`;
+      
+      imagesDiVImages += `${(details.byOwner.role ==="agent")
+      ?
+      `<div class="tour-container">
+      <a-scene id="scene" embedded>
+      <a-sky id="sky" src="https://l13.alamy.com/360/2A62K6T/full-seamless-spherical-hdri-panorama-360-degrees-angle-view-on-wooden-pier-among-the-bushes-of-forest-near-river-or-lake-in-equirectangular-projectio-2A62K6T.jpg" rotation="0 -90 0"></a-sky>
+    </a-scene>
+    </div>`
+    :
+    `<div><img src="${window.location.origin}${e}" lazy></div>`}`;
     });
     videoDiv += `<div><video id="mainVideo" src="${window.location.origin}/stream/${details.details.video}" controls  controlsList="nopictureinpicture"></video><div>`;
 
@@ -270,7 +279,7 @@ addComment.addEventListener("click", async (e) => {
       const data = await response.json();
       // console.log("Comment added successfully:", data);
       feedbackInput.value = "";
-      console.log("yeh run hua");
+      // console.log("yeh run hua");
       updateCommentSection(paramId);
     } catch (error) {
       console.error("Error adding comment:", error);
@@ -300,7 +309,7 @@ let updateCommentSection = async (paramId) => {
       feedbackItem.innerHTML = "<p>No Comment. Be the One to Comment!!</p>";
       return;
     }
-console.log(data)
+// console.log(data)
     // Build the HTML content
     let html = "";
     data.forEach((comment, index) => {

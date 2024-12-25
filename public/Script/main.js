@@ -117,29 +117,98 @@ window.addEventListener('scroll', () => {
     }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const videos = document.querySelectorAll(".service1 video");
-  
-    const handleVideoPlayback = () => {
-      videos.forEach((video) => {
-        const rect = video.getBoundingClientRect();
-        const isInViewport = rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
-  
-        if (isInViewport) {
-            // console.log("play")
+   document.addEventListener("DOMContentLoaded", () => {
+      const videos = document.querySelectorAll(".service1 video");
+
+      // Observer callback to handle when the video enters the viewport
+      const handleVideoPlayback = (entry) => {
+        const video = entry.target;
+
+        if (entry.isIntersecting) {
+          // Set preload to auto, start loading the video
+          video.setAttribute("preload", "auto");
+
+          // Play the video if it's in the viewport
           video.play();
         } else {
-            // console.log('pause')
+          // Pause and stop loading the video when out of view
           video.pause();
+          video.setAttribute("preload", "none");
         }
+      };
+
+      // Set up IntersectionObserver
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(handleVideoPlayback);
+      }, {
+        threshold: 0.5 // Trigger when 50% of the video is in view
       });
+
+      // Observe each video
+      videos.forEach((video) => {
+        observer.observe(video);
+      });
+    });
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const bar = document.querySelector('.loader-bar')
+    const images = document.querySelectorAll('img');
+    const videos = document.querySelectorAll('video');
+    const elements = [...images, ...videos];
+    let loadedCount = 0;
+
+    const checkAllLoaded = () => {
+        loadedCount++;
+       
+        if (loadedCount === elements.length) {
+
+        }else{
+            
+           if(((loadedCount/elements.length)*100) <=95.5)
+           {
+             bar.style.width = `${(loadedCount/elements.length)*100}%`
+           }
+            else{
+                 bar.style.width = `100%`
+                 setTimeout(()=>{
+                    bar.style.opacity = 0
+                 },1500)
+        }
+
+        }
     };
-  
-    // Initial check
-    handleVideoPlayback();
-  
-    // Attach event listeners for scroll and resize events
-    window.addEventListener("scroll", handleVideoPlayback);
-    window.addEventListener("resize", handleVideoPlayback);
+
+    elements.forEach(element => {
+        if (element.tagName === 'IMG') {
+            if (element.complete) {
+               
+                checkAllLoaded(); 
+            } else {
+                element.addEventListener('load', checkAllLoaded);
+                element.addEventListener('error', checkAllLoaded); // Handle errors
+            }
+        } else if (element.tagName === 'VIDEO') {
+            element.addEventListener('loadeddata', checkAllLoaded);
+            element.addEventListener('error', checkAllLoaded); // Handle errors
+        }
+    });
+});
+const handleVideoVisibility = (entry) => {
+    const video = entry.target;
+    if (entry.isIntersecting) {
+      video.play(); // Play when visible
+    } else {
+      video.pause(); // Pause when out of view
+    }
+  };
+
+  // Create an IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    handleVideoVisibility(entries[0]); // Process the single entry
+  }, {
+    threshold: 0.5 // Trigger when 50% of the video is visible
   });
-  
+
+  // Observe the single video element
+  const videoElement = document.querySelector('.video video');
+  observer.observe(videoElement);

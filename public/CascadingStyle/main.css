@@ -114,7 +114,8 @@ video {
     z-index: -1;
     /* height: 80%; */
 }
-#services{
+
+#services {
     background-color: white;
     /* border: 1px solid black; */
     width: 100%;
@@ -123,7 +124,7 @@ video {
     align-items: center;
 }
 
-#services div{
+#services div {
     background-color: white;
     padding: 20px;
     border-top: 1px solid #00B98E;
@@ -138,21 +139,21 @@ video {
 }
 
 #services div div {
-border: none;
+    border: none;
 }
 
-#services div div h4{
-    font-family: inter,sans-serif;
+#services div div h4 {
+    font-family: inter, sans-serif;
     color: #0E2E50;
 }
 
-#services div img{
+#services div img {
     color: #00B98E;
     max-width: 100px;
 
 }
 
-.service1{
+.service1 {
     overflow: hidden;
     padding: 20px;
     display: flex;
@@ -162,21 +163,23 @@ border: none;
 
 }
 
-.service1 div{
+.service1 div {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.service1 div:nth-child(1) video{
+
+.service1 div:nth-child(1) video {
     width: 80%;
 }
-.service1 div:nth-child(2) video{
+
+.service1 div:nth-child(2) video {
     width: 25%;
 }
 
-.service1-info{
+.service1-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -186,17 +189,35 @@ border: none;
     /* width: 80%; */
 }
 
-.service1-info h1{
-    font-family: inter,sans-serif;
+.service1-info h1 {
+    font-family: inter, sans-serif;
     font-size: 60px;
     color: #0E2E50;
 }
-.service1-info p{
-    font-family: heebo,sans-serif;
+
+.service1-info p {
+    font-family: heebo, sans-serif;
     color: #666565;
     text-align: center;
 }
 
+/* loader */
+/* From Uiverse.io by timlmit */
+.loader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* align-items: center; */
+}
+
+.loader-bar {
+    width: 0%;
+    border: 3px solid #34C7A5;
+
+}
+
+
+/* laoder end */
 /* navbar end */
 
 @media (max-width:786px) {
@@ -229,25 +250,34 @@ border: none;
     .video video {
         width: 100%;
     }
-    #services{
+
+    #services {
         border: 2px solid #00B98E;
         flex-direction: column;
     }
-    #services div{
+
+    #services div {
         border: none;
         width: 100%;
     }
-    .service1{
+
+    .service1 {
         padding: 5px;
-          flex-direction: column;
-          gap: 10px;
+        flex-direction: column;
+        gap: 10px;
     }
-    .service1-info h1{
+
+    .service1-info h1 {
         font-size: 40px;
     }
-    #services div img{
+
+    #services div img {
         color: #00B98E;
         max-width: 180px;
-    
+
+    }
+
+    .loader-bar {
+        border: 1px solid #00B98E;
     }
 }

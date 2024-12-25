@@ -480,6 +480,17 @@
     font-size: 12px;
 }
 
+.tour-container {
+    width: 80%;
+    max-width: 800px;
+    height: 60vh;
+    border: 2px solid #ccc;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+  }
 
 /* Media Queries */
 @media screen and (max-width: 768px) {
