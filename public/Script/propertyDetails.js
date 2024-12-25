@@ -46,7 +46,9 @@ async function getDetails(Id) {
 // Fetch details
 getDetails(paramId)
   .then(async (details) => {
-    console.log(details)
+    const imageURLs = details.details.AllImages.map(image => image);
+    localStorage.setItem('imageURLs', JSON.stringify(imageURLs));
+    // console.log(details)
     let container = document.getElementById("container");
     let imagesFullView = document.getElementById("imagesFullView");
     // console.log(details.details.AllImages);
@@ -60,7 +62,7 @@ getDetails(paramId)
     let userResponse = await fetch(`${window.location.origin}/getLoginUser`);
     let userData = await userResponse.json();
     let s = `
-       <div class="overview-images">
+       <div id='overview-images' class="overview-images">
     <div>
         <img id="corousel" src="${details.details.thumbnail}">
     </div>
@@ -69,11 +71,9 @@ getDetails(paramId)
 <div class="main-image-description">
     <div class="other-image-description">
         <div class="image-owner">
-            <i>Owner Name : <strong>${
-              details.byOwner.username
-            } <a style="color:#3EB8E5" href="mailto:${
-      details.byOwner.email
-    }">mail</a></strong></i>
+            <i>Owner Name : <strong>${details.byOwner.username
+      } <a style="color:#3EB8E5" href="mailto:${details.byOwner.email
+      }">mail</a></strong></i>
         </div>
         <div class="image-abb">
             <div>
@@ -124,9 +124,9 @@ getDetails(paramId)
                 <p>${details.details.views || 0}</p>
             </div>
             
-            <div id="like" class="like ${userData.like.includes(paramId)?"liked" :"" }">
+            <div id="like" class="like ${userData.like.includes(paramId) ? "liked" : ""}">
                 <i class="fa-solid fa-thumbs-up"></i>
-                <p id="mainView" >${details.details.like || 0 }</p>
+                <p id="mainView" >${details.details.like || 0}</p>
             </div>
         </div>
     </div>
@@ -139,23 +139,20 @@ getDetails(paramId)
                 <div class="icon-container">
                     <i class="fa-regular fa-images"></i>
                 </div>
-                <img class="image-blur" src="${window.location.origin}${
-      details.details.AllImages[2] ||
+                <img class="image-blur" src="${window.location.origin}${details.details.AllImages[2] ||
       details.details.AllImages[1] ||
       details.details.AllImages[0]
-    }" alt="Gallery Thumbnail">
-                <p style="color: #666565;">${
-                  details.details.AllImages.length
-                } Images</p>
+      }" alt="Gallery Thumbnail">
+                <p style="color: #666565;">${details.details.AllImages.length
+      } Images</p>
             </div>
 
             <div id="show-video">
                 <div class="videoPlayButton">
                     <i class="fa-regular fa-circle-play"></i>
                 </div>
-                <img class="image=blur" src="${window.location.origin}${
-      details.details.thumbnail
-    }">
+                <img class="image=blur" src="${window.location.origin}${details.details.thumbnail
+      }">
                 <p style="color:#666565">video</p>
             </div>
         </div>
@@ -178,16 +175,16 @@ getDetails(paramId)
                 </div>
             </div>`;
     details.details.AllImages.forEach((e) => {
-      
-      imagesDiVImages += `${(details.byOwner.role ==="agent")
-      ?
-      `<div class="tour-container">
+
+      imagesDiVImages += `${(details.byOwner.role === "agent")
+        ?
+        `<div class="tour-container">
       <a-scene class="scene" embedded>
       <a-sky id="sky" src="${window.origin}${e}" rotation="0 -90 0"></a-sky>
     </a-scene>
     </div>`
-    :
-    `<div><img src="${window.location.origin}${e}" lazy></div>`}`;
+        :
+        `<div><img src="${window.location.origin}${e}" lazy></div>`}`;
     });
     videoDiv += `<div><video id="mainVideo" src="${window.location.origin}/stream/${details.details.video}" controls  controlsList="nopictureinpicture"></video><div>`;
 
@@ -197,71 +194,65 @@ getDetails(paramId)
       imagesFullView.style.display = "flex";
       document.body.classList.add('no-scroll');
       imagesFullView.innerHTML = imagesDiVImages;
-      
+
       const down = document.getElementById('down');
       const up = document.getElementById('up');
-      
+
       let scrollInterval; // To hold the interval ID
-      
+
       // Function to start scrolling
       const startScrolling = (direction) => {
-          scrollInterval = setInterval(() => {
-              window.scrollBy({
-                  top: direction === 'down' ? 20 : -20, // Scroll by 20 pixels in the specified direction
-                  behavior: 'smooth', // Smooth scrolling animation
-              });
-              console.log(`Scrolling ${direction}`);
-          }, 50); // Adjust interval for smoothness
+        scrollInterval = setInterval(() => {
+          window.scrollBy({
+            top: direction === 'down' ? 20 : -20, // Scroll by 20 pixels in the specified direction
+            behavior: 'smooth', // Smooth scrolling animation
+          });
+          console.log(`Scrolling ${direction}`);
+        }, 50); // Adjust interval for smoothness
       };
-      
+
       // Function to stop scrolling
       const stopScrolling = () => {
-          clearInterval(scrollInterval);
+        clearInterval(scrollInterval);
       };
-      
+
       // Attach event listeners for the "down" button
       down.addEventListener('mousedown', () => startScrolling('down'));
       down.addEventListener('mouseup', stopScrolling);
       down.addEventListener('mouseleave', stopScrolling); // Stop scrolling if the mouse leaves the button
-      
+
       // Attach event listeners for the "up" button
       up.addEventListener('mousedown', () => startScrolling('up'));
       up.addEventListener('mouseup', stopScrolling);
       up.addEventListener('mouseleave', stopScrolling);
-      
+
       // Scroll down
-down.addEventListener('click', () => {
-  window.scrollBy({
-      top: 100, // Adjust the value for how much you want to scroll down
-      behavior: 'smooth' // Smooth scrolling animation
-  });
-  console.log("scrolling");
-  
-});
+      down.addEventListener('click', () => {
+        window.scrollBy({
+          top: 100, // Adjust the value for how much you want to scroll down
+          behavior: 'smooth' // Smooth scrolling animation
+        });
+        console.log("scrolling");
 
-// Scroll up
-up.addEventListener('click', () => {
-  window.scrollBy({
-      top: -100, // Adjust the value for how much you want to scroll up
-      behavior: 'smooth' // Smooth scrolling animation
-  });
-});
+      });
 
-if(details.details.AllImages.length < 4)
-{
-  down.style.display = "none"
-  up.style.display = 'none'
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth'
-  });
-  
+      // Scroll up
+      up.addEventListener('click', () => {
+        window.scrollBy({
+          top: -100, // Adjust the value for how much you want to scroll up
+          behavior: 'smooth' // Smooth scrolling animation
+        });
+      });
 
-}
-
-
-
+      if (details.details.AllImages.length < 4) {
+        down.style.display = "none"
+        up.style.display = 'none'
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+      }
       let removeimage = document.getElementById("removeimage");
       removeimage.addEventListener("click", () => {
         imagesFullView.innerHTML = "";
@@ -281,41 +272,47 @@ if(details.details.AllImages.length < 4)
         document.body.classList.remove('no-scroll');
       });
     });
-    
+    // Carousel click event listener
+let carousel = document.querySelector('#overview-images');
+carousel.addEventListener('click', () => {
+  // alert('Carousel clicked!'); 
+  // Triggering click event on the 'Show All Images' button
+  document.getElementById('show-all-images').click();
+});
+
     let like = document.getElementById("like");
     like.addEventListener("click", async (e) => {
       like.classList.toggle("liked");
-      async function getLikeStatus(paramId,query) {
+      async function getLikeStatus(paramId, query) {
         try {
           const response = await fetch(`${window.location.origin}/getLike/${paramId}/?action=${encodeURIComponent(query)}`);
           const data = await response.json();
-          const likeStatus = data.status; 
-          return likeStatus; 
+          const likeStatus = data.status;
+          return likeStatus;
         } catch (error) {
           console.error("Error fetching like status:", error);
           alert("An error occurred while fetching the like status.");
         }
       }
-     
-      
-      let mainView = document.getElementById("mainView")
-        if(like.classList.contains("liked"))
-        {
-            mainView.innerText = Number(mainView.innerHTML) + 1
-            getLikeStatus(paramId,"add").then(likeStatus => {
-              // alert(likeStatus)
-            });
-             
-        }else{
 
-          mainView.innerText = Number(mainView.innerHTML) - 1
-          getLikeStatus(paramId,"remove").then(likeStatus => {
-            // alert(likeStatus)
-          });
-        }
-     
+
+      let mainView = document.getElementById("mainView")
+      if (like.classList.contains("liked")) {
+        mainView.innerText = Number(mainView.innerHTML) + 1
+        getLikeStatus(paramId, "add").then(likeStatus => {
+          // alert(likeStatus)
+        });
+
+      } else {
+
+        mainView.innerText = Number(mainView.innerHTML) - 1
+        getLikeStatus(paramId, "remove").then(likeStatus => {
+          // alert(likeStatus)
+        });
+      }
+
     });
-    
+
 
   })
   .catch((error) => {
@@ -385,7 +382,7 @@ let updateCommentSection = async (paramId) => {
       feedbackItem.innerHTML = "<p>No Comment. Be the One to Comment!!</p>";
       return;
     }
-// console.log(data)
+    // console.log(data)
     // Build the HTML content
     let html = "";
     data.forEach((comment, index) => {
@@ -394,9 +391,8 @@ let updateCommentSection = async (paramId) => {
       html += `
         <div class="feedback-item">
           <div class="feedback-header">
-            <img src="${
-              comment.image
-            }" alt="User Avatar" class="user-avatar" lazy />
+            <img src="${comment.image
+        }" alt="User Avatar" class="user-avatar" lazy />
             <div class="user-info">
               <p class="user-name">${comment.username}</p>
               <p class="feedback-date">${comment.date}</p>
@@ -411,24 +407,21 @@ let updateCommentSection = async (paramId) => {
             <button class="cancelReply" id="cancelReply-${index}">Cancel</button>
             <button class="addReplyToReply" id="addReplyToReply-${index}" onclick="addReply(${index})">Add a reply</button>
           </div>
-          ${
-            isThereReply
-              ? `<div class="showMoreReplies" id="totalUser-${index}">
+          ${isThereReply
+          ? `<div class="showMoreReplies" id="totalUser-${index}">
               <p ><i class="fa-solid fa-chevron-down"></i> <span id='totalUserDisplay-${index}'>${comment.reply.length}</span> Replies</p>
             </div>`
-              : `<div class="showMoreReplies" id="totalUser-${index}"></div>`
-          }
+          : `<div class="showMoreReplies" id="totalUser-${index}"></div>`
+        }
           <div id="replies-${index}" class="replies">
-            ${
-              isThereReply
-                ? comment.reply
-                    .map(
-                      (reply) => `
+            ${isThereReply
+          ? comment.reply
+            .map(
+              (reply) => `
               <div class="reply-item">
                 <div class="feedback-header">
-                  <img src="${
-                    reply.image || "https://via.placeholder.com/40"
-                  }" alt="User Avatar" class="user-avatar" lazy />
+                  <img src="${reply.image || "https://via.placeholder.com/40"
+                }" alt="User Avatar" class="user-avatar" lazy />
                   <div class="user-info">
                     <p class="user-name">${reply.username}</p>
                     <p class="feedback-date">${reply.date}</p>
@@ -438,10 +431,10 @@ let updateCommentSection = async (paramId) => {
                   <p>${reply.text}</p>
                 </div>
               </div>`
-                    )
-                    .join("")
-                : ""
-            }
+            )
+            .join("")
+          : ""
+        }
           </div>
         </div>`;
     });
@@ -539,10 +532,9 @@ const addReply = async (index) => {
     let temp = `
     <div class="reply-item">
       <div class="feedback-header">
-        <img src="${
-          userData.image ||
-          `${window.location.origin}/public/Assets/Default/defaultimage-removebg-preview`
-        }" alt="User Avatar" class="user-avatar" lazy />
+        <img src="${userData.image ||
+      `${window.location.origin}/public/Assets/Default/defaultimage-removebg-preview`
+      }" alt="User Avatar" class="user-avatar" lazy />
         <div class="user-info">
           <p class="user-name">${userData.username}</p>
           <p class="feedback-date">${formattedDate}</p>
@@ -561,4 +553,17 @@ const addReply = async (index) => {
     // alert(error.message);
   }
 };
-// console.log("end hai bhai pura code run hua hai pakka")
+
+const storedImageURLs = JSON.parse(localStorage.getItem('imageURLs'));
+if (storedImageURLs.length > 1) {
+  let i = 0
+  setInterval(() => {
+    let corousel = document.getElementById('corousel')
+    corousel.src = storedImageURLs[i]
+    console.log(storedImageURLs[i]);
+    i++
+    if (storedImageURLs.length == i) {
+      i = 0
+    }
+  }, 2500)
+}

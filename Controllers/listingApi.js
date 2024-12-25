@@ -9,7 +9,7 @@ const listingApi = async (req, res) => {
     // Check if `id` is `NaN` or invalid; if so, retrieve all listings
     let data;
     if (isNaN(offset) || offset < 0) {
-      data = await listing.find({},{comment:0,reply:0,like:0}); // Return all listings
+      data = await listing.find({'role':{$nin:["agent"]}},{comment:0,reply:0,like:0}); // Return all listings
     // console.log('data is loaded')
     } else {
       // Fetch listings with pagination
