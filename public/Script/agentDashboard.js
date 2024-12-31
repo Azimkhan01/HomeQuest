@@ -6,7 +6,14 @@ fetch(`${window.location.protocol}//${window.location.hostname}:${window.locatio
         return response.json(); // Parse the JSON response
     })
     .then(data => {
-        let allAppointment = document.getElementById("allAppointment");
+      let allAppointment = document.getElementById("allAppointment");
+      if(WebTransportDatagramDuplexStream.length < 1)
+      {
+        allAppointment.innerHTML = ''
+        allAppointment.innerHTML = `<div class='appointment-container'><p style='color:black;text-align:center'>No Appointment</p></div>`
+        return 
+      }
+    
         let s = ''; // Initialize the string for concatenation
 
         data.forEach(e => {
