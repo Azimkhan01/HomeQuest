@@ -331,10 +331,13 @@ button:hover {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  gap: 20px 20px;
 }
 
 .feedback-card
 {
+  border: 1px solid gray;
+  border-radius: 5px;
   padding: 10px;
   display: flex;
   flex-direction: column;
