@@ -39,7 +39,7 @@ links.forEach((id) => {
 
 
 // Dynamic URL based on the current window's location
-const url = `${window.location.protocol}//${window.location.hostname}:${window.location.port}/getAgent`;  // Complete API URL
+const url = `${window.location.origin}/getAgent`;  // Complete API URL
 
 // Function to fetch agent data
 async function getAgentData() {
@@ -58,12 +58,12 @@ async function getAgentData() {
 
     const data = await response.json();
     let agentCards = document.getElementById("agent-cards")
-    // console.log(data)
+    console.log(data)
     let s = ''
-    data.forEach(e => {
+    data.data.forEach(e => {
       s += `<div class="card">
   <div class="image">
-    <img src="${window.location.protocol}//${window.location.hostname}:${window.location.port}${e.image}" alt="thumbnail" lazy>
+    <img src="${window.location.origin}${e.image}" alt="thumbnail" lazy>
   </div>
   <div class="content">
     <a href="#" class="title">
@@ -183,3 +183,35 @@ document.getElementById("sendButton").addEventListener("click", async (e) => {
   }
 });
 
+const feedbacks = document.getElementById('feedbacks')
+try{
+
+  fetch(`${window.location.origin}/getFeedback`).then(r=>r.json()).then((data)=>{
+   if(data.status)
+   {
+    let s =''
+    if(data.feedback.length <0)
+      s = "<p>No FeedBack</p>"
+    else{
+      data.feedback.forEach((e)=>{
+        s += ` <div class="feedback-card">
+        <div>
+         <p class="small">UserId : <a href="#">${e.userId}</a></p> 
+        </div>
+        <div>
+          <p>Feed Back : ${e.feedback} </p>
+        </div>
+    </div>`
+      })
+      feedbacks.innerHTML = s
+    }
+   }else{
+    alert(data.message)
+   }
+  })
+
+}catch(error){
+console.log('====================================')
+console.log(error)
+console.log('====================================')
+}

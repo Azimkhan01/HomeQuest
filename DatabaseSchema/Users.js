@@ -269,6 +269,15 @@ const feedSchema = new mongoose.Schema({
   viewedUser:{type:Array}
 },{strict:false,timestamps: true})
 
+const feedbackSchema = new mongoose.Schema(
+  {
+    feedback:{
+      type:String
+    },
+    userId:{
+      type:String
+    }
+  }
+)
 
-
-module.exports = { userSchema, ListingSchema, AgentSchema , linkSchema , feedSchema};
+module.exports = {feedbackSchema, userSchema, ListingSchema, AgentSchema , linkSchema , feedSchema};

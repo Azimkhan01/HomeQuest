@@ -86,6 +86,7 @@ const { pages } = require("../Controllers/pages.js");
 const { getFeed } = require("../Controllers/getFeed.js");
 const {agentProfile} = require('../Controllers/agentProfile.js');
 const { getCurrentAgent } = require("../Controllers/getCurrentAgent.js");
+const { handleFeedback, getFeedback } = require("../Controllers/feedback.js");
 
 // const { decode } = require("punycode");
 
@@ -218,6 +219,8 @@ router.route("/pages").get(pages)
 router.route("/getFeed").get(getFeed)
 router.route("/AgentProfile").get(agentProfile);
 router.route('/getCurrentAgent').get(getCurrentAgent)
+router.route('/feedback').post(handleFeedback)
+router.route('/getFeedback').get(getFeedback)
 //error
 router.route("*").get(error);
 

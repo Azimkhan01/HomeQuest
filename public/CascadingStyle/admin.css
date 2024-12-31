@@ -324,3 +324,32 @@ button {
 button:hover {
   background-color: #05c46bd0;
 }
+
+#feedbacks{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.feedback-card
+{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.feedback-card p{
+color: #2563EB;
+}
+
+.small{
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.small a {
+font-size: 12px;
+}

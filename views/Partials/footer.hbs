@@ -27,7 +27,7 @@
     <div class="feedback">
         <div>
             <form>
-                <textarea  placeholder="Tell me what you are thinking" id="feedback"></textarea>
+                <textarea   placeholder="Tell me what you are thinking" id="feedback"></textarea>
                 <input type="button" onclick="handleFeedback()" value="Submit">
             </form>
         </div>
@@ -47,3 +47,41 @@
         </div>
     </div>
 </footer>
+<script>
+   function handleFeedback() {
+    const feedbackElement = document.getElementById('feedback');
+    const feedback = feedbackElement?.value?.trim();
+
+    if (!feedback) {
+        console.error("Feedback cannot be empty.");
+        return;
+    }
+
+    try {
+        fetch(`${window.location.origin}/feedback`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ feedback }), // Convert the object to a JSON string
+        })
+        .then((response) => {
+            if (response.ok) {
+                console.log("Feedback submitted successfully.");
+            } else {
+                console.error(`Failed to submit feedback. Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log("Server response:", data);
+        })
+        .catch((error) => {
+            console.error("Network error:", error);
+        });
+    } catch (error) {
+        console.error("Unexpected error:", error);
+    }
+}
+
+</script>

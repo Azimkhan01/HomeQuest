@@ -98,6 +98,7 @@ footer .basic i{
      color: white;
      font-size: 16px;
      font-weight: 500;
+     text-decoration: underline;
 }
 
 .feedback div form textarea::placeholder{

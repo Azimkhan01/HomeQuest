@@ -15,7 +15,7 @@ const getAgent = async (req, res) => {
 let page = req.query.page
     let data;
     if (isNaN(offset) || offset < 0 || page) {
-      console.log("NaN running");
+      // console.log("NaN running");
 
       // Fetch all agents and convert to plain objects
       data = await agent.find({}).limit(page*10).lean();
