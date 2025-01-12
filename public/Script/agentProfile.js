@@ -33,23 +33,26 @@ const getAgentData = async () => {
 (async () => {
     const result = await getAgentData();
     console.log(result);
-    let s =''
+    let s = ''
     result.agentFeed.forEach((element) => {
-        s+= `
-        <div class="imgFeed">
-  <a href="#"><img src="/public/Assets/postImage/${element.images[0]}" alt="Feed Image"></a>
+        s += `
+        <div id=${element._id}   class="imgFeed">
+  <img src="/public/Assets/postImage/${element.images[0]}" alt="Feed Image">
 </div>
       `
     })
     feed.innerHTML = "";
     feed.innerHTML = s;
+    result.agentFeed.forEach((element) => {
+        document.getElementById(element._id).addEventListener('click', (e) => { changeFeedAngle(e) })
+    })
     if (result.status) {
         // Calculate total views from agentListings
         const totalViews = result.agentListing.reduce((sum, listing) => {
             return sum + (listing.views || 0); // Add the views or 0 if views are not present
         }, 0);
 
-       
+
 
         // Update the profile with the data
         profile.innerHTML = `
@@ -90,74 +93,103 @@ const getAgentData = async () => {
                     <a href='/Dashboard'>Show Appointment</a>
                 </div>
         `;
-        
+
     } else {
         // Handle failure response
         alert('Failed to fetch agent data: ' + result.message);
     }
+
+
 })();
 
-async function handleFeed(){
-    if(feed.style.display == "none" || feed.style.display == "")
-    {
+async function handleFeed() {
+    if (feed.style.display == "none" || feed.style.display == "") {
         console.log("Feed");
         listing.style.display = "none";
         spinner.style.display = "inline-block";
-      setTimeout(()=>{
-        let s= '';
-        getAgentData().then((r)=>{
-           r.agentFeed.forEach(element => {
-               s+= `
-                 <div class="imgFeed">
-           <a href="#"><img src="/public/Assets/postImage/${element.images[0]}" alt="listing Image"></a>
+        setTimeout(() => {
+            let s = '';
+            getAgentData().then((r) => {
+                r.agentFeed.forEach(element => {
+                    s += `
+                 <div id=${element._id}  class="imgFeed">
+           <img src="/public/Assets/postImage/${element.images[0]}" alt="listing Image">
        </div>
                `
-           });
-           feed.innerHTML = "";
-           feed.innerHTML = s;
-           spinner.style.display = "none";
-           feed.style.display = "flex";
-       })
-      },500)
-       
-    }else{
+                });
+                feed.innerHTML = "";
+                feed.innerHTML = s;
+                spinner.style.display = "none";
+                feed.style.display = "flex";
+            })
+            r.agentFeed.forEach((element) => {
+                document.getElementById(element._id).addEventListener('click', (e) => { changeFeedAngle(e) })
+            })
+        }, 500)
+
+    } else {
         console.log("Feed r");
-        
+
         return
     }
 }
 
-async function handleListing()
-{
-    if(listing.style.display == "none" || listing.style.display == "")
-    {
+async function handleListing() {
+    if (listing.style.display == "none" || listing.style.display == "") {
         console.log("Listing");
         feed.style.display = "none";
         spinner.style.display = "inline-block";
-       setTimeout(()=>{
-        let s= '';
-        getAgentData().then((r)=>{
-            console.log('loading the listing');
-            r.agentListing.forEach(element => {
-                console.log(element)
-                s+= `
-                  <div class="imgFeed">
-            <a href="#"><img src="${element.thumbnail}" alt="Feed Image"></a>
+        setTimeout(() => {
+            let s = '';
+            getAgentData().then((r) => {
+                console.log('loading the listing');
+                r.agentListing.forEach(element => {
+                    // console.log(element)
+                    s += `
+                  <div  class="imgFeed">
+            <img src="${element.thumbnail}" alt="Feed Image">
         </div>
                 `
-                console.log('loading the listing end');
-            });
-            listing.innerHTML = ""
-            listing.innerHTML = s;
-            spinner.style.display = "none";
-            listing.style.display = "flex";
-        })
-       },500)
-       
+                    console.log('loading the listing end');
+                });
+                listing.innerHTML = ""
+                listing.innerHTML = s;
+                spinner.style.display = "none";
+                listing.style.display = "flex";
+            })
+        }, 500)
 
-    }else{
+
+    } else {
         console.log("Listing r");
-        
+
         return
     }
+}
+
+function changeFeedAngle(e) {
+    let feed = document.getElementById('feed')
+    let imgFeed = document.querySelectorAll('.imgFeed')
+    if (feed.style.flexDirection == "" || feed.style.flexDirection == "row") {
+        feed.style.flexDirection = "column"
+        feed.style.justifyContent = 'center'
+        feed.style.alignItems = 'center'
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            imgFeed.forEach((e) => {
+                e.style.width = "60%";
+            });
+        } else {
+            imgFeed.forEach((e) => {
+                e.style.width = "40%";
+            });
+        }
+        e.target.scrollIntoView({ behavior: "smooth" })
+    }
+    else {
+        feed.style.flexDirection = 'row'
+        imgFeed.forEach((e) => {
+            e.style.width = "calc(33.33% - 5px)"
+        })
+    }
+
 }
