@@ -87,6 +87,7 @@ const { getFeed } = require("../Controllers/getFeed.js");
 const {agentProfile} = require('../Controllers/agentProfile.js');
 const { getCurrentAgent } = require("../Controllers/getCurrentAgent.js");
 const { handleFeedback, getFeedback } = require("../Controllers/feedback.js");
+const { mortage } = require("../Controllers/mortage.js");
 
 // const { decode } = require("punycode");
 
@@ -184,10 +185,10 @@ router.route("/property/:id").get(property);
 router.route("/agent").get(agent);
 router.route("/admin").get(admin);
 router.route("/getAgent").get(getAgent);
-router.route("/Dashboard").get(agentDashboard)
-router.route("/getAppointments").get(getAppointment)
-router.route("/acceptOrReject").post(acceptOrReject)
-router.route("/property-details").get(propertyDetails)
+router.route("/Dashboard").get(agentDashboard);
+router.route("/getAppointments").get(getAppointment);
+router.route("/acceptOrReject").post(acceptOrReject);
+router.route("/property-details").get(propertyDetails);
 //apis
 router.route("/delete-listing/:id").get(deleteListing);
 router.route("/getStates").get(states);
@@ -200,27 +201,28 @@ router.route("/verifyOtp").post(verifyOtp);
 router.route("/resetPassword").post(resetPassword);
 router.route("/sendOtp").post(sendOtp);
 router.post("/handleAdmin", uploadAgent.single("photo"), handleAdmin);
-router.route("/agentList/:id?").get(agentListing)
+router.route("/agentList/:id?").get(agentListing);
 router.route("/filterAgent").get(filterAgent);
-router.route("/handleAppointment").post(handleAppointment)
+router.route("/handleAppointment").post(handleAppointment);
 router.route("/getAppointments").get(getAppointment)
-router.route("/getPropertyDetails/:id").get(getPropertyDetails)
-router.route("/getViews/:id").get(getViews)
-router.route("/addComment/:id").post(addComment)
-router.route("/getComment/:id").get(getComment)
-router.route("/addReply/:id").post(addReply)
-router.route("/getLike/:id").get(getLike)
-router.route("/agentLink/:id?").get(linkAgent)
-router.route("/addLink").get(addLink)
+router.route("/getPropertyDetails/:id").get(getPropertyDetails);
+router.route("/getViews/:id").get(getViews);
+router.route("/addComment/:id").post(addComment);
+router.route("/getComment/:id").get(getComment);
+router.route("/addReply/:id").post(addReply);
+router.route("/getLike/:id").get(getLike);
+router.route("/agentLink/:id?").get(linkAgent);
+router.route("/addLink").get(addLink);
 router.route("/sendLink").post(sendLink);
 router.route("/agent/addPages").get(addAgentPages);
-router.route("/addPages").post(pageUpload,handleAddPages)
-router.route("/pages").get(pages)
-router.route("/getFeed").get(getFeed)
+router.route("/addPages").post(pageUpload,handleAddPages);
+router.route("/pages").get(pages);
+router.route("/getFeed").get(getFeed);
 router.route("/AgentProfile").get(agentProfile);
-router.route('/getCurrentAgent').get(getCurrentAgent)
-router.route('/feedback').post(handleFeedback)
-router.route('/getFeedback').get(getFeedback)
+router.route('/getCurrentAgent').get(getCurrentAgent);
+router.route('/feedback').post(handleFeedback);
+router.route('/getFeedback').get(getFeedback);
+router.route('/mortage').get(mortage)
 //error
 router.route("*").get(error);
 
