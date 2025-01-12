@@ -1,0 +1,77 @@
+.agentSection {
+    background-color: #EFFDF5;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.Agentmain {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.agentServiceImage div img {
+    width: 100%;
+}
+
+.Agentmain div {
+    padding: 10px;
+    width: 100%;
+}
+
+.AgentSectionInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.AgentSectionInfo .AgentSectionInfo-h1 h1 {
+    font-weight: 800;
+    font-size: 40px;
+    font-family: inter, sans-serif;
+    color: #0E2E50;
+}
+
+.AgentSectionInfo-p p {
+    font-family: heebo,sans-serif;
+    color: #666565;
+    font-size: 16px;
+}
+
+.AgentSectionInfo-a a {
+    text-decoration: none;
+    color: white;
+    background-color: #00B98E;
+    padding: 20px 25px;
+    font-size: 14px;
+    border-radius: 5px;
+    font-family: heebo, sans-serif;
+}
+
+.AgentSectionInfo-a a:nth-child(2) {
+    background-color: #0E2E50;
+}
+
+@media (max-width:768px) {
+    .Agentmain {
+        flex-direction: column;
+    }
+
+    .AgentSectionInfo {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 10px;
+        justify-content: center;
+        align-items: center;
+    }
+    .AgentSectionInfo-a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
