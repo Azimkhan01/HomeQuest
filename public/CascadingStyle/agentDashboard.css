@@ -141,3 +141,49 @@
     margin-top: 8%;
   }
 }
+
+.asked_container{
+padding: 10px;
+}
+.asked_container{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.show_ask{
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 2.5px 2.5px;
+}
+.show_ask div button{
+  border: none;
+  background-color: #00B98E;
+  padding: 10px ;
+  color: white;
+  border-radius: 5px;
+  
+  transform: rotate(0deg);
+  
+}
+
+.show_ask div p{
+  color: #00B98E;
+  font-size: 16px;
+}
+
+.show_ask div button:hover{
+  transition: all 0.2s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.397);
+  box-shadow: rgba(0, 0, 0, 0.221) 0px 2.5px 2.5px;
+ 
+}
+
+.show_ask div button i:hover {
+  transition: all 0.2s ease-in-out;
+  transform: rotate(45deg);
+}
+

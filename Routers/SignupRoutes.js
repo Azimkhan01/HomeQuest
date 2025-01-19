@@ -88,6 +88,10 @@ const {agentProfile} = require('../Controllers/agentProfile.js');
 const { getCurrentAgent } = require("../Controllers/getCurrentAgent.js");
 const { handleFeedback, getFeedback } = require("../Controllers/feedback.js");
 const { mortage } = require("../Controllers/mortage.js");
+const { assignAgent } = require("../Controllers/assignAgent.js");
+const { getAgentHipe } = require("../Controllers/getAgentHipe.js");
+const { getUserListing } = require("../Controllers/getUserListing.js");
+const { alot } = require("../Controllers/alot.js");
 
 // const { decode } = require("punycode");
 
@@ -223,6 +227,10 @@ router.route('/getCurrentAgent').get(getCurrentAgent);
 router.route('/feedback').post(handleFeedback);
 router.route('/getFeedback').get(getFeedback);
 router.route('/mortage').get(mortage)
+router.route('/assign/agent').get(assignAgent)
+router.route('/getAgentHipe').get(getAgentHipe)
+router.route('/getUserListing').get(getUserListing)
+router.route('/alotAgent/:id').get(alot)
 //error
 router.route("*").get(error);
 

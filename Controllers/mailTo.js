@@ -449,4 +449,160 @@ async function sendLinkTo(clientEmail,link) {
   // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
 
-module.exports = { mail, appointmentReceivedMail, appointmentNoticeMail ,appointmentConfirmMail , sendLinkTo};
+async function alotAgentSide(agentEmail,clientData,link) {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: process.env.email, // sender address
+    to: agentEmail, // list of receivers
+    subject: "Agent alot request ", // Subject line
+    //   text: "Hello world?", // plain text body
+    html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Listing Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .message {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .listing-count {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .contact-btn, .details-btn {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        .contact-btn:hover, .details-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="message">A customer is looking to hire an agent for their property. Please provide your contact details to get in touch with them.</p>
+        <p class="message">User currently have <strong>10</strong> property listings.</p>
+        <p class="message">For further details, please visit the website.</p>
+        <p>Client name : ${clientData.username} </p>
+        <p>Client phone : ${clientData.contact}</p>
+        <a href="mailto:lokeshkhele5@gmail.com" class="contact-btn">Contact User</a>
+        <a href="${link}" class="details-btn" target="_blank">View More Details</a>
+    </div>
+</body>
+</html>
+ `, // html body
+  });
+
+  console.log("this mail is send for link sending >> Message sent: %s", info.messageId);
+  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+}
+
+async function alotUserSide(clientEmail , agentName) {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: process.env.email, // sender address
+    to: clientEmail, // list of receivers
+    subject: "Agent alot request ", // Subject line
+    //   text: "Hello world?", // plain text body
+    html: `
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Sent to Agent</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .message {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .agent-name {
+            font-weight: bold;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .cta-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="message">Your property allotment request has been successfully sent. The agent will get back to you shortly.</p>
+        <p class="message">You can expect a response from <span class="agent-name">${agentName}</span> soon.</p>
+        
+    </div>
+</body>
+</html>
+
+ `, // html body
+  });
+
+  console.log("this mail is send for link sending >> Message sent: %s", info.messageId);
+  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+}
+
+
+module.exports = {alotAgentSide , alotUserSide ,  mail, appointmentReceivedMail, appointmentNoticeMail ,appointmentConfirmMail , sendLinkTo};

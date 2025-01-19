@@ -433,8 +433,19 @@ button:hover {
     transition: opacity 0.2s ease; /* Optional: smooth transition on appearance */
 }
 
+.alot_agent{
+padding: 20px 10px;
+}
 
+.alot_agent a{
+    padding: 10px;
+    /* border: 2px solid black; */
+    border-radius:5px;
+    background-color: #00B98E;
+    color: white;
+    /* font-display: swap; */
+}
 
-
-
-
+.invi{
+    display: none;
+}

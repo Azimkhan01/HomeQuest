@@ -55,6 +55,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    alottedAgent : {
+      type:Array
+    }
   },
   {
     timestamps: true,
@@ -228,6 +231,14 @@ const AgentSchema = new mongoose.Schema(
       type:[String],
       required:false
     },feed:{
+      type:Array
+    },ask:{
+      type:Array
+    },
+    askAccept:{
+      type:Array
+    },
+    askReject:{
       type:Array
     }
   },

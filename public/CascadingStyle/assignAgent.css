@@ -1,0 +1,555 @@
+.container{
+    margin-top: 10%;
+    padding: 10px;
+    width: 100%;
+}
+
+#listing_card{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.agent_card{
+    padding: 10px;
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.193) 0px 2px 5px;
+}
+.agent_card_img{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #00B98E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.agent_card_img img{
+    width: 100%;
+    border-radius: 5px;
+    object-fit: contain;
+}
+.agent_card_info{
+    
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.agent_username p{
+    padding: 5px;
+    font-weight: 700;
+    font-size: 25px;
+    color: #0E2E50;
+}
+
+.agent_username i{
+    font-size: 16px;
+    color: #00B98E;
+}
+
+.agent_bio p{
+    padding: 0px 5px;
+    color: rgba(0, 0, 0, 0.703);
+    font-size:small;
+}
+.agent_socialView{
+    padding: 10px;
+    gap: 20px;
+    display: flex;
+}
+.agent_socialView p{
+font-size: 14px;
+background-color: #00B98E;
+color: white;
+padding: 5px 10px;
+border-radius: 5px;
+}
+
+.agent_contact{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.agent_contact div p {
+    padding: 2px 10px;
+    font-size: 16px;
+    color: #0E2E50;
+    font-family: heebo, sans-serif;
+    display: inline-block; /* Ensures the border only wraps the content */
+    border-bottom: 1px solid #00B98E;
+}
+
+.agent_contact div p:hover{
+    animation: shimmer 1.5s ease-in-out alternate-reverse infinite 
+}
+
+@keyframes shimmer {
+    0%{
+        border-bottom: 0px solid transparent;
+    }
+    100%{
+        border-bottom: 1px solid #00B98E; 
+    }
+}
+
+.ask_agent button{
+    padding: 10px 15px;
+    border: none;
+    background-color: #00B98E;
+    border-radius: 5px;
+    font-weight: 600;
+    color: white;
+    font-size: 16px;
+}
+
+.ask_agent button:hover{
+    transition: all 0.2s ease-in-out;
+    animation: shimmer2 0.8s ease-in-out alternate-reverse infinite 
+
+}
+
+@keyframes shimmer2 {
+    0%{
+       
+    background-color: #00B98E;
+    box-shadow: none
+    }
+    100%{
+       
+    background-color: #00b98ee4;
+    color: rgb(234, 221, 221);
+    box-shadow: rgba(0, 0, 0, 0.193) 0px 2px 5px;
+    }
+}
+
+.nextPrevious{
+    border-radius: 10px;
+    background-color: white;
+    padding:10px 5%;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(234, 221, 221);
+
+}
+.nextPrevious button{
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #00B98E;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+#showError{
+    width: 100%;
+    padding: 10px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+#showErrorMessage{
+    font-size: 14px;
+    color: tomato;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+.bar{
+    border-top: 4px solid red;
+    align-self: center;
+    /* padding: 1px; */
+    animation: widthin 0.8s ease-in-out alternate infinite 
+}
+
+@keyframes widthin {
+    0%{
+       
+   width: 0%;
+    }
+    100%{
+       
+    width: 20%;
+    }
+}
+
+.user_temp_card{
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    flex-direction: row;
+    border-radius: 10px;
+}
+
+.user_temp_listing_img{
+    border-radius: 10px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #00B98E; */
+}
+
+
+.user_temp_listing_img img{
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    object-fit: contain;
+    padding: 10px;
+}
+
+
+
+.user_temp_info p{
+font-size: 14px;
+padding: 10px;
+color: #00B98E;
+}
+.user_temp_info{
+    width: 60%;
+}
+
+.user_temp_info h3{
+    color: #0E2E50;
+    padding: 10px
+    /* font-size: 14px; */
+    }
+
+    .user_temp_h1{
+        display: flex;
+        flex-direction: row;
+    }
+    .askbutton{
+        padding: 10px;
+    }
+    .askbutton button{
+        padding: 10px 15px ;
+        border-radius: 5px;
+        background-color: #00B98E;
+        color: white;
+        font-weight: 600;
+        border: none;
+    }
+.user_listing_container{
+    border: 2px solid #0E2E50;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    height: 25vh;
+    /* background-color: red; */
+}
+@media (max-width:768px) {
+
+    .container{
+        margin-top: 14%;
+        width: 100%;
+    }
+
+    .agent_card{
+       flex-direction: column;
+    }
+    .agent_card_info{
+        gap: 10px;
+    }
+
+    .agent_socialView{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    .agent_socialView P{
+        font-size: 12px;
+        padding: 15px;
+
+    }
+
+    .ask_agent{
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
+/* laoder */
+
+/* From Uiverse.io by scissorsdog */ 
+.loader__balls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+  .loader__balls__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    height: 100px;
+    width: 40px;
+  }
+  .ball {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    position: absolute;
+    transform-origin: bottom;
+  }
+  
+  /* ANIMATION BALL 1*/
+  .loader__balls__group :nth-child(1) {
+    background-color: #99e2d0;
+    animation-name: jumpinBallAnimation1;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+  }
+  @keyframes jumpinBallAnimation1 {
+    0% {
+      transform: translateY(0) scale(1, 1);
+    }
+    10% {
+      transform: translateY(0) scale(1.3, 0.8);
+    }
+    11% {
+      transform: translateY(0) scale(0.7, 1.2);
+      animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+    }
+    39% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+    }
+    40% {
+      transform: translateY(-75px) scale(1);
+    }
+    41% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 0);
+    }
+    69% {
+      transform: translateY(0px) scale(1, 1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 0);
+    }
+    70% {
+      transform: translateY(0) scale(1.5, 0.4);
+    }
+    80% {
+      transform: translateY(0) scale(0.8, 1.2);
+    }
+    90% {
+      transform: translateY(0) scale(1.1, 0.8);
+    }
+    100% {
+      transform: translateY(0) scale(1, 1);
+    }
+  }
+  
+  /* ANIMATION BALL 2*/
+  .loader__balls__group :nth-child(2) {
+    background-color: #12e0ad;
+    animation-name: jumpinBallAnimation2;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+  }
+  @keyframes jumpinBallAnimation2 {
+    0% {
+      transform: translateY(0) scale(1, 1);
+    }
+    10% {
+      transform: translateY(0) scale(1.3, 0.8);
+    }
+    11% {
+      transform: translateY(0) scale(0.7, 1.2);
+      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    39% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    40% {
+      transform: translateY(-75px) scale(1);
+    }
+    41% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 0.5);
+    }
+    69% {
+      transform: translateY(0px) scale(1, 1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 0.5);
+    }
+    70% {
+      transform: translateY(0) scale(1.5, 0.4);
+    }
+    80% {
+      transform: translateY(0) scale(0.8, 1.2);
+    }
+    90% {
+      transform: translateY(0) scale(1.1, 0.8);
+    }
+    100% {
+      transform: translateY(0) scale(1, 1);
+    }
+  }
+  
+  /* ANIMATION BALL 3*/
+  .loader__balls__group :nth-child(3) {
+    background-color: #16c197;
+    animation-name: jumpinBallAnimation3;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+  }
+  @keyframes jumpinBallAnimation3 {
+    0% {
+      transform: translateY(0) scale(1, 1);
+    }
+    10% {
+      transform: translateY(0) scale(1.3, 0.8);
+    }
+    11% {
+      transform: translateY(0) scale(0.7, 1.2);
+      animation-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    }
+    39% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    }
+    40% {
+      transform: translateY(-75px) scale(1);
+    }
+    41% {
+      transform: translateY(-75px) scale(1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 1);
+    }
+    69% {
+      transform: translateY(0px) scale(1, 1);
+      animation-timing-function: cubic-bezier(1, 0, 1, 1);
+    }
+    70% {
+      transform: translateY(0) scale(1.5, 0.4);
+    }
+    80% {
+      transform: translateY(0) scale(0.8, 1.2);
+    }
+    90% {
+      transform: translateY(0) scale(1.1, 0.8);
+    }
+    100% {
+      transform: translateY(0) scale(1, 1);
+    }
+  }
+  .loader__balls__group .item1 {
+    animation-delay: 0ms;
+  }
+  .loader__balls__group .item2 {
+    animation-delay: 100ms;
+  }
+  .loader__balls__group .item3 {
+    animation-delay: 200ms;
+  }
+  
+  #loading{
+    
+    /* display: none;    */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.26);
+  }
+  /* message box */
+  /* From Uiverse.io by akshat-patel28 */ 
+.card {
+    width: 330px;
+    height: 80px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 15px;
+  }
+  .wave {
+    position: absolute;
+    transform: rotate(90deg);
+    left: -31px;
+    top: 32px;
+    width: 80px;
+    fill: #04e4003a;
+  }
+  .icon-container {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #04e40048;
+    border-radius: 50%;
+    margin-left: 8px;
+  }
+  .icon {
+    width: 17px;
+    height: 17px;
+    color: #269b24;
+  }
+  .message-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 1;
+  }
+  .message-text,
+  .sub-text {
+    margin: 0;
+    cursor: default;
+  }
+  .message-text {
+    color: #269b24;
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .sub-text {
+    font-size: 14px;
+    color: #555;
+  }
+  .cross-icon {
+    width: 18px;
+    height: 18px;
+    color: #555;
+    cursor: pointer;
+  }
+
+  #message{
+display: none;
+justify-content: center;
+align-items: center;
+position: fixed;
+top: 0;
+background-color: rgba(255, 255, 255, 0);
+height: 100%;
+width: 1005;
+  }

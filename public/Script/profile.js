@@ -1,3 +1,6 @@
+// const { getLoginUser } = require("../../Controllers/getLoginUser");
+
+const alotAgent = document.getElementById('alot_agent');
 // Form Visibility Handlers
 let form = document.getElementById("form");
 function handleEdit() {
@@ -92,3 +95,10 @@ function handleImage() {
     // console.log("Upload hidden");
   }
 }
+
+fetch(`${window.location.origin}/getLoginUser`).then(res => res.json()).then((data)=>{
+if(data.listing.length < 1)
+{
+  alotAgent.style.display = 'none'
+}
+})
