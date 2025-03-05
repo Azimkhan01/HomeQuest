@@ -225,11 +225,12 @@ let spinner = document.getElementById("loading-spinner");
 let resetPasswordBtn = document.getElementById("resetPasswordBtn");
 
 resetPasswordBtn.addEventListener("click", async (e) => {
+  // console.log("Clicked")
   e.preventDefault(); // Prevent form submission if using a form
   const newPassword = document.getElementById("confirmPassword").value; // Get new password from input field
   const email = document.querySelector('input[name="verifyEmailReset"]').value; // Get the email from input
   // Validate password (e.g., check length or strength)
-  if (newPassword.length <= 8) {
+  if (newPassword.length < 8) {
     let resetErrorMessage = document.getElementById("resetErrorMessage");
     resetErrorMessage.value = "Password must be at least 6 characters long.";
     return;

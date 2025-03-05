@@ -92,6 +92,7 @@ const { assignAgent } = require("../Controllers/assignAgent.js");
 const { getAgentHipe } = require("../Controllers/getAgentHipe.js");
 const { getUserListing } = require("../Controllers/getUserListing.js");
 const { alot } = require("../Controllers/alot.js");
+const { agentThree } = require("../Controllers/agentThree.js");
 
 // const { decode } = require("punycode");
 
@@ -231,6 +232,7 @@ router.route('/assign/agent').get(assignAgent)
 router.route('/getAgentHipe').get(getAgentHipe)
 router.route('/getUserListing').get(getUserListing)
 router.route('/alotAgent/:id').get(alot)
+router.route('/agentThree/:case').get(agentThree)
 //error
 router.route("*").get(error);
 

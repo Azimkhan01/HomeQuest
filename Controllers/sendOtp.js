@@ -106,8 +106,8 @@ const resetPassword = async (req, res) => {
         }
 
         // Hash the new password using bcrypt
-        const hashedPassword = await bcrypt.hash(newPassword, 10); // Salt rounds = 10
-
+        const hashedPassword = await bcrypt.hash(newPassword, parseInt(process.env.SALTROUNDS)); // Salt rounds = 10
+        // console.log(hashedPassword,verifyEmailReset)
         // Update the user's password in the database
         let updateUser = await user.updateOne({email:verifyEmailReset},{password:hashedPassword});
 

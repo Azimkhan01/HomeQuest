@@ -141,3 +141,20 @@ fetch(`${window.location.protocol}//${window.location.hostname}:${window.locatio
     .catch(error => {
         console.error('Error fetching appointments:', error);
     });
+
+//     fetch("/agentThree/2").then((r)=>r.json()).then((data)=>{
+// console.log(data)
+//     })
+
+const accepted_appointment = document.getElementById("accepted_appointment");
+const accepted_allotment = document.getElementById("accepted_allotment");
+const ask_slot = document.getElementById("ask_slot");
+const accepted_appointment_container = document.getElementById("accepted_appointment_container");
+const accepted_allotment_container = document.getElementById("accepted_allotment_container");
+const asked_slot = document.getElementById("asked_slot")
+
+accepted_appointment.addEventListener("click",()=>{
+console.log("clicked")
+});
+
+// first make the asked slot then the card of the appointmewnt and allotment accepted are same so make it togehter first make the asked slot ok 

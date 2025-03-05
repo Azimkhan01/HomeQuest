@@ -37,7 +37,8 @@ const signupUser = async (req, res) => {
       email,
       password: hashedPassword,
       viewed:[],
-      like:[]
+      like:[],
+      role:"user"
     });
 
     // console.log(colors.green("User added successfully: " + colors.cyan(newUser)));
@@ -53,12 +54,12 @@ const signupUser = async (req, res) => {
   }
 };
 
-const forAdmin =async (password)=>{
-  const saltRounds = parseInt(process.env.SALTROUNDS) || 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-    await user.updateOne({_id:"673987cbaaa824e874cc8988"},{$set:{password:hashedPassword}})
-}
+// const forAdmin =async (password)=>{
+//   const saltRounds = parseInt(process.env.SALTROUNDS) || 10;
+//     const hashedPassword = await bcrypt.hash(password, saltRounds);
+//     await user.updateOne({_id:"673987cbaaa824e874cc8988"},{$set:{password:hashedPassword}})
+// }
 
-forAdmin('123456')
+// forAdmin('123456')
 
 module.exports = { signupUser };

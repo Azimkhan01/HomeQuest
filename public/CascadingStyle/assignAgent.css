@@ -21,18 +21,21 @@
     box-shadow: rgba(0, 0, 0, 0.193) 0px 2px 5px;
 }
 .agent_card_img{
+  width: 50%;
+  height: 50%;
     padding: 10px;
     border-radius: 10px;
-    background-color: #00B98E;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .agent_card_img img{
-    width: 100%;
+    width: 50%;
     border-radius: 5px;
     object-fit: contain;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .agent_card_info{
     
@@ -259,7 +262,14 @@ color: #00B98E;
         width: 100%;
     }
 
+    .agent_card_img{
+      align-items: center;
+      align-self: center;
+      /* background-color: red; */
+    }
+
     .agent_card{
+      /* align-items: center; */
        flex-direction: column;
     }
     .agent_card_info{

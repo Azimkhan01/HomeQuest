@@ -43,6 +43,7 @@ const loginUser = async (req, res) => {
     const result = await user.findOne({ email });
     if (result) {
       const isPasswordValid = await bcrypt.compare(password, result.password);
+      console.log(isPasswordValid + " " + password+ " " + result.password)
       if (isPasswordValid) {
         let tokenName = "";
         const token = jwt.sign(
@@ -65,7 +66,7 @@ const loginUser = async (req, res) => {
           res.cookie("token", token, { httpOnly: true, secure: true });
           // Send login email if no cookie exists
           if (!req.cookies.token) {
-            await mail(result.email, result.username);
+             mail(result.email, result.username);
           }
           return res.redirect("/home");
         }
