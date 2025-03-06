@@ -19,7 +19,7 @@ const agentThree = async (req, res) => {
                     case 1:
                         {
                             if (agentData.accept.length > 0) {
-                                let acceptUser = await user.find({ _id: { $in: agentData.accept } }, { _id: 0, username: 1, email: 1 })
+                                let acceptUser = await user.find({ _id: { $in: agentData.askAccept } }, { _id: 1, username: 1, email: 1, image:1 })
                                 if (acceptUser) {
                                     res.json({ acceptUser })
                                 } else {
@@ -38,7 +38,11 @@ const agentThree = async (req, res) => {
                         if(agentData.askAccept.length > 0)
                         {
 
-                            res.json({data:"this is not yet setted as the data is sette then only we can accept or reject"})
+                            let acceptedUser = await user.find({_id:{$in:agentData.askAccept}})
+                            if (acceptedUser)
+                                res.status(200).json(acceptedUser)
+                            else
+                                res.status(400).json({message:"Some Error Occur"});
 
                         }else{
                             res.status(200).json({ message: "The data is less than 0", length: 0 })
@@ -49,7 +53,7 @@ const agentThree = async (req, res) => {
                     case 3:
                         {
                             if (agentData.ask.length > 0) {
-                                let askUser = await user.find({ _id: { $in: agentData.ask } }, { _id: 1, username: 1, email: 1, listing: 1 }).lean()
+                                let askUser = await user.find({ _id: { $in: agentData.ask } }, { _id: 1, username: 1, email: 1, listing: 1, image:1 }).lean()
                                 let findListingOfUser = await listing.find({ owner: { $in: agentData.ask } },{_id:0}).lean()
                                 let combi =  askUser.map((user)=>{
                                     let temp = user
@@ -57,7 +61,7 @@ const agentThree = async (req, res) => {
                                  temp["listing"] = ownerList
                                     return temp
                                 })
-                                console.log(combi)
+                                // console.log(combi)
                                 res.status(200).json(combi)
                             }
                             else {
@@ -87,4 +91,35 @@ const agentThree = async (req, res) => {
     }
 };
 
-module.exports = { agentThree };
+
+const handle_slot_action =async (req,res)=>{
+    let c = req.params.case
+    let id = req.params.id
+    decoded = jwt.verify(req.cookies.agentToken, process.env.JWT_SECRET);
+    if(c == 1)
+    {
+        let acceptAsk = await agent.updateOne({_id:decoded.data['_id']},{$push:{askAccept:id}})
+        let removeAsk = await agent.updateOne({_id:decoded.data['_id']},{$pull:{ask:id}})
+
+        if(acceptAsk && removeAsk)
+            res.status(200).json({message:`The id : ${id} is accepted succesfully`,status:true })
+        else
+            res.status(400).json({message:"Some error happen why rejecting the slot which is asked for ..."})
+
+
+    }else if( c == 2)
+    {
+        let rejectAsk = await agent.updateOne({_id:decoded.data['_id']},{$push:{askReject:id}})
+        let removeAsk = await agent.updateOne({_id:decoded.data['_id']},{$pull:{ask:id}})
+        if(rejectAsk && removeAsk )
+        res.status(200).json({message:`The id : ${id} is accepted succesfully`,status:true })
+        else
+        res.status(400).json({message:"Some error happen why rejecting the slot which is asked for ..."})
+
+    }else{
+        res.status(401).json({message:"The parameter is not in the required range ..."})
+    }
+}
+
+
+module.exports = { agentThree , handle_slot_action };

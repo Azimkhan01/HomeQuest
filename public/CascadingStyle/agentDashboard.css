@@ -136,11 +136,7 @@
 }
 @keyframes l3 {to{transform: rotate(1turn)}}
 
-@media (max-width:678px) {
-  #allAppointment{
-    margin-top: 8%;
-  }
-}
+
 
 .asked_container{
 padding: 10px;
@@ -187,3 +183,83 @@ padding: 10px;
   transform: rotate(45deg);
 }
 
+.hide{
+  display: none;
+}
+.show-flex{
+  display: flex;
+}
+.show-block{
+  display: block;
+}
+
+.asked_slot{
+  justify-content: start;
+  padding: 10px;
+flex-wrap: wrap;
+gap: 10px;
+}
+
+.slot_card{
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  width: 49%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.slot_card_image{
+  width: 20%;
+  align-self: center;
+  /* background-color: red; */
+}
+.slot_card_image img{
+  width: 100%;
+  object-fit: contain;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.slot_card_info{
+  padding: 10px;
+}
+.slot_card_info p{
+  font-family: Hebo,sans-serif;
+  color: #00B98E;
+}
+.slot_acc_rej{
+  padding: 10px;
+}
+.slot_acc_rej button{
+  padding: 10px;
+  font-family: inter,sans-serif;
+  color: white;
+  background-color: #00B98E;
+  border: none;
+  font-weight: 700;
+  border-radius: 5px;
+}
+.slot_acc_rej button:nth-child(1):hover{
+  transition: all 0.3s ease-in-out;
+  background-color: #00b98ec4;
+}
+.slot_acc_rej button:nth-child(2):hover{
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 99, 71, 0.941);
+}
+@media (max-width:678px) {
+  #allAppointment{
+    margin-top: 8%;
+  }
+  .asked_slot{
+    flex-direction: column;
+  }
+  .slot_card{
+    width: 100%;
+    font-size: 14px;
+  }
+  .slot_card_image img{
+    border-radius: 10px;
+  }
+  .slot_card p{
+    font-size: 14px;
+  }
+}
