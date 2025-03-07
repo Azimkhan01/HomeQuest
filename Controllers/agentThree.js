@@ -19,7 +19,7 @@ const agentThree = async (req, res) => {
                     case 1:
                         {
                             if (agentData.accept.length > 0) {
-                                let acceptUser = await user.find({ _id: { $in: agentData.askAccept } }, { _id: 1, username: 1, email: 1, image:1 })
+                                let acceptUser = await user.find({ _id: { $in: agentData.askAccept } }, { _id: 1, username: 1, email: 1, image:1, phone: 1 })
                                 if (acceptUser) {
                                     res.json({ acceptUser })
                                 } else {
@@ -53,7 +53,7 @@ const agentThree = async (req, res) => {
                     case 3:
                         {
                             if (agentData.ask.length > 0) {
-                                let askUser = await user.find({ _id: { $in: agentData.ask } }, { _id: 1, username: 1, email: 1, listing: 1, image:1 }).lean()
+                                let askUser = await user.find({ _id: { $in: agentData.ask } }, { _id: 1, username: 1, email: 1, listing: 1, image:1, phone:1 }).lean()
                                 let findListingOfUser = await listing.find({ owner: { $in: agentData.ask } },{_id:0}).lean()
                                 let combi =  askUser.map((user)=>{
                                     let temp = user

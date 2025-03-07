@@ -304,6 +304,7 @@ async function accept_slot_card_dynamically (data)
          <div class="slot_card_info">
            <p>Email: ${d.email || "N/A"}</p>
            <p>Name: ${d.username || "N/A"}</p>
+           <p>Name: ${d.phone || "N/A"}</p>
            <p>Total Listing: ${d.listing.length || "NA"}</p>
          </div>
        </div>
@@ -359,6 +360,7 @@ async function accept_appointment_card_dynamically (data)
          <div class="slot_card_info">
            <p>Email: ${d.email || "N/A"}</p>
            <p>Name: ${d.username || "N/A"}</p>
+          <p>Name: ${d.phone || "N/A"}</p>
          </div>
        </div>
      `;

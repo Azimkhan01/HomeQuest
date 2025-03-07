@@ -95,7 +95,7 @@ const createFeedFetcher = () => {
         let data = await response.json();
 
         // Check if there are no more feed items
-        if (data.feed.length === 0 || data.status === "end") {
+        if ( data.status == "end" || data.feed?.length == 0) {
             data.status = "end"; // Mark the feed as finished
         }
 
