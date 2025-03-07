@@ -259,7 +259,7 @@ async function getAgentData(page = 1) {
     }
 
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     const container1 = document.getElementById("container1");
 

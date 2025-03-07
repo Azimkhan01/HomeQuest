@@ -12,18 +12,18 @@ const getAgent = async (req, res) => {
 
     let { id } = req.params;
     let offset = parseInt(id, 10); // Convert `id` to an integer
-let page = req.query.page
+    let page = req.query.page
     let data;
     if (isNaN(offset) || offset < 0 || page) {
       // console.log("NaN running");
 
       // Fetch all agents and convert to plain objects
-      data = await agent.find({}).limit(page*10).lean();
-const maxCount = await agent.find({}).countDocuments();
+      data = await agent.find({}).limit(page * 10).lean();
+      const maxCount = await agent.find({}).countDocuments();
       // Process each agent to find associated listings
       await Promise.all(
         data.map(async (element) => {
-          const listings = await listing.find({ owner: element._id },{views:1,title:1,thumbnail:1});
+          const listings = await listing.find({ owner: element._id }, { views: 1, title: 1, thumbnail: 1 });
           if (listings.length > 0) {
             element.listAvailable = listings; // Add `listAvailable` to the agent object
           } else {
@@ -33,7 +33,7 @@ const maxCount = await agent.find({}).countDocuments();
       );
 
       // console.log(data); // Debug: Check updated data in server logs
-      return res.json({'data':data,'maxCount':maxCount});
+      return res.json({ 'data': data, 'maxCount': maxCount });
     } else {
       // Fetch paginated agents
       data = await agent.find({}).skip(offset).limit(10).lean(); // Use `.lean()` to get plain objects
