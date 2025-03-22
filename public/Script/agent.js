@@ -1,3 +1,5 @@
+const messageText = document.getElementById("message-text");
+const subText = document.getElementById("sub-text");
 // Dynamic URL based on the current window's location
 const url = `${window.location.origin}/getAgent`; // Complete API URL
 function capitalizeFirstLetter(string) {
@@ -111,6 +113,9 @@ async function handleAppointment(agentMail, agentName, agentID) {
       let alert = document.getElementById("alert");
 
       alert.style.display = "flex";
+      messageText.textContent ="Message"; 
+      subText.textContent = data.message;
+
       //   console.log(data)
       crossButton.addEventListener("click", () => {
         alert.style.display = "none";

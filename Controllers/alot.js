@@ -20,9 +20,22 @@ const alot = async (req, res) => {
         "_id": req.params.id,
         ask: { $in: [decoded.data['_id']] }
     });
-
+    console.log(findAgentAsk);
     if (findAgentAsk) {
         return res.json({ status: false, message: "The ask allotment is already in process" });
+    }
+
+    if(!findAgentAsk) {
+      let result = await agent.findOne({ _id: req.params.id, askAccept: decoded.data['_id'] });
+      if (result) {
+        return res.status(200).json({ status: false, message: "Ask is accepted by Agent" });     
+      } 
+        if (!result) {
+          result = await agent.findOne({ _id: req.params.id, askReject: decoded.data['_id'] });
+          if (result) {
+            return res.status(200).json({ status: false, message: "Ask is rejected by Agent" });
+          }
+        }
     }
 
     // Initialize necessary data

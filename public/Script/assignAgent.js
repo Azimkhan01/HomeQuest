@@ -205,15 +205,15 @@ async function handleAlot(id) {
       console.log(data.message)
       laoding.style.display = "none"
       message.style.display = "flex"
-      msg1.textContent = "Message"
-      msg2.textContent = 'Ask is already in process'
+      msg1.innerHTML = "Message"
+      msg2.innerHTML = data.message
     }
     if (data.status) {
       console.log(data.message)
       laoding.style.display = "none"
       message.style.display = "flex"
-      msg1.textContent = "Message"
-      msg2.textContent = 'Ask is processing  Soon agent will contact you '
+      msg1.innerHTML = "Message"
+      msg2.innerHTML = data.message
     }
   })
 

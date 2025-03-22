@@ -10,9 +10,8 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 const handleAppointment = async (req, res) => {
   try {
-    // Check if the token or admin cookie is present
+    // Check if the token is present
     const token = req.cookies.token;
-
     if (!token) {
       return res.status(401).json({ error: "Unauthorized: Token is missing" });
     }
@@ -24,47 +23,65 @@ const handleAppointment = async (req, res) => {
     }
 
     // Ensure the request body contains data
-    if (!req.body) {
-      return res.status(400).json({ error: "Bad Request: Missing data" });
+    if (!req.body || !req.body.agentID) {
+      return res.status(400).json({ error: "Bad Request: Missing agent ID" });
     }
 
-    // console.log(req.body)
-    let result = await agent.findOne({
-      _id: req.body.agentID,
-      appointment: decoded.data["_id"],
-    });
-    if (result) {
-      res.status(200).json({ status: false });
-      // console.log( result)
-    } else {
-      let updateResultForAgentId = await agent.updateOne(
-        { _id: req.body.agentID }, // Find the agent by its _id
-        { $push: { appointment: [decoded.data["_id"]] } } // Push the decoded _id into the appointment array
-      );
+    const agentID = req.body.agentID;
+    const clientID = decoded.data["_id"];
 
-      // console.log(updateResultForAgentId)
-      // Extract appointment details from the request body
-      const clientName = decoded.data.username || "";
-      const clientEmail = decoded.data.email || "";
-      const agentMail = req.body.agentmail || "";
-      const agentName = req.body.agentname || "";
-
-      // Send notification to the agent and confirmation to the client
-      await appointmentNoticeMail(
-        clientEmail,
-        clientName,
-        agentMail,
-        agentName
-      );
-      await appointmentReceivedMail(clientEmail, clientName);
-
-      // Respond with success
-      res.status(200).json({ status: true });
+    // Check in `appointment`
+    let result = await agent.findOne({ _id: agentID, appointment: clientID });
+      // If found in any field, return false (appointment already exists)
+      if (result) {
+        return res.status(200).json({ status: false, message: "Appointment already processed" });
+      }
+    if (!result) {
+      // Check in `accept`
+      result = await agent.findOne({ _id: agentID, accept: clientID });
+      if (result) {
+        return res.status(200).json({ status: false, message: "Appointment is accpeted by Agent" });
+      }
     }
+    if (!result) {
+      // Check in `reject`
+      result = await agent.findOne({ _id: agentID, reject: clientID });
+      if (result) {
+        return res.status(200).json({ status: false, message: "Appointment is rejected by Agent" });
+      }
+    }
+
+  
+
+    // Add appointment to `appointment` array
+    const updateResult = await agent.updateOne(
+      { _id: agentID },
+      { $push: { appointment: clientID } }
+    );
+
+    if (updateResult.modifiedCount === 0) {
+      return res.status(500).json({ error: "Failed to book appointment" });
+    }
+
+    // Extract appointment details
+    const clientName = decoded.data.username || "Client";
+    const clientEmail = decoded.data.email || "";
+    const agentMail = req.body.agentmail || "";
+    const agentName = req.body.agentname || "";
+
+    // Send email notifications
+    await Promise.all([
+      appointmentNoticeMail(clientEmail, clientName, agentMail, agentName),
+      appointmentReceivedMail(clientEmail, clientName),
+    ]);
+
+    // Respond with success
+    res.status(200).json({ status: true, message: "Appointment booked successfully" });
+
   } catch (error) {
     console.error("Error handling appointment:", error);
 
-    // Handle specific JWT errors
+    // Handle JWT errors
     if (error.name === "JsonWebTokenError") {
       return res.status(401).json({ error: "Unauthorized: Invalid token" });
     } else if (error.name === "TokenExpiredError") {
@@ -72,9 +89,7 @@ const handleAppointment = async (req, res) => {
     }
 
     // Generic error response
-    res
-      .status(500)
-      .json({ error: "An error occurred while handling the appointment" });
+    res.status(500).json({ error: "An error occurred while handling the appointment" });
   }
 };
 

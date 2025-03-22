@@ -9,6 +9,9 @@
 
 
   <link rel="stylesheet" href="../public/CascadingStyle/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -114,8 +117,12 @@
         </div>
     </div>
   </div>
-
-
+  <div id="logout">
+                        <form method="get" action="/profile/logout">
+                        <button type="submit" class="logout-button">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                        </form>
+                    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/regular.min.js" integrity="sha512-yp4xbJGTx8AEOiU0F5fvbau3PajjDuxEwXpAPNVFtvJK52vjKuvxHLtOvxZFE6UBQr0hWvSciggEZJ82VwpkTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="../public/Script/admin.js"></script>
 </body>

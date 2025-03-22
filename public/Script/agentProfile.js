@@ -91,7 +91,13 @@ const getAgentData = async () => {
             
                 <div class="seeMore">
                     <a href='/Dashboard'>Show Appointment</a>
+                    <div id="logout">
+                        <form method="get" action="/profile/logout">
+                        <button type="submit" class="logout-button">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                        </form>
+                    </div>
                 </div>
+                
         `;
 
     } else {
@@ -121,6 +127,8 @@ async function handleFeed() {
                 feed.innerHTML = s;
                 spinner.style.display = "none";
                 feed.style.display = "flex";
+        asked.scrollIntoView({ behavior: "smooth" })
+
             })
             r.agentFeed.forEach((element) => {
                 document.getElementById(element._id).addEventListener('click', (e) => { changeFeedAngle(e) })
@@ -156,6 +164,8 @@ async function handleListing() {
                 listing.innerHTML = s;
                 spinner.style.display = "none";
                 listing.style.display = "flex";
+                
+        asked.scrollIntoView({ behavior: "smooth" })
             })
         }, 500)
 

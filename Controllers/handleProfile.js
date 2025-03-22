@@ -128,7 +128,9 @@ const handleReset = (req, res) => {
 
 const handleLogout = (req, res) => {
   res.clearCookie("token");
-  res.render("login");
+  res.clearCookie("admin");
+  res.clearCookie("agentToken");
+  res.redirect("/login");
 };
 
 module.exports = { handleLogout, handleProfile, handleReset };
