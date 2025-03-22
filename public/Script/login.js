@@ -304,3 +304,17 @@ newPassword.addEventListener("change", () => {
     resetPasswordBtn.disabled = false;
   }
 });
+
+const c1Sp = document.getElementById("c1-sp");
+const inp2 = document.getElementById('inp2')
+c1Sp.addEventListener("click", () => {
+    if (c1Sp.classList.contains("fa-eye-slash")) {
+      inp2.type = "text"
+        c1Sp.classList.remove("fa-eye-slash");
+        c1Sp.classList.add("fa-eye");
+      } else {
+        inp2.type = "password";
+        c1Sp.classList.remove("fa-eye");
+        c1Sp.classList.add("fa-eye-slash");
+    }
+});

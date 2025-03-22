@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="/public/CascadingStyle/login.css" />
 </head>
 <body>
@@ -15,7 +16,10 @@
             </h4>
             <form action="/login" method="post">
                 <input id="inp" class="inp" type="text" name="email" placeholder="Email" required />
-                <input id="inp2" class="inp" type="password" name="password" placeholder="Password" autocomplete="on" required />
+                <div class="c1-d" >
+                    <input id="inp2" class="inp" type="password" name="password" placeholder="Password" autocomplete="on" required />
+                    <span class="c1-show-pass" ><i id="c1-sp" class="fa-regular fa-eye-slash"></i></span>
+                </div>
                 <input class="inp subbtn" type="submit" value="Log In" />
                 <a href="/signup" style="border-radius: 5px;">Not Registered? Signup Now</a>
                 <p style="text-align: center; color: red;">{{error}}</p>
@@ -76,7 +80,7 @@
     </div>
 
     <div id="loading-spinner" class="spinner" style="display: none;"></div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/regular.min.js" integrity="sha512-yp4xbJGTx8AEOiU0F5fvbau3PajjDuxEwXpAPNVFtvJK52vjKuvxHLtOvxZFE6UBQr0hWvSciggEZJ82VwpkTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/public/Script/login.js"></script>
 </body>
 </html>

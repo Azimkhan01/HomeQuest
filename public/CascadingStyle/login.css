@@ -74,6 +74,7 @@ form {
 input[type="email"],input[type="text"],
 input[type="password"],
 input[type="number"] {
+    font-family: heebo,sans-serif;
     height: 40px;
     width: 90%;
     padding: 10px;
@@ -88,6 +89,26 @@ input[type="email"]:hover,input[type="text"]:hover,
 input[type="password"]:hover,
 input[type="number"]:hover {
     border-bottom: 3px solid rgb(0, 0, 0);
+    transition: all ease 0.3s;
+}
+
+.c1-d{
+    position: relative;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+}
+.c1-show-pass{
+    padding: 5px;
+    right: 8%;
+    position: absolute;
+    color: #2a9fc3a2;
+    align-self: center;
+}
+.c1-show-pass.c1-show-pass:hover{
+    cursor: pointer;
+    color: #2a9fc3;
     transition: all ease 0.3s;
 }
 
