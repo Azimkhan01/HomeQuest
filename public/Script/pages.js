@@ -32,7 +32,8 @@ const onScroll = () => {
                         }
                     } else {
                         // Append new posts to the feed
-                        response.feed.forEach(post => {
+                        response.feed.forEach((post) => {
+                            console.log(post)
                             const div = document.createElement("div");
                             div.className = "card";
                             div.innerHTML = `

@@ -1,4 +1,8 @@
 const handleAddPost = document.getElementById("handleAddPost");
+const allImage = document.getElementById("all-img")
+const left = document.getElementById('left')
+const right = document.getElementById('right')
+const instanceImage = document.getElementById('instance_img')
 let isOpen = false; // Initialize state
 let mainPost = document.getElementById("main-post")
 mainPost.style.display = "none"
@@ -53,5 +57,45 @@ async function validateFiles() {
             // Proceed with your logic for valid file uploads
         }
     });
+
+    let currentIndex = 0;
+    let uploadedFiles = [];
+    
+    imageUpload.addEventListener('change', (e) => {
+        uploadedFiles = Array.from(e.target.files);
+        currentIndex = 0;
+    
+        if (uploadedFiles.length < 1) {
+            allImage.style.display = "none";
+            return;
+        }
+    
+        if (uploadedFiles.length > 0 && uploadedFiles.length < 7) {
+            allImage.style.display = "flex";
+            showImage(currentIndex);
+        }
+    });
+    
+    left.addEventListener("click", () => {
+        if (uploadedFiles.length === 0) return;
+        currentIndex = (currentIndex - 1 + uploadedFiles.length) % uploadedFiles.length;
+        showImage(currentIndex);
+    });
+    
+    right.addEventListener("click", () => {
+        if (uploadedFiles.length === 0) return;
+        currentIndex = (currentIndex + 1) % uploadedFiles.length;
+        showImage(currentIndex);
+    });
+    
+    function showImage(index) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            instanceImage.src = e.target.result;
+        };
+        reader.readAsDataURL(uploadedFiles[index]);
+    }
+    
+
 }
 
